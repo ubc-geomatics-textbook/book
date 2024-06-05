@@ -22,7 +22,6 @@ canadalicense <- "https://open.canada.ca/en/open-government-licence-canada/"
 covlicense <- "https://opendata.vancouver.ca/pages/licence/"
 library(leaflet)
 library(dplyr)
-library(rgdal)
 library(deldir)
 library(tripack)
 library(animation)
@@ -32,7 +31,6 @@ library(lidR)
 options(rgl.useNULL=TRUE)
 library(rgl)
 library(mgcv)
-library(rLiDAR)
 library(sf)
 knitr::knit_hooks$set(webgl = hook_webgl)
 ```
@@ -75,8 +73,8 @@ In the context of topology, **planar** refers to the concept that all vertices o
 On the other hand, **non-planar** topology is the concept that vertices of feature vector geometry can be mapped to different planes. It is important to emphasize here that when we are talking about planes that we are not referring to projected coordinate systems. It is generally assumed that any two spatial data layers containing feature geometries are interacting within the same projected coordinate system. Non-planar topology allows for other knowledge systems to be represented in spatial data. The case where a pipeline runs underneath a river or a territory that was traditionally used by several Indigenous peoples (Figure \@ref(fig:7-native-land-leaflet)) are examples of valid non-planar topology.
 
 ``` {r, 7-native-land-data-load, echo=F, message=F, warning=F, cache=T}
-native_land <- rgdal::readOGR("Data/07/07-native_land_vancouver_island.geojson", verbose=F)
-labels <- native_land@data$Name
+native_land <- st_as_sfc("Data/07/07-native_land_vancouver_island.geojson", crs = st_crs("Data/07/07-native_land_vancouver_island.geojson"), GeoJSON = TRUE)
+labels <- native_land$Name
 ```
 
 ``` {r 7-native-land-leaflet-setup, cached=T, echo = FALSE, include = FALSE}
@@ -86,7 +84,7 @@ m <- leaflet(native_land) %>%
   addScaleBar(position = c("topleft")) %>%
   setView(lat = 49.25, lng = -125, zoom = 7) %>%
   addPolygons(data=native_land,
-              fillColor = native_land@data$color,
+              fillColor = native_land$color,
               weight = 0.6,
               opacity = 0.5,
               color = "#ffffff",
@@ -127,8 +125,7 @@ So far, we have seen that there are six ways to combine feature geometries (poin
 There are times when we need to ensure that two polygons are **adjacent** to one another by sharing a common edge. If two polygons are not adjacent to one another, then a gap, known as a **sliver**, exists between them or they must **overlap**. Consider the case where we are mapping land covers. If we have a formal scheme that describes all possible land covers, then we expect that a map of land covers will have perfect adjacency between all polygons so that there are no areas that are not mapped (i.e., slivers) and that no area has multiple, overlapping land covers. Since lines are also 2-dimensional, lines can overlap other lines. Depending on the context, a topological rule may be needed to promote or prevent this relationship. For example, if you are modeling bus routes, then one road might support several different routes.
 
 ``` {r echo=FALSE, warning=FALSE, message=FALSE}
-#countries <- st_read("Data/02/world-countries.geojson")
-countries <- rgdal::readOGR("Data/02/world-countries.geojson", verbose = F)
+countries <- st_read("data/02/world-countries.shp", quiet=T)
 uscanada <- countries[countries$CNTRY_NAME == "Canada" | countries$CNTRY_NAME == "United States",]
 uscanada_sf <- st_as_sf(uscanada)
 uscanada_simp <- st_simplify(uscanada_sf, preserveTopology = FALSE, dTolerance = 1000)
@@ -317,8 +314,8 @@ Some examples of cover topological rules:
 Sometimes we need to represent several points, lines or polygons as a collection, which is known as **multipart geometry**. Multipart geometry allow us to represent several disjoint and non-adjacent geometries as a single feature. In this way, we can assign attribute values to the collection of features rather than each geometry individually. The territorial boundary of Canada is a good example of an instance where a multipart geometry can be useful because all of the contiguous land and non-contiguous land (i.e., islands) can be represented and associated with a single feature in the attribute table. However, if the distinction of features is important, such as identifying the names of islands in the Haida Gwaii archipelago, then a singlepart geometry should be used (Figure \@ref(fig:7-haida-gwaii-leaflet)).
 
 ``` {r 7-haida-leaflet-setup, echo=FALSE, warning=FALSE, message=FALSE}
-haida <- rgdal::readOGR("Data/07/07-haida-gwaii-islands-names.geojson", verbose=F)
-labels2 <- haida@data$Island_Name
+haida <- st_as_sfc("Data/07/07-haida-gwaii-islands-names.geojson", crs = st_crs("Data/07/07-haida-gwaii-islands-names.geojson"), GeoJSON = TRUE)
+labels2 <- haida$Island_Name
 ```
 
 ``` {r 7-haida-leaflet-setup2, echo=FALSE, warning=FALSE, message=FALSE, cached=T, echo = FALSE}
@@ -538,10 +535,10 @@ The 3D convex hull is the smallest convex polyhedron that contains a set of 3D p
 The 3D convex alpha hull is Figure \@ref(fig:7-3d-alpha-hull-deciduous) below shows a 3D convex alpha hull for a deciduous tree near the Forest Sciences Centre at the University of British Columbia.
 
 ```{r 7-setup-3d-alpha-hull-deciduous, echo=FALSE, cached=T, warning=F, include=F}
-las <- readLAS("Data/07/07-deciduous-tree.las")
-z <- las[,3]
-x <- las[,1]
-y <- las[,2]
+las <- lidR::readLAS("Data/07/07-deciduous-tree.las")
+z <- las@data$Z
+x <- las@data$X
+y <- las@data$Y
 x <- (x-min(x))/(max(x)-min(x))
 y <- (y-min(y))/(max(y)-min(y))
 z <- (z-min(z))/(max(z)-min(z))
@@ -564,9 +561,9 @@ rglwidget(width = 600, height = 600, reuse=FALSE, elementId="7-3d-alpha-hull-dec
 
 ``` {r 7-setup-3d-alpha-hull-conifer, echo=F, cached=T, warning=F, include=F}
 las <- readLAS("Data/07/07-conifer-tree.las")
-z <- las[,3]-1156
-x <- las[,1]-640600
-y <- las[,2]-5674900
+z <- las@data$Z-1156
+x <- las@data$X-640600
+y <- las@data$Y-5674900
 xyz <- cbind(x,y,z)
 ahull.c <- ashape3d(xyz,alpha=0.1)
 ```

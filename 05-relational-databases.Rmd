@@ -1,11 +1,16 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+---
 ```{r, include=FALSE, warning=FALSE}
 baseurl <- "https://ubc-geomatics-textbook.github.io/geomatics-textbook/"
 covlicence <- "https://opendata.vancouver.ca/pages/licence/"
-library("dplyr")
-library("rgdal")
-library("leaflet")
-library("xtable")
-library("plyr")
+library(dplyr)
+library(leaflet)
+library(xtable)
+library(plyr)
+library(sf)
 ```
 
 ```{r echo=FALSE}
@@ -655,38 +660,36 @@ knitr::kable(
 )
 ```
 
-```{r 5-case-study-2, include=FALSE}
-VancouverDA <- readOGR(dsn = "data/05", layer = "VancouverDA")
-```
-
-```{r 5-case-study-3, echo=FALSE}
+```{r 5-case-study-2, echo=FALSE}
+VancouverDA <- st_read("data/05/VancouverDA.shp", quiet=T)
+VancouverDA <- data.frame(DAUID = VancouverDA$DAUID)
 knitr::kable(
-  head(VancouverDA@data), booktabs = TRUE,
-  caption = 'An excerpt of the Vancouver DA polygon shapefile attributes.'
+  head(VancouverDA), booktabs = TRUE,
+  caption = 'An excerpt of the Vancouver DA polygon attributes.'
 )
 ```
 
 The tabular data of the CIMD scores are related to the DAs polygon by the DA code. The cardinality of the relationship between these two tables is one-to-one as each DA is described by one set of the CIMD scores. To join the CIMD scores to the Vancouver DA polygons, we would use the `PRCDDA` attribute in the CIMD table as the foreign key to perform a join on the `DAUID` attribute in the Vancouver DA polygon relation. Now that the CIMD scores are joined to the Vancouver DA polygon attribute table, we can create choropleth maps to display the vulnerability scores of the DAs (Figure \@ref(fig:5-situational-vulnerability-leaflet)).
 
 ```{r 5-case-study-4, include=FALSE}
-DA_CIMD <- readOGR(dsn = "data/05", layer = "VancouverDA_CIMD")
+DA_CIMD <- st_read("data/05/VancouverDA_CIMD.shp", quiet=T)
 
-DA_CIMD@data <- DA_CIMD@data %>%
+DA_CIMD <- DA_CIMD %>%
   mutate_if(is.numeric,round, digits = 3)
 
-DA_CIMD_proj <- spTransform(DA_CIMD, "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs")
+DA_CIMD_proj <- st_transform(DA_CIMD, "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs")
 
-pal <- colorNumeric(palette = "YlOrRd", domain = range(DA_CIMD@data$Situatio_1))
+pal <- colorNumeric(palette = "YlOrRd", domain = range(DA_CIMD$Situatio_1))
 
 labels <- sprintf(
   "<strong>DAUID </strong> %s<br/><strong>Situational Vulnerabiltiy Score </strong> %g",
-  DA_CIMD@data$DAUID, DA_CIMD@data$Situatio_1
+  DA_CIMD$DAUID, DA_CIMD$Situatio_1
 ) %>% lapply(htmltools::HTML)
 
 m <- leaflet(DA_CIMD_proj) %>%
   addProviderTiles("CartoDB.Positron")%>%
   setView(lat = 49.255, lng = -123.153, zoom = 12) %>%
-  addPolygons(fillColor = pal(DA_CIMD@data$Situatio_1), 
+  addPolygons(fillColor = pal(DA_CIMD$Situatio_1), 
               weight = 0.6, 
               opacity = 1,
               color = "#c2c2c2",
@@ -702,7 +705,7 @@ m <- leaflet(DA_CIMD_proj) %>%
               labelOptions = labelOptions(
                 style = list("font-weight" = "normal", padding = "3px 8px"), textsize = "12px", direction = "auto"
               )) %>%
-  addLegend(pal = pal, values = ~DA_CIMD@data$Situatio_1, opacity = 0.7, 
+  addLegend(pal = pal, values = ~DA_CIMD$Situatio_1, opacity = 0.7, 
             title = "Situational Vulnerabiltiy Score",
             position = "bottomleft")
 ```
@@ -724,26 +727,27 @@ Suppose we would like to calculate the overall vulnerability score for each DA. 
 Using what you have learned, join the street tree data and the vegetation type cover richness data to the Vancouver DA attribute table and to compute a vegetation diversity score. The street trees data shows the number of unique street tree species at a DA. Make sure you apply a min-max normalization to obtain the street tree diversity score. The vegetation diversity score can be computed by averaging the normalized scores of the two vegetation data.
 
 ```{r 5-case-study-5, include=FALSE}
-calculated <- readOGR(dsn = "data/05", layer = "Results")
-calculated.full <- head(calculated@data[,c(1, 14, 15, 17, 16, 18, 21)])
-colnames(calculated.full) <- c("DAUID","Aggregated scores", "Normalized aggregated scores", "Species count", "Street tree diversity", "Vegetation richness", "Vegetation diversity scores")
+calculated <- st_read("data/05/Results.shp", quiet=T)
+calculated.full <- head(calculated[c(1, 14, 15, 17, 16, 18, 21)])
+colnames(calculated.full) <- c("DAUID","Aggregated scores", "Normalized aggregated scores", "Species count", "Street tree diversity", "Vegetation richness", "Vegetation diversity scores","geometry")
 calculated.full <- calculated.full %>%
   mutate_if(is.numeric,round, digits = 3)
 ```
 
 ```{r 5-case-study-6, echo=FALSE}
+calculated.full <- as.data.frame(calculated.full)
 knitr::kable(
-  calculated.full, booktabs = TRUE,
+  calculated.full[,-8], booktabs = TRUE,
   caption = 'An excerpt of the attribute table after the joins and calculations.'
 )
 ```
 
 ```{r 5-case-study-7, include=FALSE}
-full.results <- readOGR(dsn = "data/05", layer = "Results")
-full.results_proj <- spTransform(full.results, "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs")
+full.results <- st_read("data/05/Results.shp", quiet=T)
+full.results_proj <- st_transform(full.results, "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs")
 full.results_proj$norm_aggre <- round(full.results_proj$norm_aggre, 2)
 full.results_proj$veg_div_sc <- round(full.results_proj$veg_div_sc, 2)
-pal1 <- colorNumeric(palette = "Greens", domain = range(full.results_proj@data$veg_div_sc))
+pal1 <- colorNumeric(palette = "Greens", domain = range(full.results_proj$veg_div_sc))
 
 labels <- sprintf(
   "<strong>DAUID </strong>%s<br/> <strong>Vegetation Diversity Score </strong>%g<br/><strong>Normalized Aggregated Vulnerabiltiy Score </strong>%g",
@@ -791,16 +795,17 @@ m1
 Areas with a higher proportion of vulnerable populations and less variety of vegetation to support resident’s mental wellbeing are more in need for intervention. Supposed we define the priority area as DAs with a normalized aggregated vulnerability score greater than or equal to 0.5 and a vegetation diversity score less than 0.5. We could use the `Select By Attributes` tool to identify these priority areas by entering the appropriate query expression.
 
 ```{r 5-case-study-8, include=FALSE}
-query.results <- calculated@data[calculated@data$norm_aggre >= 0.5 & calculated@data$veg_div_sc < 0.5,]
+query.results <- calculated[calculated$norm_aggre >= 0.5 & calculated$veg_div_sc < 0.5,]
 query.results <- query.results[,c(1,15,16,18,21)]
-colnames(query.results) <- c("DAUID", "Normalized aggregated scores", "Street tree diversity", "Vegetation richness", "Vegetation diversity scores")
+colnames(query.results) <- c("DAUID", "Normalized aggregated scores", "Street tree diversity", "Vegetation richness", "Vegetation diversity scores","geometry")
 query.results <- query.results %>%
   mutate_if(is.numeric,round, digits = 3)
 ```
 
 ```{r 5-case-study-9, echo=FALSE}
+query.results <- as.data.frame(query.results)
 knitr::kable(
-  query.results, booktabs = TRUE,
+  query.results[,-6], booktabs = TRUE,
   caption = 'Query result shows five records matched the priority area requirements.'
 )
 ```
