@@ -1,11 +1,10 @@
 ```{r, include=FALSE, warning=FALSE}
 baseurl <- "https://ubc-geomatics-textbook.github.io/geomatics-textbook/"
 covlicence <- "https://opendata.vancouver.ca/pages/licence/"
-library("dplyr")
-library("rgdal")
-library("leaflet")
-library("xtable")
-library("plyr")
+library(dplyr)
+library(leaflet)
+library(xtable)
+library(plyr)
 ```
 
 ```{r echo=FALSE}
