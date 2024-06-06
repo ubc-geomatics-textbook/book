@@ -1,10 +1,15 @@
 ```{r, include=FALSE, warning=FALSE}
 covlicence <- "https://opendata.vancouver.ca/pages/licence/"
-library("dplyr")
-library("rgdal")
-library("leaflet")
-library("xtable")
-library("plyr")
+library(dplyr)
+library(leaflet)
+library(xtable)
+library(plyr)
+library(raster)
+library(sf)
+library(sp)
+library(htmlwidgets)
+library(leafem)
+library(geojsonio)
 ```
 
 ```{r echo=FALSE}
@@ -281,18 +286,6 @@ Creating metrics at these two scales are the fundamental way in which we current
 In Figure \@ref(fig:15-map) below, explore some of the LiDAR derivatives that we produced in the case study above. We can see how the pattern for maximum height follows the mean height quite closely. In addition, we can see that the 15th percentile of heights (ZQ 15) also broadly follows this pattern. However, we can see that the standard deviation of heights in the tall areas are quite variable, and that very little ground is visible in our tile (as the percentage of points above 2 m is very high almost everywhere).
 
 ```{r 15-files, echo=FALSE, warning=FALSE, include =FALSE, cache=TRUE}
-
-# Load library
-library(leaflet)
-library(raster)
-library(sf)
-library(sp)
-library(htmlwidgets)
-library(rgdal)
-library(leafem)
-library(geojsonio)
-
-
 # Load files
 r_hmean <- raster(here::here("data", "hmean_large.tif")) #mean height
 r_hmax <- raster(here::here("data", "hmax_large.tif")) #max height
@@ -313,11 +306,11 @@ pal5 <- colorNumeric("viridis", values(r_hpabove2),
                      na.color = "transparent")
 
 # Add projection information
-crs(r_hmean) <- "+proj=utm +zone=10 +datum=NAD83 +units=m"
-crs(r_hmax) <- "+proj=utm +zone=10 +datum=NAD83 +units=m"
-crs(r_hsd) <- "+proj=utm +zone=10 +datum=NAD83 +units=m"
-crs(r_hzq15) <- "+proj=utm +zone=10 +datum=NAD83 +units=m"
-crs(r_hpabove2) <- "+proj=utm +zone=10 +datum=NAD83 +units=m"
+raster::crs(r_hmean) <- "+proj=utm +zone=10 +datum=NAD83 +units=m"
+raster::crs(r_hmax) <- "+proj=utm +zone=10 +datum=NAD83 +units=m"
+raster::crs(r_hsd) <- "+proj=utm +zone=10 +datum=NAD83 +units=m"
+raster::crs(r_hzq15) <- "+proj=utm +zone=10 +datum=NAD83 +units=m"
+raster::crs(r_hpabove2) <- "+proj=utm +zone=10 +datum=NAD83 +units=m"
 
 #create leaflet
 m = leaflet() %>%
