@@ -184,10 +184,17 @@ Level-1 processing is designed to address the geometric and radiometric inconsis
 
 With the geometric and radiometric correction complete in Level-1, Level-2 processing is designed to reduce atmospheric inconsistencies. The output images created from Level-2 processing are considered to be Science Products (images with corrections completed at a quality suitable for scientific inquiry without further processing) and accurately represent surface reflectance and surface temperature. Data regarding surface reflectance is useful for evaluating a variety of environmental metrics, such as land cover, while surface temperature lends insight to vegetation health and the global energy balance. It is important to note that there are two Collection levels at which Landsat processing takes place, with Collection 2 representing the highest quality processing stream. You can explore the differences between Collections [here](https://prd-wret.s3.us-west-2.amazonaws.com/assets/palladium/production/atoms/files/Landsat-C1vsC2-2 21-0430-LMWS.pdf "Landsat Collection 1 vs 2"), while information about Collection 2 images processed at a Level-2 standard can be observed[here](https://www.usgs.gov/core-science-systems/nli/landsat/landsat-collection-2-level-2-scien e-products "Landsat Colleciton 2 Level-2").
 
-```{r 13-landsat-c2-l2, fig.cap = fig_cap, out.width="90%", echo = FALSE}
-    fig_cap <- paste0("Three unique Landsat 8 Collection 2 images. In order from left to right: Level-1 Top of Atmosphere reflectance image (no atmospheric correction), Level-2 atmospherically corrected surface reflectance and Level-2 surface temperature. Images were collected on May 3, 2013 over the Sapta Kosh River in Bairawa, Nepal [@bouchard_example_2013]. Public domain.")
-    knitr::include_graphics("images/13-landsat-c2-l2.png")
+(ref:13-landsat-c2-l2-caption) Three unique Landsat 8 Collection 2 images. In order from left to right: Level-1 Top of Atmosphere reflectance image (no atmospheric correction), Level-2 atmospherically corrected surface reflectance and Level-2 surface temperature. Images were collected on May 3, 2013 over the Sapta Kosh River in Bairawa, Nepal [@bouchard_example_2013]. Public domain.
+
+```{r 13-landsat-c2-l2, fig.cap = fig_cap, out.width= "75%", echo = FALSE}
+if (knitr:::is_latex_output()) { 
+  fig_cap <- "(ref:13-landsat-c2-l2-caption)"
+} else { 
+  fig_cap <- paste0("Three unique Landsat 8 Collection 2 images. In order from left to right: Level-1 Top of Atmosphere reflectance image (no atmospheric correction), Level-2 atmospherically corrected surface reflectance and Level-2 surface temperature. Images were collected on May 3, 2013 over the Sapta Kosh River in Bairawa, Nepal [@bouchard_example_2013]. Public domain.")
+}
+knitr::include_graphics("images/13-landsat-c2-l2.png")
 ```
+<br/>
 
 As you may realize, there are a variety of processing options that Landsat users can select from. Each of these Collections and Levels present different opportunities for scientific study and allow users to customize processing streams based on the needs of their project. Such flexibility is key for the continued improvement of Landsat products and promotes the use of Landsat imagery across a broad range of users. It is important to remember, however, that the selection of pre-processed data for scientific inquiry requires the user to understand the foundations upon which correction were made. Be sure to draw on the fundamentals learned in this chapter to evaluate the usefulness of any processed data you consider in your work.
 
@@ -330,14 +337,14 @@ dnbrMap = leaflet() %>%
 #htmlwidgets:::knit_print.htmlwidget(dnbrMap)
 ```
 
-(ref:13-dnbr-leaflet-caption) Classified Burn Severity images for the Little Bobtail Lake wildfire from 2015 to 2020. Murray, CC-BY-SA-4.0. Data from Natural Resources Canada and licensed under the Open Government Licence - Canada: https://www.nrcan.gc.ca/terms-and-conditions/10847. Interactive web map can be viewed in the web browser version of the textbook: https://www.opengeomatics.ca/image-processing-and-analysis.html#13-dnbr-leaflet.
+(ref:13-dnbr-leaflet-caption) Classified Burn Severity images for the Little Bobtail Lake wildfire from 2015 to 2020. Murray, CC-BY-SA-4.0. Data from [@natural_resources_canada_natural_nodate] and licensed under the Open Government Licence - Canada: https://www.nrcan.gc.ca/terms-and-conditions/10847. Interactive web map can be viewed in the web browser version of the textbook: https://www.opengeomatics.ca/image-processing-and-analysis.html#13-dnbr-leaflet.
 
 ```{r 13-dnbr-leaflet, fig.cap = fig_cap, out.width= "75%", echo = FALSE}
 if (knitr:::is_latex_output()) { 
   fig_cap <- "(ref:13-dnbr-leaflet-caption)"
   knitr::include_graphics("images/13-dnbr-leaflet.png")
 } else { 
-  fig_cap <- paste0("Classified Burn Severity images for the Little Bobtail Lake wildfire from 2015 to 2020. Data from @natural_resources_canada_natural_nodate and licensed under the <a href='https://www.nrcan.gc.ca/terms-and-conditions/10847'>Open Government Licence - Canada </a>. Murray, CC-BY-SA-4.0.")
+  fig_cap <- paste0("Classified Burn Severity images for the Little Bobtail Lake wildfire from 2015 to 2020. Data from [@natural_resources_canada_natural_nodate] and licensed under the <a href='https://www.nrcan.gc.ca/terms-and-conditions/10847'>Open Government Licence - Canada </a>. Murray, CC-BY-SA-4.0.")
   dnbrMap
 }
 ```
