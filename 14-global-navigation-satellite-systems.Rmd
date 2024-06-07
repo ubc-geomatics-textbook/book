@@ -1,13 +1,3 @@
----
-editor_options:
-  markdown:
-    wrap: 72
-output:
-  html_document:
-    df_print: paged
-  word_document: default
----
-
 # Global Navigation Satellite Systems {#global-navigation-satellite-systems}
 
 ```{r 14-load-packages-and-setup, include=FALSE, warning=FALSE}
