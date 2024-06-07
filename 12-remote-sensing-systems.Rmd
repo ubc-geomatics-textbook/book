@@ -139,7 +139,7 @@ The **sensor** is the subsystem that is responsible for digitally recording the 
 
 ```{r 12-lens-sensor-filter-detector-ADC, fig.cap = fig_cap, out.width="90%", echo = FALSE}
 fig_cap <- paste0("Electromagnetic radiation enters the lens, where it is refracted and focused onto a surface containing the digital sensor. An array of detectors are arranged on the digital sensor that represent different pixel locations in the output raster image. Filters are used to ensure only specific wavelengths are recorded by each detector. Energy from photons is converted to electrical charges and then converted to digital numbers by the analog-to-digital converter. Pickell, CC-BY-SA-4.0")
-knitr::include_graphics(here::here("images", "12-lens-sensor-filter-detector-ADC.png"))
+knitr::include_graphics("images/12-lens-sensor-filter-detector-ADC.png")
 ```
 <br/>
 
@@ -193,7 +193,7 @@ where $H$ is the height of the sensor above the vertical datum or ground. Figure
 
 ```{r 12-swath-width, fig.cap = fig_cap, out.width="100%", echo = FALSE}
 fig_cap <- paste0("Swath width. Pickell, CC-BY-SA-4.0.")
-knitr::include_graphics(here::here("images", "12-swath-width.png"))
+knitr::include_graphics("images/12-swath-width.png")
 ```
 <br/>
 
@@ -201,13 +201,13 @@ All of these parameters (scan angle, IFOV, and height) are incredibly important 
 
 ```{r 12-scan-angle, fig.cap = fig_cap, out.width="75%", echo = FALSE}
 fig_cap <- paste0("Scan angle. Pickell, CC-BY-SA-4.0.")
-knitr::include_graphics(here::here("images", "12-scan-angle.png"))
+knitr::include_graphics("images/12-scan-angle.png")
 ```
 <br/>
 
 ```{r 12-cross-track-along-track, fig.cap = fig_cap, out.width="75%", echo = FALSE}
 fig_cap <- paste0("Pixel dimensions shown as a function of cross-track and along-track travel of the remote sensing platform. Pickell, CC-BY-SA-4.0.")
-knitr::include_graphics(here::here("images", "12-cross-track-along-track.png"))
+knitr::include_graphics("images/12-cross-track-along-track.png")
 ```
 <br/>
 
@@ -286,7 +286,7 @@ When the focal plane of the lens is parallel to and pointed towards the vertical
 
 ```{r 12-zenith-image, fig.cap = fig_cap, out.width="90%", echo = FALSE}
 fig_cap <- paste0("Zenith perspective taken from the ground looking up to the canopy of an old growth tree on Vancouver Island, British Columbia. Pickell, CC-BY-SA-4.0.")
-knitr::include_graphics(here::here("images", "12-zenith-image.png"))
+knitr::include_graphics("images/12-zenith-image.png")
 ```
 <br/>
 
@@ -296,7 +296,7 @@ If the plane of the lens is _not_ perpendicular to the vertical datum, then the 
 
 ```{r 12-oblique-image, fig.cap = fig_cap, out.width="90%", echo = FALSE}
 fig_cap <- paste0("Oblique image of a forest harvest near Cold Lake in Saskatchewan. Ignacio San-Miguel, CC-BY-SA-4.0.")
-knitr::include_graphics(here::here("images", "12-oblique-image.png"))
+knitr::include_graphics("images/12-oblique-image.png")
 ```
 <br/>
 
@@ -342,7 +342,7 @@ Remote sensing **platforms** are simply whatever a camera system or sensor is at
 
 ```{r 12-platforms, fig.cap = fig_cap, out.width="50%", echo = FALSE}
 fig_cap <- paste0("Different types of platforms for remote sensing systems. Image scale is represented on the y-axis in log scale. Pickell, CC-BY-SA-4.0.")
-knitr::include_graphics("images/12-platforms.png"))
+knitr::include_graphics("images/12-platforms.png")
 ```
 <br/>
 
@@ -352,7 +352,7 @@ Terrestrial platforms describe any platform that is near the ground surface. Usu
 
 ```{r 12-google-street-view-car, fig.cap = fig_cap, out.width="90%", echo = FALSE}
 fig_cap <- paste0("A 360 degree camera mounted on a vehicle is used for collecting street view imagery for Google™ Maps [@leggett_google_2014]. CC-BY-SA-4.0.")
-knitr::include_graphics("images/12-google-street-view-car.png"))
+knitr::include_graphics("images/12-google-street-view-car.png")
 ```
 <br/>
 
@@ -371,7 +371,7 @@ Spectral responses from forest canopies can be monitored by radiometers such as 
 
 ```{r 12-flux-tower-radiometer, fig.cap = fig_cap, out.width="90%", echo = FALSE}
 fig_cap <- paste0("AMSPEC radiometer affixed to a carbon flux tower located in Buckley Bay, Vancouver Island, Canada [@coops_amspec_nodate]. Used with permission.")
-knitr::include_graphics(here::here("images", "12-flux-tower-radiometer.png"))
+knitr::include_graphics("images/12-flux-tower-radiometer.png")
 ```
 <br/>
 
@@ -399,7 +399,7 @@ Aircraft are subject to rotation along three axes (Figure \@ref(fig:12-pitch-rol
 
 ```{r 12-pitch-roll-yaw, fig.cap = fig_cap, out.width="90%", echo = FALSE}
 fig_cap <- paste0("Pitch is the rotation of the aircraft over the axis of the wings, roll is the rotation of the aircraft over the axis of the fuselage, and yaw is the rotation of the aircraft over the axis of vertical axis that is perpendicular to the fuselage [@jrvz_image_2010]. CC-BY-SA 3.0.")
-knitr::include_graphics(here::here("images", "12-pitch-roll-yaw.png"))
+knitr::include_graphics("images/12-pitch-roll-yaw.png")
 ```
 <br/>
 
@@ -426,7 +426,7 @@ Consider Newton's cannonball thought experiment: you fire a cannonball perpendic
 
 ```{r 12-newtons-cannonball, fig.cap = fig_cap, out.width="75%", echo = FALSE}
 fig_cap <- paste0("Netwon's Cannonball thought experiment. [Brian Brondel](https://upload.wikimedia.org/wikipedia/commons/archive/7/73/20070210061321%21Newton_Cannon.svg), CC-BY-SA-3.0.")
-knitr::include_graphics(here::here("images", "12-newtons-cannonball.png"))
+knitr::include_graphics("images/12-newtons-cannonball.png")
 ```
 
 Another important force is drag, which is the equal force applied in the opposite direction to acceleration (Third Law). Drag is important for satellites to reach orbit and stay there. Earth's atmosphere exerts an equal and opposite force to the direction the space vehicle is leaving the launchpad and also creates friction that can slow down satellites that are near the transition between the atmosphere and space. Thus, in order for satellites to maintain orbit, they must travel at high speeds and also high altitudes above the ground to avoid the force of drag. Generally, the speed of a satellite is inversely related to the altitude. So satellites that are closer to Earth must travel at much faster speeds than satellites that are farther from Earth. In the following sections, we will look at some examples of different types of orbits and their role in specific remote sensing systems.
