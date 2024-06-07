@@ -512,7 +512,11 @@ Convex hulls can be generalized to the concave case, called **convex alpha hulls
 
 ``` {r 7-2d-alpha-hull, echo=FALSE, out.width = '75%', fig.cap=fig_cap}
 fig_cap <- paste0("Concave alpha hull generates an alpha shape around a set of points. Online version of the figure is animated by alpha values from 0 to 1 by increments of 0.05. <a href='",baseurl,"#7-2d-alpha-hull'>Animated figure can be viewed in the web browser version of the textbook.</a> Pickell, CC-BY-SA-4.0.")
-knitr::include_graphics("images/07-2d-alpha-hull.gif")
+if (knitr:::is_latex_output()) { 
+  knitr::include_graphics("images/07-2d-alpha-hull-static.png")
+} else { 
+  knitr::include_graphics("images/07-2d-alpha-hull.gif")
+}
 ```
 
 ## 3D topologies
@@ -528,10 +532,11 @@ Similar to multipart geometries, **multipatch geometries** associate several *fa
 ```{r 7-platonic-polyhedrons, fig.cap = fig_cap, out.width= "75%", echo = FALSE}
 if (knitr:::is_latex_output()) { 
   fig_cap <- "(ref:7-platonic-polyhedrons-caption)"
+knitr::include_graphics("images/07-platonic-polyhedrons-static.png")
 } else { 
   fig_cap <- paste0("The five Platonic solids are examples of regular, convex polyhedrons and multipatch geometries. From left to right: tetrahedron (4 faces); hexahedron (6 faces); octahedron (8 faces); dodecahedron (12 faces); and icosahedron (20 faces). [@cyp_polyhedra_2005], CC-BY-SA-3.0.")
+  knitr::include_graphics("images/07-platonic-polyhedrons.gif")
 }
-knitr::include_graphics("images/07-platonic-polyhedrons.gif")
 ```
 <br/>
 

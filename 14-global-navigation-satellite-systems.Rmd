@@ -1,5 +1,3 @@
-# Global Navigation Satellite Systems {#global-navigation-satellite-systems}
-
 ```{r 14-load-packages-and-setup, include=FALSE, warning=FALSE}
 baseurl <- "https://ubc-geomatics-textbook.github.io/geomatics-textbook/"
 knitr::opts_chunk$set(echo = TRUE)
@@ -9,6 +7,7 @@ knitr::opts_chunk$set(echo = TRUE)
 yml_content <- yaml::read_yaml("chapterauthors.yml")
 author <- yml_content[["globalNavigationSatelliteSystems"]][["author"]]
 ```
+# Global Navigation Satellite Systems {#global-navigation-satellite-systems}
 
 ```{r setup, include=FALSE}
 ## This allows us to add an id attribute to a chunk
@@ -209,8 +208,12 @@ as a result of the apparent satellite geometry in the sky.
 Since the pseudorange is an estimate with limited precision, the final measured position is prone to error propagation when the satellites in view are very close together in the sky. This phenomenon is illustrated in Figure \@ref(fig:14-GNSS-DOP): as two satellites converge on the same location in the sky, the ability to resolve the position is greatly reduced due to significant overlap in the pseudoranges. In fact, the pseudoranges are 3-dimensional spheres around the satellites, so in reality these intersecting uncertainties are actually volumes of space instead of areas. 
 
 ```{r 14-GNSS-DOP, fig.cap = fig_cap, out.width= "75%", echo = FALSE}
-    fig_cap <- paste0("Geometric Diluation of Precision (GDOP) shown as the overlap between the pseudoranges of two satellites in a 2-dimensional view. GDOP increases with increasing overlap as the satellites are closer to each other. Lower DOP values are desired when collecting positional measurements. Pickell, CC-BY-SA-4.0.")
-    knitr::include_graphics("images/14-GNSS-DOP-animation.gif")
+fig_cap <- paste0("Geometric Diluation of Precision (GDOP) shown as the overlap between the pseudoranges of two satellites in a 2-dimensional view. GDOP increases with increasing overlap as the satellites are closer to each other. Lower DOP values are desired when collecting positional measurements. Pickell, CC-BY-SA-4.0.")
+if (knitr:::is_latex_output()) { 
+  knitr::include_graphics("images/14-GNSS-DOP-animation-static.png")
+} else { 
+  knitr::include_graphics("images/14-GNSS-DOP-animation.gif")
+}
 ```
 
 ## Planning Your GNSS Data Collection
