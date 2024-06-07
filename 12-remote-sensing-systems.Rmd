@@ -56,8 +56,14 @@ The property of transparent mediums to change the direction of light beams is ca
 
 The lens at the front of your eyeball changes refracts light beams from varying distances precisely onto your retina. The optical systems on remote sensing platforms are the same: they use a specially designed lens to focus light beams at the desired distance to onto their own recording medium. Below in figure \@ref(fig:12-focus-example-humaneye) is a simple visualization of how optical systems focus light onto a desired point to produce an in-focus image.
 
-```{r 12-focus-example-humaneye, fig.cap = fig_cap, out.width="90%", echo = FALSE}
-fig_cap <- paste0("Focusing lens [@vorenkamp_how_2015]. <a href='",baseurl,"#fig:12-focus-example-humaneye'>Animated figure can be viewed in the web browser version of the textbook</a>. Copyright Todd Vorenkamp. Used with permission.")
+(ref:12-focus-example-humaneye-caption) Focusing lens (Vorenkamp 2015). Animated figure can be viewed in the web browser version of the textbook: https://www.opengeomatics.ca/remote-sensing-systems.html#fig:12-focus_example_humaneye.
+
+```{r 12-focus-example-humaneye, fig.cap = fig_cap, out.width= "75%", echo = FALSE}
+if (knitr:::is_latex_output()) { 
+  fig_cap <- "(ref:12-focus-example-humaneye-caption)"
+} else { 
+  fig_cap <- paste0("Focusing lens [@vorenkamp_how_2015]. <a href='",baseurl,"#fig:12-focus-example-humaneye'>Animated figure can be viewed in the web browser version of the textbook</a>. Copyright Todd Vorenkamp. Used with permission.")
+}
 knitr::include_graphics("images/12-focus_example_humaneye.gif")
 ```
 <br/>
@@ -142,19 +148,31 @@ When you look at something, there are likely other objects you can see above, be
 
 Building remote sensing systems can be costly, so it is in our best interest to have them see as much as possible with the least expenditure of effort. We can maximize the FOV of a remote sensing system by giving it the freedom to "look around". Humans have three degrees of motion that allow us to change our FOV: scanning with our eyes, swiveling our heads, and shifting the position of our bodies. Remote sensing systems can have three analogous degrees of motion: the motion of the lens elements (eyes - analogous to focus or zoom), the motion of the camera (head - analogous to scanning), and the motion of the platform (body - analogous to direction of travel).
 
-Remote sensing systems typically have zero, one, or two degrees of motion. Rarely do remote sensing systems have all three. It is usually not necessary to have so much range of motion and more moving parts means a higher possibility of malfunction, which can be a real headache when the defunct system is orbiting 700 km above the Earth's surface. These combinations of degrees of motion give rise to the three primary types of scanners. **Push broom** scanners are a type of scanner that have detectors arranged in a single-file line and take advantage of the forward movement of the remote sensing platform, known as **along-track** scanning, to build images line-by-line (Figure \@ref(fig:12-push-broom)). In other words, push broom scanners have two degrees of motion: the platform and the lenses. 
+Remote sensing systems typically have zero, one, or two degrees of motion. Rarely do remote sensing systems have all three. It is usually not necessary to have so much range of motion and more moving parts means a higher possibility of malfunction, which can be a real headache when the defunct system is orbiting 700 km above the Earth's surface. These combinations of degrees of motion give rise to the three primary types of scanners. **Push broom** scanners are a type of scanner that have detectors arranged in a single-file line and take advantage of the forward movement of the remote sensing platform, known as **along-track** scanning, to build images line-by-line (Figure \@ref(fig:12-push-broom)). In other words, push broom scanners have two degrees of motion: the platform and the lenses.
 
-```{r 12-push-broom, fig.cap = fig_cap, out.width="90%", echo = FALSE}
-fig_cap <- paste0("Visualization of how a push broom scanner captures imagery. The dark purple squares represent the subset of the area seen by the scanner at any given time and the lighter purple squares show previously scanned areas. <a href='",baseurl,"#fig:12-push-broom'>Animated figure can be viewed in the web browser version of the textbook</a>. Armour, CC-BY-SA-4.0.")
+(ref:12-push-broom-caption) Visualization of how a push broom scanner captures imagery. The dark purple squares represent the subset of the area seen by the scanner at any given time and the lighter purple squares show previously scanned areas. Armour, CC-BY-SA-4.0. Animated figure can be viewed in the web browser version of the textbook: https://www.opengeomatics.ca/remote-sensing-systems.html#fig:12-push-broom.
+
+```{r 12-push-broom, fig.cap = fig_cap, out.width= "75%", echo = FALSE}
+if (knitr:::is_latex_output()) { 
+  fig_cap <- "(ref:12-push-broom-caption)"
+} else { 
+  fig_cap <- paste0("Visualization of how a push broom scanner captures imagery. The dark purple squares represent the subset of the area seen by the scanner at any given time and the lighter purple squares show previously scanned areas. <a href='",baseurl,"#fig:12-push-broom'>Animated figure can be viewed in the web browser version of the textbook</a>. Armour, CC-BY-SA-4.0.")
+}
 knitr::include_graphics(here::here("images", "12-push-broom.gif"))
 ```
 </br>
 
-By contrast, **whisk broom** scanners have an array of detectors that are mechanically moved from side-to-side, known as **cross-track** scanning because the image is produced by scanning across the track of the remote sensing platform direction of motion ((Figure \@ref(fig:12-whisk-broom)). Thus, whisk broom scanners have three degrees of motion: the platform, the lenses, and the camera. The last type of scanner is known as a **staring array**, so-called because the sensors are arranged in a rectangular array that are pointed at the surface or object to be imaged. In this way, the image is built all at once as the light is focused onto the focal plane. Most consumer cameras use staring arrays, which usually have two or fewer degrees of motion, depending on the application.
+By contrast, **whisk broom** scanners have an array of detectors that are mechanically moved from side-to-side, known as **cross-track** scanning because the image is produced by scanning across the track of the remote sensing platform direction of motion (Figure \@ref(fig:12-whisk-broom)). Thus, whisk broom scanners have three degrees of motion: the platform, the lenses, and the camera. The last type of scanner is known as a **staring array**, so-called because the sensors are arranged in a rectangular array that are pointed at the surface or object to be imaged. In this way, the image is built all at once as the light is focused onto the focal plane. Most consumer cameras use staring arrays, which usually have two or fewer degrees of motion, depending on the application.
 
-```{r 12-whisk-broom, fig.cap = fig_cap, out.width="90%", echo = FALSE}
-fig_cap <- paste0("Visualization of how a whisk broom scanner captures imagery. The dark blue squares represent the subset of the area seen by the scanner at any given time and the lighter blue squares show previously scanned areas. The size of the subset may change between a single pixel (one square) or a spotlight (multiple squares) but the motion remains the same. <a href='",baseurl,"#fig:12-whisk-broom'>Animated figure can be viewed in the web browser version of the textbook</a>. Armour, CC-BY-SA-4.0.")
-knitr::include_graphics(here::here("images", "12-whisk-broom.gif"))
+(ref:12-whisk-broom-caption) Visualization of how a whisk broom scanner captures imagery. The dark blue squares represent the subset of the area seen by the scanner at any given time and the lighter blue squares show previously scanned areas. The size of the subset may change between a single pixel (one square) or a spotlight (multiple squares) but the motion remains the same. Armour, CC-BY-SA-4.0. Animated figure can be viewed in the web browser version of the textbook: https://www.opengeomatics.ca/remote-sensing-systems.html#fig:12-whisk-broom.
+
+```{r 12-whisk-broom, fig.cap = fig_cap, out.width= "75%", echo = FALSE}
+if (knitr:::is_latex_output()) { 
+  fig_cap <- "(ref:12-whisk-broom-caption)"
+} else { 
+  fig_cap <- paste0("Visualization of how a whisk broom scanner captures imagery. The dark blue squares represent the subset of the area seen by the scanner at any given time and the lighter blue squares show previously scanned areas. The size of the subset may change between a single pixel (one square) or a spotlight (multiple squares) but the motion remains the same. Armour, CC-BY-SA-4.0.")
+}
+knitr::include_graphics("images/12-whisk-broom.gif")
 ```
 </br>
 
@@ -231,15 +249,28 @@ knitr::include_graphics("images/12-aerial-plane.png")
 
 Aerial imagery can be taken from remotely piloted aircraft systems (RPAs), airplanes, or satellites and thus has a huge range of resolutions and area coverage. It is highly sensitive to adverse weather, cloud cover or poor air quality, and variable lighting, so it needs to be carefully timed or collected at frequent intervals to account for unusable data.
 
-_It is important to note that the "ground plane" refers to a plane tangent to the geoid and not the physical ground surface. In variable terrain such as mountains, much of the ground will be seen "at an angle", but the overall camera perspective is unchanged. See figures \@ref(fig:12-aerial-good) and \@ref(fig:12-aerial-bad) for a visualization of what this looks like with regards to aerial imagery._
+It is important to note that the "ground plane" refers to a plane tangent to the geoid and not the physical ground surface. In variable terrain such as mountains, much of the ground will be seen "at an angle", but the overall camera perspective is unchanged. See figures \@ref(fig:12-aerial-good) and \@ref(fig:12-aerial-bad) for a visualization of what this looks like with regards to aerial imagery.
 
-```{r 12-aerial-good, fig.cap = fig_cap, out.width="90%", echo = FALSE}
-fig_cap <- paste0("How aerial imagery should be taken. <a href='",baseurl,"#fig:12-aerial-good'> Animated figure can be viewed in the web browser version of the textbook.</a> Armour, CC-BY-SA-4.0.")
+(ref:12-aerial-good-caption) How aerial imagery should be taken. Armour, CC-BY-SA-4.0. Animated figure can be viewed in the web browser version of the textbook: https://www.opengeomatics.ca/remote-sensing-systems.html#12-aerial-good.
+
+```{r 12-aerial-good, fig.cap = fig_cap, out.width= "75%", echo = FALSE}
+if (knitr:::is_latex_output()) { 
+  fig_cap <- "(ref:12-aerial-good-caption)"
+} else { 
+  fig_cap <- paste0("How aerial imagery should be taken. Armour, CC-BY-SA-4.0.")
+}
 knitr::include_graphics("images/12-aerial-good.gif")
 ```
+<br/>
 
-```{r 12-aerial-bad, fig.cap = fig_cap, out.width="90%", echo = FALSE}
-fig_cap <- paste0("How aerial imagery should NOT be taken.<a href='",baseurl,"#fig:12-aerial-bad'>Animated figure can be viewed in the web browser version of the textbook.</a> Armour, CC-BY-SA-4.0.")
+(ref:12-aerial-bad-caption) How aerial imagery should not be taken. Armour, CC-BY-SA-4.0. Animated figure can be viewed in the web browser version of the textbook: https://www.opengeomatics.ca/remote-sensing-systems.html#12-aerial-bad.
+
+```{r 12-aerial-bad, fig.cap = fig_cap, out.width= "75%", echo = FALSE}
+if (knitr:::is_latex_output()) { 
+  fig_cap <- "(ref:12-aerial-bad-caption)"
+} else { 
+  fig_cap <- paste0("How aerial imagery should not be taken. Armour, CC-BY-SA-4.0.")
+}
 knitr::include_graphics("images/12-aerial-bad.gif")
 ```
 <br/>

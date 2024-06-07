@@ -336,14 +336,18 @@ dnbrMap = leaflet() %>%
 #htmlwidgets:::knit_print.htmlwidget(dnbrMap)
 ```
 
-``` {r 13-dnbr-leaflet, echo=FALSE, out.width="75%", fig.cap=fig_cap}
-if (knitr:::is_latex_output()) { fig_cap <- paste0("Classified Burn Severity images for the Little Bobtail Lake wildfire from 2015 to 2020. <a
-  href='",baseurl,"#fig:13-dnbr-leaflet'>Interactive figure can be viewed in the web browser version of the textbook</a>. Data from @natural_resources_canada_natural_nodate and licensed under the <a href='https://www.nrcan.gc.ca/terms-and-conditions/10847'>Open Government Licence - Canada </a>. Murray, CC-BY-SA-4.0.")
+(ref:13-dnbr-leaflet-caption) Classified Burn Severity images for the Little Bobtail Lake wildfire from 2015 to 2020. Murray, CC-BY-SA-4.0. Data from Natural Resources Canada and licensed under the Open Government Licence - Canada: https://www.nrcan.gc.ca/terms-and-conditions/10847. Interactive web map can be viewed in the web browser version of the textbook: https://www.opengeomatics.ca/image-processing-and-analysis.html#13-dnbr-leaflet.
+
+```{r 13-dnbr-leaflet, fig.cap = fig_cap, out.width= "75%", echo = FALSE}
+if (knitr:::is_latex_output()) { 
+  fig_cap <- "(ref:13-dnbr-leaflet-caption)"
   knitr::include_graphics("images/13-dnbr-leaflet.png")
-} else { fig_cap <- paste0("Classified Burn Severity images for the Little Bobtail Lake wildfire from 2015 to 2020. Data from @natural_resources_canada_natural_nodate and licensed under the <a href='https://www.nrcan.gc.ca/terms-and-conditions/10847'>Open Government Licence - Canada </a>. Murray, CC-BY-SA-4.0.")
-dnbrMap
+} else { 
+  fig_cap <- paste0("Classified Burn Severity images for the Little Bobtail Lake wildfire from 2015 to 2020. Data from @natural_resources_canada_natural_nodate and licensed under the <a href='https://www.nrcan.gc.ca/terms-and-conditions/10847'>Open Government Licence - Canada </a>. Murray, CC-BY-SA-4.0.")
+  dnbrMap
 }
 ```
+<br/>
 
 ## Summary
 

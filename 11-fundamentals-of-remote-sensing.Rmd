@@ -184,9 +184,15 @@ This is not to say that diffuse reflectors are perfect, however, as some issues 
 
 Now that we have discussed radiant energy and the concepts underpinning its interactions with other objects, we can begin to explore the measurements that our sensors record. One of the most important concepts to understand is that of the spectral signature, or spectra. A spectral signature refers to the amount of electromagnetic energy recorded across a defined section of the EMS. Use our EMS visualization tool to examine spectral signatures for different land covers (Figure \@ref(fig:11-ems-visualization-static)).
 
+(ref:11-ems-visualization-static-caption) Online tool for visualizing the spectral signatures for different land covers using hyperspectral Hyperion satellite imagery. Data from United States Geological Survey - Licensed by U.S. Public Domain. Kenny Zhou, CC-BY-SA-4.0. Interactive tool can be viewed in the web browser version of the textbook: https://ubcemergingmedialab.github.io/geomatics-textbook/viz/emspectrum-viz/
+
 ```{r 11-ems-visualization-static, fig.cap = fig_cap, out.width= "75%", echo = FALSE}
-    fig_cap <- paste0("Online tool for visualizing the spectral signatures for different land covers using hyperspectral Hyperion satellite imagery. Data from United States Geological Survey - Licensed by U.S. Public Domain. <a href='https://ubcemergingmedialab.github.io/geomatics-textbook/viz/emspectrum-viz/'>Click here to access the interactive tool.</a> Kenny Zhou, CC-BY-SA-4.0.")
-    knitr::include_graphics(here::here("images", "11-ems-visualization-static.png"))
+if (knitr:::is_latex_output()) { 
+  fig_cap <- "(ref:11-ems-visualization-static-caption)"
+} else { 
+  fig_cap <- paste0("Online tool for visualizing the spectral signatures for different land covers using hyperspectral Hyperion satellite imagery. Data from United States Geological Survey - Licensed by U.S. Public Domain. <a href='https://ubcemergingmedialab.github.io/geomatics-textbook/viz/emspectrum-viz/'>Click here to access the interactive tool.</a> Kenny Zhou, CC-BY-SA-4.0.")
+}
+knitr::include_graphics(here::here("images", "11-ems-visualization-static.png"))
 ```
 <br/>
 
