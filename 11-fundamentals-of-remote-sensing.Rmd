@@ -46,10 +46,17 @@ The ability to record the interaction of light and specific objects within a sce
 
 In 1858, an enthusiastic Frenchman named Gaspard Tournachon mounted a camera on a hot air balloon and captured images of the earth below him. Eventually, Tournachon used his balloon method to capture images of Paris (Figure \@ref(fig:11-nadar)). For the first time it was possible to examine the distribution of buildings, fields, forests and roads across the landscape. With this, airborne remote sensing was born. Remote sensing technologies continued to advance throughout the 19th and 20th centuries, with major socio-political conflicts like World War I and II acting as crucibles for innovation. The advancement of remote sensing has continued into the 21st century and is unlikely to slow down in the future. This is due to the relevance of three key aspects.
 
+(ref:11-nadar-caption) Images of the Arc de Triomphe in Paris, France taken by Tournachone from a balloon in 1968 [@nadar_arc_1868].
+
 ```{r 11-nadar, fig.cap = fig_cap, out.width= "75%", echo = FALSE}
-    fig_cap <- paste0("Images of the Arc de Triomphe in Paris, France taken by Tournachone from a balloon in 1968 [@nadar_arc_1868].")
-    knitr::include_graphics("images/11-nadar-triomphe-1868.png")
+if (knitr:::is_latex_output()) { 
+  fig_cap <- "(ref:11-nadar-caption)"
+} else { 
+  fig_cap <- paste0("Images of the Arc de Triomphe in Paris, France taken by Tournachone from a balloon in 1968 [@nadar_arc_1868].")
+}
+knitr::include_graphics("images/11-nadar-triomphe-1868.png")
 ```
+<br/>
 
 First and foremost, remote sensing enables the observation of objects in, or from, locations that are otherwise inaccessible for humans. The observation of Mars' surface from an orbiting satellite is a one current example. A second aspect that makes remote sensing so useful is the collection of information over a large area. For example, airborne remote sensing technologies enable observations of land cover across Canada (Figure \@ref(fig:11-hermosilla-canada-landcover)). The ability to evaluate inaccessible objects or large areas over time is a third valuable aspect of remote sensing and is particularly relevant for land management, as predictions can be informed through the observation of historic patterns and processes. This is especially true for projects aiming to restore degraded ecosystems or plan sustainable land use practices. Before exploring the designs of specific sensor or their applications, however, it is essential to grasp some key components that underpin remote sensing science.
 
@@ -246,10 +253,17 @@ Each of these components plays a role is describing the spectral resolution of a
 
 A common method for visualizing the spectral resolution of a sensor is to place each band along the EMS according to its associated bandwidth and wavelengths (Figure \@ref(fig:11-landsat-bands)). This allows users to determine which sensor best captures the information they are interested in studying. For some applications, such as land cover, it is acceptable to use sensors with relatively wide bands collecting information in a small number of strategic locations along the EMS. For other applications, spectral information may need to be more detailed and capture information using thin, adjacent bands spanning a large region of the EMS.
 
-```{r 11-landsat-bands, fig.cap = fig_cap, out.width = "100%", echo = FALSE}
-    fig_cap <- paste0("Locations of bands for various sensors deployed by NASA on one of more Landsat misison. Landsat 1-5 had the Multispectral Scanner System (MSS), while the Thematic Mapper (TM) was aboard Landsat 4-5. The Enrinched TM Plus (ETM+) had 8 bands and was aboard Landsat 7. Grey distributions in the background represent the atmospheric transmission values for a mid-latitude, hazy, summer atmosphere [@nasa_atmospheric_nodate].")
-    knitr::include_graphics("images/11-landsat-bands.png")
+(ref:11-landsat-bands-caption) Locations of bands for various sensors deployed by NASA on one of more Landsat misison. Landsat 1-5 had the Multispectral Scanner System (MSS), while the Thematic Mapper (TM) was aboard Landsat 4-5. The Enrinched TM Plus (ETM+) had 8 bands and was aboard Landsat 7. Grey distributions in the background represent the atmospheric transmission values for a mid-latitude, hazy, summer atmosphere [@nasa_atmospheric_nodate].
+
+```{r 11-landsat-bands, fig.cap = fig_cap, out.width= "75%", echo = FALSE}
+if (knitr:::is_latex_output()) { 
+  fig_cap <- "(ref:11-landsat-bands-caption)"
+} else { 
+  fig_cap <- paste0("Locations of bands for various sensors deployed by NASA on one of more Landsat misison. Landsat 1-5 had the Multispectral Scanner System (MSS), while the Thematic Mapper (TM) was aboard Landsat 4-5. The Enrinched TM Plus (ETM+) had 8 bands and was aboard Landsat 7. Grey distributions in the background represent the atmospheric transmission values for a mid-latitude, hazy, summer atmosphere [@nasa_atmospheric_nodate].")
+}
+knitr::include_graphics("images/11-landsat-bands.png")
 ```
+<br/>
 
 The collection of spectral data across more than one band allows the creation of a spectral curve, or spectral signature. Spectral signature are the cornerstone of many remote sensing applications and highlight many properties of the surface from which they were collected. The creation of a spectral signature is quite simple and can be depicted in two dimensions (Figure \@ref(fig:11-specsig)). Essentially, the observed value of each band is connected to the observed value of each adjacent band in 2D space. When all bands are connected, a spectral signature is born. As we will see in a later case study, spectral signatures can provide a plethora of relevant information relating to the composition of an object.
 
@@ -298,17 +312,31 @@ Before exploring the methods of this study, it is important to highlight the qua
 
 Another important quality of Landsat is that every satellite carries a multi-spectral sensor with at least four bands, which enables the differentiation between multiple land cover classes, including vegetation and urban building. More information regarding the changes in spectral resolution between Landsat satellites can be found in Figure \@ref(fig:11-landsat-bands). The temporal resolution of Landsat is the third high-quality characteristic of this satellite mission that enables the accurate evaluation of land cover. With a revisit time of 16 days, Landsat provides information for the same location on Earth almost twice per month. This is particularly important for a country as large as Canada, which contains 12 ecozones dominated by forest, and enables the selection of a Best Available Pixel (BAP), which is selected based on a variety of criteria that quantifies a pixels quality (Figure \@ref(fig:11-hermo-false)). You can learn more about Landsat BAP in the article by Thompson et al. [@thompson_mapping_2015].
 
-```{r 11-hermo-false, fig.cap = fig_cap, out.width="90%", echo = FALSE}
-    fig_cap <- paste0("False colour composite (bands: shortwave infrared, near infrared and red) for 2010. Each pixel in this image was selected based on its classification as a Best Available Pixel (BAP) [@hermosilla_disturbance-informed_2018].")
-    knitr::include_graphics("images/11-hermosilla-false-colour.png")
+(ref:11-hermo-false-caption) False colour composite (bands: shortwave infrared, near infrared and red) for 2010. Each pixel in this image was selected based on its classification as a Best Available Pixel (BAP) [@hermosilla_disturbance-informed_2018].
+
+```{r 11-hermo-false, fig.cap = fig_cap, out.width= "75%", echo = FALSE}
+if (knitr:::is_latex_output()) { 
+  fig_cap <- "(ref:11-hermo-false-caption)"
+} else { 
+  fig_cap <- paste0("False colour composite (bands: shortwave infrared, near infrared and red) for 2010. Each pixel in this image was selected based on its classification as a Best Available Pixel (BAP) [@hermosilla_disturbance-informed_2018].")
+}
+knitr::include_graphics("images/11-hermosilla-false-colour.png")
 ```
+<br/>
 
 For their analysis, the authors Hermosilla et al. used imagery captured from Landsat 5 onward with the Thematic Mapper, which means their data contained seven unique spectral bands spanning segments between 0.45 nm to 2.35 nm. The ability to observe reflectance values across a relatively wide range of the EMS enabled land cover analysis across all forested eco-regions in Canada. After applying a masking model, the authors devised a framework to generate annual land cover maps for all of Canada's forested areas, which were presented at the beginning of this chapter (Figure \@ref(fig:11-hermosilla-canada-landcover)). From these annual composites, it was also possible for the authors to identify land cover change over time and quantify the effects of specific disturbance types, such as harvesting and fire (Figure \@ref(fig:11-hermo-disturb)). These comprehensive maps demonstrate the capability of well-designed remote sensing technologies to obtain scientifically relevant information and highlight the potential of remote sensing in environmental assessment [@hermosilla_disturbance-informed_2018].
 
-```{r 11-hermo-disturb, fig.cap = fig_cap, out.width="90%", echo = FALSE}
-    fig_cap <- paste0("Temporal sequences depicting landcover before and after (a) harvesting and (b) fire. The year of change is represented by 'Y' [@hermosilla_disturbance-informed_2018].")
-    knitr::include_graphics("images/11-hermo-disturbance.png")
+(ref:11-hermo-disturb-caption) Temporal sequences depicting landcover before and after (a) harvesting and (b) fire. The year of change is represented by 'Y' [@hermosilla_disturbance-informed_2018].
+
+```{r 11-hermo-disturb, fig.cap = fig_cap, out.width= "75%", echo = FALSE}
+if (knitr:::is_latex_output()) { 
+  fig_cap <- "(ref:11-hermo-disturb-caption)"
+} else { 
+  fig_cap <- paste0("Temporal sequences depicting landcover before and after (a) harvesting and (b) fire. The year of change is represented by 'Y' [@hermosilla_disturbance-informed_2018].")
+}
+knitr::include_graphics("images/11-hermo-disturbance.png")
 ```
+<br/>
 
 ## Summary
 
