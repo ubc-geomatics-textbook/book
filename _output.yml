@@ -3,14 +3,23 @@ bookdown::gitbook:
     in_header: header.html
   css: style.css
   split_by: chapter
+  sharing:
+    facebook: false
+    github: true
+    twitter: false
+    linkedin: false
+    weibo: false
+    instapaper: false
+    vk: false
+    whatsapp: true
+    all: ['facebook', 'twitter', 'linkedin', 'weibo', 'instapaper']
   config:
     toolbar:
       position: fixed
     search:
       engine: lunr
     view: https://github.com/ubc-geomatics-textbook/geomatics-textbook/blob/develop/%s
-    download:
-      - ["https://osf.io/whqe2", "PDF"]
+    download: ["pdf", "epub"]
     toc:
       collapse: section
       before: |
@@ -22,5 +31,6 @@ bookdown::pdf_book:
     in_header: preamble.tex
   latex_engine: xelatex
   citation_package: natbib
+  keep_tex: true
 bookdown::epub_book:
   stylesheet: style.css

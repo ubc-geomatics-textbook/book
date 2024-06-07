@@ -53,10 +53,17 @@ knitr::include_graphics("images/03-vector.png")
 
 Continuous fields are infinite and lack defined boundaries.  Fields can be measured at an infinite number of locations.  However, similar values tend to cluster in space so we can often make assumptions based on finite observations of continuous fields.  One of the most common examples of a continuous field is elevation.  This is a physical property associated with every location on earth.  We can't count the "number of elevations" because space is infinitely divisible and everywhere in space can have an elevation.
 
-```{r 3-elevation, echo=FALSE, out.width = '75%', fig.cap=fig_cap}
-fig_cap <- paste0("Elevation of the Sunshine Coast in BC, from the NRCAN DEM (google earth engine) [@nrcan_canadian_2021]")
+(ref:3-elevation-caption) Elevation of the Sunshine Coast in British Columbia, from the Natural Resources Canada Digital Elevation Model [@nrcan_canadian_2021].
+
+```{r 3-elevation, fig.cap = fig_cap, out.width= "75%", echo = FALSE}
+if (knitr:::is_latex_output()) { 
+  fig_cap <- "(ref:3-elevation-caption)"
+} else { 
+  fig_cap <- paste0("Elevation of the Sunshine Coast in British Columbia, from the Natural Resources Canada Digital Elevation Model [@nrcan_canadian_2021].")
+}
 knitr::include_graphics("images/03-elevation.png")
 ```
+<br/>
 
 ### Imperfect Distinctions
 
@@ -67,10 +74,10 @@ fig_cap <- paste0("The west coast of Vancouver Island. Skeeter, CC-BY-SA-4.0.")
 knitr::include_graphics("images/03-beach-small-scale.png")
 ```
 
-A lightning strike is an electric discharge between the atmosphere and the ground.  A lightning strike is a discrete object.  The precise location of the strike can be pin pointed, the number of strikes during a storm can be counted.  But what about the actual lighting bolt?  That's more a continuous field, its not really possible to measure the exact boundaries of the path the electric discharge takes.  Then we can look at other things, like the probability of lighting strikes. Figure \@ref(fig:3-lightning-density) is a continuous field, calculated from counting discrete objects.
+A lightning strike is an electric discharge between the atmosphere and the ground.  A lightning strike is a discrete object.  The precise location of the strike can be pin pointed, the number of strikes during a storm can be counted.  But what about the actual lightning bolt?  That is more of a continuous field, it is not really possible to measure the exact boundaries of the path the electric discharge takes. Then we can look at other things, like the probability of lightning strikes. Figure \@ref(fig:3-lightning-density) is a continuous field, calculated from counting discrete objects.
 
 ```{r 3-lightning-density, echo=FALSE, out.width = '75%', fig.cap=fig_cap}
-fig_cap <- paste0("Global lighting strike density per month. Skeeter, CC-BY-SA-4.0.")
+fig_cap <- paste0("Global lightning strike density per month. Skeeter, CC-BY-SA-4.0.")
 knitr::include_graphics("images/03-lightning-density.gif")
 ```
 
@@ -256,17 +263,17 @@ Other file types you will likely encounter when working with raster data include
 
 ### Vector Data
 
-The vector data model is much more well suited to represent discrete phenomena than the raster data model.  A vector feature is a representation of a discrete object as a set of x,y coordinate pairs (points) linked to set of descriptive attribute about that object. A vector feature's coordinates can consist of just one (x,y) pair to form a single point feature, or multiple points which can be connected to form lines or polygons (see Figure \@ref(fig:3-vector-types)).  The non-spatial attribute data is typically stored in a **Tabular** format separate from the spatial data, and it is linked using an index.  One of the key advantages of the vector model is the ability to store and retrieve many attributes them quickly.  In GIS, vector data are commonly encountered as: political boundaries, cenus data, pathways (road, trails, etc.), point location (stop sign, fire hydrant), etc.
+The vector data model is much more well suited to represent discrete phenomena than the raster data model.  A vector feature is a representation of a discrete object as a set of x,y coordinate pairs (points) linked to set of descriptive attribute about that object. A vector feature's coordinates can consist of just one (x,y) pair to form a single point feature, or multiple points which can be connected to form lines or polygons (see Figure \@ref(fig:3-vector-types)). The non-spatial attribute data is typically stored in a **Tabular** format separate from the spatial data, and it is linked using an index. One of the key advantages of the vector model is the ability to store and retrieve many attributes them quickly. In GIS, vector data are commonly encountered as: political boundaries, cenus data, pathways (road, trails, etc.), point location (stop sign, fire hydrant), etc.
 
 ```{r 3-vector-types, echo=FALSE, out.width = '75%', fig.cap=fig_cap}
 fig_cap <- paste0("Vector objects (points, lines, or polygons) are stored along with any number of attribute. Point, line, and polygon data are typically stored in separate files. Skeeter, CC-BY-SA-4.0.")
 knitr::include_graphics("images/03-vector-types.png")
 ```
 
-**Points** are “zero-dimensional”, they have no length or width or area.  A point feature is just an individual (x,y) coordinate pair representing a precise location, that has some linked attribute information.  Points are great for representing a variety of objects, depending on the scale.  Fire hydrants, light poles, and trees are suitable to be represented as points in almost any application.  If you are making a map of mines in British Columbia, or cities across Canada, it is probably acceptable to just display them as points.
+**Points** are “zero-dimensional”, they have no length or width or area. A point feature is just an individual (x,y) coordinate pair representing a precise location, that has some linked attribute information.  Points are great for representing a variety of objects, depending on the scale. Fire hydrants, light poles, and trees are suitable to be represented as points in almost any application. If you are making a map of mines in British Columbia, or cities across Canada, it is probably acceptable to just display them as points.
 
 ```{r 3-vector-points, echo=FALSE, out.width = '75%', fig.cap=fig_cap}
-fig_cap <- paste0("An example of point data showing locations of trees.  The points are labeled with their index (unique ID number) which correspoonds to the attribute table below which stores more information about eacht tree. Skeeter, CC-BY-SA-4.0")
+fig_cap <- paste0("An example of point data showing locations of trees. The points are labeled with their index (unique ID number) which correspoonds to the attribute table below which stores more information about eacht tree. Skeeter, CC-BY-SA-4.0")
 knitr::include_graphics("images/03-vector-points.png")
 ```
 
