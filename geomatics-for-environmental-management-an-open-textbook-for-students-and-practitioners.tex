@@ -109,7 +109,7 @@
   \usepackage{selnolig}  % disable illegal ligatures
 \fi
 \usepackage[]{natbib}
-\bibliographystyle{plainnat}
+\bibliographystyle{apalike}
 \usepackage{bookmark}
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \urlstyle{same}
@@ -378,15 +378,11 @@ While the Canada Land Inventory was underway with the aid of the CGIS, provinces
 
 By 1979, the Canada Land Inventory produced over 12,000 map sheets showing the capability of Canada's lands for agriculture, forestry, recreation, and wildlife \citep{fisher_overview_1979}. These maps represented the first digital overlays and analyses of land capability in the world and they covered much of Canada from the Atlantic Ocean to the Pacific Ocean.
 
-\textbackslash begin\{figure\}
 
-\{\centering \includegraphics[width=1\linewidth]{images/01-cli-agriculture-capability-toronto}
 
-\}
-
-\textbackslash caption\{Soil capability for agriculture from the Canada Land Inventory for the area surrounding Toronto, Canada. The majority of the best soils for farming in Canada (Class 1 - No significant limitations in use for crops) are found in southeastern Ontario. \textless a
-\textbackslash href=`\url{https://www.opengeomatics.ca//\#fig:1-cli-agriculture-capability-toronto}'\textgreater Interactive web map can be viewed in the web browser version of the textbook. Queen's Printer, Public Domain.\}\label{fig:1-cli-agriculture-capability-toronto}
-\textbackslash end\{figure\}
+\begin{figure}
+\includegraphics[width=1\linewidth]{images/01-cli-agriculture-capability-toronto} \caption{Soil capability for agriculture from the Canada Land Inventory for the area surrounding Toronto, Canada. The majority of the best soils for farming in Canada (Class 1 - No significant limitations in use for crops) are found in southeastern Ontario. Queen's Printer, Public Domain. Interactive web map can be viewed in the web browser version of the textbook: \url{https://www.opengeomatics.ca/what-is-geomatics.html\#fig:1-cli-agriculture-capability-toronto}.}\label{fig:1-cli-agriculture-capability-toronto}
+\end{figure}
 
 \section{Environmental Management Imperatives}\label{environmental-management-imperatives}
 
@@ -512,8 +508,10 @@ All of these questions stem from need to represent \textbf{location}. For our pu
 
 Eratosthenes accurately calculated the circumference of Earth by noticing how the Sun shone directly down the bottom of a well in Syene (modern Egypt) at noon on the summer solstice. He later made a second observation at Alexandria at noon on the summer solstice with a pole and noticed a shadow. He measured the angle of the shadow and inferred the circumference of Earth, which was already known to be spherical (Figure \ref{fig:2-Eratosthenes}).
 
+
+
 \begin{figure}
-\includegraphics[width=0.75\linewidth]{images/02-Eratosthenes} \caption{Diagram showing how Eratosthenes estimated the circumference of Earth by observing the angle of a shadow that was cast about 800 km north of Syene in present-day Egypt. @monniaux_illustration_2005, CC-BY-SA-4.0.}\label{fig:2-Eratosthenes}
+\includegraphics[width=0.75\linewidth]{images/02-Eratosthenes} \caption{Diagram showing how Eratosthenes estimated the circumference of Earth by observing the angle of a shadow that was cast about 800 km north of Syene in present-day Egypt. \citep{monniaux_illustration_2005}, CC-BY-SA-4.0.}\label{fig:2-Eratosthenes}
 \end{figure}
 
 Pretty simple, right? Turns out, Eratosthenes was off by only 75 km or less than 0.2\% in his calculation! The actual North-South circumference of Earth is about 40,075 km. His calculation worked because the Sun's rays are nearly parallel when they strike Earth. So if you observe the Sun at the same time in two locations on Earth on the North-South axis, you will notice the Sun has a different elevation above the horizon, which means different lengths of shadows will be cast on the ground. This is also a way to prove that the Earth is in fact round because a flat Earth would have equally-sized shadows everywhere at any given time of day.
@@ -608,9 +606,10 @@ The Canadian Geodetic Vertical Datum of 2013 (CGVD2013) is the current gravimetr
 
 For reference, CGVD2013 is 17 centimeters below mean sea level measured in Vancouver at the Pacific Ocean, 39 centimeters above mean sea level in Halifax at the Atlantic Ocean, and 36 centimeters above mean sea level in Tuktoyaktuk at the Arctic Ocean. The older CGDV28 did not have any survey benchmarks in the far north of Canada and, with the advent of more reliable satellite-based measurements, was modernized in 2015 to CGVD2013. The United States currently uses the North American Vertical Datum of 1988 (NAVD88), which was never adopted by Canada, but the United States will be modernizing their vertical datum by adopting a gravimetric model with the same gravity potential value as Canada as early as 2025.
 
+
+
 \begin{figure}
-\includegraphics[width=1\linewidth]{images/02-CGVD-leaflet} \caption{The difference (in meters) between the Canadian Geodetic Vertical Datum of 2013 (CGVD2013) and the Canadian Geodetic Vertical Datum of 1928 (CGVD28). <a
-  href='https://ubc-geomatics-textbook.github.io/geomatics-textbook/#fig:2-CGVD-leaflet'>Animated figure can be viewed in the web browser version of the textbook</a>. Data from Natural Resources Canada and licensed under the <a href='https://open.canada.ca/en/open-government-licence-canada'>Open Government Licence - Canada</a>. Pickell, CC-BY-SA-4.0.}\label{fig:2-CGVD-leaflet}
+\includegraphics[width=1\linewidth]{images/02-CGVD-leaflet} \caption{The difference (in meters) between the Canadian Geodetic Vertical Datum of 2013 (CGVD2013) and the Canadian Geodetic Vertical Datum of 1928 (CGVD28). Pickell, CC-BY-SA-4.0. Data from Natural Resources Canada and licensed under the Open Government Licence - Canada: \url{https://open.canada.ca/en/open-government-licence-canada}. Interactive web map can be viewed in the web browser version of the textbook: \url{https://www.opengeomatics.ca/mapping-data.html\#fig:2-CGVD-leaflet}.}\label{fig:2-CGVD-leaflet}
 \end{figure}
 
 \section{Referencing Location}\label{referencing-location}
@@ -646,8 +645,10 @@ If you mapped the Earth as an ellipsoid in a three dimensional Cartesian coordin
 
 Use our geodesy tool to visualize the differences between the sphere, ellipsoid, and geoid. You can modify the transparency of the sphere and ellipsoid to see how these geometries vary. Change the flattening of the ellipsoid to achieve different models of Earth. Search for locations with latitude and longitude values and calculate the geoid height. Compare geocentric and geodetic latitudes. The sphere and the ellipsoid models in the visualization represent Earth's equatorial diameter (semi-major axis) as 6,356,752.3 m (i.e., equivalent to WGS 1984) and the geoid elevations are exaggerated by a factor of 0.549 to enhance their appearance.
 
+
+
 \begin{figure}
-\includegraphics[width=0.75\linewidth]{images/02-geodesy-visualization-static} \caption{Online geodesy tool for visualizing the differences between the sphere, ellipsoid, and geoid. <a href='https://ubcemergingmedialab.github.io/geomatics-textbook/viz/geodesy-viz/'>Click here to access the interactive tool.</a> Floria Gu, CC-BY-SA-4.0.}\label{fig:2-geodesy-visualization-static}
+\includegraphics[width=0.75\linewidth]{images/02-geodesy-visualization-static} \caption{Online geodesy tool for visualizing the differences between the sphere, ellipsoid, and geoid. Floria Gu, CC-BY-SA-4.0. Click here to access the interactive tool: \url{https://ubcemergingmedialab.github.io/geomatics-textbook/viz/geodesy-viz/}}\label{fig:2-geodesy-visualization-static}
 \end{figure}
 
 \subsection{Projected Coordinate Systems}\label{projected-coordinate-systems}
@@ -814,8 +815,10 @@ Discrete objects are finite and have distinct boundaries. Each object is a uniqu
 
 Continuous fields are infinite and lack defined boundaries. Fields can be measured at an infinite number of locations. However, similar values tend to cluster in space so we can often make assumptions based on finite observations of continuous fields. One of the most common examples of a continuous field is elevation. This is a physical property associated with every location on earth. We can't count the ``number of elevations'' because space is infinitely divisible and everywhere in space can have an elevation.
 
+
+
 \begin{figure}
-\includegraphics[width=0.75\linewidth]{images/03-elevation} \caption{Elevation of the Sunshine Coast in BC, from the NRCAN DEM (google earth engine) [@nrcan_canadian_2021]}\label{fig:3-elevation}
+\includegraphics[width=0.75\linewidth]{images/03-elevation} \caption{Elevation of the Sunshine Coast in British Columbia, from the Natural Resources Canada Digital Elevation Model \citep{nrcan_canadian_2021}.}\label{fig:3-elevation}
 \end{figure}
 
 \subsection{Imperfect Distinctions}\label{imperfect-distinctions}
@@ -826,10 +829,10 @@ Few phenomena will fit perfectly and exclusively into one category or the other.
 \includegraphics[width=0.75\linewidth]{images/03-beach-small-scale} \caption{The west coast of Vancouver Island. Skeeter, CC-BY-SA-4.0.}\label{fig:3-beach-small-scale}
 \end{figure}
 
-A lightning strike is an electric discharge between the atmosphere and the ground. A lightning strike is a discrete object. The precise location of the strike can be pin pointed, the number of strikes during a storm can be counted. But what about the actual lighting bolt? That's more a continuous field, its not really possible to measure the exact boundaries of the path the electric discharge takes. Then we can look at other things, like the probability of lighting strikes. Figure \ref{fig:3-lightning-density} is a continuous field, calculated from counting discrete objects.
+A lightning strike is an electric discharge between the atmosphere and the ground. A lightning strike is a discrete object. The precise location of the strike can be pin pointed, the number of strikes during a storm can be counted. But what about the actual lightning bolt? That is more of a continuous field, it is not really possible to measure the exact boundaries of the path the electric discharge takes. Then we can look at other things, like the probability of lightning strikes. Figure \ref{fig:3-lightning-density} is a continuous field, calculated from counting discrete objects.
 
 \begin{figure}
-\includegraphics[width=0.75\linewidth]{images/03-lightning-density} \caption{Global lighting strike density per month. Skeeter, CC-BY-SA-4.0.}\label{fig:3-lightning-density}
+\includegraphics[width=0.75\linewidth]{images/03-lightning-density-static} \caption{Global lightning strike density per month. Skeeter, CC-BY-SA-4.0.}\label{fig:3-lightning-density}
 \end{figure}
 
 \section{Types of Data}\label{types-of-data-1}
@@ -890,22 +893,22 @@ Ratio data have fixed, meaningful, absolute zero points. The absolute zero point
 \includegraphics[width=0.75\linewidth]{images/03-ratio-population} \caption{Because of the fixed, meaningful zero point, we can calculate ratios between populations: e.g. Manitoba's population is 1/10th that of Ontario, British Columbia has 129 times as many people as Nunavut. Skeeter, CC-BY-SA-4.0.}\label{fig:3-ratio-population}
 \end{figure}
 
-Interval data on the other hand, have an arbitrarily set zero point. This means they can can take negative values. Because the zero point is arbitrary, we cannot multiply/divide two values or calculate meaningful ratios between two values. A good example of interval data is temperature measured in Celsius, and comparing it to Kelvin highlights the difference between the two data types (see Figure \ref{fig:3-interval-ratio-temperature}). The conversion between Kelvin (ratio) and Celsius (interval) is very simple: °C = °K-273.15. Zero Kelvin is ``Absolute Zero'' - ie. the lack of temperature, while zero Celsius is the freezing point of water (273.15 degrees above absolute zero). Other examples of interval data include: the pH scale, IQ test scores, elevation (relative to a datum) dates (April 12th, 2011), and times (11:00 A.M.).
+Interval data on the other hand, have an arbitrarily set zero point. This means they can can take negative values. Because the zero point is arbitrary, we cannot multiply/divide two values or calculate meaningful ratios between two values. A good example of interval data is temperature measured in Celsius, and comparing it to Kelvin highlights the difference between the two data types (see Figure \ref{fig:3-interval-ratio-temperature}). The conversion between Kelvin (K, ratio) and Celsius (C, interval) is very simple: \(^\circ\)C = K-273.15. Zero Kelvin is ``Absolute Zero'' or the lack of temperature, while 0\(^\circ\)C is the freezing point of water (273.15 K above absolute zero). Other examples of interval data include: the pH scale, IQ test scores, elevation (relative to a datum) dates (April 12th, 2011), and times (11:00 A.M.).
 
 \begin{figure}
-\includegraphics[width=0.75\linewidth]{images/03-interval-ratio-temperature} \caption{The ratio between two temperatures in Celsius is not meaningful, 20&deg;C is not 'twice' as warm as 10&deg;C. Kelvin's zero point is fixed to absolute zero, the 'absence' of temperature.  So we can calculate the ratio, 293.15&deg;K is 1.035 times warmer than 283.15&deg;K. Skeeter, CC-BY-SA-4.0.}\label{fig:3-interval-ratio-temperature}
+\includegraphics[width=0.75\linewidth]{images/03-interval-ratio-temperature} \caption{The ratio between two temperatures in Celsius is not meaningful, 20 C is not 'twice' as warm as 10 C. Kelvin's zero point is fixed to absolute zero, the 'absence' of temperature.  So we can calculate the ratio, 293.15 K is 1.035 times warmer than 283.15 K. Skeeter, CC-BY-SA-4.0.}\label{fig:3-interval-ratio-temperature}
 \end{figure}
 
 \subsection{Derived Ratio: Normalizing Data}\label{derived-ratio-normalizing-data}
 
-Sometimes we want to account for the influence of one variable when analyzing another. To do this, we can divide one value by by another to get the ratio of the two, also known as a \textbf{derived ratio}. This process is sometimes referred to as \textbf{Normalizing} or \textbf{Standardizing} our data. The basic formula is: \(C=\frac{A}{B}\), where A is our variable of interest, B is our confounding variable, and C is our new derived ratio. There are many circumstances where we might need to do this. One common example is population density: Canada and Poland both have populations of \textasciitilde{} 38 million people but Canada had 32x the land area of Poland. Any comparison of the these two nations that fails to account for the size disparity would be seriously flawed. Another key example are affordability indexes. The example below shows how normalization can be applied to a households expenditures on food. Income and household expenditures on food are strongly related (wealthy regions tend to purchase more expensive food). An analysis of the cost of food that doesn't account for this relationship would not adequately account for the \emph{affordability} of food in a given region. Dividing household food expenditures by household income, we get the proportion of income spent on food. This is a much more accurate representation of the affordability of food and highlights that the poorest communities are most severely impacted by increasing food costs.
+Sometimes we want to account for the influence of one variable when analyzing another. To do this, we can divide one value by by another to get the ratio of the two, also known as a \textbf{derived ratio}. This process is sometimes referred to as \textbf{Normalizing} or \textbf{Standardizing} our data. The basic formula is: \(C=\frac{A}{B}\), where A is our variable of interest, B is our confounding variable, and C is our new derived ratio. There are many circumstances where we might need to do this. One common example is population density: Canada and Poland both have populations of \textasciitilde{} 38 million people but Canada had 32x the land area of Poland. Any comparison of the these two nations that fails to account for the size disparity would be seriously flawed. Another key example are affordability indexes. The example below shows how normalization can be applied to a households expenditures on food. Income and household expenditures on food are strongly related (wealthy regions tend to purchase more expensive food). An analysis of the cost of food that does not account for this relationship would not adequately account for the \emph{affordability} of food in a given region. Dividing household food expenditures by household income, we get the proportion of income spent on food. This is a much more accurate representation of the affordability of food and highlights that the poorest communities are most severely impacted by increasing food costs.
 
 \begin{figure}
-\includegraphics[width=0.75\linewidth]{images/03-income-v-food} \caption{Income vs. household expenditures on Food by Census Subdivisions in BC. Skeeter, CC-BY-SA-4.0.}\label{fig:3-income-v-food}
+\includegraphics[width=0.75\linewidth]{images/03-income-v-food} \caption{Income versus household expenditures on Food by Census Subdivisions in British Columbia. Skeeter, CC-BY-SA-4.0.}\label{fig:3-income-v-food}
 \end{figure}
 
 \begin{figure}
-\includegraphics[width=0.75\linewidth]{images/03-income-v-income-on-food} \caption{Income vs. Fraction of Income Spent on Food by Census Subdivisions in BC. Skeeter, CC-BY-SA-4.0.}\label{fig:3-income-v-income-on-food}
+\includegraphics[width=0.75\linewidth]{images/03-income-v-income-on-food} \caption{Income versus Fraction of Income Spent on Food by Census Subdivisions in British Columbia. Skeeter, CC-BY-SA-4.0.}\label{fig:3-income-v-income-on-food}
 \end{figure}
 
 \subsection{Summary of Data Types}\label{summary-of-data-types}
@@ -1051,7 +1054,7 @@ The vector data model is much more well suited to represent discrete phenomena t
 \textbf{Points} are ``zero-dimensional'', they have no length or width or area. A point feature is just an individual (x,y) coordinate pair representing a precise location, that has some linked attribute information. Points are great for representing a variety of objects, depending on the scale. Fire hydrants, light poles, and trees are suitable to be represented as points in almost any application. If you are making a map of mines in British Columbia, or cities across Canada, it is probably acceptable to just display them as points.
 
 \begin{figure}
-\includegraphics[width=0.75\linewidth]{images/03-vector-points} \caption{An example of point data showing locations of trees.  The points are labeled with their index (unique ID number) which correspoonds to the attribute table below which stores more information about eacht tree. Skeeter, CC-BY-SA-4.0}\label{fig:3-vector-points}
+\includegraphics[width=0.75\linewidth]{images/03-vector-points} \caption{An example of point data showing locations of trees. The points are labeled with their index (unique ID number) which correspoonds to the attribute table below which stores more information about eacht tree. Skeeter, CC-BY-SA-4.0}\label{fig:3-vector-points}
 \end{figure}
 
 \begin{longtable}[]{@{}rrrlrr@{}}
@@ -1360,7 +1363,7 @@ Data librarians are particularly well-connected and trained to help you navigate
 
 Government data are also increasingly published in data repositories, specific to the level of government (Figure \ref{fig:4-data-network-model}). There are multiple levels to government, including municipalities (the smallest), sometimes counties (precincts, townships, or parishes), provinces (or states), and nations (the largest), each of which often has its own data repository. Centralized repositories are becoming increasingly common and connect open data from all levels of Government. The \href{https://www.frdr-dfdr.ca/repo/}{Federated Research data repository} is an aggregation of Canadian open data repositories, including municipal, provincial, and academic repositories. It includes a map-based search for datasets with location information tied to their metadata. In the US, geospatial data from federal, municipal, and state government repositories are being consolidated under \href{https://www.data.gov/}{Data.gov}.
 
-Because not all repositories are yet connected by a centralized repository, one must search in the correct repository. To do this, consider which government has jurisdiction over the specific subject area and geography of interest. For example, if you are interested in land use zoning and engineering features within a given city, this data are likely best provided by that individual city, either by finding it within a data repository or e-mailing the municipality with a data request. In Canada, the provinces have jurisdiction over most natural resources and thus provincial government data repositories tend to provide the best data coverage on natural resources such as, water, forests, wildlife, minerals, and topography. In British Columbia, for example, \href{https://www.data.gov.bc.ca/}{DataBC} houses over a thousand datasets on natural resources, including forest inventory maps, natural disturbances, hunting statistics, administrative boundaries, and much more. \href{https://open.canada.ca/en/open-data}{Canada's open data portal} provides data on fish as well as environmental conditions (e.g., water quality, air quality, historical weather, etc.), which is under federal jurisdiction. Hydrological flow and water quality monitoring are readily accessible across Canada through the Hydat database, which can be easily accessed through the R package called \href{https://cran.r-project.org/web/packages/tidyhydat/vignettes/tidyhydat_an_introduction.html}{TidyHydat} (\citet{albers_tidyhydat_2017}).
+Because not all repositories are yet connected by a centralized repository, one must search in the correct repository. To do this, consider which government has jurisdiction over the specific subject area and geography of interest. For example, if you are interested in land use zoning and engineering features within a given city, this data are likely best provided by that individual city, either by finding it within a data repository or e-mailing the municipality with a data request. In Canada, the provinces have jurisdiction over most natural resources and thus provincial government data repositories tend to provide the best data coverage on natural resources such as, water, forests, wildlife, minerals, and topography. In British Columbia, for example, \href{https://www.data.gov.bc.ca/}{DataBC} houses over a thousand datasets on natural resources, including forest inventory maps, natural disturbances, hunting statistics, administrative boundaries, and much more. \href{https://open.canada.ca/en/open-data}{Canada's open data portal} provides data on fish as well as environmental conditions (e.g., water quality, air quality, historical weather, etc.), which is under federal jurisdiction. Hydrological flow and water quality monitoring are readily accessible across Canada through the Hydat database, which can be easily accessed through the R package called \href{https://cran.r-project.org/web/packages/tidyhydat/vignettes/tidyhydat_an_introduction.html}{TidyHydat} \citep{albers_tidyhydat_2017}.
 
 \section*{Your Turn!}\label{your-turn-1}
 \addcontentsline{toc}{section}{Your Turn!}
@@ -1391,8 +1394,10 @@ In addition to these general geographies, which apply throughout Canada, special
 
 Using census data for geographic analysis typically involves first identifying the smallest spatial unit at which the data are available. Recall that to protect the privacy of respondents, some data are only available at higher geographic levels. Another consideration is that if you plan to compile multiple census years, the geographic boundaries have typically changed over time in response to how the landscapes and information needs have changed. This creates substantial (though, not insurmountable) additional work that limits how the data can be used, especially for finer spatial scale analysis. An example of changes in the geography of census divisions is seen for British Columbia in Figure \ref{fig:4-shifting-census-boundaries}.
 
+
+
 \begin{figure}
-\includegraphics[width=0.75\linewidth]{images/04-shifting-census-boundaries} \caption{An example of how census boundaries have changed, showing changes in Census divisions for British Columbia from 1911 to 1986. Data from @clark_historical_2016. Sutherland, CC-BY-SA-4.0.}\label{fig:4-shifting-census-boundaries}
+\includegraphics[width=0.75\linewidth]{images/04-shifting-census-boundaries} \caption{An example of how census boundaries have changed, showing changes in Census divisions for British Columbia from 1911 to 1986. Data from \citep{clark_historical_2016}. Sutherland, CC-BY-SA-4.0.}\label{fig:4-shifting-census-boundaries}
 \end{figure}
 
 \section{Accessing Census Data}\label{accessing-census-data}
@@ -1491,7 +1496,7 @@ Compare the map and photograph below. Both show the same gas pipeline, which pas
 
 
 \begin{figure}
-\includegraphics[width=0.75\linewidth]{images/04-crooked-aerialphoto} \caption{Example of how a linear feature can appear crooked in an aerial photograph that has not yet been orthorectified due to relief displacement. @dibiase_census_2014, CC-BY-4.0.}\label{fig:4-crooked-aerialphoto}
+\includegraphics[width=0.75\linewidth]{images/04-crooked-aerialphoto} \caption{(ref:4-crooked-aerialphoto-caption)}\label{fig:4-crooked-aerialphoto}
 \end{figure}
 
 Even in their un-orthorectified state, historical aerial photos can offer a powerful communication tool. They offer a window into historical landscapes that can be easily discerned and appreciated by viewers. Thus, even without orthorectification and performing spatial analysis, historical aerial photos can enrich a research report and other communications.
@@ -1511,11 +1516,11 @@ Even in their un-orthorectified state, historical aerial photos can offer a powe
   Search via a GIS web map or paper flight line maps and examine which flight rolls cross over your time frame and area of interest.
 \end{enumerate}
 
+
+
 \begin{figure}
-\includegraphics[width=0.75\linewidth]{images/04-accessing-aerial-photos} \caption{Example showing the availabiltiy of historical aerial photos in eastern Newfoundland at three time steps. Data from @natural_resources_canada_earth_nodate, <a href='https://open.canada.ca/en/open-government-licence-canada/'>Open Government License - Canada</a>.}\label{fig:4-accessing-aerial-photos}
+\includegraphics[width=0.75\linewidth]{images/04-accessing-aerial-photos} \caption{Example showing the availability of historical aerial photos in eastern Newfoundland at three time steps. Data from \citet{natural_resources_canada_earth_nodate}. Open Government License - Canada: \url{https://open.canada.ca/en/open-government-licence-canada/}.}\label{fig:4-accessing-aerial-photos}
 \end{figure}
-
-
 
 Figure \ref{fig:4-accessing-aerial-photos} shows the results from an example search. In this example, the area of interest (large pink rectangle, figure \ref{fig:4-accessing-aerial-photos} was set by navigating to the study site within the web map then setting the current extent as the area of interest. Here the extent is centered on the coastline between St.~John's, Newfoundland and Cape Spear, the most easterly point in North America. We then searched for **aerial photographs at three different time frames: 1940-1945 (Figure \ref{fig:4-accessing-aerial-photos} A, 1950-1955 Figure \ref{fig:4-accessing-aerial-photos} B, and 1960-1965 Figure \ref{fig:4-accessing-aerial-photos} C). Indeed, aerial photos were found to be available at each period. The photos with smaller boxes (or foot prints) tend to have higher spatial resolution but cover less area. Assuming that fine spatial resolution is desired, the smallest photos have been selected in this example and could then be requested from the library. Previews are often not available so we will not fully know the quality of the photos until we inspect them.
 
@@ -1562,7 +1567,7 @@ A common use case for georeferencing in landscape studies is when an historical 
 
 
 \begin{figure}
-\includegraphics[width=0.75\linewidth]{images/04-georeferencing-concept} \caption{The need for georeferencing illustrated conceptually. Adapted from @university_of_texas_libraries_intro_2021. CC-BY-NC-2.0.}\label{fig:4-georeferencing-concept}
+\includegraphics[width=0.75\linewidth]{images/04-georeferencing-concept} \caption{The need for georeferencing illustrated conceptually. Adapted from \citep{university_of_texas_libraries_intro_2021}. CC-BY-NC-2.0.}\label{fig:4-georeferencing-concept}
 \end{figure}
 
 Georeferencing is typically carried out using GIS software. The process of georeferencing varies slightly based on the GIS software you are using and the characteristics of the raster data you are working with, but the case study below provides a generalized workflow to help learn the overall process. Two important aspects are placing control points and rubbersheeting.
@@ -1657,8 +1662,10 @@ Suppose you have collected some data about some trees. You might have organized 
 
 Within a RDBMS, we find \textbf{relational databases}, which are highly structured tables comprised of rows and columns. In fact, a table in a relational database is called a \textbf{relation}, a row is a \textbf{tuple}, and a column is an \textbf{attribute}. Relational databases are a great way to store simple data structures that can be organized into a relation with tuples and attributes. When we say that a table or relation is ``structured'', we are referring to the fact that the data are organized according to a database \textbf{schema}, which is a set of constraints that ensure data integrity and consistency. For example, our set of trees likely all contain the same types of information and this can be easily organized into a relation. Suppose we measured the height, diameter at breast height (DBH), and species of each tree, then our relation would look like Figure \ref{fig:5-tabular-data-spatial-data}.
 
+
+
 \begin{figure}
-\includegraphics[width=0.75\linewidth]{images/05-tabular-data-spatial-data} \caption{Tabular and spatial data are related by a Relational Database Management System (RDBMS) in a Geographic Information System (GIS). Images of Douglas-Fir and Western Hemlock trees by @canadian_forest_service_douglas-fir_2013, Canadian Forest Service, modified with permission.}\label{fig:5-tabular-data-spatial-data}
+\includegraphics[width=0.75\linewidth]{images/05-tabular-data-spatial-data} \caption{Tabular and spatial data are related by a Relational Database Management System (RDBMS) in a Geographic Information System (GIS). Images of Douglas-Fir and Western Hemlock trees by \citep{canadian_forest_service_douglas-fir_2013}, Canadian Forest Service, modified with permission.}\label{fig:5-tabular-data-spatial-data}
 \end{figure}
 
 As you can see from the example above, there are two components to geospatial data: the tabular data containing tuples and attributes and the spatial data that contain the coordinate pairs for a projected or geographic coordinate system. This structure is known generically as the \textbf{georelational data model}. Many formats of geospatial data conform to the georelational data model, which stores a relation of tuples and attributes separately from another relation containing the geometry and coordinates. These two tables are then dynamically related to one another in a RDBMS using GIS software. You will almost never interact or see the relation that stores the geometry and coordinates of features contained in a relational database. Instead, the GIS software manages those files in the background for the purpose of displaying a set of features on a map, and you primarily interact with the tabular data stored in the relation of tuples and attributes.
@@ -1667,8 +1674,10 @@ The schema for the very simple example above would include the constraint and ex
 
 More formally, a relation \(R\) is a \emph{subset} of two sets, \(A\) (tuples) and \(B\) (attributes). The product of these sets \(A×B\) is called the \textbf{Cartesian product}. In the same way that Cartesian coordinates are ordered pairs of values from two axes, the Cartesian product of two sets gives us an ordered pair of elements \((a,b)\) from sets \(A\) and \(B\), where \(a\) is an element in the set \(A\), written as \(a∈A\), and \(b\) is an element of set \(B\), written as \(b∈B\). Therefore, \(R\) is both the Cartesian product as well as any subset of \(A×B\).
 
+
+
 \begin{figure}
-\includegraphics[width=0.75\linewidth]{images/05-cartesian-product} \caption{Cartesian product A×B of A (tuples) and B (attributes). Image by @quartl_english_2012, CC BY-SA 3.0.}\label{fig:5-cartesian-product}
+\includegraphics[width=0.75\linewidth]{images/05-cartesian-product} \caption{Cartesian product A×B of A (tuples) and B (attributes). Image by \citep{quartl_english_2012}, CC BY-SA 3.0.}\label{fig:5-cartesian-product}
 \end{figure}
 
 There are some important rules to be followed for organizing data into a relation:
@@ -2512,8 +2521,10 @@ DAUID\\
 
 The tabular data of the CIMD scores are related to the DAs polygon by the DA code. The cardinality of the relationship between these two tables is one-to-one as each DA is described by one set of the CIMD scores. To join the CIMD scores to the Vancouver DA polygons, we would use the \texttt{PRCDDA} attribute in the CIMD table as the foreign key to perform a join on the \texttt{DAUID} attribute in the Vancouver DA polygon relation. Now that the CIMD scores are joined to the Vancouver DA polygon attribute table, we can create choropleth maps to display the vulnerability scores of the DAs (Figure \ref{fig:5-situational-vulnerability-leaflet}).
 
+
+
 \begin{figure}
-\includegraphics[width=1\linewidth]{images/05-situational-vulnerability-leaflet} \caption{An example of a choropleth map displaying the situational vulnerability scores in the City of Vancouver at DA level.<a href='https://ubc-geomatics-textbook.github.io/geomatics-textbook/#fig:5-situational-vulnerability-leaflet'>Animated figure can be viewed in the web browser version of the textbook</a>.Higher score represents the DA has higher situational vulnerable population e.g., population lacking a high school diploma, low-income population.}\label{fig:5-situational-vulnerability-leaflet}
+\includegraphics[width=1\linewidth]{images/05-situational-vulnerability-leaflet} \caption{An example of a choropleth map displaying the situational vulnerability scores in the City of Vancouver at DA level. Higher score represents the DA has higher situational vulnerable population e.g., population lacking a high school diploma, low-income population. Lam, CC-BY-SA-4.0. Interactive web map can be viewed in the web browser version of the textbook: \url{https://www.opengeomatics.ca/relational-databases.html\#fig:5-situational-vulnerability-leaflet}.}\label{fig:5-situational-vulnerability-leaflet}
 \end{figure}
 
 \section{Calculation}\label{calculation}
@@ -2541,10 +2552,12 @@ DAUID & Aggregated scores & Normalized aggregated scores & Species count & Stree
 \end{tabular}
 \end{table}
 
-Figure \ref{fig:5-vegetation-diversity-leaflet} shows a map of the vegetation diversity score at the DA level in Vancouver. The vegetation diversity score and the normalized aggregated vulnerability score are linked to each DA and can be viewed as you hover o-ver the DA.
+Figure \ref{fig:5-vegetation-diversity-leaflet} shows a map of the vegetation diversity score at the DA level in Vancouver. The vegetation diversity score and the normalized aggregated vulnerability score are linked to each DA and can be viewed as you hover over the DA.
+
+
 
 \begin{figure}
-\includegraphics[width=1\linewidth]{images/05-vegetation-diversity-leaflet} \caption{An example of a choropleth map displaying vegetation diversity for each dissemination area in Vancouver. <a href='https://ubc-geomatics-textbook.github.io/geomatics-textbook/#fig:5-vegetation-diversity-leaflet'>Animated figure can be viewed in the web browser version of the textbook</a>. Data from City of Vancouver and licensed under the <a href='https://opendata.vancouver.ca/pages/licence/'>Open Government License - Vancouver</a>. Lam, CC-BY-SA-4.0.}\label{fig:5-vegetation-diversity-leaflet}
+\includegraphics[width=1\linewidth]{images/05-vegetation-diversity-leaflet} \caption{An example of a choropleth map displaying vegetation diversity for each dissemination area in Vancouver. Lam, CC-BY-SA-4.0. Data from City of Vancouver and licensed under the Open Government License - Vancouver: \url{https://opendata.vancouver.ca/pages/licence/}. Interactive web map can be viewed in the web browser version of the textbook: \url{https://www.opengeomatics.ca/relational-databases.html\#fig:5-vegetation-diversity-leaflet}.}\label{fig:5-vegetation-diversity-leaflet}
 \end{figure}
 
 \section{Query}\label{query}
@@ -2568,7 +2581,7 @@ Areas with a higher proportion of vulnerable populations and less variety of veg
 \end{tabular}
 \end{table}
 
-\chapter{Topology and Geocoding}\label{topology}
+\chapter{Topology and Geocoding}\label{topology-and-geocoding}
 
 Written by
 Paul Pickell
@@ -2598,7 +2611,7 @@ Frequently, we need spatial data to behave and relate in specific and predictabl
 
 Vertex, Node, Pseudonode, Dangle, Planar Topology, Non-Planar Topology, Geocoding, Adjacency, Overlap, Connect, Inside, Reverse Geocoding, Singlepart, Multipart, Holes, Delaunay Triangulation, Thiessen Polygons, Voronoi Diagram, Centroid, Convex Hull, Convex Alpha Hull, Multipatch
 
-\section{Topology}\label{topology-1}
+\section{Topology}\label{topology}
 
 \textbf{Topology} describes the relationships of spatial data. This is a very broad definition that encompasses the wide range of possible arrangements of spatial data in practice. If we drill down into this concept, topology is really what allows us undertake specific types of analysis that requires or expects spatial data to behave in a certain way. If you think about the feature geometries that we have at our disposal, then there are no fewer than nine combinations of how these geometries can interact as illustrated in Figure \ref{fig:7-topology-grid} below.
 
@@ -2619,7 +2632,7 @@ On the other hand, \textbf{non-planar} topology is the concept that vertices of 
 
 
 \begin{figure}
-\includegraphics[width=1\linewidth]{images/07-native-land-leaflet} \caption{Non-planar topology of 36 indigenous territories overlapping Vancouver Island, British Columbia. Data from \citet{native_land_native_nodate}, CC0. Animated figure can be viewed in the web browser version of the textbook: \url{https://www.opengeomatics.ca/topology-and-geocoding.html}.}\label{fig:7-native-land-leaflet}
+\includegraphics[width=1\linewidth]{images/07-native-land-leaflet} \caption{Non-planar topology of 36 indigenous territories overlapping Vancouver Island, British Columbia. Data from \citep{native_land_native_nodate}, CC0. Animated figure can be viewed in the web browser version of the textbook: \url{https://www.opengeomatics.ca/topology-and-geocoding.html}.}\label{fig:7-native-land-leaflet}
 \end{figure}
 
 \section{Implementing Planar Topology}\label{implementing-planar-topology}
@@ -2765,7 +2778,11 @@ Some examples of cover topological rules:
 
 Sometimes we need to represent several points, lines or polygons as a collection, which is known as \textbf{multipart geometry}. Multipart geometry allow us to represent several disjoint and non-adjacent geometries as a single feature. In this way, we can assign attribute values to the collection of features rather than each geometry individually. The territorial boundary of Canada is a good example of an instance where a multipart geometry can be useful because all of the contiguous land and non-contiguous land (i.e., islands) can be represented and associated with a single feature in the attribute table. However, if the distinction of features is important, such as identifying the names of islands in the Haida Gwaii archipelago, then a singlepart geometry should be used (Figure \ref{fig:7-haida-gwaii-leaflet}).
 
-\label{fig:7-haida-gwaii-leaflet}Singlepart geometry of the Haida Gwaii archipelago off the west coast of British Columbia, Canada. Hover over the islands to see the names. Animated figure can be viewed in the web browser version of the textbook. Polygon data from \citet{statistics_canada_statistics_nodate} and island placenames from \citet{natural_resources_canada_natural_nodate}. Open Government License - Canada.
+
+
+\begin{figure}
+\includegraphics[width=0.5\linewidth]{images/07-Singlepart-geometry-of-the-Haida-Gwaii-archipelago-off-the-west-coast-of-British-Columbia-Canada-static} \caption{Singlepart geometry of the Haida Gwaii archipelago off the west coast of British Columbia, Canada. Hover over the islands to see the names. Polygon data from \citep{statistics_canada_statistics_nodate} and island placenames from \citep{natural_resources_canada_natural_nodate}. Open Government License - Canada: \url{https://open.canada.ca/en/open-government-licence-canada/}. Interactive web map can be viewed in the web browser version of the textbook: \url{https://www.opengeomatics.ca/topology.html\#fig:7-haida-gwaii-leaflet}.}\label{fig:7-haida-gwaii-leaflet}
+\end{figure}
 
 Although it is possible to convert from a multipart geometry into singlepart geometry, you need to carefully consider how your features should be represented in the attribute table. For example, if you will be undertaking calculations using area or perimeter of the constituent polygons that comprise a multipart geometry of Canada, then you will return a single value for all of Canada while singlepart geometry would return values for each individual polygon. As well, area calculations can vary between multipart and singlepart geometry. For example, approximately 27\% of Canada's land area (including freshwater), is comprised of more than 52,000 islands, which is a statistic you could only calculate with singlepart geometry. Thus, the choice of representing a feature using singlepart or multipart geometry should be based on how the features will be used in your analysis (i.e., aggregated versus disaggregated).
 
@@ -2832,7 +2849,7 @@ A \textbf{convex hull} is the smallest polygon that contains some set of points.
 Convex hulls can be generalized to the concave case, called \textbf{convex alpha hulls} or \textbf{α-shapes (alpha shapes)}, by adjusting the maximum radius of the circumcircles through a parameter, alpha \(α\). The objective of a convex alpha hull is to minimize the α-shape formed by circumcircles of radius less than or equal to \(α\). Similar to the Delaunay triangulation, the circumcircles must be \emph{open}, meaning they contain no other points in the set. Defined in this way, the final α-shape may not result in closure of the full set of points and can result in holes where the distance between points exceeds \(2α\). Surprisingly, α-shapes are prone to not existing at all. For the case of \(α=0\), applying circumcircles of radius 0 results in an empty α-shape and only the input set of points are returned without any boundaries. For \(α=∞\), the α-shape is equivalent to the convex hull because if we use circumcircles with an infinitely large radius, then all points in the set are bound to be enclosed by the resulting α-shape, which like the convex hull must also minimize the bounding area. Figure \ref{fig:7-2d-alpha-hull} shows an animation of the α-shapes for \(α=1\) to \(α=0\) for our set of 50 points.
 
 \textbackslash begin\{figure\}
-\includegraphics[width=0.75\linewidth]{images/07-2d-alpha-hull} \textbackslash caption\{Concave alpha hull generates an alpha shape around a set of points. Online version of the figure is animated by alpha values from 0 to 1 by increments of 0.05. Animated figure can be viewed in the web browser version of the textbook. Pickell, CC-BY-SA-4.0.\}\label{fig:7-2d-alpha-hull}
+\includegraphics[width=0.75\linewidth]{images/07-2d-alpha-hull-static} \textbackslash caption\{Concave alpha hull generates an alpha shape around a set of points. Online version of the figure is animated by alpha values from 0 to 1 by increments of 0.05. Animated figure can be viewed in the web browser version of the textbook. Pickell, CC-BY-SA-4.0.\}\label{fig:7-2d-alpha-hull}
 \textbackslash end\{figure\}
 
 \section{3D topologies}\label{d-topologies}
@@ -2843,9 +2860,11 @@ In this next section, a number of topologies are described that are important fo
 
 Similar to multipart geometries, \textbf{multipatch geometries} associate several \emph{faces} or \emph{facets} to a single 3D feature such as a building or tree. In order for multipatch geometries to be topologically valid, they must form a closed set of faces, known as a \textbf{polyhedron}. Polyhedrons are comprised of \emph{flat} faces that connect 3 or more vertices. Figure \ref{fig:7-platonic-polyhedrons} illustrates the 5 Platonic polyhedrons, so-named after Plaot who initially wrote about them. The Platonic polyhedrons are a special type of \emph{regular} polyhedron because they are the only polyhedrons that are highly symmetrical and have special transitive properties on the edges, faces, and vertices. As well, the Platonic polyhedrons are all examples of the 3-dimensional case of a convex hull (more on that in the next section). Most polyhedrons that we come across in environmental management like trees, lakes, glaciers, and buildings are very irregular and not Platonic.
 
-\textbackslash begin\{figure\}
-\includegraphics[width=0.75\linewidth]{images/07-platonic-polyhedrons} \textbackslash caption\{The five Platonic solids are examples of regular, convex polyhedrons and multipatch geometries. From left to right: tetrahedron (4 faces); hexahedron (6 faces); octahedron (8 faces); dodecahedron (12 faces); and icosahedron (20 faces). Animated figure can be viewed in the web browser version of the textbook. \citet{cyp_polyhedra_2005}, CC-BY-SA-3.0.\}\label{fig:7-platonic-polyhedrons}
-\textbackslash end\{figure\}
+
+
+\begin{figure}
+\includegraphics[width=0.75\linewidth]{images/07-platonic-polyhedrons-static} \caption{The five Platonic solids are examples of regular, convex polyhedrons and multipatch geometries. From left to right: tetrahedron (4 faces); hexahedron (6 faces); octahedron (8 faces); dodecahedron (12 faces); and icosahedron (20 faces). \citep{cyp_polyhedra_2005}, CC-BY-SA-3.0. Animated figure can be viewed in the web browser version of the textbook: \url{https://www.opengeomatics.ca/topology.html\#7-platonic-polyhedrons}.}\label{fig:7-platonic-polyhedrons}
+\end{figure}
 
 \subsection{3D Convex hull}\label{d-convex-hull}
 
@@ -2877,8 +2896,10 @@ We can derive some useful information from these 3D convex alpha hulls. One obvi
 
 Similar to Thiessen polygons, Voronoi tessellations can be undertaken for 3D point clouds. 3D Voronoi tessellations produce nearest neighbour polyhedrons around the space of each 3D point. Just as in the 2D case, these 3D Voronoi tessellations can be used to partition the 3D space. Figure \ref{fig:7-neper} shows the use of a 3D Voronoi tessellation for use in mapping and visualizing polycrystals.
 
+
+
 \begin{figure}
-\includegraphics[width=0.75\linewidth]{images/07-neper} \caption{3D Voronoi tesselation of simulated polycrystals. @quey_neper_nodate, GPL 3.0.}\label{fig:7-neper}
+\includegraphics[width=0.75\linewidth]{images/07-neper} \caption{3D Voronoi tesselation of simulated polycrystals. \citep{quey_neper_nodate}, GPL 3.0.}\label{fig:7-neper}
 \end{figure}
 
 \section*{Reflection Questions}\label{reflection-questions-4}
@@ -2978,7 +2999,7 @@ A \textbf{node} (or vertex) may represent any thing that can be \emph{connected}
 \label{fig:8-vancouver-transit-graph}Graph representing connection between Metro Vancouver rapid and frequent transit lines. Interactive figure in the online format of the textbook.
 
 \begin{figure}
-\includegraphics[width=15.93in]{images/08-metro_vancouver_transit_network} \caption{Rapid and frequent transit network in Metro Vancouver [@translink_2020_2020].}\label{fig:8-vancouver-transit-network}
+\includegraphics[width=0.75\linewidth]{images/08-metro_vancouver_transit_network} \caption{(ref:8-vancouver-transit-network-caption)}\label{fig:0-example}
 \end{figure}
 
 \section{Connectivity and Order}\label{connectivity-and-order}
@@ -2999,8 +3020,10 @@ On the other hand, in an undirected graph, connections are represented as simple
 
 Topology is the study of how network elements are arranged. The same elements arranged in different ways can change the network \textbf{structure} and \textbf{dynamics}. A very common example is the arrangement of computer networks.
 
+
+
 \begin{figure}
-\includegraphics[width=0.8\linewidth]{images/08-network_topologies} \caption{Abstract examples of network topologies [@wikibooks_communication_2018].}\label{fig:8-network-topologies}
+\includegraphics[width=0.75\linewidth]{images/08-network_topologies} \caption{Abstract examples of network topologies \citep{wikibooks_communication_2018}.}\label{fig:8-network-topologies}
 \end{figure}
 
 \section{Physical vs.~Logical Topology}\label{physical-vs.-logical-topology}
@@ -3013,48 +3036,75 @@ In GIS we use networks to represent spatial structures of various kinds. While a
 
 Lines are when nodes are arranged in series where every node has \emph{no more than two connections}, except for the two end nodes. A rail transit line, for example, can be represented as a line network. The map below portrays the SkyTrain Millenium Line in Vancouver. Each node represents a stop and the lines the connections between those stops.
 
-\label{fig:8-vancouver-rail-transit}Rail transit line in Vancouver \citep{city_of_vancouver_open_nodate}. Licensed under the Open Government License - Vancouver. Interactive figure in the online format of the textbook.
+
+
+\begin{figure}
+\includegraphics[width=8.68in]{images/08-Rail-transit-line-in-Vancouver-static} \caption{Rail transit line in Vancouver \citep{city_of_vancouver_open_nodate}. Licensed under the Open Government License - Vancouver: \url{https://opendata.vancouver.ca/pages/licence/}. Interactive web map can be viewed in the web browser version of the textbook: \url{https://www.opengeomatics.ca/network-analysis.html\#8-vancouver-rail-transit-leaflet}.}\label{fig:8-vancouver-rail-transit-leaflet}
+\end{figure}
 
 \subsection{Rings}\label{rings}
 
 Rings are similar to lines except that there are no end nodes. So each and every node has \emph{two connections and the ``first'' and ``last'' nodes are connected to each other} forming a circle. The spatial structure of the Stanley park seawall trail in Vancouver resembles a ring. In this example, nodes stand for intersections and view spots and edges are the connections between these spots along the seawall.
 
-\label{fig:8-stanley-park-seawall}Ring of the Stanley Park seawall \citep{city_of_vancouver_open_nodate}. Licensed under the Open Government License - Vancouver. Interactive figure in the online format of the textbook.
+
+
+\begin{figure}
+\includegraphics[width=8.58in]{images/08-Ring-of-the-Stanley-Park-seawall-static} \caption{Ring of the Stanley Park seawall \citep{city_of_vancouver_open_nodate}. Licensed under the Open Government License - Vancouver: \url{https://opendata.vancouver.ca/pages/licence/}. Interactive web map can be viewed in the web browser version of the textbook: \url{https://www.opengeomatics.ca/network-analysis.html\#8-stanley-park-seawall-leaflet}.}\label{fig:8-stanley-park-seawall-leaflet}
+\end{figure}
 
 \subsection{Meshes}\label{meshes}
 
 In a mesh, \emph{every node is also connected to more than one node}. However, in this case nodes can be connected to more than two nodes. Connections in a mesh are non-hierarchical. Contrary to rings and lines where there is only one possible route from one node to another, in a mesh there are multiple routes to access other nodes in the network. A common way to generate a mesh network is using \textbf{Delaunay triangulation}, where nodes are connected in order to form triangles and maximize the minimum angle of all triangles \citep{wikimedia_delaunay_2021}. Mesh configurations are commonly used in decentralized structures such as the internet.
 
-\label{fig:8-tree-canopy-mesh}Tree canopy mesh \citep{city_of_vancouver_open_nodate}. Licensed under the Open Government License - Vancouver. Interactive figure in the online format of the textbook.
+
+
+\begin{figure}
+\includegraphics[width=8.57in]{images/08-Tree-canopy-mesh-static} \caption{Tree canopy mesh \citep{city_of_vancouver_open_nodate}. Licensed under the Open Government License - Vancouver: \url{https://opendata.vancouver.ca/pages/licence/}. Interactive web map can be viewed in the web browser version of the textbook: \url{https://www.opengeomatics.ca/network-analysis.html\#8-tree-canopy-mesh-leaflet}.}\label{fig:8-tree-canopy-mesh-leaflet}
+\end{figure}
 
 \subsection{Fully Connected}\label{fully-connected}
 
 As the name suggests, in fully connected networks \emph{every node is connected to every other node}. The graph representing all possible origin-destination commutes among Metro Vancouver municipalities is a type of fully connected network.
 
-\label{fig:8-origin-destination}Possible origin-destination commutes between municipalities within Metro Vancouver \citep{city_of_vancouver_open_nodate}. Licensed under the Open Government License - Vancouver. Interactive figure in the online format of the textbook.
+
+
+\begin{figure}
+\includegraphics[width=8.56in]{images/08-Possible-origin-destination-commutes-between-municipalities-within-Metro-Vancouver-static} \caption{Possible origin-destination commutes between municipalities within Metro Vancouver \citep{city_of_vancouver_open_nodate}. Licensed under the Open Government License - Vancouver: \url{https://opendata.vancouver.ca/pages/licence/}. Interactive web map can be viewed in the web browser version of the textbook: \url{https://www.opengeomatics.ca/network-analysis.html\#8-origin-destination-leaflet}.}\label{fig:8-origin-destination-leaflet}
+\end{figure}
 
 \section{Hierarchical Topologies}\label{hierarchical-topologies}
 
-Different from non-hierarchical topologies, hierarchical configurations are structured around a central node or link.
-By looking into hierarchical topologies it becomes easier to understand the notion of depth. The more distant a node is from the central node or link, the more depth it has. Hover the mouse over the nodes in the following maps to check out their depth.
+Different from non-hierarchical topologies, hierarchical configurations are structured around a central node or link. By looking into hierarchical topologies it becomes easier to understand the notion of depth. The more distant a node is from the central node or link, the more depth it has. Hover the mouse over the nodes in the following maps to check out their depth.
 
 \subsection{Stars}\label{stars}
 
 Stars are hierarchical structures where \emph{two or more nodes are directly connected to a central node}. This concentric garden at the University of British Columbia can be represented according to a star topology.
 
-\label{fig:8-spatial-structure-garden}Spatial structure of a concentric garden at UBC \citep{city_of_vancouver_open_nodate}. Licensed under the Open Government License - Vancouver. Interactive figure in the online format of the textbook.
+
+
+\begin{figure}
+\includegraphics[width=8.61in]{images/08-Spatial-structure-of-a-concentric-garden-at-UBC-static} \caption{Spatial structure of a concentric garden at UBC \citep{city_of_vancouver_open_nodate}. Licensed under the Open Government License - Vancouver: \url{https://opendata.vancouver.ca/pages/licence/}. Interactive web map can be viewed in the web browser version of the textbook: \url{https://www.opengeomatics.ca/network-analysis.html\#8-spatial-structure-garden-leaflet}.}\label{fig:8-spatial-structure-garden-leaflet}
+\end{figure}
 
 \subsection{Buses}\label{buses}
 
 Buses are structures where \emph{every path from one node to another passes through a central path or corridor}. If we isolate a street segment from an urban street network, the connections between buildings and streets depict a bus topology.
 
-\label{fig:8-connections-houses-streets}Connections between houses and streets \citep{city_of_vancouver_open_nodate}. Licensed under the Open Government License - Vancouver. Interactive figure in the online format of the textbook.
+
+
+\begin{figure}
+\includegraphics[width=8.56in]{images/08-Connections-between-houses-and-streets-static} \caption{Connections between houses and streets \citep{city_of_vancouver_open_nodate}. Licensed under the Open Government License - Vancouver: \url{https://opendata.vancouver.ca/pages/licence/}. Interactive web map can be viewed in the web browser version of the textbook: \url{https://www.opengeomatics.ca/network-analysis.html\#8-connections-houses-streets-leaflet}.}\label{fig:8-connections-houses-streets-leaflet}
+\end{figure}
 
 \subsection{Trees}\label{trees}
 
 In tree topologies, nodes are \emph{structured from a root node and arranged into edges} that are similar to branches of a tree. This highly hierarchical structure create a sort of \textbf{parent - child} relationship amongst nodes. The spatial configuration of boat marinas are usually structures in tree-like topologies. By definition, all tree network structures will always have more than one terminal nodes (a node that only has one connection to the network).
 
-\label{fig:8-boat-marina}Tree spatial structure of a boat marina \citep{city_of_vancouver_open_nodate}. Licensed under the Open Government License - Vancouver. Interactive figure in the online format of the textbook.
+
+
+\begin{figure}
+\includegraphics[width=8.56in]{images/08-Tree-spatial-structure-of-a-boat-marina-static} \caption{Tree spatial structure of a boat marina \citep{city_of_vancouver_open_nodate}. Licensed under the Open Government License - Vancouver: \url{https://opendata.vancouver.ca/pages/licence/}. Interactive web map can be viewed in the web browser version of the textbook: \url{https://www.opengeomatics.ca/network-analysis.html\#8-boat-marina-leaflet}.}\label{fig:8-boat-marina-leaflet}
+\end{figure}
 
 \section{Spatial Network Analysis}\label{spatial-network-analysis}
 
@@ -3064,7 +3114,11 @@ Networks can then be arranged according to various different configurations. Asi
 
 The act of modelling spatial networks is called \textbf{network tracing}. When tracing a network it is important to bear in mind the \textbf{direction} with which information is added to the network, especially when this orientation information is important to further analyze \textbf{flows} and relationships within such structure. For example, when mapping hydrological networks to study its flows it might be useful to model the direction of streams coherently as this might be an important information to represent the dynamics of the network.
 
-\label{fig:8-fraser-river-flows}Graph representing Fraser River Flows \citep{city_of_vancouver_open_nodate}. Licensed under the Open Government License - Vancouver. Interactive figure in the online format of the textbook.
+
+
+\begin{figure}
+\includegraphics[width=8.56in]{images/08-Tree-spatial-structure-of-a-boat-marina-static} \caption{Graph representing Fraser River Flows \citep{city_of_vancouver_open_nodate}. Licensed under the Open Government License - Vancouver: \url{https://opendata.vancouver.ca/pages/licence/}. Interactive web map can be viewed in the web browser version of the textbook: \url{https://www.opengeomatics.ca/network-analysis.html\#8-fraser-river-flows-leaflet}.}\label{fig:8-fraser-river-flows-leaflet}
+\end{figure}
 
 \section{Linear Referencing}\label{linear-referencing}
 
@@ -3194,7 +3248,11 @@ With the backlink direction raster, we can now trace the least cost path between
 
 Reach techniques are commonly used to find the incidence of defined elements \emph{within a certain radius from a chosen node}. All possible routes are modeled. The number of \textbf{terminal nodes} varies according to the network structure. Urban walkability indices usually uses reach techniques to assess the intensity of certain indicators (such as intersection density or non-residential land uses) given a walkable radius \citep{martino_spatial_2020}. In the map below we portray the network reach from a given origin point into the Pacific Spirit Regional Park within 400m (red), 800m (yellow), 1200m (green) and 1600m (blue) radii.
 
-\label{fig:8-reach-analysis}Reachable segments within multiple distance radii \citep{city_of_vancouver_open_nodate}. Licensed under the Open Government License - Vancouver. Interactive figure in the online format of the textbook.
+
+
+\begin{figure}
+\includegraphics[width=8.57in]{images/08-Reachable-segments-within-multiple-distance-radii-static} \caption{Reachable segments within multiple distance radii \citep{city_of_vancouver_open_nodate}. Licensed under the Open Government License - Vancouver: \url{https://opendata.vancouver.ca/pages/licence/}. Interactive web map can be viewed in the web browser version of the textbook: \url{https://www.opengeomatics.ca/network-analysis.html\#8-reach-analysis-leaflet}.}\label{fig:8-reach-analysis-leaflet}
+\end{figure}
 
 \section{Network Centrality}\label{network-centrality}
 
@@ -3204,7 +3262,11 @@ Nodes and edges of a graph can also be ranked in terms of how \textbf{important}
 
 Closeness centrality measures \emph{how close each node is to every other node of the graph} in terms of topological distances. It highlights nodes located in easily accessible spaces. For example when analyzing the closeness of street intersections at the University of British Columbia (UBC), intersections in core streets such as the Main Mall, Agronomy Road and Northwest Marine Drive are ranked as highly central whereas more residential and segregated areas such as Acadia Road are ranked with lower closeness centrality.
 
-\label{fig:8-closeness-centrality-UBC}Closeness centrality of the street intersections at UBC \citep{city_of_vancouver_open_nodate}. Licensed under the Open Government License - Vancouver. Interactive figure in the online format of the textbook.
+
+
+\begin{figure}
+\includegraphics[width=8.53in]{images/08-Closeness-centrality-of-the-street-intersections-at-UBC-static} \caption{Closeness centrality of the street intersections at UBC \citep{city_of_vancouver_open_nodate}. Licensed under the Open Government License - Vancouver: \url{https://opendata.vancouver.ca/pages/licence/}. Interactive web map can be viewed in the web browser version of the textbook: \url{https://www.opengeomatics.ca/network-analysis.html\#8-closeness-centrality-UBC-leaflet}.}\label{fig:8-closeness-centrality-UBC-leaflet}
+\end{figure}
 
 Closeness is calculated based on the \textbf{logical distance} from one vertex to all the other vertices in the network. The formula for estimating closeness centrality of a vertex \(i\) is:
 
@@ -3216,7 +3278,11 @@ where \(d_{ij}\) means the logical distance from \(i\) to \(j\).
 
 Betweenness centrality measures \emph{how likely a node or an edge is to be passed through} when going from every node to every other node of the graph. If we imagine agents travelling from each node to every other node and back, betweenness centrality would be the trail left by those agents. While closeness highlights central spaces, betweenness highlights pathways that lead to those central spaces. Using the same street network at UBC we can calculate the betweenness of segments.
 
-\label{fig:8-betweenness-centrality}Betweenness centrality of street segments at UBC \citep{city_of_vancouver_open_nodate}. Licensed under the Open Government License - Vancouver. Interactive figure in the online format of the textbook.
+
+
+\begin{figure}
+\includegraphics[width=8.57in]{images/08-Betweenness-centrality-of-street-segments-at-UBC-static} \caption{Betweenness centrality of street segments at UBC \citep{city_of_vancouver_open_nodate}. Licensed under the Open Government License - Vancouver: \url{https://opendata.vancouver.ca/pages/licence/}. Interactive web map can be viewed in the web browser version of the textbook: \url{https://www.opengeomatics.ca/network-analysis.html\#8-betweenness-centrality-leaflet}.}\label{fig:8-betweenness-centrality-leaflet}
+\end{figure}
 
 Betweenness is calculated based on the number of \textbf{shortest paths} (in logical distances) from all nodes to all other nodes. According to the documentation of the \href{https://graph-tool.skewed.de/static/doc/centrality.html}{graph-tool software}, betweenness of a vertex \(C_{B}(\upsilon)\) is defined as:
 
@@ -3230,9 +3296,11 @@ Are green spaces evenly accessible throughout the whole city? Which parks are to
 
 First we need to find the Closeness measure for the street network of the City of Vancouver. The network information was downloaded from \href{https://www.openstreetmap.org/}{OpenStreetMap}. The \href{https://graph-tool.skewed.de/}{graph-tool} software was used to calculate the centrality measure. With the results of centrality for all street intersections in the city, we can overlay Parks \& Green spaces data from the \href{https://opendata.vancouver.ca/explore/dataset/parks-polygon-representation/information/}{City of Vancouver Open Data portal} and get the average closeness of nodes within each green space.
 
-\label{fig:8-closeness-centrality-vancouver}Closeness centrality of parks and green spaces at the City of Vancouver \citep{city_of_vancouver_open_nodate}. Licensed under the Open Government License - Vancouver. Interactive figure in the online format of the textbook.
 
-\includegraphics{geomatics-for-environmental-management-an-open-textbook-for-students-and-practitioners_files/figure-latex/8-closeness-centrality-vancouver-2.pdf}
+
+\begin{figure}
+\includegraphics[width=10.18in]{images/08-CLOSENESS-CENTRALITY-OF-PARKS-AND-GREEN-SPACES-AT-THE-CITY-OF-VANCOUVER-static} \caption{Closeness centrality of parks and green spaces at the City of Vancouver \citep{city_of_vancouver_open_nodate}. Licensed under the Open Government License - Vancouver: \url{https://opendata.vancouver.ca/pages/licence/}. Interactive web map can be viewed in the web browser version of the textbook: \url{https://www.opengeomatics.ca/network-analysis.html\#8-closeness-centrality-vancouver-leaflet}.}\label{fig:8-closeness-centrality-vancouver-leaflet}
+\end{figure}
 
 Results show parks located in the middle of the city have \textbf{higher closeness} than parks located at the edges. In other words, these parks are located in parts of the city that have easy access to the city's street network as a whole. As the histogram leans towards the right, we can conclude that there are more parks with higher closeness than parks with lower closeness.
 
@@ -3303,14 +3371,18 @@ As the name suggests, a \textbf{Digital Elevation Model (DEM)} is a digital repr
 
 Figure \ref{fig:9-mount-assiniboine-dem} shows a DEM for Mount Assiniboine near the Alberta and British Columbia border. Mount Assiniboine has a distinctive pyramidal peak that is not immediately apparent from the bird's-eye view of a DEM. It is common to see DEMs displayed in this black and white colour scheme, where black represents lower elevations and white represents higher elevations. Can you tell where the peak is? We will look at more sophisticated colour schemes and geovisualizations of terrain in a later section.
 
+
+
 \begin{figure}
-\includegraphics[width=0.75\linewidth]{images/09-mount-assiniboine-dem} \caption{Digital Elevation Model of Mount Assiniboine at the border of Alberta and British Columbia, Canada. Data from @natural_resources_canada_canadian_2015. Pickell, CC-BY-4.0.}\label{fig:9-mount-assiniboine-dem}
+\includegraphics[width=0.75\linewidth]{images/09-mount-assiniboine-dem} \caption{Digital Elevation Model of Mount Assiniboine at the border of Alberta and British Columbia, Canada. Data from \citep{natural_resources_canada_canadian_2015}. Pickell, CC-BY-4.0.}\label{fig:9-mount-assiniboine-dem}
 \end{figure}
 
 Figure \ref{fig:9-nelson-river-dem} shows another DEM, but this time for some the flattest terrain in Canada over 1,600 km away from Mount Assiniboine on the Canadian Shield at the mouth of the Nelson River in Manitoba. The Nelson River drains an area of more than 1 million km\^{}\{2\} of land across much of the Canadian prairie provinces and pours into Hudson Bay. The Canadian Shield is home to the oldest terrain on Earth and millions of years of erosion have reduced it to rolling hills and flattened horizons.
 
+
+
 \begin{figure}
-\includegraphics[width=0.75\linewidth]{images/09-nelson-river-dem} \caption{Digital Elevation Model of Nelson River pouring into Hudson Bay, Manitoba, Canada. Data from @earth_resources_observation_and_science_center_usgs_2018. Pickell, CC-BY-4.0.}\label{fig:9-nelson-river-dem}
+\includegraphics[width=0.75\linewidth]{images/09-nelson-river-dem} \caption{Digital Elevation Model of Nelson River pouring into Hudson Bay, Manitoba, Canada. Data from \citep{earth_resources_observation_and_science_center_usgs_2018}. Pickell, CC-BY-4.0.}\label{fig:9-nelson-river-dem}
 \end{figure}
 
 Over an entire extent of 3,300 km\^{}\{2\}, the Nelson River DEM in Figure \ref{fig:9-nelson-river-dem} only varies by 44 m. Compare that with the 1,328 m of difference from the white peak of Mount Assiniboine to the black valleys of the Rocky Mountains over about 5 km\^{}\{2\} in Figure \ref{fig:9-mount-assiniboine-dem}. Throughout the remainder of this chapter, we will look at raster analysis applied to these two extreme examples of terrain.
@@ -3404,26 +3476,34 @@ You can probably recognize by now that if we apply a raster function to a DEM, t
 
 Figure \ref{fig:9-mount-assiniboine-slope} shows the slope of Mount Assiniboine where red represents steeper slopes and green represents flatter slopes. For the Mount Assiniboine DEM, the slope values range from 2° at the flattest to 80° at the steepest. Can you see the peak yet?
 
+
+
 \begin{figure}
-\includegraphics[width=0.75\linewidth]{images/09-mount-assiniboine-slope} \caption{Slope of Mount Assiniboine at the border of Alberta and British Columbia, Canada. Data from @natural_resources_canada_canadian_2015. Pickell, CC-BY-SA-4.0.}\label{fig:9-mount-assiniboine-slope}
+\includegraphics[width=0.75\linewidth]{images/09-nelson-river-dem} \caption{Slope of Mount Assiniboine at the border of Alberta and British Columbia, Canada. Data from \citep{natural_resources_canada_canadian_2015}. Pickell, CC-BY-SA-4.0.}\label{fig:9-mount-assiniboine-slope}
 \end{figure}
 
 Figure \ref{fig:9-nelson-river-slope} shows the slope of Nelson River pouring into Hudson Bay. Again, red is steeper and green is flatter, but the slope values here only range from 0° to 9° and the vast majority of cells are less than 2°. Very flat terrain that can hardly be distinguished from the sea.
 
+
+
 \begin{figure}
-\includegraphics[width=0.75\linewidth]{images/09-nelson-river-slope} \caption{Slope of Nelson River pouring into Hudson Bay, Manitoba, Canada. Data from @earth_resources_observation_and_science_center_usgs_2018. Pickell, CC-BY-SA-4.0.}\label{fig:9-nelson-river-slope}
+\includegraphics[width=0.75\linewidth]{images/09-nelson-river-slope} \caption{Slope of Nelson River pouring into Hudson Bay, Manitoba, Canada. Data from \citep{earth_resources_observation_and_science_center_usgs_2018}. Pickell, CC-BY-SA-4.0.}\label{fig:9-nelson-river-slope}
 \end{figure}
 
 \subsection{Aspect}\label{aspect}
 
 \textbf{Aspect} is another first order terrain derivative that represents the azimuthal direction that a slope faces. For example, an azimuth of 0° is North-facing slope, 90° is East-facing, 180° is South-facing, and 270° is West-facing with all other azimuths in between. Typically, aspect is most apparent when azimuths are dominate throughout the DEM. For example, the slope aspects are clearly visible in Figure \ref{fig:9-mount-assiniboine-aspect} showing Mount Assiniboine. By contrast, when slopes are very flat as is the case for the Nelson River, aspect can alternate frequently and produce a nearly random sequence except for the relatively steeper south bank of the river shown in Figure \ref{fig:9-nelson-river-aspect}. It is possible to have an undefined aspect when the slope is 0°, which is the case for water seen coloured grey in Figure \ref{fig:9-nelson-river-aspect}.
 
-\begin{figure}
-\includegraphics[width=0.75\linewidth]{images/09-mount-assiniboine-aspect} \caption{Aspect of Mount Assiniboine at the border of Alberta and British Columbia, Canada. Data from @natural_resources_canada_canadian_2015. Pickell, CC-BY-SA-4.0.}\label{fig:9-mount-assiniboine-aspect}
-\end{figure}
+
 
 \begin{figure}
-\includegraphics[width=0.75\linewidth]{images/09-nelson-river-aspect} \caption{Aspect of Nelson River pouring into Hudson Bay, Manitoba, Canada. Data from @earth_resources_observation_and_science_center_usgs_2018. Pickell, CC-BY-SA-4.0.}\label{fig:9-nelson-river-aspect}
+\includegraphics[width=0.75\linewidth]{images/09-mount-assiniboine-aspect} \caption{Aspect of Mount Assiniboine at the border of Alberta and British Columbia, Canada. Data from \citep{natural_resources_canada_canadian_2015}. Pickell, CC-BY-SA-4.0.}\label{fig:9-mount-assiniboine-aspect}
+\end{figure}
+
+
+
+\begin{figure}
+\includegraphics[width=0.75\linewidth]{images/09-nelson-river-aspect} \caption{Aspect of Nelson River pouring into Hudson Bay, Manitoba, Canada. Data from \citep{earth_resources_observation_and_science_center_usgs_2018}. Pickell, CC-BY-SA-4.0.}\label{fig:9-nelson-river-aspect}
 \end{figure}
 
 \subsection{Heat Load Index}\label{heat-load-index}
@@ -3444,14 +3524,18 @@ If you imagine aspect represented by azimuths of a circle, then this calculation
 
 A \textbf{hillshade} is a DEM with a simulated light source. The values in a hillshade represent the illumination of that cell given its slope, aspect, and position in the raster relative to a simulated light source. The light source has an elevation and azimuth that can be defined to reflect a particular time of day. Thus, hillshades can be useful to show a more 3-dimensional view of terrain from the bird's-eye view of the DEM. Hillshades can also reveal fine differences in terrain that are not apparent from a simple DEM. Figure \ref{fig:9-mount-assiniboine-hillshade-animation} animates (online) a series of hillshades created with azimuths at 10° intervals from 0° to 350° with a light source at an elevation of 45° for Mount Assiniboine. This has the effect of rotating an approximately 9 AM high Sun on the solstice around Mount Assiniboine.
 
+
+
 \begin{figure}
-\includegraphics[width=0.75\linewidth]{images/09-mount-assiniboine-hillshade-animation} \caption{Hillshade of Mount Assiniboine at the border of Alberta and British Columbia, Canada.<a href='https://ubc-geomatics-textbook.github.io/geomatics-textbook/#fig:9-mount-assiniboine-hillshade-animation'> Animated figure can be viewed in the web browser version of the textbook.</a> Data from @natural_resources_canada_canadian_2015. Online version is animated across all azimuths from 0° to 350° by 10° intervals. Pickell, CC-BY-SA-4.0.}\label{fig:9-mount-assiniboine-hillshade-animation}
+\includegraphics[width=0.75\linewidth]{images/09-mount-assiniboine-hillshade-animation-static} \caption{Hillshade of Mount Assiniboine at the border of Alberta and British Columbia, Canada. Data from \citet{natural_resources_canada_canadian_2015}. Online version is animated across all azimuths from 0° to 350° by 10° intervals. Pickell, CC-BY-SA-4.0. Animated figure can be viewed in the web browser version of the textbook: \url{https://www.opengeomatics.ca/raster-analysis-and-terrain-modelling.html\#fig:9-mount-assiniboine-hillshade-animation}.}\label{fig:9-mount-assiniboine-hillshade-animation}
 \end{figure}
 
 A hillshade is still a 2D raster with 3D features simulated through an illumination process. A hillshade does not reveal much for flatter terrain since there is not much variation in slopes across the entire raster, as can be seen in Figure \ref{fig:9-nelson-river-hillshade-animation} for Nelson River, which is also animated in the same way as Figure \ref{fig:9-mount-assiniboine-hillshade-animation}. As you can see, there is no change over the water of the river and Hudson Bay where slope is 0° and aspect is undefined and only some minor terrain features are apparent over the land. Still, if you watch closely, some finer scale features can be made apparent that are not otherwise visible from the original DEM and other terrain derivatives.
 
+
+
 \begin{figure}
-\includegraphics[width=0.75\linewidth]{images/09-nelson-river-hillshade-animation} \caption{Hillshade of Nelson River pouring into Hudson Bay, Manitoba, Canada. <a href='https://ubc-geomatics-textbook.github.io/geomatics-textbook/#fig:9-nelson-river-hillshade-animation'>Animated figure can be viewed in the web browser version of the textbook.</a> Data from @earth_resources_observation_and_science_center_usgs_2018. Online version is animated across azimuths from 0° to 350° by 10° intervals. Pickell, CC-BY-SA-4.0.}\label{fig:9-nelson-river-hillshade-animation}
+\includegraphics[width=0.75\linewidth]{images/09-nelson-river-hillshade-animation-static} \caption{Hillshade of Nelson River pouring into Hudson Bay, Manitoba, Canada. Online version is animated across azimuths from 0° to 350° by 10° intervals. Pickell, CC-BY-SA-4.0. Animated figure can be viewed in the web browser version of the textbook: \url{https://www.opengeomatics.ca/raster-analysis-and-terrain-modelling.html\#fig:9-nelson-river-hillshade-animation}.}\label{fig:9-nelson-river-hillshade-animation}
 \end{figure}
 
 \section{Sinks, Peaks, and Saddles Oh My!}\label{sinks-peaks-and-saddles-oh-my}
@@ -3494,16 +3578,20 @@ There are many ways to calculate curvature, which usually take the form of a pol
 
 Both profile and planform curvature are calculated as continuous floating point integers where: positive values represent convex curvature in the profile and concave curvature in the planform; zero represents no curvature; and negative values represent concave curvature in the profile and convex curvature in the planform. Figure \ref{fig:9-mount-assiniboine-profile-planform-curvature} shows the profile and planform curvature for Mount Assiniboine. What landforms can you start to identify from terrain curvature? Can you identify any sinks, peaks, or saddles in the DEM?
 
+
+
 \begin{figure}
-\includegraphics[width=0.75\linewidth]{images/09-mount-assiniboine-profile-planform-curvature} \caption{Profile and planform curvature for Mount Assiniboine at the border of Alberta and British Columbia, Canada. Data from @natural_resources_canada_canadian_2015. Pickell, CC-BY-SA-4.0.}\label{fig:9-mount-assiniboine-profile-planform-curvature}
+\includegraphics[width=0.75\linewidth]{images/09-mount-assiniboine-profile-planform-curvature} \caption{Profile and planform curvature for Mount Assiniboine at the border of Alberta and British Columbia, Canada. Data from \citep{natural_resources_canada_canadian_2015}. Pickell, CC-BY-SA-4.0.}\label{fig:9-mount-assiniboine-profile-planform-curvature}
 \end{figure}
 
 \section{Topographic Position Index}\label{topographic-position-index}
 
 Another way to derive and classify landforms is through the use of a \textbf{topographic position index (TPI)}, which is a focal function that accounts for the difference between the focal cell elevation and the average elevation of the eight neighbouring cells (in the case of a 3x3 kernel). Therefore, positive TPI values indicate ridges or peaks, zero indicates either a constant slope or a flat area or a saddle, and negative TPI values indicate a valley or sink. Figure \ref{fig:9-mount-assiniboine-nelson-river-topographic-position-index} shows the TPI for Mount Assiniboine compared with the Nelson River. The TPI is sometimes also referred to as a terrain ruggedness index and there are other variations for calculating it as well (e.g., computing the standard score of the focal cell instead of the mean difference).
 
+
+
 \begin{figure}
-\includegraphics[width=0.75\linewidth]{images/09-mount-assiniboine-nelson-river-topographic-position-index} \caption{Comparing Topographic Position Index (TPI) for Mount Assiniboine and the Nelson River. Data from @natural_resources_canada_canadian_2015 and @maxar_precision3d_nodate, respectively. Pickell, CC-BY-SA-4.0.}\label{fig:9-mount-assiniboine-nelson-river-topographic-position-index}
+\includegraphics[width=0.75\linewidth]{images/09-mount-assiniboine-nelson-river-topographic-position-index} \caption{Comparing Topographic Position Index (TPI) for Mount Assiniboine and the Nelson River. Data from \citep{natural_resources_canada_canadian_2015} and \citep{maxar_precision3d_nodate}, respectively. Pickell, CC-BY-SA-4.0.}\label{fig:9-mount-assiniboine-nelson-river-topographic-position-index}
 \end{figure}
 
 \section{Hydrology Work''flows''}\label{hydrology-workflows}
@@ -3520,16 +3608,20 @@ Runoff is the most fundamental process that can be modelled from a DEM. In fact,
 
 Trouble arises when there are two or more neighboring cells with the same minima (e.g., a peak or saddle). This situation can arise for very flat terrain where the elevation might be the same in nearly every direction. As we have already seen, sinks can cause water to flow into but not out of the focal cell, and therefore result in an undefined flow direction. Sinks must therefore be identified and filled in a DEM before calculating flow direction. There are several algorithms for filling sinks, but generally the process involves calculating flow direction and then moving downslope from the highest elevations of the DEM to the valley bottoms and identifying depressions, which are then filled. This process continues to iterate until no more depressions are identified \citep{marks_automated_1984}. Figure \ref{fig:9-sink-fill} animates this iterative process of filling sinks in a cross-sectional profile of elevation, but the process is actually applied simultaneously over both geographic dimensions. Each iteration can introduce new sinks since the filling process directly modifies the DEM, so flow direction must be recalculated after each iteration in order to solve the next set of sinks. As a result, this filling process can be quite time consuming and usually stopping criteria are imposed such as a minimum depth threshold or a minimum slope for all cells in the DEM (i.e., no cells with flat slopes) to ensure that runoff is continuously downslope.
 
+
+
 \begin{figure}
-\includegraphics[width=0.75\linewidth]{images/09-sink-fill} \caption{Animated process of filling sinks in a DEM.<a href=' https://ubc-geomatics-textbook.github.io/geomatics-textbook/ #fig:9-sink-fill'> Animated figure can be viewed in the web browser version of the textbook</a>. Online version is animated. Pickell, CC-BY-SA-4.0.}\label{fig:9-sink-fill}
+\includegraphics[width=0.75\linewidth]{images/09-sink-fill-static} \caption{Process of filling sinks in a DEM. Animated figure can be viewed in the web browser version of the textbook: \url{https://www.opengeomatics.ca/raster-analysis-and-terrain-modelling.html\#fig:9-sink-fill}.}\label{fig:9-sink-fill}
 \end{figure}
 
 The D8 algorithm is intuitive, fast, simple to implement and you will probably see it as the default option across many different GIS software. However, it is very sensitive to sinks, flat areas, and otherwise erroneous pixels because the D8 algorithm forces flow to a single raster pixel. If the raster pixel receiving the upslope flow is erroneous, then all downslope flow direction and, by extension, flow accumulation may also be erroneous. The D8 algorithm was developed in the the mid-1980s during a time when computers such as the AT\&T 3B2/300 ``mini computer'' shipped with a 30 Mb hard disk drive, 1 Mb of random access memory, and a 10 Mhz central processing unit, all of which would have cost about US\$10,000 in 1984. To put that in perspective, the 16-bit DEM of the Nelson River in Figure \ref{fig:9-mount-assiniboine-dem} is 1.3 Mb and the combination of all the terrain derivatives that we have covered so far in this chapter (slope, aspect, HLI, hillshade, TPI, profile curvature, planform curvature, flow direction and flow accumulation) amounts to 19.5 Mb of disk space for a single, modest-sized study area (938 x 751 pixels).
 
 More sophisticated flow direction algorithms have developed since then that are more robust against erroneous pixels in the input DEM, including the D-infinity flow (DINF) algorithm proposed by Tarboton \citep{tarboton_new_1997} and the multiple flow direction (MFD) algorithm developed by Qin et al. \citep{qin_adaptive_2007}. The DIF algorithm works by creating triangular facets within the 3x3 kernel, then flow direction is assigned as the azimuth of facet with the steepest slope. Calculated in this way, flow direction is represented as a continuous value between 1-360 instead of one of eight possible values with the D8 method. The MFD algorithm works by partitioning downslope flow to all eight neighbours. As a result, each neighbour receives a fraction of flow and the flow accumulation function then accumulates these fractions downslope. Figure \ref{fig:9-mount-assiniboine-flow-dir-acc} shows the D8 flow direction and associated flow accumulation for Mount Assiniboine. Once flow direction and accumuation rasters have been generated, the floodgates open for a wide range of other derivative calculations, which are discussed in the next sections.
 
+
+
 \begin{figure}
-\includegraphics[width=0.75\linewidth]{images/09-mount-assiniboine-flow-dir-acc} \caption{D8 Flow direction and flow accumulation for Mount Assiniboine at the border of Alberta and British Columbia, Canada. Data from @natural_resources_canada_canadian_2015. Pickell, CC-BY-SA-4.0.}\label{fig:9-mount-assiniboine-flow-dir-acc}
+\includegraphics[width=0.75\linewidth]{images/09-mount-assiniboine-flow-dir-acc} \caption{D8 Flow direction and flow accumulation for Mount Assiniboine at the border of Alberta and British Columbia, Canada. Data from \citep{natural_resources_canada_canadian_2015}. Pickell, CC-BY-SA-4.0}\label{fig:9-mount-assiniboine-flow-dir-acc}
 \end{figure}
 
 \subsection{Stream Delineation}\label{stream-delineation}
@@ -3562,8 +3654,10 @@ TWI=ln\frac{a}{tan(b)}
 
 where \(a\) is the local upslope area for a given cell and \(b\) is the local slope (radians) for a given cell. This calculation is essentially a ratio of flow entering a cell and the discharge of that flow out of the cell, represented by the tangent of the slope. Figure \ref{fig:9-Mattivi-et-al-2019-figure-1} illustrates an overview of the components of the TWI calculation in a conceptual geographic space.
 
+
+
 \begin{figure}
-\includegraphics[width=0.75\linewidth]{images/09-Mattivi-et-al-2019-figure-1} \caption{Conceptual figure showing how Topographic Wetness Index (TWI) is a function of (a) upslope area, (b) area and direction of local flow, and (c) the tangent of the local slope angle. Reproduced from @mattivi_twi_2019, CC-BY-4.0.}\label{fig:9-Mattivi-et-al-2019-figure-1}
+\includegraphics[width=0.75\linewidth]{images/09-Mattivi-et-al-2019-figure-1} \caption{Conceptual figure showing how Topographic Wetness Index (TWI) is a function of (a) upslope area, (b) area and direction of local flow, and (c) the tangent of the local slope angle. Reproduced from \citep{mattivi_twi_2019}, CC-BY-4.0.}\label{fig:9-Mattivi-et-al-2019-figure-1}
 \end{figure}
 
 The result is that cells with high flow accumulation and gentle slopes will have high TWI values (water pools), while cells with low accumulation and steep slopes will have low TWI values (water flows). The actual values of this ratio are unitless, but they are relative. If you are using the flow direction raster directly in your calculation, it is important to multiply \(a\) by the area represented by each cell. For example, a 10 m resolution DEM would use the following calculation:
@@ -3602,7 +3696,9 @@ Both are functions of slope angle \(\beta\), and \(SCA_{max}\) is defined as dra
 
 In addition to SAGA Wetness, another useful index that was included in the Case Study was the Multi-Resolution Valley Bottom Flatness (MRVBF) index. Introduced by \citep{gallant_multiresolution_2003}, this index identifies hill slopes and valley bottoms, and characterizes hydrological and geomorphic dynamics. This index serves to identify areas that are likely to be occupied by water, and has been used widely in remote sensing studies \citep{huang_comparison_2017}. MRVBF is derived from flatness and lowness characteristics and is computed using slope and ranked elevation, see Figure \ref{fig:9-MRVBF-diagram} \citep{gallant_multiresolution_2003}. Note that this is a simplification of the computational process, and Gallant and Dowling may be consulted for a more in-depth breakdown of the 18 equations involved in computing MRVBF. Figure \ref{fig:9-MRVBF} shows MRVBF across the study site.
 
-\label{fig:9-MRVBF-diagram}Multi-Resolution Valley Bottom Flatness (MRVBF) Computational Components described by \citet{gallant_multiresolution_2003}. Melser, CC BY 4.0.
+
+
+\label{fig:9-MRVBF-diagram}Multi-Resolution Valley Bottom Flatness (MRVBF) Computational Components described by \citep{gallant_multiresolution_2003}. Melser, CC-BY-SA-4.0.
 
 \begin{figure}
 \includegraphics[width=0.75\linewidth]{images/09-MRVBF} \caption{Multi-resolution Valley Bottom Flatness (MRVBF) across the Chowade Watershed. Melser, CC-BY-SA-4.0.}\label{fig:9-MRVBF}
@@ -3620,8 +3716,10 @@ Figures \ref{fig:9-MRVBF-DEM-profile} and \ref{fig:9-DEM-profile} below demonstr
 
 To exemplify the potential of topographic indices, SAGA Wetness, MRVBF, Slope and Aspect are combined with spectral information from satellite imagery in a classification algorithm. Using these layers, predictive mapping of three simple land cover classes - Alpine, Forested, and Wetland - was performed in the Chowade Watershed Management basin \citep{city_of_vancouver_notitle_2009}. The interactive map below in Figure \ref{fig:9-leaflet-map-layers} allows for navigation of the classified map, as well as the input layers. An exploration of the input layers and prediction raster make it apparent how certain values in the input layers informed the prediction of wetlands. In other words, low slope values, high SAGA Wetness values and valley bottoms in MRVBF. The overall accuracy from this particular classification is 84.4\%, showing the value of layer derivatives in classification exercises.
 
+
+
 \begin{figure}
-\includegraphics[width=1\linewidth]{images/09-leaflet-map-layers} \caption{Input layers and output prediction raster for the Chowade Watershed Management basin.<a href='https://ubc-geomatics-textbook.github.io/geomatics-textbook/#fig:9-leaflet-map'> Animated figure can be viewed in the web browser version of the textbook</a>. Data from @city_of_vancouver_notitle_2009 and licensed under the  under the <a href='https://opendata.vancouver.ca/pages/licence/'>Open Government License - Vancouver</a>. Lam, CC-BY-SA-4.0.}\label{fig:9-leaflet-map-layers}
+\includegraphics[width=0.75\linewidth]{images/09-leaflet-map-layers} \caption{Input layers and output prediction raster for the Chowade Watershed Management basin. Melser, CC-BY-SA-4.0. Data from \citep{city_of_vancouver_notitle_2009} and licensed under the under the Open Government License - Vancouver: \url{https://opendata.vancouver.ca/pages/licence/}. Interactive web map can be viewed in the web browser version of the textbook: \url{https://www.opengeomatics.ca/raster-analysis-and-terrain-modelling.html\#fig:9-leaflet-map-layers}.}\label{fig:9-leaflet-map-layers}
 \end{figure}
 
 \section{3D Geovisualization}\label{d-geovisualization}
@@ -3632,8 +3730,10 @@ To exemplify the potential of topographic indices, SAGA Wetness, MRVBF, Slope an
 
 \textbf{Anaglyphs} are composed of two images that are simultaneously displayed in two colours, typically red and cyan. The result when viewed through red/cyan filtered lenses is a stereographic view of the frame. Anaglyphs are among the simplest 3D geovisualizations that are frequently used to represent terrain and landforms as the effect is essentially adding depth to an otherwise 2D frame. The depth of terrain is best visualized obliquely with an anaglyph as in Figure \ref{fig:9-baffin-island-mount-odin-1} below showing Mount Odin, the highest peak on Baffin Island in Nunavut, Canada.
 
+
+
 \begin{figure}
-\includegraphics[width=0.75\linewidth]{images/09-baffin-island-mount-odin-1} \caption{Anaglyph of Mount Odin on Baffin Island, Nunavut, Canada. Imagery by @maxar_precision3d_nodate. Pickell, CC-BY-SA-4.0.}\label{fig:9-baffin-island-mount-odin-1}
+\includegraphics[width=0.75\linewidth]{images/09-baffin-island-mount-odin-1} \caption{Anaglyph of Mount Odin on Baffin Island, Nunavut, Canada. Imagery by \citep{maxar_precision3d_nodate}. Pickell, CC-BY-SA-4.0.}\label{fig:9-baffin-island-mount-odin-1}
 \end{figure}
 
 \subsection{Viewsheds}\label{viewsheds}
@@ -3644,22 +3744,28 @@ A \textbf{viewshed} is an analysis that simulates a physical line-of-sight using
 
 \textbf{Extrusion} is the process of taking 2-dimensional features such as points, lines, or polygons and assigning an elevation to each feature so that it can be visualized in 3-dimensions. An extrusion is often performed using the values of an attribute in a feature class. In this way, extrusion can be used to create 3D buildings from 2D polygons of building footprints that contain an attribute of height (Figure \ref{fig:9-vancouver-building-height-extruded}).
 
+
+
 \begin{figure}
-\includegraphics[width=0.75\linewidth]{images/09-vancouver-building-height-extruded} \caption{Animation showing building polygons in Vancouver, British Columbia extruded by a height attribute. <a href='https://ubc-geomatics-textbook.github.io/geomatics-textbook/#fig:9-vancouver-building-height-extruded'>Animated figure can be viewed in the web browser version of the textbook</a>. Building data from @city_of_vancouver_notitle_2009, licensed under <a href='https://opendata.vancouver.ca/pages/licence/'>Open Government License - Vancouver</a>. Base map © @openstreetmap_notitle_nodate contributors, licensed under Open Data Commons Open Database License. Pickell, CC-BY-SA-4.0.}\label{fig:9-vancouver-building-height-extruded}
+\includegraphics[width=0.75\linewidth]{images/09-vancouver-building-height-extruded-static} \caption{Animation showing building polygons in Vancouver, British Columbia extruded by a height attribute. Pickell, CC-BY-SA-4.0. Building data from \citep{city_of_vancouver_notitle_2009}, licensed under Open Government License - Vancouver: \url{https://opendata.vancouver.ca/pages/licence/}. Base map © \citep{openstreetmap_notitle_nodate} contributors, licensed under Open Data Commons Open Database License. Animated figure can be viewed in the web browser version of the textbook: \url{https://www.opengeomatics.ca/raster-analysis-and-terrain-modelling.html\#fig:9-vancouver-building-height-extruded}.}\label{fig:9-vancouver-building-height-extruded}
 \end{figure}
 
 Extrusion is also frequently used to visualize non-height attributes. For example, population density can be extruded as a ``height'' value to give a unique perspective of the relative change in this attribute across space that may otherwise be difficult to appreciate from a 2D map with colour alone (Figure \ref{fig:9-vancouver-population-density-2016}).
 
+
+
 \begin{figure}
-\includegraphics[width=0.75\linewidth]{images/09-vancouver-population-density-2016} \caption{Census dissemination areas extruded by population density (2016) for Vancouver, British Columbia. Census data from @government_of_canada_focus_2017, licensed under Statistics Canada Open License. Reproduced and distributed on an 'as is' basis with the permission of Statistics Canada. Base map © @openstreetmap_notitle_nodate contributors, licensed under Open Data Commons Open Database License. Pickell, CC-BY-SA-4.0.}\label{fig:9-vancouver-population-density-2016}
+\includegraphics[width=0.75\linewidth]{images/09-vancouver-population-density-2016} \caption{Census dissemination areas extruded by population density (2016) for Vancouver, British Columbia. Census data from \citep{government_of_canada_focus_2017}, licensed under Statistics Canada Open License. Reproduced and distributed on an `as is' basis with the permission of Statistics Canada. Base map © \citep{openstreetmap_notitle_nodate} contributors, licensed under Open Data Commons Open Database License. Pickell, CC-BY-SA-4.0.}\label{fig:9-vancouver-population-density-2016}
 \end{figure}
 
 \subsection{Exaggeration}\label{exaggeration}
 
 \textbf{Exaggeration} is the process of multiplying real height or elevation values by a constant factor in order create a larger range of values so that vertical features and patterns are made more apparent. Figure \ref{fig:9-mount-logan-exaggeration} illustrates an example of exaggeration of a DEM for Mount Logan, the highest peak in Canada (5,959 m), located in the Yukon Territory.
 
+
+
 \begin{figure}
-\includegraphics[width=0.75\linewidth]{images/09-mount-logan-exaggeration} \caption{Elevation exaggeration of Mount Logan elevation, Yukon Territory, Canada. Digital Elevation Model by @natural_resources_canada_canadian_2015. Pickell, CC-BY-SA-4.0.}\label{fig:9-mount-logan-exaggeration}
+\includegraphics[width=0.75\linewidth]{images/09-mount-logan-exaggeration} \caption{Elevation exaggeration of Mount Logan elevation, Yukon Territory, Canada. Digital Elevation Model by \citep{natural_resources_canada_canadian_2015}. Pickell, CC-BY-SA-4.0.}\label{fig:9-mount-logan-exaggeration}
 \end{figure}
 
 \chapter{Fundamentals of Remote Sensing}\label{fundamentals-of-remote-sensing}
@@ -3700,21 +3806,25 @@ The ability to record the interaction of light and specific objects within a sce
 
 In 1858, an enthusiastic Frenchman named Gaspard Tournachon mounted a camera on a hot air balloon and captured images of the earth below him. Eventually, Tournachon used his balloon method to capture images of Paris (Figure \ref{fig:11-nadar}). For the first time it was possible to examine the distribution of buildings, fields, forests and roads across the landscape. With this, airborne remote sensing was born. Remote sensing technologies continued to advance throughout the 19th and 20th centuries, with major socio-political conflicts like World War I and II acting as crucibles for innovation. The advancement of remote sensing has continued into the 21st century and is unlikely to slow down in the future. This is due to the relevance of three key aspects.
 
+
+
 \begin{figure}
-\includegraphics[width=0.75\linewidth]{images/11-nadar-triomphe-1868} \caption{Images of the Arc de Triomphe in Paris, France taken by Tournachone from a balloon in 1968 [@nadar_arc_1868].}\label{fig:11-nadar}
+\includegraphics[width=0.75\linewidth]{images/11-nadar-triomphe-1868} \caption{Images of the Arc de Triomphe in Paris, France taken by Tournachone from a balloon in 1968 \citep{nadar_arc_1868}.}\label{fig:11-nadar}
 \end{figure}
 
 First and foremost, remote sensing enables the observation of objects in, or from, locations that are otherwise inaccessible for humans. The observation of Mars' surface from an orbiting satellite is a one current example. A second aspect that makes remote sensing so useful is the collection of information over a large area. For example, airborne remote sensing technologies enable observations of land cover across Canada (Figure \ref{fig:11-hermosilla-canada-landcover}). The ability to evaluate inaccessible objects or large areas over time is a third valuable aspect of remote sensing and is particularly relevant for land management, as predictions can be informed through the observation of historic patterns and processes. This is especially true for projects aiming to restore degraded ecosystems or plan sustainable land use practices. Before exploring the designs of specific sensor or their applications, however, it is essential to grasp some key components that underpin remote sensing science.
 
+
+
 \begin{figure}
-\includegraphics[width=10.64in]{images/11-hermosilla-canada-landcover} \caption{Landcover classification of Canada generated by Hermosilla et al. for the year 2005 [@hermosilla_disturbance-informed_2018].}\label{fig:11-hermosilla-canada-landcover}
+\includegraphics[width=0.75\linewidth]{images/11-hermosilla-canada-landcover} \caption{Landcover classification of Canada generated by Hermosilla et al.~for the year 2005 \citep{hermosilla_disturbance-informed_2018}.}\label{fig:11-hermosilla-canada-landcover}
 \end{figure}
 
 \section{Measuring Energy}\label{measuring-energy}
 
 At its core, remote sensing is simply the measurement of photons. Although simple, this description captures the essence of remote sensing as the capacity to observe objects in our universe, from a single leaf to a distant star You see, if an object exists it has a temperature, and any object that has a temperature emits photons. The properties of those photons are determined by how hot the object is. To really understand remote sensing, then, we must first understand photons, or electromagnetic radiation.
 
-Essentially, photons are the smallest physical property in the electromagnetic field. Photons can be emitted from objects engaged in nuclear processes (such as the sun), objects excited thermally (like a light bulb) or objects that reflect or emit absorbed radiation. The interactions between emitted photons and other particles can be observed and used to evaluate the properties of the object. A fundamental component of a photon is it's \textbf{wavelength}, defined as the measured space between two consecutive peaks of a wave. The wavelength of a photon determines if and how it will interact with the particles around it, as well as defines the amount of \textbf{energy} it has. Measuring the differences in photon energy before and after interacting with another particle is the core of any remote sensing utilizing EMR. Equation \eqref{eq:energy-wvl} defines the relationship between a photon's energy and wavelength.
+Essentially, photons are the smallest physical property in the electromagnetic field. Photons can be emitted from objects engaged in nuclear processes (such as the sun), objects excited thermally (like a light bulb) or objects that reflect or emit absorbed radiation. The interactions between emitted photons and other particles can be observed and used to evaluate the properties of the object. A fundamental component of a photon is its \textbf{wavelength}, defined as the measured space between two consecutive peaks of a wave. The wavelength of a photon determines if and how it will interact with the particles around it, as well as defines the amount of \textbf{energy} it has. Measuring the differences in photon energy before and after interacting with another particle is the core of any remote sensing utilizing EMR. Equation \eqref{eq:energy-wvl} defines the relationship between a photon's energy and wavelength.
 
 \begin{equation}
 E = hc/λ 
@@ -3727,8 +3837,10 @@ Where E is the energy of a photon, h is Planck's constant, c is the speed of lig
 
 Now that you have an understanding of how the properties of photons can be measured and how to write them, we can begin to explore the \textbf{electromagnetic spectrum (EMS)}. The EMS is the continuum along within photons are located based on their properties (Figure \ref{fig:11-EMS}). We have discussed both wavelength and frequency, which are inversely related and commonly used to describe EMR. Figure \ref{fig:11-EMS} also depicts a thermometer laying sideways, which demonstrates that as an object's temperature increases, the wavelength of the photons emitted decreases. This follows Equation \eqref{eq:energy-wvl}, which demonstrates that photons with shorter wavelengths have higher energy. A practical example of this would be that the majority of photons emitted from the sun (5,788 K) are around 0.5 x 10\textsuperscript{-6} nm, while the majority of photons emitted from the human body (\textasciitilde310 K) are around 10\textsuperscript{-4} nm. These measurements are theoretical and are calculated using theoretical object, often called a blackbody that allows all energy to enter (no reflectance, hence ``black'') and be absorbed (no transmission). The resulting EMR that is emitted would be generated thermally and be equal or greater than any other body at the same temperature. It is important to remember, however, that blackbodies do not exist and any real object will always emit a temperature less than a theoretical blackbody.
 
+
+
 \begin{figure}
-\includegraphics[width=2\linewidth]{images/11-EMS} \caption{Electromagnetic (also known as Milton) spectrum depicting the type, wavelength, frequency and black body emission temperature [@inductiveload_em_2007].}\label{fig:11-EMS}
+\includegraphics[width=0.75\linewidth]{images/11-EMS} \caption{Electromagnetic (also known as Milton) spectrum depicting the type, wavelength, frequency and black body emission temperature \citep{inductiveload_em_2007}.}\label{fig:11-EMS}
 \end{figure}
 
 Visualizing the electromagnetic spectrum (EMS) in Figure \ref{fig:11-EMS} certainly enables a wonderful comprehension of many concepts relating to photons. Perhaps more astounding, however, is the truth of how the faculty of human vision has incorporated these properties. The portion of the EMS that humans can see is between 400 nm and 750 nm, which correlates with the peak energy emitted from the sun. Perhaps it should not be surprising, but of all the possible wavelengths emitted in our environment, human eyes have evolved to maximize solar photon emission.
@@ -3810,20 +3922,26 @@ So far we have discussed radiant energy and flux as basic concepts interacting w
 
 The three categories of atmospheric scattering are defined by the energy's wavelength and the size of the interacting particle. When the wavelength of incoming radiation is larger than the particles (gases and water vapor) with which it interacts, Rayleigh scattering occurs. Phenomenon related to Rayleigh scattering include Earth's sky appearing blue (Figure \ref{fig:11-scattering}). When the wavelength of incoming radiation is similar to that of the particles with which it interacts Mie scattering occurs. The size of particles generally considered to similar is between 0.1 - 10 times that of the wavelength (Figure \ref{fig:11-scattering}). Smoke and dust are common causes of Mie scattering. A third type of scattering occurs when the particles involved are larger than the wavelength of the incoming radiation. This is called non-selective scattering and results in the uniform scattering of light regardless of the wavelength (Figure \ref{fig:11-scattering}). Examples of non-selective scattering are clouds and fog.
 
+
+
 \begin{figure}
-\includegraphics[width=8.89in]{images/11-scattering} \caption{Depiction of Rayleigh, Mie and non-selective scattering [@the_good_doctor_fry_diagram_2011]. CC BY-SA 4.0.}\label{fig:11-scattering}
+\includegraphics[width=0.75\linewidth]{images/11-scattering} \caption{Depiction of Rayleigh, Mie and non-selective scattering \citep{the_good_doctor_fry_diagram_2011}, CC-BY-SA-4.0.}\label{fig:11-scattering}
 \end{figure}
 
 The combination of these three scattering types leads to drastic differences between the amount of solar irradiance at the top of the atmosphere and at sea level (Figure \ref{fig:11-solar-radiation}). There are also a variety of wavelengths at which ozone, oxygen, water and carbon dioxide absorb incoming radiation, precluding entire sections of the EMS from reaching the surface. Overall, only a small portion of energy emitted from the sun reaches the Earth's surface (\textasciitilde1360 W · m\textsuperscript{-2}), depending on the time of day and year. Most energy is absorbed or scattered by particles in the Earth's atmosphere.
 
+
+
 \begin{figure}
-\includegraphics[width=11.11in]{images/11-solar-radiation} \caption{Solar radiation spectrum from 250 - 2500 nm. Irradiance measurements at the top of the atmosphere (yellow) and sea level (red) are depicted. The grey line represents the theoretical curve of a 5250 degree C blackbody spectrum [@rohde_solar_2008]. CC BY-SA 3.0.}\label{fig:11-solar-radiation}
+\includegraphics[width=0.75\linewidth]{images/11-solar-radiation} \caption{Solar radiation spectrum from 250 - 2500 nm. Irradiance measurements at the top of the atmosphere (yellow) and sea level (red) are depicted. The grey line represents the theoretical curve of a 5250 degree C blackbody spectrum \citep{rohde_solar_2008}, CC-BY-SA-3.0.}\label{fig:11-solar-radiation}
 \end{figure}
 
 The process of scattering is also affected by the properties with which the scattering EMR interacts. The angle at which EMR interacts with a surface, as well as the surface material, determine the properties of reflection. A reflector is described based on the properties of EMR that are reflected from it and range from specular to diffuse (Figure \ref{fig:11-reflectors}). Specular reflectance occurs when EMR is reflected in a single direction and can also be called anisotropic reflectance. A mirror is an example of a \textbf{specular reflector}. A diffuse or \textbf{Lambertian reflector} reflects EMR in all directions equally and can also be called an isotropic reflector. An example of a surface that reflects EMR isotropically is paper.
 
+
+
 \begin{figure}
-\includegraphics[width=0.75\linewidth,height=0.75\textheight]{images/11-reflectors} \caption{Depictions of specular and diffuse reflectors [@beck_specular_2012]. CC BY-SA 3.0.}\label{fig:11-reflectors}
+\includegraphics[width=0.75\linewidth]{images/11-reflectors} \caption{Depictions of specular and diffuse reflectors \citep{beck_specular_2012}, CC-BY-SA-3.0.}\label{fig:11-reflectors}
 \end{figure}
 
 This is not to say that diffuse reflectors are perfect, however, as some issues remain related to the angle of incidence and the position of the sensor. For example, both back scattering and forward scattering affect the amount of radiation that reaches a sensor, depending on where the sensor is located. If a sensor is observing an object at the same angle as the incident radiation, the majority of reflected EMR will be from backscatter, or EMR that is scattered back towards its source. If the object being observed is perfectly specular, no EMR reflected off the object would be captured by the sensor. If the object is a diffuse or near-perfect diffuse reflector, then there is less of a concern with regards to capturing reflected EMR.
@@ -3832,8 +3950,10 @@ This is not to say that diffuse reflectors are perfect, however, as some issues 
 
 Now that we have discussed radiant energy and the concepts underpinning its interactions with other objects, we can begin to explore the measurements that our sensors record. One of the most important concepts to understand is that of the spectral signature, or spectra. A spectral signature refers to the amount of electromagnetic energy recorded across a defined section of the EMS. Use our EMS visualization tool to examine spectral signatures for different land covers (Figure \ref{fig:11-ems-visualization-static}).
 
+
+
 \begin{figure}
-\includegraphics[width=0.75\linewidth]{images/11-ems-visualization-static} \caption{Online tool for visualizing the spectral signatures for different land covers using hyperspectral Hyperion satellite imagery. Data from United States Geological Survey - Licensed by U.S. Public Domain. <a href='https://ubcemergingmedialab.github.io/geomatics-textbook/viz/emspectrum-viz/'>Click here to access the interactive tool.</a> Kenny Zhou, CC-BY-SA-4.0.}\label{fig:11-ems-visualization-static}
+\includegraphics[width=0.75\linewidth]{images/11-ems-visualization-static} \caption{Online tool for visualizing the spectral signatures for different land covers using hyperspectral Hyperion satellite imagery. Data from United States Geological Survey - Licensed by U.S. Public Domain. Kenny Zhou, CC-BY-SA-4.0. Interactive tool can be viewed in the web browser version of the textbook: \url{https://ubcemergingmedialab.github.io/geomatics-textbook/viz/emspectrum-viz/}}\label{fig:11-ems-visualization-static}
 \end{figure}
 
 The base measurements taken to generate spectral signatures is of an objects radiance. Acquiring radiance across a defined section of the EMS can be conducted by a variety of sensors and at different spatial scales, highlighting the practical advantages of evaluating surfaces using electromagnetic radiation. To fully capture and compare the ojects being measured, however, it is often necessary to normalize radiance. The need for normalization stems mainly from the aforementioned issues of atmospheric effects, source and sensor location and sensor calibration. As with any normalization, the first step is to identify our minimum and maximum values.
@@ -3890,14 +4010,16 @@ Each of these components plays a role is describing the spectral resolution of a
 
 A common method for visualizing the spectral resolution of a sensor is to place each band along the EMS according to its associated bandwidth and wavelengths (Figure \ref{fig:11-landsat-bands}). This allows users to determine which sensor best captures the information they are interested in studying. For some applications, such as land cover, it is acceptable to use sensors with relatively wide bands collecting information in a small number of strategic locations along the EMS. For other applications, spectral information may need to be more detailed and capture information using thin, adjacent bands spanning a large region of the EMS.
 
+
+
 \begin{figure}
-\includegraphics[width=1\linewidth]{images/11-landsat-bands} \caption{Locations of bands for various sensors deployed by NASA on one of more Landsat misison. Landsat 1-5 had the Multispectral Scanner System (MSS), while the Thematic Mapper (TM) was aboard Landsat 4-5. The Enrinched TM Plus (ETM+) had 8 bands and was aboard Landsat 7. Grey distributions in the background represent the atmospheric transmission values for a mid-latitude, hazy, summer atmosphere [@nasa_atmospheric_nodate].}\label{fig:11-landsat-bands}
+\includegraphics[width=0.75\linewidth]{images/11-landsat-bands} \caption{Locations of bands for various sensors deployed by NASA on one of more Landsat misison. Landsat 1-5 had the Multispectral Scanner System (MSS), while the Thematic Mapper (TM) was aboard Landsat 4-5. The Enrinched TM Plus (ETM+) had 8 bands and was aboard Landsat 7. Grey distributions in the background represent the atmospheric transmission values for a mid-latitude, hazy, summer atmosphere \citep{nasa_atmospheric_nodate}.}\label{fig:11-landsat-bands}
 \end{figure}
 
 The collection of spectral data across more than one band allows the creation of a spectral curve, or spectral signature. Spectral signature are the cornerstone of many remote sensing applications and highlight many properties of the surface from which they were collected. The creation of a spectral signature is quite simple and can be depicted in two dimensions (Figure \ref{fig:11-specsig}). Essentially, the observed value of each band is connected to the observed value of each adjacent band in 2D space. When all bands are connected, a spectral signature is born. As we will see in a later case study, spectral signatures can provide a plethora of relevant information relating to the composition of an object.
 
 \begin{figure}
-\includegraphics[width=2\linewidth]{images/11-spectralsig} \caption{Five spectral signatures of various living and non-living samples collected using an ASD FieldSpec3 Imaging Spectroradiometer. Live = live broadleaf, Dead = dead broadleaf, Fir = Douglas-fir needles on branch, Rock = rock, soil = dry humus soil. Hacker, CC-BY-SA-4.0.}\label{fig:11-specsig}
+\includegraphics[width=0.75\linewidth]{images/11-spectralsig} \caption{Five spectral signatures of various living and non-living samples collected using an ASD FieldSpec3 Imaging Spectroradiometer. Live = live broadleaf, Dead = dead broadleaf, Fir = Douglas-fir needles on branch, Rock = rock, soil = dry humus soil. Hacker, CC-BY-SA-4.0.}\label{fig:11-specsig}
 \end{figure}
 
 \section{Radiometric Resolution}\label{radiometric-resolution}
@@ -3914,7 +4036,7 @@ The radiometric resolution of a detector, then, is the number of discernible val
 \end{equation}
 
 \begin{figure}
-\includegraphics[width=9.46in]{images/11-radiometric-res} \caption{Discernable values of sensors with 1, 2 and 4 bot radiometric resolutions. Hacker, CC-BY-SA-4.0.}\label{fig:11-radiometric}
+\includegraphics[width=0.75\linewidth]{images/11-radiometric-res} \caption{Discernable values of sensors with 1, 2 and 4 bot radiometric resolutions. Hacker, CC-BY-SA-4.0.}\label{fig:11-radiometric}
 \end{figure}
 
 \section{Key Applications}\label{key-applications}
@@ -3937,14 +4059,18 @@ Before exploring the methods of this study, it is important to highlight the qua
 
 Another important quality of Landsat is that every satellite carries a multi-spectral sensor with at least four bands, which enables the differentiation between multiple land cover classes, including vegetation and urban building. More information regarding the changes in spectral resolution between Landsat satellites can be found in Figure \ref{fig:11-landsat-bands}. The temporal resolution of Landsat is the third high-quality characteristic of this satellite mission that enables the accurate evaluation of land cover. With a revisit time of 16 days, Landsat provides information for the same location on Earth almost twice per month. This is particularly important for a country as large as Canada, which contains 12 ecozones dominated by forest, and enables the selection of a Best Available Pixel (BAP), which is selected based on a variety of criteria that quantifies a pixels quality (Figure \ref{fig:11-hermo-false}). You can learn more about Landsat BAP in the article by Thompson et al. \citep{thompson_mapping_2015}.
 
+
+
 \begin{figure}
-\includegraphics[width=0.9\linewidth]{images/11-hermosilla-false-colour} \caption{False colour composite (bands: shortwave infrared, near infrared and red) for 2010. Each pixel in this image was selected based on its classification as a Best Available Pixel (BAP) [@hermosilla_disturbance-informed_2018].}\label{fig:11-hermo-false}
+\includegraphics[width=0.75\linewidth]{images/11-hermosilla-false-colour} \caption{False colour composite (bands: shortwave infrared, near infrared and red) for 2010. Each pixel in this image was selected based on its classification as a Best Available Pixel (BAP) \citep{hermosilla_disturbance-informed_2018}.}\label{fig:11-hermo-false}
 \end{figure}
 
 For their analysis, the authors Hermosilla et al.~used imagery captured from Landsat 5 onward with the Thematic Mapper, which means their data contained seven unique spectral bands spanning segments between 0.45 nm to 2.35 nm. The ability to observe reflectance values across a relatively wide range of the EMS enabled land cover analysis across all forested eco-regions in Canada. After applying a masking model, the authors devised a framework to generate annual land cover maps for all of Canada's forested areas, which were presented at the beginning of this chapter (Figure \ref{fig:11-hermosilla-canada-landcover}). From these annual composites, it was also possible for the authors to identify land cover change over time and quantify the effects of specific disturbance types, such as harvesting and fire (Figure \ref{fig:11-hermo-disturb}). These comprehensive maps demonstrate the capability of well-designed remote sensing technologies to obtain scientifically relevant information and highlight the potential of remote sensing in environmental assessment \citep{hermosilla_disturbance-informed_2018}.
 
+
+
 \begin{figure}
-\includegraphics[width=0.9\linewidth]{images/11-hermo-disturbance} \caption{Temporal sequences depicting landcover before and after (a) harvesting and (b) fire. The year of change is represented by 'Y' [@hermosilla_disturbance-informed_2018].}\label{fig:11-hermo-disturb}
+\includegraphics[width=0.75\linewidth]{images/11-hermo-disturbance} \caption{Temporal sequences depicting landcover before and after (a) harvesting and (b) fire. The year of change is represented by `Y' \citep{hermosilla_disturbance-informed_2018}.}\label{fig:11-hermo-disturb}
 \end{figure}
 
 \section{Summary}\label{summary-3}
@@ -3975,8 +4101,10 @@ Claire Armour and Paul Pickell
 
 You probably know that you are using your very own organic remote sensing system to read this sentence. Our eyes take in information from the world around us by detecting changes in light and relaying that information through the optic nerve into our brains, where we make sense of what we are seeing. As you learned in \href{https://ubc-geomatics-textbook.github.io/geomatics-textbook/fundamentals-of-remote-sensing.html}{Chapter 11}, this is what constitutes remote sensing - gathering information (``sensing'') without directly measuring or interacting with that information (``remote''). Whereas our eyes are limited to the visible light portion of the electromagnetic spectrum and by the location of our bodies, remote sensing systems use powerful sensors and flight-equipped platforms to paint a broader and deeper picture of the world around us. The picture in figure \ref{fig:12-GOES-1-earth} is an example of the beautiful imagery we can capture from space, taken from the GOES-1 satellite.
 
+
+
 \begin{figure}
-\includegraphics[width=0.9\linewidth]{images/12-GOES_1_earth} \caption{North and South America as seen from the NASA GOES-1 satellite [@nasa_goes-1_nodate]. Captured from KeepTrack.space. [Copyright (C) 2007 Free Software Foundation, Inc.](https://fsf.org/)}\label{fig:12-GOES-1-earth}
+\includegraphics[width=0.75\linewidth]{images/12-GOES_1_earth} \caption{North and South America as seen from the NASA GOES-1 satellite \citep{nasa_goes-1_nodate}. Captured from KeepTrack.space. \href{https://fsf.org/}{Copyright (C) 2007 Free Software Foundation, Inc.}}\label{fig:12-GOES-1-earth}
 \end{figure}
 
 Remote sensing systems range in size and complexity from a handheld camera to the Hubble telescope and capture images of areas ranging from a few meters to several kilometers in size. Though devices such as microscopes, X-ray machines, and handheld radios are technically remote sensing systems, the field of remote sensing typically refers to observing Earth on a small spatial scale (1:100 to 1:250,000).
@@ -4014,8 +4142,10 @@ The property of transparent mediums to change the direction of light beams is ca
 
 The lens at the front of your eyeball changes refracts light beams from varying distances precisely onto your retina. The optical systems on remote sensing platforms are the same: they use a specially designed lens to focus light beams at the desired distance to onto their own recording medium. Below in figure \ref{fig:12-focus-example-humaneye} is a simple visualization of how optical systems focus light onto a desired point to produce an in-focus image.
 
+
+
 \begin{figure}
-\includegraphics[width=0.9\linewidth]{images/12-focus_example_humaneye} \caption{Focusing lens [@vorenkamp_how_2015]. <a href='https://ubc-geomatics-textbook.github.io/geomatics-textbook/#fig:12-focus-example-humaneye'>Animated figure can be viewed in the web browser version of the textbook</a>. Copyright Todd Vorenkamp. Used with permission.}\label{fig:12-focus-example-humaneye}
+\includegraphics[width=0.75\linewidth]{images/12-focus_example_humaneye-static} \caption{Focusing lens (Vorenkamp 2015). Animated figure can be viewed in the web browser version of the textbook: \url{https://www.opengeomatics.ca/remote-sensing-systems.html\#fig:12-focus_example_humaneye}.}\label{fig:12-focus-example-humaneye}
 \end{figure}
 
 Now, picture another scene: you are scrolling through social media and you see a beautiful photo of Mt Assiniboine taken by your friend, a professional photographer based in the Canadian Rockies. You think to yourself, ``Wow, that peak looks ENORMOUS! I want to visit there and see it for myself.'' So, you ask your friend exactly where they went, drive to Banff National Park, hike to the very same spot, and squint skywards. Hmm\ldots though the mountain is still imposing, it is certainly not towering over you at close range as it was in the photo. You also notice that there are several surrounding peaks that you couldn't see before. Your friend's picture was crystal-clear, and you have 20/20 vision, so you know its not an issue with focusing properly. Are you being deceived?
@@ -4042,12 +4172,16 @@ Now that we know a little bit about what lenses look like, let us turn to consid
 
 The point where the light converges or appears to converge is called the \emph{focal point}, and the distance between the focal point and the centre of the lens is called the \emph{focal length}. For a converging lens, the focal length is positive; for a diverging lens, it is negative. Figures \ref{fig:12-convex-focal-diagram} and \ref{fig:12-concave-focal-diagram} illustrate the behaviour of light when travelling through a biconvex and biconcave lens. See the paragraph below the diagrams for variable labels.
 
-\begin{figure}
-\includegraphics[width=0.9\linewidth]{images/12-convex_focal_diagram} \caption{Measurements in a biconvex lens. [@drbob_positive_2006], CC-BY-3.0 Unported.}\label{fig:12-convex-focal-diagram}
-\end{figure}
+
 
 \begin{figure}
-\includegraphics[width=0.9\linewidth]{images/12-concave_focal_diagram} \caption{Measurements in a biconcave lens. [@drbob_negative_2006], CC-BY-3.0 Unported.}\label{fig:12-concave-focal-diagram}
+\includegraphics[width=0.75\linewidth]{images/12-convex_focal_diagram} \caption{Measurements in a biconvex lens. \citep{drbob_positive_2006}, CC-BY-3.0 Unported.}\label{fig:12-convex-focal-diagram}
+\end{figure}
+
+
+
+\begin{figure}
+\includegraphics[width=0.75\linewidth]{images/12-concave_focal_diagram} \caption{Measurements in a biconcave lens. \citep{drbob_negative_2006}, CC-BY-3.0 Unported.}\label{fig:12-concave-focal-diagram}
 \end{figure}
 
 The optical power of a lens -- the degree to which it can converge or diverge light -- is the reciprocal of focal length. Essentially, a ``powerful'' lens will be able to refract light beams at sharper angles from the horizontal, causing them to converge or appear to converge closer to the lens, i.e., at a smaller focal length. The \textbf{Lensmaker's Equation} (Equation 1) allows us to calculate the focal length (\(f\)) and/or optical power (\(\frac{1}{f}\)) as a function of the radii of curvature (\(R\)), the thickness of the lens between the optical surfaces (\(d\)), and the refractive index of the lens material (\(n\)). Note that \(R_1\) is the front surface - the side of the lens closest to the origin of the light - and \(R_2\) is the back surface.
@@ -4060,12 +4194,16 @@ When you return from your trip, your friend decides to test you on your new skil
 
 \emph{Try this}: from the peak of Mt Assiniboine (the very big one), draw a line straight downwards or cover half of the photo with a piece of paper, and then do the same for the other photo. Does the line or paper edge intersect at the same points of the foreground in each photo? Can you see the same parts of the mountains in the foreground? Use the rock and snow patterns for reference. If the cameras were the same focal length, even with different cropping and lighting as seen here, the answers should both be yes. Can you tell which photo was taken with a 67mm lens and which was taken with a 105mm lens? See the answers at the end of the chapter.
 
-\begin{figure}
-\includegraphics[width=0.9\linewidth]{images/12-assiniboine_day} \caption{Mt Assiniboine, image one [@maguire_mt_nodate]. [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)}\label{fig:12-assiniboine-day}
-\end{figure}
+
 
 \begin{figure}
-\includegraphics[width=0.9\linewidth]{images/12-assiniboine_sunset} \caption{Mt Assiniboine, image two [@maguire_mt_nodate-1]. [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)}\label{fig:12-assiniboine-sunset}
+\includegraphics[width=0.75\linewidth]{images/12-assiniboine_day} \caption{Mount Assiniboine, image one \citep{maguire_mt_nodate}, CC-BY-4.0}\label{fig:12-assiniboine-day}
+\end{figure}
+
+
+
+\begin{figure}
+\includegraphics[width=0.75\linewidth]{images/12-assiniboine_sunset} \caption{Mount Assiniboine, image two \citep{maguire_mt_nodate-1}, CC-BY-4.0}\label{fig:12-assiniboine-sunset}
 \end{figure}
 
 \subsection{Sensors}\label{sensors}
@@ -4084,14 +4222,18 @@ Building remote sensing systems can be costly, so it is in our best interest to 
 
 Remote sensing systems typically have zero, one, or two degrees of motion. Rarely do remote sensing systems have all three. It is usually not necessary to have so much range of motion and more moving parts means a higher possibility of malfunction, which can be a real headache when the defunct system is orbiting 700 km above the Earth's surface. These combinations of degrees of motion give rise to the three primary types of scanners. \textbf{Push broom} scanners are a type of scanner that have detectors arranged in a single-file line and take advantage of the forward movement of the remote sensing platform, known as \textbf{along-track} scanning, to build images line-by-line (Figure \ref{fig:12-push-broom}). In other words, push broom scanners have two degrees of motion: the platform and the lenses.
 
+
+
 \begin{figure}
-\includegraphics[width=0.9\linewidth]{images/12-push-broom} \caption{Visualization of how a push broom scanner captures imagery. The dark purple squares represent the subset of the area seen by the scanner at any given time and the lighter purple squares show previously scanned areas. <a href='https://ubc-geomatics-textbook.github.io/geomatics-textbook/#fig:12-push-broom'>Animated figure can be viewed in the web browser version of the textbook</a>. Armour, CC-BY-SA-4.0.}\label{fig:12-push-broom}
+\includegraphics[width=0.75\linewidth]{images/12-push-broom-static} \caption{Visualization of how a push broom scanner captures imagery. The dark purple squares represent the subset of the area seen by the scanner at any given time and the lighter purple squares show previously scanned areas. Armour, CC-BY-SA-4.0. Animated figure can be viewed in the web browser version of the textbook: \url{https://www.opengeomatics.ca/remote-sensing-systems.html\#fig:12-push-broom}.}\label{fig:12-push-broom}
 \end{figure}
 
-By contrast, \textbf{whisk broom} scanners have an array of detectors that are mechanically moved from side-to-side, known as \textbf{cross-track} scanning because the image is produced by scanning across the track of the remote sensing platform direction of motion ((Figure \ref{fig:12-whisk-broom}). Thus, whisk broom scanners have three degrees of motion: the platform, the lenses, and the camera. The last type of scanner is known as a \textbf{staring array}, so-called because the sensors are arranged in a rectangular array that are pointed at the surface or object to be imaged. In this way, the image is built all at once as the light is focused onto the focal plane. Most consumer cameras use staring arrays, which usually have two or fewer degrees of motion, depending on the application.
+By contrast, \textbf{whisk broom} scanners have an array of detectors that are mechanically moved from side-to-side, known as \textbf{cross-track} scanning because the image is produced by scanning across the track of the remote sensing platform direction of motion (Figure \ref{fig:12-whisk-broom}). Thus, whisk broom scanners have three degrees of motion: the platform, the lenses, and the camera. The last type of scanner is known as a \textbf{staring array}, so-called because the sensors are arranged in a rectangular array that are pointed at the surface or object to be imaged. In this way, the image is built all at once as the light is focused onto the focal plane. Most consumer cameras use staring arrays, which usually have two or fewer degrees of motion, depending on the application.
+
+
 
 \begin{figure}
-\includegraphics[width=0.9\linewidth]{images/12-whisk-broom} \caption{Visualization of how a whisk broom scanner captures imagery. The dark blue squares represent the subset of the area seen by the scanner at any given time and the lighter blue squares show previously scanned areas. The size of the subset may change between a single pixel (one square) or a spotlight (multiple squares) but the motion remains the same. <a href='https://ubc-geomatics-textbook.github.io/geomatics-textbook/#fig:12-whisk-broom'>Animated figure can be viewed in the web browser version of the textbook</a>. Armour, CC-BY-SA-4.0.}\label{fig:12-whisk-broom}
+\includegraphics[width=0.75\linewidth]{images/12-whisk-broom-static} \caption{Visualization of how a whisk broom scanner captures imagery. The dark blue squares represent the subset of the area seen by the scanner at any given time and the lighter blue squares show previously scanned areas. The size of the subset may change between a single pixel (one square) or a spotlight (multiple squares) but the motion remains the same. Armour, CC-BY-SA-4.0. Animated figure can be viewed in the web browser version of the textbook: \url{https://www.opengeomatics.ca/remote-sensing-systems.html\#fig:12-whisk-broom}.}\label{fig:12-whisk-broom}
 \end{figure}
 
 In remote sensing systems, the FOV is usually expressed as an angle with the following equation:
@@ -4160,20 +4302,26 @@ There are four camera perspectives used for Earth observation discussed here: ae
 
 The plane of the lens is perpendicular to the ground plane and the lens vector is pointed straight downwards at the ground. Figure \ref{fig:12-aerial-plane} is an example.
 
+
+
 \begin{figure}
-\includegraphics[width=0.9\linewidth]{images/12-aerial-plane} \caption{Aerial photo of forest, road, and river near Kitimat, BC [@den_engelsen_photo_2020]. [Unsplash License.](https://unsplash.com/license)}\label{fig:12-aerial-plane}
+\includegraphics[width=0.75\linewidth]{images/12-aerial-plane} \caption{Aerial photo of forest, road, and river near Kitimat, British Columbia \citep{den_engelsen_photo_2020}. \href{https://unsplash.com/license}{Unsplash License.}}\label{fig:12-aerial-plane}
 \end{figure}
 
 Aerial imagery can be taken from remotely piloted aircraft systems (RPAs), airplanes, or satellites and thus has a huge range of resolutions and area coverage. It is highly sensitive to adverse weather, cloud cover or poor air quality, and variable lighting, so it needs to be carefully timed or collected at frequent intervals to account for unusable data.
 
-\emph{It is important to note that the ``ground plane'' refers to a plane tangent to the geoid and not the physical ground surface. In variable terrain such as mountains, much of the ground will be seen ``at an angle'', but the overall camera perspective is unchanged. See figures \ref{fig:12-aerial-good} and \ref{fig:12-aerial-bad} for a visualization of what this looks like with regards to aerial imagery.}
+It is important to note that the ``ground plane'' refers to a plane tangent to the geoid and not the physical ground surface. In variable terrain such as mountains, much of the ground will be seen ``at an angle'', but the overall camera perspective is unchanged. See figures \ref{fig:12-aerial-good} and \ref{fig:12-aerial-bad} for a visualization of what this looks like with regards to aerial imagery.
+
+
 
 \begin{figure}
-\includegraphics[width=0.9\linewidth]{images/12-aerial-good} \caption{How aerial imagery should be taken. <a href='https://ubc-geomatics-textbook.github.io/geomatics-textbook/#fig:12-aerial-good'> Animated figure can be viewed in the web browser version of the textbook.</a> Armour, CC-BY-SA-4.0.}\label{fig:12-aerial-good}
+\includegraphics[width=0.75\linewidth]{images/12-aerial-good-static} \caption{How aerial imagery should be taken. Armour, CC-BY-SA-4.0. Animated figure can be viewed in the web browser version of the textbook: \url{https://www.opengeomatics.ca/remote-sensing-systems.html\#12-aerial-good}.}\label{fig:12-aerial-good}
 \end{figure}
 
+
+
 \begin{figure}
-\includegraphics[width=0.9\linewidth]{images/12-aerial-bad} \caption{How aerial imagery should NOT be taken.<a href='https://ubc-geomatics-textbook.github.io/geomatics-textbook/#fig:12-aerial-bad'>Animated figure can be viewed in the web browser version of the textbook.</a> Armour, CC-BY-SA-4.0.}\label{fig:12-aerial-bad}
+\includegraphics[width=0.75\linewidth]{images/12-aerial-bad-static} \caption{How aerial imagery should not be taken. Armour, CC-BY-SA-4.0. Animated figure can be viewed in the web browser version of the textbook: \url{https://www.opengeomatics.ca/remote-sensing-systems.html\#12-aerial-bad}.}\label{fig:12-aerial-bad}
 \end{figure}
 
 \section{Nadir and Zenith Perpsectives}\label{nadir-and-zenith-perpsectives}
@@ -4209,12 +4357,16 @@ A hemispherical perspective has less to do with camera positioning and more to d
 
 Due to the unusual shape of the lens, it captures a much larger proportion of a scene than we could normally take in without swiveling our heads or stitching photos into a mosaic, such as a panorama. A hemispherical lens will produce a circular rather than rectilinear output. The lens curvature will cause objects in the image to be highly distorted and, unlike rectilinear photos, cannot be easily divided into pixels for analysis. However, hemispherical perspectives are uniquely suited to viewing large expanses of a scene all at once. For this reason, it is highly favourable for sports cameras, security cameras, and natural monitoring. Figures \ref{fig:12-hemispherical-lens} and \ref{fig:12-newfoundland-from-space} shows hemispherical perspectives from two very different angles.
 
-\begin{figure}
-\includegraphics[width=0.9\linewidth]{images/12-hemispherical-lens} \caption{Hemispherical photo taken in the Bavarian forest. [@wegmann_hemispherical_2011], CC-BY-3.0.}\label{fig:12-hemispherical-lens}
-\end{figure}
+
 
 \begin{figure}
-\includegraphics[width=0.9\linewidth]{images/12-newfoundland_from_space} \caption{Picture of Newfoundland, Canada, taken by David Saint-Jacques during his space mission. [@canadian_space_agency_newfoundland_2019], CC-BY-3.0.}\label{fig:12-newfoundland-from-space}
+\includegraphics[width=0.75\linewidth]{images/12-hemispherical-lens} \caption{Hemispherical photo taken in the Bavarian forest. \citep{wegmann_hemispherical_2011}, CC-BY-3.0.}\label{fig:12-hemispherical-lens}
+\end{figure}
+
+
+
+\begin{figure}
+\includegraphics[width=0.75\linewidth]{images/12-newfoundland_from_space} \caption{Picture of Newfoundland, Canada, taken by David Saint-Jacques during his space mission. \citep{canadian_space_agency_newfoundland_2019}, CC-BY-3.0.}\label{fig:12-newfoundland-from-space}
 \end{figure}
 
 Common applications
@@ -4234,27 +4386,35 @@ Remote sensing \textbf{platforms} are simply whatever a camera system or sensor 
 
 Terrestrial platforms describe any platform that is near the ground surface. Usually terrestrial remote sensing systems are fixed and immobile where the sensors or camera systems are attached to a tower or a tree, but they may also be attached to vehicles such as the Google™ Street View vehicles that collect imagery from a 360 degree camera (Figure \ref{fig:12-google-street-view-car}). One of the obvious limitations for mounting sensors to vehicles is that they are limited to traveling on roads, which limits what can be seen from the camera. But the clear advantage is that this is a cheap platform that only requires a driving licence to operate.
 
+
+
 \begin{figure}
-\includegraphics[width=0.9\linewidth]{images/12-google-street-view-car} \caption{A 360 degree camera mounted on a vehicle is used for collecting street view imagery for Google™ Maps [@leggett_google_2014]. CC-BY-SA-4.0.}\label{fig:12-google-street-view-car}
+\includegraphics[width=0.75\linewidth]{images/12-google-street-view-car} \caption{A 360 degree camera mounted on a vehicle is used for collecting street view imagery for Google™ Maps \citep{leggett_google_2014}. CC-BY-SA-4.0.}\label{fig:12-google-street-view-car}
 \end{figure}
 
 Many other terrestrial platforms are fixed or stationary, which means that they are either always observing the same feature or they might have a limited motorized range to pan from a fixed point. Phenological studies that aim to monitor the timing of different plant growth stages throughout the growing season such as budding, leaf-out and flowering will often use a stationary camera pointed towards the plant of interest. Figure \ref{fig:12-phenological-camera-sequence} shows a time-lapse of images taken once per day at noon during the spring time near Grand Cache, Alberta. The changing leaf colour is clearly visible in the time lapse, which can be important for monitoring springtime wildfire risk \citep{pickell_early_2017} or forage quality for wildlife such as grizzly bear \citep{bater_using_2010}.
 
-\textbackslash begin\{figure\}
-\includegraphics[width=0.9\linewidth]{images/12-phenological-camera-sequence} \textbackslash caption\{Time lapse from a camera mounted on a tree. Each image is taken on a different day at noon \citep{bater_timelapse_nodate}. Animated figure can be viewed in the web browser version of the textbook. CC-BY-SA-4.0.\}\label{fig:12-phenological-camera-sequence}
-\textbackslash end\{figure\}
+
+
+\begin{figure}
+\includegraphics[width=0.9\linewidth]{images/12-phenological-camera-sequence-static} \caption{Time lapse from a camera mounted on a tree. Each image is taken on a different day at noon \citep{bater_timelapse_nodate}. Pickell, CC-BY-SA-4.0. Animated figure can be viewed in the web browser version of the textbook: \url{https://www.opengeomatics.ca/remote-sensing-systems.html\#fig:12-phenological-camera-sequence}}\label{fig:12-phenological-camera-sequence}
+\end{figure}
 
 Spectral responses from forest canopies can be monitored by radiometers such as the Automated Multiangular SPectro-radiometer for Estimation of Canopy reflectance (AMSPEC) instrument that can be mounted to a tower and sits high above the forest canopy (Figure \ref{fig:12-flux-tower-radiometer}). These ``eyes above the forests'' can provide important information about forest health and physiology. Since forest canopies are usually imaged from airborne and spaceborne platforms, these terrestrial observations provide a critical link for calibration with other imagery.
 
+
+
 \begin{figure}
-\includegraphics[width=0.9\linewidth]{images/12-flux-tower-radiometer} \caption{AMSPEC radiometer affixed to a carbon flux tower located in Buckley Bay, Vancouver Island, Canada [@coops_amspec_nodate]. Used with permission.}\label{fig:12-flux-tower-radiometer}
+\includegraphics[width=0.75\linewidth]{images/12-flux-tower-radiometer} \caption{AMSPEC radiometer affixed to a carbon flux tower located in Buckley Bay, Vancouver Island, Canada \citep{coops_amspec_nodate}. Used with permission.}\label{fig:12-flux-tower-radiometer}
 \end{figure}
 
 In Canada, there are significant stores of historical terrestrial imagery that were collected by the government for surveying the west. From the 1880's to as late as the 1950's, various government agencies of Canada collected over 5,000 terrestrial images of Canada's western territories and provinces primarily within the Rocky Mountains. Some of these locations have been re-imaged at the same terrestrial perspective during the modern era and show dramatic changes to the landscape such as glacial retreat and afforestation. Figure \ref{fig:12-mountain-legacy-project} shows the retreat of the Athabasca Glacier over nearly 100 years near the Wilcox Pass in Jasper National Park.
 
-\textbackslash begin\{figure\}
-\includegraphics[width=0.9\linewidth]{images/12-mountain-legacy-project} \textbackslash caption\{Image pair of Athabasca Glacier from Wilcox Pass in Jasper National Park, Alberta, Canada. The historical image was taken in 1917 by A.O. Wheeler \citep{library_and_archives_canada_athabasca_1917}, and the modern image was taken nearly a hundred years later in 2011 by the Mountain Legacy Project \citep{mountain_legacy_project_modern_2011}. Animated figure can be viewed in the web browser version of the textbook. CC-BY-SA-4.0.\}\label{fig:12-mountain-legacy-project}
-\textbackslash end\{figure\}
+
+
+\begin{figure}
+\includegraphics[width=0.9\linewidth]{images/12-mountain-legacy-project-static} \caption{Image pair of Athabasca Glacier from Wilcox Pass in Jasper National Park, Alberta, Canada. The historical image was taken in 1917 by A.O. Wheeler \citep{library_and_archives_canada_athabasca_1917}, and the modern image was taken nearly a hundred years later in 2011 by the Mountain Legacy Project \citep{mountain_legacy_project_modern_2011}. Pickell, CC-BY-SA-4.0. Animated figure can be viewed in the web browser version of the textbook: \url{https://www.opengeomatics.ca/remote-sensing-systems.html\#fig:12-mountain-legacy-project}.}\label{fig:12-mountain-legacy-project}
+\end{figure}
 
 \subsection{Aerial Systems}\label{aerial-systems}
 
@@ -4266,8 +4426,10 @@ Significant advancements have been made in recent years to reduce costs of aeria
 
 Aircraft are subject to rotation along three axes (Figure \ref{fig:12-pitch-roll-yaw}). \textbf{Pitch} refers to rotation around the wings and controls whether the aircraft is ascending or descending. \textbf{Roll} refers to rotation around the fuselage (body) of the aircraft and controls which wing of the aircraft is higher than the opposite wing. \textbf{Yaw} refers to rotation around the vertical axis that is perpendicular to the fuselage and controls whether the aircraft is moving left or right. Each of these axes are important for understanding the conditions under which aerial photographs are acquired. The pitch and roll of the aircraft have perhaps the most pronounced effect on aerial imagery because any non-zero angle of pitch or roll (positive or negative) will produce an oblique image and cause scale to be inconsistent across the image. Because yaw is an axis that is perpendicular to the aircraft and also to Earth's surface, there is no impact from positive or negative yaw on image scale. However, large angles of yaw or roll can impact the ability to produce overlapping and adjacent stereo image pairs. Aerial photography is covered in more detail in \href{https://ubc-geomatics-textbook.github.io/geomatics-textbook/image-analysis.html}{Chapter 14}.
 
+
+
 \begin{figure}
-\includegraphics[width=0.9\linewidth]{images/12-pitch-roll-yaw} \caption{Pitch is the rotation of the aircraft over the axis of the wings, roll is the rotation of the aircraft over the axis of the fuselage, and yaw is the rotation of the aircraft over the axis of vertical axis that is perpendicular to the fuselage [@jrvz_image_2010]. CC-BY-SA 3.0.}\label{fig:12-pitch-roll-yaw}
+\includegraphics[width=0.75\linewidth]{images/12-pitch-roll-yaw} \caption{Pitch is the rotation of the aircraft over the axis of the wings, roll is the rotation of the aircraft over the axis of the fuselage, and yaw is the rotation of the aircraft over the axis of vertical axis that is perpendicular to the fuselage \citep{jrvz_image_2010}. CC-BY-SA 3.0.}\label{fig:12-pitch-roll-yaw}
 \end{figure}
 
 \subsection{Satellite Systems}\label{satellite-systems}
@@ -4291,8 +4453,10 @@ In the simplest terms, orbits form when two objects are in motion near each othe
 
 Consider Newton's cannonball thought experiment: you fire a cannonball perpendicular to Earth's surface at the top of a tall mountain. If the cannonball is traveling at 0 \(km·s^{-2}\), then the cannonball falls to the ground due to the force of gravity. If the cannonball is traveling at 1 \(km·s^{-2}\), then the cannonball travels some distance over an arc before it eventually falls back to Earth due to gravity (Figure \ref{fig:12-newtons-cannonball} A). If you fire the cannonball at a slightly faster speed of 3 \(km·s^{-2}\), then the cannonball travels a distance farther than before but still eventually falls back to Earth due to gravity (Figure \ref{fig:12-newtons-cannonball} B). If the cannonball is traveling at least 7.8 \(km·s^{-2}\), then the speed of the cannonball is roughly equivalent to the force of gravity that is trying to pull the cannonball back to Earth and therefore the cannonball maintains an approximately circular orbit around Earth (Figure \ref{fig:12-newtons-cannonball} C). In other words, the velocity of the cannonball is faster over Earth than it is falling towards Earth, which results in a curved path or orbit. Fire the cannonball at any faster speed and you can achieve elliptical orbits (Figure \ref{fig:12-newtons-cannonball} D) or even orbits that escape Earth's gravity altogether (Figure \ref{fig:12-newtons-cannonball} E).
 
+
+
 \begin{figure}
-\includegraphics[width=0.75\linewidth]{images/12-newtons-cannonball} \caption{Netwon's Cannonball thought experiment. [Brian Brondel](https://upload.wikimedia.org/wikipedia/commons/archive/7/73/20070210061321\%21Newton_Cannon.svg), CC-BY-SA-3.0.}\label{fig:12-newtons-cannonball}
+\includegraphics[width=0.75\linewidth]{images/12-newtons-cannonball} \caption{Netwon's Cannonball thought experiment. \href{https://upload.wikimedia.org/wikipedia/commons/archive/7/73/20070210061321\%21Newton_Cannon.svg}{Brian Brondel}, CC-BY-SA-3.0.}\label{fig:12-newtons-cannonball}
 \end{figure}
 
 Another important force is drag, which is the equal force applied in the opposite direction to acceleration (Third Law). Drag is important for satellites to reach orbit and stay there. Earth's atmosphere exerts an equal and opposite force to the direction the space vehicle is leaving the launchpad and also creates friction that can slow down satellites that are near the transition between the atmosphere and space. Thus, in order for satellites to maintain orbit, they must travel at high speeds and also high altitudes above the ground to avoid the force of drag. Generally, the speed of a satellite is inversely related to the altitude. So satellites that are closer to Earth must travel at much faster speeds than satellites that are farther from Earth. In the following sections, we will look at some examples of different types of orbits and their role in specific remote sensing systems.
@@ -4315,9 +4479,11 @@ Relatively speaking, LEO is the most crowded region of near-Earth space due to d
 
 Were you wondering why MEO extends to such an exact number at the extreme altitude of 35,786 km? That is because 35,786 km is the distance from Earth at which the orbital period of a satellite at the Equator is equivalent to Earth's rotational period of 24 hours. This is known as \textbf{Geosynchronous Equatorial Orbit (GEO)} because this orbit only occurs directly above the Earth's Equator. Satellites in GEO are \textbf{geosynchronous}, meaning they are always visible in the same location of the sky no matter the time of day or the season. For this reason, these orbits are sometimes referred to as \textbf{geostationary}. The advantage of geostationary orbit is that the satellite can continuously image the same visible portion of Earth 24 hours a day. Thus, nearly all weather and communication satellites are in geostationary orbit, allowing transmissions to be relayed across a network of geostationary satellites and ground antenna like a ping-pong ball.
 
-\textbackslash begin\{figure\}
-\includegraphics[width=0.75\linewidth]{images/12-sunsynchronous-geosynchronous-orbits} \textbackslash caption\{Comparing Sun-synchronous and geosynchronous orbits. The yellow area shows the portion of Earth's surface that is visible during a single orbit. Notice that Sun-synchronous orbit observes at a consistent local time while the geosynchronous orbit observes a constant location. href=`\url{https://ubc-geomatics-textbook.github.io/geomatics-textbook/\#12-sunsynchronous-geosynchronous-orbits}'\textgreater Animated figure can be viewed in the web browser version of the textbook. Credit: \href{https://scijinks.gov/about/}{NOAA/JPL-Caltech}.\}\label{fig:12-sunsynchronous-geosynchronous-orbits}
-\textbackslash end\{figure\}
+
+
+\begin{figure}
+\includegraphics[width=0.75\linewidth]{images/12-sunsynchronous-geosynchronous-orbits-static} \caption{(ref:12-sunsynchronous-geosynchronous-orbits-caption)}\label{fig:12-sunsynchronous-geosynchronous-orbits}
+\end{figure}
 
 \section*{Reflection Questions}\label{reflection-questions-7}
 \addcontentsline{toc}{section}{Reflection Questions}
@@ -4527,8 +4693,10 @@ Level-1 processing is designed to address the geometric and radiometric inconsis
 
 With the geometric and radiometric correction complete in Level-1, Level-2 processing is designed to reduce atmospheric inconsistencies. The output images created from Level-2 processing are considered to be Science Products (images with corrections completed at a quality suitable for scientific inquiry without further processing) and accurately represent surface reflectance and surface temperature. Data regarding surface reflectance is useful for evaluating a variety of environmental metrics, such as land cover, while surface temperature lends insight to vegetation health and the global energy balance. It is important to note that there are two Collection levels at which Landsat processing takes place, with Collection 2 representing the highest quality processing stream. You can explore the differences between Collections \href{https://prd-wret.s3.us-west-2.amazonaws.com/assets/palladium/production/atoms/files/Landsat-C1vsC2-2\%2021-0430-LMWS.pdf}{here}, while information about Collection 2 images processed at a Level-2 standard can be observed\href{https://www.usgs.gov/core-science-systems/nli/landsat/landsat-collection-2-level-2-scien\%20e-products}{here}.
 
+
+
 \begin{figure}
-\includegraphics[width=0.9\linewidth]{images/13-landsat-c2-l2} \caption{Three unique Landsat 8 Collection 2 images. In order from left to right: Level-1 Top of Atmosphere reflectance image (no atmospheric correction), Level-2 atmospherically corrected surface reflectance and Level-2 surface temperature. Images were collected on May 3, 2013 over the Sapta Kosh River in Bairawa, Nepal [@bouchard_example_2013]. Public domain.}\label{fig:13-landsat-c2-l2}
+\includegraphics[width=0.75\linewidth]{images/13-landsat-c2-l2} \caption{Three unique Landsat 8 Collection 2 images. In order from left to right: Level-1 Top of Atmosphere reflectance image (no atmospheric correction), Level-2 atmospherically corrected surface reflectance and Level-2 surface temperature. Images were collected on May 3, 2013 over the Sapta Kosh River in Bairawa, Nepal \citep{bouchard_example_2013}. Public domain.}\label{fig:13-landsat-c2-l2}
 \end{figure}
 
 As you may realize, there are a variety of processing options that Landsat users can select from. Each of these Collections and Levels present different opportunities for scientific study and allow users to customize processing streams based on the needs of their project. Such flexibility is key for the continued improvement of Landsat products and promotes the use of Landsat imagery across a broad range of users. It is important to remember, however, that the selection of pre-processed data for scientific inquiry requires the user to understand the foundations upon which correction were made. Be sure to draw on the fundamentals learned in this chapter to evaluate the usefulness of any processed data you consider in your work.
@@ -4556,9 +4724,7 @@ If you are interested in learning more about how sharpening can impact hyperspec
 Landsat 8-7 has regularly acquired images of Beaufort Sea and Mackenzie River Delta through true-color image to show abundance surface melt, fast ice break up, leaf fraction, ice motion, and changes in coastal features during early springtime. The Beaufort Sea has seen dramatic summer ice losses, particularly in 2009, with regions that were dominated by thick multi-year ice now completely melting out. For comparison, the timeline GIF from 1992 to 2021 depicts different stages of ice breakup in the month of June. Notice the extensive fracturing of Beaufort Sea ice occurring in 1996, but the 2009 and 2014 fracturing appears more widespread until nearly disappearing in 2017.
 
 \begin{figure}
-\centering
-\includegraphics{images/13-Beaufort-Sea-Ice.gif}
-\caption{\label{fig:14-Beaufort-Sea-Ice}True-color image of Beaufort Sea Ice Deterioration. Sharma, CC-BY-SA-4.0.}
+\includegraphics[width=16.57in]{images/13-Beaufort-Sea-Ice-static} \caption{True-color image of Beaufort Sea Ice Deterioration. Sharma, CC-BY-SA-4.0.}\label{fig:14-Beaufort-Sea-Ice}
 \end{figure}
 
 Similarly, in the high arctic polar desert of Ellesmere Island in Nunavut, Canada, what were once the twin St.~Patrick Bay ice caps have now chipped away due to decades of rising temperatures and unusually warm summers. Once the remnants of the Little Ice Age that covered about 7.5 square km and 3 square km across respectively, the formation has reduced to only 5\% of their former area and are predicted to extinct within a decade. St.Patrick Bay Ice caps are emblematic of the Arctic change - a reality of how climate change is affecting the whole of Canadian Arctic.
@@ -4603,7 +4769,7 @@ Each of the scaled dNBR images were then classified into four burn severity clas
 
 \begin{table}
 
-\caption{\label{tab:13-murray-case-study-table-1}Classified Burn Severity Values based on the scaled dNBR values.}
+\caption{\label{tab:13-murray-case-study-table-1}Classified Burn Severity Values based on the scaled dNBR values. Murray, CC-BY-SA-4.0}
 \centering
 \begin{tabular}[t]{l|l|l}
 \hline
@@ -4623,14 +4789,14 @@ dNBR & Classified & Description\\
 The change in value of the NDVI and the TCT Greenness and Wetness based on burn severity can be seen in the box plots below (Figure 1). This shows the changes in the vegetation index values from before the wildfire and every year after. The burn severity had an impact on these values as there was a greater decrease in value immediately after the wildfire with the higher burn severity as well as a slower return to the pre-fire state. Additionally, based on the vegetation index used, it can be seen that there different rates of return to a pre-fire state. These differences are important to understand when choosing a vegetation index for a study.
 
 \begin{figure}
-\includegraphics[width=66.67in]{images/13-VIPlots} \caption{Changes in the values of NDVI (a), TCT Greenness (b), and TCT Wetness(c) based on the burn severity of the Little Bobtail Lake wildfire from 2014 (before the wildfire) to 2020 (five years after the wildfire).}\label{fig:unnamed-chunk-35}
+\includegraphics[width=0.75\linewidth]{images/13-VIPlots} \caption{Changes in the values of NDVI (a), TCT Greenness (b), and TCT Wetness(c) based on the burn severity of the Little Bobtail Lake wildfire from 2014 (before the wildfire) to 2020 (five years after the wildfire). Murray, CC-BY-SA-4.0}\label{fig:unnamed-chunk-35}
 \end{figure}
 
 Wildfires create spatial patterns on the landscape which is a key factor in forest regrowth. Pattern metrics can be calculated and used to understand the changes in the spatial patterns overtime. Using the \texttt{calculate\_lsm()} function found in the Landscape Metrics (v1.5.0) R package \citep{hesselbarth_landscapemetrics_2019}, the Core Area (\texttt{lsm\_p\_core()}) patch metric was calculated for each of the classified dNBR images. Additionally, the NDVI images were classified into four classes (Table \ref{tab:13-murray-case-study-table-2}) and then the Core Area Metric was calculated.
 
 \begin{table}
 
-\caption{\label{tab:13-murray-case-study-table-2}Classified Vegetation Health Values based on the NDVI values.}
+\caption{\label{tab:13-murray-case-study-table-2}Classified Vegetation Health Values based on the NDVI values. Murray, CC-BY-SA-4.0}
 \centering
 \begin{tabular}[t]{l|l|l}
 \hline
@@ -4649,9 +4815,10 @@ NDVI & Classified & Description\\
 
 The changes in the Core Area of the burn severity classes showed that the High Severity class had a decrease of 2.6 hectares every year. The Low Severity class had a increase of 1.5 hectares every year and the Moderate and Unburned classes showed little change in Core Area. This was to be expected because as the vegetation regrows in the High Severity areas it changes to a lesser severity (Figure \ref{fig:13-dnbr-leaflet}). For the vegetation health classes, the Sparse Vegetation class showed a 3.7 hectare increase in Core Area every year, while the other vegetation classes showed little change. These is due to the initial increase in the new vegetation in the first years after the wildfire.
 
+
+
 \begin{figure}
-\includegraphics[width=0.75\linewidth]{images/13-dnbr-leaflet} \caption{Classified Burn Severity images for the Little Bobtail Lake wildfire from 2015 to 2020. <a
-  href='https://ubc-geomatics-textbook.github.io/geomatics-textbook/#fig:13-dnbr-leaflet'>Interactive figure can be viewed in the web browser version of the textbook</a>. Data from @natural_resources_canada_natural_nodate and licensed under the <a href='https://www.nrcan.gc.ca/terms-and-conditions/10847'>Open Government Licence - Canada </a>. Murray, CC-BY-SA-4.0.}\label{fig:13-dnbr-leaflet}
+\includegraphics[width=0.75\linewidth]{images/13-dnbr-leaflet} \caption{Classified Burn Severity images for the Little Bobtail Lake wildfire from 2015 to 2020. Murray, CC-BY-SA-4.0. Data from \citep{natural_resources_canada_natural_nodate} and licensed under the Open Government Licence - Canada: \url{https://www.nrcan.gc.ca/terms-and-conditions/10847}. Interactive web map can be viewed in the web browser version of the textbook: \url{https://www.opengeomatics.ca/image-processing-and-analysis.html\#13-dnbr-leaflet}.}\label{fig:13-dnbr-leaflet}
 \end{figure}
 
 \section{Summary}\label{summary-4}
@@ -4754,9 +4921,7 @@ An important feature that exists between the GNSS user and space segments is Ear
 
 The ionosphere is the last layer of the upper atmosphere where the last oxygen, hydrogen, and helium atoms meet the vacuum of space and become ionized (gain electrons) from X-rays and ultraviolet radiation emitted by the Sun. The density of electrons in the ionosphere is usually expressed as the \textbf{Total Electron Count (TEC)}, which varies diurnally as the Sun rises and sets as well as sporadically due to solar activity and space weather. Figure \ref{fig:14-total-electron-count-canada} shows the TEC for Canada over the last 7 days for the current hour. These electrons cause \textbf{ionospheric delay} in the GNSS signal \(I_f\) and this delay is also frequency-dependent \(f\) (i.e., the radio wavelength).
 
-\textbackslash begin\{figure\}
-\includegraphics[width=0.75\linewidth,id="tec" id='14-total-electron-count-canada']{https://www.spaceweather.gc.ca/auto_generated_products/tec/latest/tec-en} \textbackslash caption\{Total Electron Count (TEC) over Canada from the last 7 days. Animated figure can be viewed in the web browser version of the textbook. Data from Natural Resources Canada, Environment Canada, and the Canadian Space Agency. Open Government License - Canada.\}\label{fig:14-total-electron-count-canada}
-\textbackslash end\{figure\}
+
 
 \subsection{\texorpdfstring{Tropospheric Delays \(T\)}{Tropospheric Delays T}}\label{tropospheric-delays-t}
 
@@ -4798,7 +4963,7 @@ as a result of the apparent satellite geometry in the sky.
 Since the pseudorange is an estimate with limited precision, the final measured position is prone to error propagation when the satellites in view are very close together in the sky. This phenomenon is illustrated in Figure \ref{fig:14-GNSS-DOP}: as two satellites converge on the same location in the sky, the ability to resolve the position is greatly reduced due to significant overlap in the pseudoranges. In fact, the pseudoranges are 3-dimensional spheres around the satellites, so in reality these intersecting uncertainties are actually volumes of space instead of areas.
 
 \begin{figure}
-\includegraphics[width=0.75\linewidth]{images/14-GNSS-DOP-animation} \caption{Geometric Diluation of Precision (GDOP) shown as the overlap between the pseudoranges of two satellites in a 2-dimensional view. GDOP increases with increasing overlap as the satellites are closer to each other. Lower DOP values are desired when collecting positional measurements. Pickell, CC-BY-SA-4.0.}\label{fig:14-GNSS-DOP}
+\includegraphics[width=0.75\linewidth]{images/14-GNSS-DOP-animation-static} \caption{Geometric Diluation of Precision (GDOP) shown as the overlap between the pseudoranges of two satellites in a 2-dimensional view. GDOP increases with increasing overlap as the satellites are closer to each other. Lower DOP values are desired when collecting positional measurements. Pickell, CC-BY-SA-4.0.}\label{fig:14-GNSS-DOP}
 \end{figure}
 
 \section{Planning Your GNSS Data Collection}\label{planning-your-gnss-data-collection}
@@ -4873,24 +5038,26 @@ Light Detection and Ranging (LiDAR), Laser, Global Navigation Satellite System (
 
 \textbf{LiDAR} stands for \textbf{Light Detection And Ranging} (sometimes written as lidar, or LIDAR), and is an active remote sensing technology. A laser scanner and time of flight principles are used to collect three dimensional (3D) data. LiDAR systems are made up of three components; a laser-scanning device, an accurate global navigation satellite system (GNSS), and an inertial measurement unit (IMU). The laser-scanning device emits pulses of light and measures the time it takes for energy to be reflected to the device. The GNSS receiver allows the position of the laser to be determined in space, while the IMU records the orientation of the laser (i.e.~roll, pitch, and yaw \citep{white_best_2013}). Figure \ref{fig:15-LiDAR-System} illustrates all of the necessary components of a LiDAR system. When discussing LiDAR in an airborne context (i.e.~the unit is being flown), we can call it airborne laser scanning (ALS), and if the unit is in a fixed position on the ground it is called terrestrial laser scanning (TLS).
 
-\begin{figure}
-\includegraphics[width=0.6\linewidth]{images/15-LiDAR-System} \caption{Overview of the components of a LiDAR System. As is common for large scale data acquisition, the laser scanning is placed on board an aircarft and scans the Earth below it. The aircraft has on on board GPS/GNSS, as well as an intertial measurement unit (IMU). A GPS base station can be used to post-process data and increase spatial accuracy.('LiDAR-i lend', @marek9134_lidar-i_2012, CC-BY-SA-3.0).}\label{fig:15-LiDAR-System}
-\end{figure}
+
 
 \section{How Does LiDAR Work?}\label{how-does-lidar-work}
 
 Typical LiDAR systems use the time of flight method to produce 3D data. A laser ranging instrument produces a short, intense pulse of light from the instrument to a target being measured. Some of this energy is then reflected back to the instrument, where it is recorded (as seen in Figure \ref{fig:15-Concept-of-LiDAR}). Since the speed of light, and the location of the laser ranging instrument is known, we can calculate the position of the target by timing how long it takes between the the pulse being emitted and received. If we shoot many pulses of light towards a target, we can create a 3D point cloud of our target (see Figure \ref{fig:15-las-denoise} for an example of a forest scene). Modern LiDAR systems can emit hundreds of thousands of pulses per second, which means LiDAR point clouds can contain millions of points, and be several gigabytes large.
 
+
+
 \begin{figure}
-\includegraphics[width=0.8\linewidth]{images/15-Concept-of-LiDAR} \caption{Concept of LiDAR. A light signal is emitted by the scanner and reflected off the target. 'Concept of LiDAR', @cartographer3d_concept_2021, CC-BY-SA-4.0.}\label{fig:15-Concept-of-LiDAR}
+\includegraphics[width=0.75\linewidth]{images/15-Concept-of-LiDAR} \caption{Concept of LiDAR. A light signal is emitted by the scanner and reflected off the target. `Concept of LiDAR', \citep{cartographer3d_concept_2021}, CC-BY-SA-4.0.}\label{fig:15-Concept-of-LiDAR}
 \end{figure}
 
 Since a LiDAR point cloud is a file containing the 3D location of points representing objects on the Earth's surface, there are several parameters to take note of. It is important to know what the technical specifications of the data collection parameters were (for example, how many points per square meter do we have?), and how the data was collected (what platform was used?). A LiDAR dataset includes several pieces of information for each 3D point. \(X,Y,Z\) location data tells us where each point is (usually to the centimeter scale), and a GPS time stamp is included for each point (\(gpstime\)). Additional information such as \(return\) \(number\), \(scan\) \(angle\), \(classification\), and \(intensity\) are also included with the file, which will be discussed in more detail below (\hyperref[components-of-a-lidar-system]{Components of a LiDAR System}).
 
 The most common file format for LiDAR files is called the LAS file format (.las). This file format was originally designed for 3D point cloud data, and is a free alternative to proprietary systems or a generic ASCII file interchange system. The main benefits of this file format are that it is relatively quick, can be used by any system, and stores information specific to the nature of LiDAR data without being overly complex \citep{american_society_for_photogrammetry__remote_sensing_laser_2019}. More information regarding the file type specifications can be found \href{https://www.asprs.org/divisions-committees/lidar-division/laser-las-file-format-exchange-activities}{at their website}.
 
+
+
 \begin{figure}
-\includegraphics[width=0.8\linewidth]{images/15-las-denoise} \caption{An example of a typical LiDAR point cloud containing 3.14 million points at approximately 80 points·m^-2^. The point cloud shows a 200 x 200 meter portion of Pacific Spirit Regional Park in Vancouver, and is part of the [2018 City of Vancouver dataset] (https://opendata.vancouver.ca/explore/dataset/lidar-2018/). Du Toit, CC-BY-SA-4.0.}\label{fig:15-las-denoise}
+\includegraphics[width=0.75\linewidth]{images/15-las-denoise} \caption{An example of a typical LiDAR point cloud containing 3.14 million points at approximately 80 points per square meter. The point cloud shows a 200 x 200 meter portion of Pacific Spirit Regional Park in Vancouver, and is part of the {[}2018 City of Vancouver dataset{]} (\url{https://opendata.vancouver.ca/explore/dataset/lidar-2018/}). Du Toit, CC-BY-SA-4.0.}\label{fig:15-las-denoise}
 \end{figure}
 
 \section{LiDAR History and Use}\label{lidar-history-and-use}
@@ -4898,7 +5065,7 @@ The most common file format for LiDAR files is called the LAS file format (.las)
 LiDAR for forestry and ecology has been used to monitor vegetation structure, stream properties, and topography among other uses. The earliest versions of LiDAR were known as profiling systems and first investigated in the 1960's \citep{nelson_how_2013}. A major limitation of early LiDAR profiling systems were that the system was locked in a near-nadir position (i.e.~along-track path), which meant that only transects could be collected, as opposed to a larger swath width as with modern systems \citep{nelson_how_2013, lim_lidar_2003}. Technological advancements meant that early scanning LiDAR systems became more common in the 1980s, although point densities (measured as points per square meter, points·m\textsuperscript{-2}) were low. Densities of 1-5 points·m\textsuperscript{-2} limited researchers to area based measurements of forest volume and biomass \citep{nelson_how_2013}. These limitations were primarily due to the LiDAR sensor, as well as data storage difficulties. Technological improvements such as increased pulse rates and smaller footprints (leading to increased point density), and increased storage capacity have allowed researchers to look as individual trees as well as whole forests \citep{jakubowski_delineating_2013}. Previously limited to static LiDAR sensors, ALS point cloud densities of 1000 points·m\textsuperscript{-2} are now entirely feasible. Figure \ref{fig:15-high-low-point-density} shows two different point clouds densities, and how difficult it would be to delineate individual tree crowns at low point densities.
 
 \begin{figure}
-\includegraphics[width=0.8\linewidth]{images/15-high-low-point-density} \caption{A cross section of a high density point cloud (A, 80 points·m^-2^), and a lower density point cloud (B, 1 point·m^-2^). Du Toit, CC-BY-SA-4.0.}\label{fig:15-high-low-point-density}
+\includegraphics[width=0.8\linewidth]{images/15-high-low-point-density} \caption{A cross section of a high density point cloud (A, 80 points per meter squared), and a lower density point cloud (B, 1 point per meter squared). Du Toit, CC-BY-SA-4.0.}\label{fig:15-high-low-point-density}
 \end{figure}
 
 Unlike passive remote sensing technologies, LiDAR has the advantage of being able penetrate forest canopies; this means that we are able to detect the ground, and also characterize both vertical and horizontal vegetation structure. Since the data is extremely accurate, surface models developed using LiDAR are used in many fields where human-made and natural environments need to be mapped. LiDAR derivatives such as surface models are used in hazard assessment (see here: \citet{jaboyedoff_use_2012}), forestry (read more here: \citet{goodbody_airborne_2021}), wet area mapping (here: \citet{eash_stream-channel_2018} and \citet{zurqani_evaluating_2020}), geologic/geomorphological mapping, and agriculture. In this chapter, we will discuss the use of LiDAR primarily in a forestry context, where raw data and derivatives are used for volume and biomass estimation, as well as individual tree crown analyses.
@@ -4930,16 +5097,20 @@ All LiDAR sensors emit pulses at a certain rate (\textbf{pulse rate}), which can
 
 Several technical aspects of lasers are recorded by the instrument (and usually provided as a flight summary or flight specifications by vendors), while some of it can also be found in the \texttt{las} file. We can usually find information that impacts the entire flight in the flight specifications, such as flight height, scan rate, and beam divergence. These aspects shouldn't change for the entire duration of the flight. In contrast, information located in the \texttt{las} file affects individual points. Here we can find information such as scan angle, return number, and intensity.
 
+
+
 \begin{figure}
-\includegraphics[width=0.7\linewidth]{images/15-LiDAR-Unit} \caption{An example of a LiDAR Unit. 'LiDAR machine', @the_center_for_international_forestry_research_cifor_lidar_2014, CC-BY-NC-ND-2.0.}\label{fig:15-LiDAR-Unit}
+\includegraphics[width=0.75\linewidth]{images/15-LiDAR-Unit} \caption{(ref:15-LiDAR-Unit-caption)}\label{fig:15-LiDAR-Unit}
 \end{figure}
 
 \subsection{Global Navigation Satellite Systems}\label{global-navigation-satellite-systems-1}
 
 In order for us to use the calculation from Figure \ref{fig:15-Concept-of-LiDAR}, we need to know the exact position of the scanner in space. For airborne and mobile platforms, we can can do this by using the \textbf{global navigation satellite system (GNSS)}, as well as post processing using a local GNSS reference station. This helps us to improve accuracy by not comparing our position to a known local position in order to ensure our location is known as accurately as possible.
 
+
+
 \begin{figure}
-\includegraphics[width=0.7\linewidth]{images/15-XYZ-coordinates} \caption{An on board GNSS is required toprovide an accurate location of the LiDAR scanner in space. ('A key component of a lidar system is a GPS', @neon_education_key_2014, CC-BY-NC-SA-2.0).}\label{fig:15-XYZ-coordinates}
+\includegraphics[width=0.75\linewidth]{images/15-XYZ-coordinates} \caption{An on board GNSS is required toprovide an accurate location of the LiDAR scanner in space. `A key component of a lidar system is a GPS', \citep{neon_education_key_2014}, CC-BY-NC-SA-2.0.}\label{fig:15-XYZ-coordinates}
 \end{figure}
 
 \subsection{Inertial Measurement Unit (IMU)}\label{inertial-measurement-unit-imu}
@@ -4962,8 +5133,10 @@ Airplanes and helicopters are still the most common platforms for LiDAR data col
 
 As laser units have decreased in size, we have been able to mount LiDAR units to smaller platforms. Drones (also known as unmanned aerial vehicles (UAV) or remotely piloted aerial systems (RPAS)) are extremely convenient to collect high density point clouds over small areas. They typically fly relatively close to the forest (e.g.~50 m above the trees) and fly a pre-defined flight route so ensure evenly spaced data collection. Typical point densities range from hundreds to thousands of points per meter squared. A major limitation of drones is currently battery life, as acquisition campaigns are limited by how long the drone can fly for (approximately 20 - 30 minutes). This means that collecting large amounts of data is difficult in remote locations.
 
+
+
 \begin{figure}
-\includegraphics[width=0.7\linewidth]{images/15-LiDAR-on-Drone} \caption{Drone mounted LiDAR. This technology is rapidly developing, with many companies working towards creating units capable of acquiring high density datasets over large areas. 'LiDARUSA Snoopy 120 LiDAR', @mc_clapurhands_lidarusa_2019,  CC-BY-SA-4.0.}\label{fig:15-LiDAR-on-Drone}
+\includegraphics[width=0.75\linewidth]{images/15-LiDAR-on-Drone} \caption{Drone mounted LiDAR. This technology is rapidly developing, with many companies working towards creating units capable of acquiring high density datasets over large areas. `LiDARUSA Snoopy 120 LiDAR', \citep{mc_clapurhands_lidarusa_2019}, CC-BY-SA-4.0.}\label{fig:15-LiDAR-on-Drone}
 \end{figure}
 
 \subsection{Mobile Laser Scanning}\label{mobile-laser-scanning}
@@ -4978,8 +5151,10 @@ Terrestrial Laser Scanning (TLS) is a static system, meaning that is is placed i
 
 Satellites are a relatively new platform for LiDAR sensors. Two current satellite sensors are highlighted here; ICESat-2 (Ice, Cloud and land Elevation Satellite) and GEDI (Global Ecosystem Dynamics Investigation). Both are examples of large-footprint, profiling LiDAR systems. ICESat-2 was launched in 2018, with the objectives to determine sea-ice thickness and measure vegetation canopy height for large scale biomass estimation \citep{nasa_icesat-2_2021}. The ICESat-2 LiDAR sensor is composed of 6 beams in 3 pairs, each with a footprint size of 13 m \citep{nasa_icesat-2_2021}. GEDI is a LiDAR sensor that was installed on the International Space Station in 2018, with 3 lasers producing 10 parallel tracks of observations, and a footprint size of 25 m \citep{nasa_gedi_2021}. The GEDI sensor can be seen in panel 4 of Figure \ref{fig:15-LiDAR-Platforms}.
 
+
+
 \begin{figure}
-\includegraphics[width=0.9\linewidth]{images/15-LiDAR-Platforms} \caption{LiDAR Platforms 1: A terrestrial laser scanner (TLS). 'Lidar P1270901.png', @monniaux_lidar_2007, CC-BY-SA-3.0. 2: A hand-held moblie laser scanner (MLS). Du Toit, CC-BY-SA-4.0. 3: Car mounted MLS. '3D mobile mapping unit', @oregon_department_of_transportation_3d_2016, CC-BY-2.0'. 4: GEDI, a spaceborne LiDAR sensor. 'A New Hope: GEDI to Yield 3D Forest Carbon Map', @neon_education_key_2014, CC-BY-2.0.}\label{fig:15-LiDAR-Platforms}
+\includegraphics[width=0.75\linewidth]{images/15-LiDAR-Platforms} \caption{LiDAR Platforms 1: A terrestrial laser scanner (TLS). `Lidar P1270901.png', \citep{monniaux_lidar_2007}, CC-BY-SA-3.0. 2: A hand-held moblie laser scanner (MLS). Du Toit, CC-BY-SA-4.0. 3: Car mounted MLS. `3D mobile mapping unit', \citep{oregon_department_of_transportation_3d_2016}, CC-BY-2.0'. 4: GEDI, a spaceborne LiDAR sensor. `A New Hope: GEDI to Yield 3D Forest Carbon Map', \citep{neon_education_key_2014}, CC-BY-2.0.}\label{fig:15-LiDAR-Platforms}
 \end{figure}
 
 \subsection{Discrete Return}\label{discrete-return}
@@ -4990,8 +5165,10 @@ Satellites are a relatively new platform for LiDAR sensors. Two current satellit
 
 \textbf{Full waveform} LiDAR systems record reflected energy from each laser pulse as a continuous signal \citep{white_best_2013}.Traditionally, discrete return systems would only digitally store the discrete returns, without recording the complete analog return \citep{uf_geomatics_-_fort_lauderdale_lidar_2016}. In contrast, full waveform systems digitize the entire analog signal at high sampling rates \citep{uf_geomatics_-_fort_lauderdale_lidar_2016}. This can be seen on the right hand side of Figure \ref{fig:15-LiDAR-Discrete-Full-Waveform}. This type of LiDAR creates much larger file sizes which were an issue in the past, but with modern storage capabilities it is becoming a viable alternative to discrete return LiDAR.
 
+
+
 \begin{figure}
-\includegraphics[width=0.7\linewidth]{images/15-LiDAR-Discrete-Full-Waveform} \caption{Differents in the response between discrete echo and full waveform LiDAR. 'Airborne Laser Scanning Discrete Echo and Full Waveform signal comparison', @beck_airborne_2012, CC-BY-SA-3.0.}\label{fig:15-LiDAR-Discrete-Full-Waveform}
+\includegraphics[width=0.75\linewidth]{images/15-LiDAR-Discrete-Full-Waveform} \caption{Differents in the response between discrete echo and full waveform LiDAR. `Airborne Laser Scanning Discrete Echo and Full Waveform signal comparison', \citep{beck_airborne_2012}, CC-BY-SA-3.0.}\label{fig:15-LiDAR-Discrete-Full-Waveform}
 \end{figure}
 
 \subsection*{Your Turn!}\label{your-turn-5}
@@ -4999,8 +5176,10 @@ Satellites are a relatively new platform for LiDAR sensors. Two current satellit
 
 Use our online tool to visualize and explore a discrete return LiDAR point cloud. You can visualize different attributes of the point cloud including elevation, classification, number of returns, return number, and intensity. Why do you think the intensity of returns varies across the vegetation? What do you notice about the pattern of return number relative to the point elevation? What information do you think could be used to classify the returns?
 
+
+
 \begin{figure}
-\includegraphics[width=0.75\linewidth]{images/15-lidar-visualization-static} \caption{Online tool for visualizing and exploring the properties of a small LiDAR point cloud. Data from City of Vancouver and licensed under the <a href='https://opendata.vancouver.ca/pages/licence/'>Open Government License - Vancouver</a>. <a href='https://ubcemergingmedialab.github.io/geomatics-textbook/viz/lidar-viz/'>Click here to access the interactive tool.</a> Juno Yoon, CC-BY-SA-4.0.}\label{fig:15-lidar-visualization-static}
+\includegraphics[width=0.75\linewidth]{images/15-lidar-visualization-static} \caption{Online tool for visualizing and exploring the properties of a small LiDAR point cloud. Juno Yoon, CC-BY-SA-4.0. Data from City of Vancouver and licensed under the Open Government License - Vancouver: \url{https://opendata.vancouver.ca/pages/licence/}. Interactive tool can be viewed in the web browser version of the textbook: \url{https://ubcemergingmedialab.github.io/geomatics-textbook/viz/lidar-viz/}.}\label{fig:15-lidar-visualization-static}
 \end{figure}
 
 \section{Emerging Technology}\label{emerging-technology}
@@ -5054,7 +5233,7 @@ When doing either of these analyses, we typically produce \textbf{LiDAR metrics}
 Once we have segmented a point cloud, we can produce metrics for individual trees. These metrics can be used to help to identify structural traits of trees, which can then be used to identify different tree species, or to characterize different forest types. Ground based LiDAR scanners (MLS and TLS) are also used to very accurately estimate tree, trunk, and branch volumes.
 
 \begin{figure}
-\includegraphics[width=0.8\linewidth]{images/15-las-treetops} \caption{Example of tree tops detected using the `find_trees` function. Du Toit, CC-BY-SA-4.0.}\label{fig:15-las-treetops}
+\includegraphics[width=0.8\linewidth]{images/15-las-treetops} \caption{Example of tree tops detected using the 'find trees' function. Du Toit, CC-BY-SA-4.0.}\label{fig:15-las-treetops}
 \end{figure}
 
 \section{Sources of Error}\label{sources-of-error-1}
@@ -5083,8 +5262,10 @@ The first step when looking at LiDAR data is to inspect it; we recommend using t
 
 The normalized point cloud is used to create our CHM. It is at this point that we can analyze the point cloud in a variety of ways. We can use an area-based approach (ABA) to create metrics at the grid level (using our normalized point cloud), or we can derive metrics at the individual tree scale. In order to do this we need to first segment the trees before creating metrics. Segmentation can be tedious, as it requires the user tweak the parameters of their segmentation algorithm. Understanding your forest type, and inspecting the point cloud visually can be very useful when deciding what kind of segmentation routine you want to run. Below we can see an example of a segmented point cloud.
 
+
+
 \begin{figure}
-\includegraphics[width=0.6\linewidth]{images/15-las-segmented} \caption{A segmented point cloud using the algorithm based on @dalponte_tree-centric_2016. Du Toit, CC-BY-SA-4.0.}\label{fig:15-las-segmented}
+\includegraphics[width=0.75\linewidth]{images/15-las-segmented} \caption{A segmented point cloud using the algorithm based on \citep{dalponte_tree-centric_2016}. Du Toit, CC-BY-SA-4.0.}\label{fig:15-las-segmented}
 \end{figure}
 
 Creating metrics at these two scales are the fundamental way in which we currently think about analyzing forests using LiDAR. Each tells us different things about the forest, so it is important to take scale into account when choosing what kind of analysis you want to do. Below we can see a Leaflet map of some area based metrics created for this point cloud!
@@ -5145,6 +5326,7 @@ LiDAR is an active remote sensing technology that requires three components; a l
   Use of LIDAR in landslide investigations: A review - \citet{jaboyedoff_use_2012}
 \end{itemize}
 
+\renewcommand\bibname{Bibliography}
   \bibliography{bibliographies/ch1.bib,bibliographies/ch2.bib,bibliographies/ch3.bib,bibliographies/ch4.bib,bibliographies/ch5.bib,bibliographies/ch7.bib,bibliographies/ch8.bib,bibliographies/ch9.bib,bibliographies/ch10.bib,bibliographies/ch11.bib,bibliographies/ch12.bib,bibliographies/ch13.bib,bibliographies/ch14.bib,bibliographies/ch15.bib,packages.bib}
 
 \end{document}
