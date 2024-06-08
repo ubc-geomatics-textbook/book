@@ -1,11 +1,12 @@
 ```{r 8-load-packages-and-setup, include=FALSE, warning=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+covlicence <- "https://opendata.vancouver.ca/pages/licence/"
 library(ggplot2)
 library(igraph)
 library(leaflet)
 library(networkD3)
-library(rgdal)
-library(rgeos)
+library(sf)
+library(geojsonsf)
 ```
 
 ```{r echo=FALSE}
@@ -66,10 +67,16 @@ data <- data.frame(
 simpleNetwork(data, charge=-500, linkDistance=50, fontSize=10, zoom=FALSE)
 ```
 
-``` {r 8-vancouver-transit-network, echo=FALSE, fig.cap=fig_cap}
-fig_cap <- paste0("Rapid and frequent transit network in Metro Vancouver [@translink_2020_2020].")
+
+```{r 0-example, fig.cap = fig_cap, out.width= "75%", echo = FALSE}
+if (knitr:::is_latex_output()) { 
+  fig_cap <- "(ref:8-vancouver-transit-network-caption)"
+} else { 
+  fig_cap <- paste0("Rapid and frequent transit network in Metro Vancouver [@translink_2020_2020].")
+}
 knitr::include_graphics("images/08-metro_vancouver_transit_network.png")
 ```
+<br/>
 
 ## Connectivity and Order
 
@@ -105,11 +112,17 @@ On the other hand, in an undirected graph, connections are represented as simple
 
 Topology is the study of how network elements are arranged. The same elements arranged in different ways can change the network **structure** and **dynamics**. A very common example is the arrangement of computer networks.
 
-``` {r 8-network-topologies, echo=FALSE, fig.cap=fig_cap, out.width="80%"}
-fig_cap <- paste0("Abstract examples of network topologies [@wikibooks_communication_2018].")
+(ref:8-network-topologies-caption) Abstract examples of network topologies [@wikibooks_communication_2018].
+
+```{r 8-network-topologies, fig.cap = fig_cap, out.width= "75%", echo = FALSE}
+if (knitr:::is_latex_output()) { 
+  fig_cap <- "(ref:8-network-topologies-caption)"
+} else { 
+  fig_cap <- paste0("Abstract examples of network topologies [@wikibooks_communication_2018].")
+}
 knitr::include_graphics("images/08-network_topologies.png")
 ```
-</br>
+<br/>
 
 ## Physical vs. Logical Topology
 
@@ -121,15 +134,25 @@ In GIS we use networks to represent spatial structures of various kinds. While a
 
 Lines are when nodes are arranged in series where every node has *no more than two connections*, except for the two end nodes. A rail transit line, for example, can be represented as a line network. The map below portrays the SkyTrain Millenium Line in Vancouver. Each node represents a stop and the lines  the connections between those stops.
 
-```{r 8-vancouver-rail-transit, echo=FALSE, warning=FALSE, message=FALSE, fig.cap=fig_cap}
-fig_cap <- paste0("Rail transit line in Vancouver [@city_of_vancouver_open_nodate]. Licensed under the Open Government License - Vancouver. Interactive figure in the online format of the textbook.")
+```{r 8-vancouver-rail-transit, echo=FALSE, warning=FALSE, message=FALSE}
 lineData <- readLines("data/08-transit_millenium_line.geojson") %>% paste(collapse = "\n")
-nodeData <- readOGR("data/08-transit_millenium_stops.geojson", layer="transit_millenium_stops", verbose=FALSE)
-
-leaflet(height=200, width="100%") %>% setView(lng=-122.9220614617343, lat=49.26585706918778, zoom=11) %>%
+nodeData <- st_as_sfc("data/08-transit_millenium_stops.geojson", crs = st_crs("data/08-transit_millenium_stops.geojson"), GeoJSON = TRUE)
+m <- leaflet(height=200, width="100%") %>% setView(lng=-122.9220614617343, lat=49.26585706918778, zoom=11) %>%
   addProviderTiles(providers$CartoDB.Positron) %>%
   addGeoJSON(lineData, weight=3, color="gray", fill=FALSE) %>%
   addCircles(data=nodeData, radius=20)
+```
+
+(ref:8-vancouver-rail-transit-leaflet-caption) Rail transit line in Vancouver [@city_of_vancouver_open_nodate]. Licensed under the Open Government License - Vancouver: https://opendata.vancouver.ca/pages/licence/. Interactive web map can be viewed in the web browser version of the textbook: https://www.opengeomatics.ca/network-analysis.html#8-vancouver-rail-transit-leaflet.
+
+```{r 8-vancouver-rail-transit-leaflet, echo=FALSE, warning=FALSE, message=FALSE, fig.cap=fig_cap}
+if (knitr:::is_latex_output()) { 
+  fig_cap <- "(ref:8-vancouver-rail-transit-leaflet-caption)"
+  knitr::include_graphics("images/08-Rail-transit-line-in-Vancouver-static.png")
+} else { 
+  fig_cap <- paste0("Rail transit line in Vancouver [@city_of_vancouver_open_nodate]. Licensed under the <a href='",covlicence,"'>Open Government License - Vancouver</a>.")
+  m
+}
 ```
 </br>
 
@@ -137,84 +160,135 @@ leaflet(height=200, width="100%") %>% setView(lng=-122.9220614617343, lat=49.265
 
 Rings are similar to lines except that there are no end nodes. So each and every node has *two connections and the "first" and "last" nodes are connected to each other* forming a circle. The spatial structure of the Stanley park seawall trail in Vancouver resembles a ring. In this example, nodes stand for intersections and view spots and edges are the connections between these spots along the seawall.
 
-```{r 8-stanley-park-seawall, echo=FALSE, warning=FALSE, message=FALSE, fig.cap=fig_cap}
-fig_cap <- paste0("Ring of the Stanley Park seawall [@city_of_vancouver_open_nodate]. Licensed under the Open Government License - Vancouver. Interactive figure in the online format of the textbook.")
+```{r 8-stanley-park-seawall, echo=FALSE, warning=FALSE, message=FALSE}
 lineData <- readLines("data/08-stanley_park_seawall.geojson") %>% paste(collapse = "\n")
-nodeData <- readOGR("data/08-stanley_park_seawall_nodes.geojson", layer="stanley_park_seawall_nodes", verbose=FALSE)
-
-leaflet(height=400, width="100%") %>% setView(lng=-123.14051382816635, lat=49.3035701861337, zoom=14) %>%
+nodeData <- st_as_sfc("data/08-stanley_park_seawall_nodes.geojson", crs = st_crs("data/08-stanley_park_seawall_nodes.geojson"), GeoJSON = TRUE)
+m1 <- leaflet(height=400, width="100%") %>% setView(lng=-123.14051382816635, lat=49.3035701861337, zoom=14) %>%
   addProviderTiles(providers$CartoDB.Positron) %>%
   addGeoJSON(lineData, weight=3, color="gray", fill=FALSE) %>%
   addCircles(data=nodeData)
 ```
 
+(ref:8-stanley-park-seawall-leaflet-caption) Ring of the Stanley Park seawall [@city_of_vancouver_open_nodate]. Licensed under the Open Government License - Vancouver: https://opendata.vancouver.ca/pages/licence/. Interactive web map can be viewed in the web browser version of the textbook: https://www.opengeomatics.ca/network-analysis.html#8-stanley-park-seawall-leaflet.
+
+```{r 8-stanley-park-seawall-leaflet, echo=FALSE, warning=FALSE, message=FALSE, fig.cap=fig_cap}
+if (knitr:::is_latex_output()) { 
+  fig_cap <- "(ref:8-stanley-park-seawall-leaflet-caption)"
+  knitr::include_graphics("images/08-Ring-of-the-Stanley-Park-seawall-static.png")
+} else { 
+  fig_cap <- paste0("Ring of the Stanley Park seawall [@city_of_vancouver_open_nodate]. Licensed under the <a href='",covlicence,"'>Open Government License - Vancouver</a>.")
+  m1
+}
+```
+</br>
+
 ### Meshes
 
 In a mesh, *every node is also connected to more than one node*. However, in this case nodes can be connected to more than two nodes. Connections in a mesh are non-hierarchical. Contrary to rings and lines where there is only one possible route from one node to another, in a mesh there are multiple routes to access other nodes in the network. A common way to generate a mesh network is using **Delaunay triangulation**, where nodes are connected in order to form triangles and maximize the minimum angle of all triangles [@wikimedia_delaunay_2021]. Mesh configurations are commonly used in decentralized structures such as the internet.
 
-```{r 8-tree-canopy-mesh, echo=FALSE, warning=FALSE, message=FALSE, fig.cap=fig_cap}
-fig_cap <- paste0("Tree canopy mesh [@city_of_vancouver_open_nodate]. Licensed under the Open Government License - Vancouver. Interactive figure in the online format of the textbook.")
+```{r 8-tree-canopy-mesh, echo=FALSE, warning=FALSE, message=FALSE}
 lineData <- readLines("data/08-tree_canopy_mesh.geojson") %>% paste(collapse = "\n")
-polyData <- readOGR("data/08-tree_canopy_shapes.geojson", layer="tree_canopy_shapes", verbose=FALSE, GDAL1_integer64_policy=TRUE)
-nodeData <- readOGR("data/08-tree_canopy_centroids.geojson", layer="tree_canopy_centroids", verbose=FALSE)
-
-leaflet(height=300, width="100%") %>% setView(lng=-123.13264678513188, lat=49.23942113799484, zoom=17) %>%
+polyData <- st_as_sfc("data/08-tree_canopy_shapes.geojson", crs = st_crs("data/08-tree_canopy_shapes.geojson"), GeoJSON = TRUE)
+nodeData <- st_as_sfc("data/08-tree_canopy_centroids.geojson", crs = st_crs("data/08-tree_canopy_centroids.geojson"), GeoJSON = TRUE)
+m3 <- leaflet(height=300, width="100%") %>% setView(lng=-123.13264678513188, lat=49.23942113799484, zoom=17) %>%
   addProviderTiles(providers$CartoDB.Positron) %>%
   addPolygons(data=polyData, color="green", weight=0) %>%
   addGeoJSON(lineData, weight=1, color="gray", fill=FALSE) %>%
   addCircles(data=nodeData, radius=0.5)
 ```
 
+(ref:8-tree-canopy-mesh-leaflet-caption) Tree canopy mesh [@city_of_vancouver_open_nodate]. Licensed under the Open Government License - Vancouver: https://opendata.vancouver.ca/pages/licence/. Interactive web map can be viewed in the web browser version of the textbook: https://www.opengeomatics.ca/network-analysis.html#8-tree-canopy-mesh-leaflet.
+
+```{r 8-tree-canopy-mesh-leaflet, echo=FALSE, warning=FALSE, message=FALSE, fig.cap=fig_cap}
+if (knitr:::is_latex_output()) { 
+  fig_cap <- "(ref:8-tree-canopy-mesh-leaflet-caption)"
+  knitr::include_graphics("images/08-Tree-canopy-mesh-static.png")
+} else { 
+  fig_cap <- paste0("Tree canopy mesh [@city_of_vancouver_open_nodate]. Licensed under the <a href='",covlicence,"'>Open Government License - Vancouver</a>.")
+  m3
+}
+```
+
 ### Fully Connected
 
 As the name suggests, in fully connected networks *every node is connected to every other node*. The graph representing all possible origin-destination commutes among Metro Vancouver municipalities is a type of fully connected network.
 
-```{r 8-origin-destination, echo=FALSE, warning=FALSE, message=FALSE, fig.cap=fig_cap}
-fig_cap <- paste0("Possible origin-destination commutes between municipalities within Metro Vancouver [@city_of_vancouver_open_nodate]. Licensed under the Open Government License - Vancouver. Interactive figure in the online format of the textbook.")
-polygonData <- readOGR("data/08-regional_boundaries.geojson", layer="regional_boundaries", verbose=FALSE)
+```{r 8-origin-destination, echo=FALSE, warning=FALSE, message=FALSE}
+polygonData <- st_as_sfc("data/08-regional_boundaries.geojson", crs = st_crs("data/08-regional_boundaries.geojson"), GeoJSON = TRUE)
 lineData <- readLines("data/08-regional_commutes.geojson") %>% paste(collapse = "\n")
-nodeData <- readOGR("data/08-regional_commutes_nodes.geojson", layer="regional_commutes_nodes", verbose=FALSE)
-
-leaflet(height=420, width="100%") %>% setView(lng=-122.89050696548136, lat=49.19456939297959, zoom=10) %>%
+nodeData <- st_as_sfc("data/08-regional_commutes_nodes.geojson", crs = st_crs("data/08-regional_commutes_nodes.geojson"), GeoJSON = TRUE)
+m4 <- leaflet(height=420, width="100%") %>% setView(lng=-122.89050696548136, lat=49.19456939297959, zoom=10) %>%
   addProviderTiles(providers$CartoDB.Positron) %>%
   addGeoJSON(lineData, weight=2, color="gray", fill=FALSE) %>%
   addCircles(data=nodeData, radius=1)
 ```
 </br>
 
+(ref:8-origin-destination-leaflet-caption) Possible origin-destination commutes between municipalities within Metro Vancouver [@city_of_vancouver_open_nodate]. Licensed under the Open Government License - Vancouver: https://opendata.vancouver.ca/pages/licence/. Interactive web map can be viewed in the web browser version of the textbook: https://www.opengeomatics.ca/network-analysis.html#8-origin-destination-leaflet.
+
+```{r 8-origin-destination-leaflet, echo=FALSE, warning=FALSE, message=FALSE, fig.cap=fig_cap}
+if (knitr:::is_latex_output()) { 
+  fig_cap <- "(ref:8-origin-destination-leaflet-caption)"
+  knitr::include_graphics("images/08-Possible-origin-destination-commutes-between-municipalities-within-Metro-Vancouver-static.png")
+} else { 
+  fig_cap <- paste0("Possible origin-destination commutes between municipalities within Metro Vancouver [@city_of_vancouver_open_nodate]. Licensed under the <a href='",covlicence,"'>Open Government License - Vancouver</a>.")
+  m4
+}
+```
+
 ## Hierarchical Topologies
 
-Different from non-hierarchical topologies, hierarchical configurations are structured around a central node or link.
-By looking into hierarchical topologies it becomes easier to understand the notion of depth. The more distant a node is from the central node or link, the more depth it has. Hover the mouse over the nodes in the following maps to check out their depth.
+Different from non-hierarchical topologies, hierarchical configurations are structured around a central node or link. By looking into hierarchical topologies it becomes easier to understand the notion of depth. The more distant a node is from the central node or link, the more depth it has. Hover the mouse over the nodes in the following maps to check out their depth.
 
 ### Stars
 
 Stars are hierarchical structures where *two or more nodes are directly connected to a central node*. This concentric garden at the University of British Columbia can be represented according to a star topology.
 
-```{r 8-spatial-structure-garden, echo=FALSE, warning=FALSE, message=FALSE, fig.cap=fig_cap}
-fig_cap <- paste0("Spatial structure of a concentric garden at UBC [@city_of_vancouver_open_nodate]. Licensed under the Open Government License - Vancouver. Interactive figure in the online format of the textbook.")
+```{r 8-spatial-structure-garden, echo=FALSE, warning=FALSE, message=FALSE}
 lineData <- readLines("data/08-concentric_garden.geojson") %>% paste(collapse = "\n")
-nodeData <- readOGR("data/08-concentric_garden_nodes.geojson", layer="concentric_garden_nodes", verbose=FALSE)
-
-leaflet(height=200, width="100%") %>% setView(lng=-123.24650254301488, lat=49.25331570212763, zoom=19) %>%
+nodeData <- st_as_sfc("data/08-concentric_garden_nodes.geojson", crs = st_crs("data/08-concentric_garden_nodes.geojson"), GeoJSON = TRUE)
+m5 <- leaflet(height=200, width="100%") %>% setView(lng=-123.24650254301488, lat=49.25331570212763, zoom=19) %>%
   addProviderTiles(providers$CartoDB.Positron) %>%
   addGeoJSON(lineData, weight=2, color="gray", fill=FALSE) %>%
   addCircles(data=nodeData, radius=1)
 ```
 </br>
 
+(ref:8-spatial-structure-garden-leaflet-caption) Spatial structure of a concentric garden at UBC [@city_of_vancouver_open_nodate]. Licensed under the Open Government License - Vancouver: https://opendata.vancouver.ca/pages/licence/. Interactive web map can be viewed in the web browser version of the textbook: https://www.opengeomatics.ca/network-analysis.html#8-spatial-structure-garden-leaflet.
+
+```{r 8-spatial-structure-garden-leaflet, echo=FALSE, warning=FALSE, message=FALSE, fig.cap=fig_cap}
+if (knitr:::is_latex_output()) { 
+  fig_cap <- "(ref:8-spatial-structure-garden-leaflet-caption)"
+  knitr::include_graphics("images/08-Spatial-structure-of-a-concentric-garden-at-UBC-static.png")
+} else { 
+  fig_cap <- paste0("Spatial structure of a concentric garden at UBC [@city_of_vancouver_open_nodate]. Licensed under the <a href='",covlicence,"'>Open Government License - Vancouver</a>.")
+  m5
+}
+```
+
 ### Buses
+
 Buses are structures where *every path from one node to another passes through a central path or corridor*. If we isolate a street segment from an urban street network, the connections between buildings and streets depict a bus topology.
 
-```{r 8-connections-houses-streets, echo=FALSE, warning=FALSE, message=FALSE, fig.cap=fig_cap}
-fig_cap <- paste0("Connections between houses and streets [@city_of_vancouver_open_nodate]. Licensed under the Open Government License - Vancouver. Interactive figure in the online format of the textbook.")
+```{r 8-connections-houses-streets, echo=FALSE, warning=FALSE, message=FALSE}
 lineData <- readLines("data/08-row_houses.geojson") %>% paste(collapse = "\n")
-nodeData <- readOGR("data/08-row_houses_nodes.geojson", layer="row_housses_nodes", verbose=FALSE)
-
-leaflet(height=200, width="100%") %>% setView(lng=-123.17161003346679, lat=49.2547602831889, zoom=18) %>%
+nodeData <- st_as_sfc("data/08-row_houses_nodes.geojson", crs = st_crs("data/08-row_houses_nodes.geojson"), GeoJSON = TRUE)
+m6 <- leaflet(height=200, width="100%") %>% setView(lng=-123.17161003346679, lat=49.2547602831889, zoom=18) %>%
   addProviderTiles(providers$CartoDB.Positron) %>%
   addGeoJSON(lineData, weight=2, color="gray", fill=FALSE) %>%
   addCircles(data=nodeData, radius=1)
+```
+
+(ref:8-connections-houses-streets-leaflet-caption) Connections between houses and streets [@city_of_vancouver_open_nodate]. Licensed under the Open Government License - Vancouver: https://opendata.vancouver.ca/pages/licence/. Interactive web map can be viewed in the web browser version of the textbook: https://www.opengeomatics.ca/network-analysis.html#8-connections-houses-streets-leaflet.
+
+```{r 8-connections-houses-streets-leaflet, echo=FALSE, warning=FALSE, message=FALSE, fig.cap=fig_cap}
+if (knitr:::is_latex_output()) { 
+  fig_cap <- "(ref:8-connections-houses-streets-leaflet-caption)"
+  knitr::include_graphics("images/08-Connections-between-houses-and-streets-static.png")
+} else { 
+  fig_cap <- paste0("Connections between houses and streets [@city_of_vancouver_open_nodate]. Licensed under the <a href='",covlicence,"'>Open Government License - Vancouver</a>.")
+  m6
+}
 ```
 </br>
 
@@ -222,15 +296,25 @@ leaflet(height=200, width="100%") %>% setView(lng=-123.17161003346679, lat=49.25
 
 In tree topologies, nodes are *structured from a root node and arranged into edges* that are similar to branches of a tree. This highly hierarchical structure create a sort of **parent - child** relationship amongst nodes. The spatial configuration of boat marinas are usually structures in tree-like topologies. By definition, all tree network structures will always have more than one terminal nodes (a node that only has one connection to the network).
 
-```{r 8-boat-marina, echo=FALSE, warning=FALSE, message=FALSE, fig.cap=fig_cap}
-fig_cap <- paste0("Tree spatial structure of a boat marina [@city_of_vancouver_open_nodate]. Licensed under the Open Government License - Vancouver. Interactive figure in the online format of the textbook.")
+```{r 8-boat-marina, echo=FALSE, warning=FALSE, message=FALSE}
 lineData <- readLines("data/08-boat_marina.geojson") %>% paste(collapse = "\n")
-nodeData <- readOGR("data/08-boat_marina_nodes.geojson", layer="boat_marina_nodes", verbose=FALSE)
-
-leaflet(height=500, width="80%") %>% setView(lng=-123.1270252730915, lat=49.29535129069547, zoom=17) %>%
+nodeData <- st_as_sfc("data/08-boat_marina_nodes.geojson", crs = st_crs("data/08-boat_marina_nodes.geojson"), GeoJSON = TRUE)
+m7 <- leaflet(height=500, width="80%") %>% setView(lng=-123.1270252730915, lat=49.29535129069547, zoom=17) %>%
   addProviderTiles(providers$CartoDB.Positron) %>%
   addGeoJSON(lineData, weight=2, color="gray", fill=FALSE) %>%
   addCircles(data=nodeData, radius=1)
+```
+
+(ref:8-boat-marina-leaflet-caption) Tree spatial structure of a boat marina [@city_of_vancouver_open_nodate]. Licensed under the Open Government License - Vancouver: https://opendata.vancouver.ca/pages/licence/. Interactive web map can be viewed in the web browser version of the textbook: https://www.opengeomatics.ca/network-analysis.html#8-boat-marina-leaflet.
+
+```{r 8-boat-marina-leaflet, echo=FALSE, warning=FALSE, message=FALSE, fig.cap=fig_cap}
+if (knitr:::is_latex_output()) { 
+  fig_cap <- "(ref:8-boat-marina-leaflet-caption)"
+  knitr::include_graphics("images/08-Tree-spatial-structure-of-a-boat-marina-static.png")
+} else { 
+  fig_cap <- paste0("Tree spatial structure of a boat marina [@city_of_vancouver_open_nodate]. Licensed under the <a href='",covlicence,"'>Open Government License - Vancouver</a>.")
+  m7
+}
 ```
 </br>
 
@@ -242,16 +326,25 @@ Networks can then be arranged according to various different configurations. Asi
 
 The act of modelling spatial networks is called **network tracing**. When tracing a network it is important to bear in mind the **direction** with which information is added to the network, especially when this orientation information is important to further analyze **flows** and relationships within such structure. For example, when mapping hydrological networks to study its flows it might be useful to model the direction of streams coherently as this might be an important information to represent the dynamics of the network.
 
-```{r 8-fraser-river-flows, echo=FALSE, warning=FALSE, message=FALSE, fig.cap=fig_cap}
-fig_cap <- paste0("Graph representing Fraser River Flows [@city_of_vancouver_open_nodate]. Licensed under the Open Government License - Vancouver. Interactive figure in the online format of the textbook.")
-
-nodes <- readOGR("data/08-fraser_river_nodes.geojson", verbose=FALSE)
-links <- readOGR("data/08-fraser_river.geojson", verbose=FALSE)
-
-leaflet(links, height=500, width="100%") %>% addTiles() %>%
+```{r 8-fraser-river-flows, echo=FALSE, warning=FALSE, message=FALSE}
+nodes <- st_as_sfc("data/08-fraser_river_nodes.geojson", crs = st_crs("data/08-fraser_river_nodes.geojson"), GeoJSON = TRUE)
+links <- st_as_sfc("data/08-fraser_river.geojson", crs = st_crs("data/08-fraser_river.geojson"), GeoJSON = TRUE)
+m8 <- leaflet(links, height=500, width="100%") %>% addTiles() %>%
   addProviderTiles(providers$CartoDB.Positron) %>%
   addPolylines(data=links, color="gray") %>%
   addCircles(data=nodes, radius=1)
+```
+
+(ref:8-fraser-river-flows-leaflet-caption) Graph representing Fraser River Flows [@city_of_vancouver_open_nodate]. Licensed under the Open Government License - Vancouver: https://opendata.vancouver.ca/pages/licence/. Interactive web map can be viewed in the web browser version of the textbook: https://www.opengeomatics.ca/network-analysis.html#8-fraser-river-flows-leaflet.
+
+```{r 8-fraser-river-flows-leaflet, echo=FALSE, warning=FALSE, message=FALSE, fig.cap=fig_cap}
+if (knitr:::is_latex_output()) { 
+  fig_cap <- "(ref:8-fraser-river-flows-leaflet-caption)"
+  knitr::include_graphics("images/08-Tree-spatial-structure-of-a-boat-marina-static.png")
+} else { 
+  fig_cap <- paste0("Graph representing Fraser River Flows [@city_of_vancouver_open_nodate]. Licensed under the <a href='",covlicence,"'>Open Government License - Vancouver</a>.")
+  m8
+}
 ```
 </br>
 
@@ -382,17 +475,20 @@ knitr::include_graphics("images/08-cost-thresholds.png")
 
 Reach techniques are commonly used to find the incidence of defined elements *within a certain radius from a chosen node*. All possible routes are modeled. The number of **terminal nodes** varies according to the network structure. Urban walkability indices usually uses reach techniques to assess the intensity of certain indicators (such as intersection density or non-residential land uses) given a walkable radius [@martino_spatial_2020]. In the map below we portray the network reach from a given origin point into the Pacific Spirit Regional Park within 400m (red), 800m (yellow), 1200m (green) and 1600m (blue) radii.
 
-```{r 8-reach-analysis, echo=FALSE, warning=FALSE, message=FALSE, fig.cap=fig_cap}
-fig_cap <- paste0("Reachable segments within multiple distance radii [@city_of_vancouver_open_nodate]. Licensed under the Open Government License - Vancouver. Interactive figure in the online format of the textbook.")
+```{r 8-reach-analysis, echo=FALSE, warning=FALSE, message=FALSE}
+origin <- st_as_sfc("data/08-pacific_spirit_origin.geojson", crs = st_crs("data/08-pacific_spirit_origin.geojson"), GeoJSON = TRUE)
 
-origin <- readOGR("data/08-pacific_spirit_origin.geojson", verbose=FALSE)
-base_net <- readOGR("data/08-pacific_spirit_network.geojson", verbose=FALSE)
-net_400 <- readOGR("data/08-pacific_spirit_400.geojson", verbose=FALSE)
-net_800 <- readOGR("data/08-pacific_spirit_800.geojson", verbose=FALSE)
-net_1200 <- readOGR("data/08-pacific_spirit_1200.geojson", verbose=FALSE)
-net_1600 <- readOGR("data/08-pacific_spirit_1600.geojson", verbose=FALSE)
+base_net <- st_as_sfc("data/08-pacific_spirit_network.geojson", crs = st_crs("data/08-pacific_spirit_network.geojson"), GeoJSON = TRUE)
 
-leaflet(net_1600, height=500, width="100%") %>% setView(lng=-123.22165125449455, lat=49.25752614491611, zoom=14) %>% addTiles() %>%
+net_400 <- st_as_sfc("data/08-pacific_spirit_400.geojson", crs = st_crs("data/08-pacific_spirit_400.geojson"), GeoJSON = TRUE)
+
+net_800 <- st_as_sfc("data/08-pacific_spirit_800.geojson", crs = st_crs("data/08-pacific_spirit_800.geojson"), GeoJSON = TRUE)
+
+net_1200 <- st_as_sfc("data/08-pacific_spirit_1200.geojson", crs = st_crs("data/08-pacific_spirit_1200.geojson"), GeoJSON = TRUE)
+
+net_1600 <- st_as_sfc("data/08-pacific_spirit_1600.geojson", crs = st_crs("data/08-pacific_spirit_1600.geojson"), GeoJSON = TRUE)
+
+m9 <- leaflet(net_1600, height=500, width="100%") %>% setView(lng=-123.22165125449455, lat=49.25752614491611, zoom=14) %>% addTiles() %>%
   addProviderTiles(providers$CartoDB.Positron) %>%
   addPolylines(data=base_net, color="lightgray") %>%
   addPolylines(data=net_1600, color="mediumaquamarine") %>%
@@ -400,6 +496,18 @@ leaflet(net_1600, height=500, width="100%") %>% setView(lng=-123.22165125449455,
   addPolylines(data=net_800, color="gold") %>%
   addPolylines(data=net_400, color="lightcoral") %>%
   addCircles(data=origin, radius=2, color="black")
+```
+
+(ref:8-reach-analysis-leaflet-caption) Reachable segments within multiple distance radii [@city_of_vancouver_open_nodate]. Licensed under the Open Government License - Vancouver: https://opendata.vancouver.ca/pages/licence/. Interactive web map can be viewed in the web browser version of the textbook: https://www.opengeomatics.ca/network-analysis.html#8-reach-analysis-leaflet.
+
+```{r 8-reach-analysis-leaflet, echo=FALSE, warning=FALSE, message=FALSE, fig.cap=fig_cap}
+if (knitr:::is_latex_output()) { 
+  fig_cap <- "(ref:8-reach-analysis-leaflet-caption)"
+  knitr::include_graphics("images/08-Reachable-segments-within-multiple-distance-radii-static.png")
+} else { 
+  fig_cap <- paste0("Reachable segments within multiple distance radii [@city_of_vancouver_open_nodate]. Licensed under the <a href='",covlicence,"'>Open Government License - Vancouver</a>.")
+  m9
+}
 ```
 </br>
 
@@ -411,17 +519,26 @@ Nodes and edges of a graph can also be ranked in terms of how **important** they
 
 Closeness centrality measures *how close each node is to every other node of the graph* in terms of topological distances. It highlights nodes located in easily accessible spaces. For example when analyzing the closeness of street intersections at the University of British Columbia (UBC), intersections in core streets such as the Main Mall, Agronomy Road and Northwest Marine Drive are ranked as highly central whereas more residential and segregated areas such as Acadia Road are ranked with lower closeness centrality.
 
-```{r 8-closeness-centrality-UBC, echo=FALSE, warning=FALSE, message=FALSE, fig.cap=fig_cap}
-fig_cap <- paste0("Closeness centrality of the street intersections at UBC [@city_of_vancouver_open_nodate]. Licensed under the Open Government License - Vancouver. Interactive figure in the online format of the textbook.")
-
-intersections <- readOGR("data/08-ubc_intersections.geojson", verbose=FALSE)
-map <- leaflet(intersections, height=500, width="100%") %>% addTiles()
+```{r 8-closeness-centrality-UBC, echo=FALSE, warning=FALSE, message=FALSE}
+intersections <- geojson_sf("data/08-ubc_intersections.geojson")
+m10 <- leaflet(intersections, height=500, width="100%") %>% addTiles()
 pal <- colorNumeric(palette="viridis", domain=intersections$closeness, n=6, reverse=TRUE)
-
-map %>%
+m10 %>%
   addProviderTiles(providers$CartoDB.Positron) %>%
   addPolygons(data=intersections, color=~colorNumeric("viridis", closeness, reverse=TRUE)(closeness)) %>%
   addLegend("bottomright", pal=pal, values=~closeness, title="Closeness", opacity=1)
+```
+
+(ref:8-closeness-centrality-UBC-leaflet-caption) Closeness centrality of the street intersections at UBC [@city_of_vancouver_open_nodate]. Licensed under the Open Government License - Vancouver: https://opendata.vancouver.ca/pages/licence/. Interactive web map can be viewed in the web browser version of the textbook: https://www.opengeomatics.ca/network-analysis.html#8-closeness-centrality-UBC-leaflet.
+
+```{r 8-closeness-centrality-UBC-leaflet, echo=FALSE, warning=FALSE, message=FALSE, fig.cap=fig_cap}
+if (knitr:::is_latex_output()) { 
+  fig_cap <- "(ref:8-closeness-centrality-UBC-leaflet-caption)"
+  knitr::include_graphics("images/08-Closeness-centrality-of-the-street-intersections-at-UBC-static.png")
+} else { 
+  fig_cap <- paste0("Closeness centrality of the street intersections at UBC [@city_of_vancouver_open_nodate]. Licensed under the <a href='",covlicence,"'>Open Government License - Vancouver</a>.")
+  m10
+}
 ```
 </br>
 
@@ -435,16 +552,26 @@ where $d_{ij}$ means the logical distance from $i$ to $j$.
 
 Betweenness centrality measures *how likely a node or an edge is to be passed through* when going from every node to every other node of the graph. If we imagine agents travelling from each node to every other node and back, betweenness centrality would be the trail left by those agents. While closeness highlights central spaces, betweenness highlights pathways that lead to those central spaces. Using the same street network at UBC we can calculate the betweenness of segments.
 
-```{r 8-betweenness-centrality, echo=FALSE, warning=FALSE, message=FALSE, fig.cap=fig_cap}
-fig_cap <- paste0("Betweenness centrality of street segments at UBC [@city_of_vancouver_open_nodate]. Licensed under the Open Government License - Vancouver. Interactive figure in the online format of the textbook.")
-segments <- readOGR("data/08-ubc_segments.geojson", verbose=FALSE)
-map <- leaflet(segments, height=500, width="100%") %>% addTiles()
+```{r 8-betweenness-centrality, echo=FALSE, warning=FALSE, message=FALSE}
+segments <- geojson_sf("data/08-ubc_segments.geojson")
+m11 <- leaflet(segments, height=500, width="100%") %>% addTiles()
 pal <- colorQuantile(palette="viridis", domain=segments$betweenness, n=6, reverse=TRUE)
-
-map %>%
+m11 %>%
   addProviderTiles(providers$CartoDB.Positron) %>%
   addPolygons(data=segments, color=~colorQuantile("viridis", betweenness, reverse=TRUE)(betweenness)) %>%
   addLegend("bottomright", pal=pal, values=~betweenness, title="Betweenness", opacity=1)
+```
+
+(ref:8-betweenness-centrality-leaflet-caption) Betweenness centrality of street segments at UBC [@city_of_vancouver_open_nodate]. Licensed under the Open Government License - Vancouver: https://opendata.vancouver.ca/pages/licence/. Interactive web map can be viewed in the web browser version of the textbook: https://www.opengeomatics.ca/network-analysis.html#8-betweenness-centrality-leaflet.
+
+```{r 8-betweenness-centrality-leaflet, echo=FALSE, warning=FALSE, message=FALSE, fig.cap=fig_cap}
+if (knitr:::is_latex_output()) { 
+  fig_cap <- "(ref:8-betweenness-centrality-leaflet-caption)"
+  knitr::include_graphics("images/08-Betweenness-centrality-of-street-segments-at-UBC-static.png")
+} else { 
+  fig_cap <- paste0("Betweenness centrality of street segments at UBC [@city_of_vancouver_open_nodate]. Licensed under the <a href='",covlicence,"'>Open Government License - Vancouver</a>.")
+  m11
+}
 ```
 </br>
 
@@ -460,20 +587,29 @@ Are green spaces evenly accessible throughout the whole city? Which parks are to
 
 First we need to find the Closeness measure for the street network of the City of Vancouver. The network information was downloaded from [OpenStreetMap](https://www.openstreetmap.org/). The [graph-tool](https://graph-tool.skewed.de/) software was used to calculate the centrality measure. With the results of centrality for all street intersections in the city, we can overlay Parks & Green spaces data from the [City of Vancouver Open Data portal](https://opendata.vancouver.ca/explore/dataset/parks-polygon-representation/information/) and get the average closeness of nodes within each green space.
 
-``` {r 8-closeness-centrality-vancouver, echo=FALSE, warning=FALSE, message=FALSE, fig.cap=fig_cap}
-fig_cap <- paste0("Closeness centrality of parks and green spaces at the City of Vancouver [@city_of_vancouver_open_nodate]. Licensed under the Open Government License - Vancouver. Interactive figure in the online format of the textbook.")
-parks <- readOGR("data/08-vancouver_parks.geojson", verbose=FALSE)
-
-map <- leaflet(parks, height=500, width="100%") %>% addTiles()
+``` {r 8-closeness-centrality-vancouver, echo=FALSE, warning=FALSE, message=FALSE}
+parks <- geojson_sf("data/08-vancouver_parks.geojson")
+m12 <- leaflet(parks, height=500, width="100%") %>% addTiles()
 pal <- colorNumeric(palette="viridis", domain=parks$betweenness, n=6, reverse=TRUE)
-
-map %>%
+m12 %>%
   addProviderTiles(providers$CartoDB.Positron) %>%
   addPolygons(data=parks, color=~colorNumeric("viridis", closeness_mean, reverse=TRUE)(closeness_mean)) %>%
   addLegend("bottomright", pal=pal, values=~closeness_mean, title="Closeness", opacity=1)
 
 parks_df = data.frame(parks$closeness_mean)
-ggplot(parks_df, aes(x=parks.closeness_mean)) + geom_density(alpha=0.3, fill=rgb(160/255, 208/255, 224/255))
+##ggplot(parks_df, aes(x=parks.closeness_mean)) + geom_density(alpha=0.3, fill=rgb(160/255, 208/255, 224/255))
+```
+
+(ref:8-closeness-centrality-vancouver-leaflet-caption) Closeness centrality of parks and green spaces at the City of Vancouver [@city_of_vancouver_open_nodate]. Licensed under the Open Government License - Vancouver: https://opendata.vancouver.ca/pages/licence/. Interactive web map can be viewed in the web browser version of the textbook: https://www.opengeomatics.ca/network-analysis.html#8-closeness-centrality-vancouver-leaflet.
+
+```{r 8-closeness-centrality-vancouver-leaflet, echo=FALSE, warning=FALSE, message=FALSE, fig.cap=fig_cap}
+if (knitr:::is_latex_output()) { 
+  fig_cap <- "(ref:8-closeness-centrality-vancouver-leaflet-caption)"
+  knitr::include_graphics("images/08-CLOSENESS-CENTRALITY-OF-PARKS-AND-GREEN-SPACES-AT-THE-CITY-OF-VANCOUVER-static.png")
+} else { 
+  fig_cap <- paste0("Closeness centrality of parks and green spaces at the City of Vancouver [@city_of_vancouver_open_nodate]. Licensed under the <a href='",covlicence,"'>Open Government License - Vancouver</a>.")
+  m11
+}
 ```
 </br>
 

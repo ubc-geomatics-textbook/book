@@ -1,16 +1,10 @@
----
-output:
-  pdf_document:
-    latex_engine: xelatexgit pull origin develop
----
-
 ```{r, include=FALSE}
 baseurl <- "https://ubc-geomatics-textbook.github.io/geomatics-textbook/"
 covlicence <- "https://opendata.vancouver.ca/pages/licence/"
 nrcanlicense <- "https://open.canada.ca/en/open-government-licence-canada"
 library(plyr)
 library(dplyr)
-library(rgdal)
+library(sf)
 library(leaflet)
 library(xtable)
 library(RColorBrewer)
@@ -63,9 +57,15 @@ All of these questions stem from need to represent **location**. For our purpose
 
 Eratosthenes accurately calculated the circumference of Earth by noticing how the Sun shone directly down the bottom of a well in Syene (modern Egypt) at noon on the summer solstice. He later made a second observation at Alexandria at noon on the summer solstice with a pole and noticed a shadow. He measured the angle of the shadow and inferred the circumference of Earth, which was already known to be spherical (Figure \@ref(fig:2-Eratosthenes)).
 
+(ref:2-Eratosthenes-caption) Diagram showing how Eratosthenes estimated the circumference of Earth by observing the angle of a shadow that was cast about 800 km north of Syene in present-day Egypt. [@monniaux_illustration_2005], CC-BY-SA-4.0.
+
 ```{r 2-Eratosthenes, fig.cap = fig_cap, out.width= "75%", echo = FALSE}
-    fig_cap <- paste0("Diagram showing how Eratosthenes estimated the circumference of Earth by observing the angle of a shadow that was cast about 800 km north of Syene in present-day Egypt. @monniaux_illustration_2005, CC-BY-SA-4.0.")
-    knitr::include_graphics("images/02-Eratosthenes.png")
+if (knitr:::is_latex_output()) { 
+  fig_cap <- "(ref:2-Eratosthenes-caption)"
+} else { 
+  fig_cap <- paste0("Diagram showing how Eratosthenes estimated the circumference of Earth by observing the angle of a shadow that was cast about 800 km north of Syene in present-day Egypt. [@monniaux_illustration_2005], CC-BY-SA-4.0.")
+}
+knitr::include_graphics("images/02-Eratosthenes.png")
 ```
 <br/>
 
@@ -160,7 +160,7 @@ The Canadian Geodetic Vertical Datum of 2013 (CGVD2013) is the current gravimetr
 For reference, CGVD2013 is 17 centimeters below mean sea level measured in Vancouver at the Pacific Ocean, 39 centimeters above mean sea level in Halifax at the Atlantic Ocean, and 36 centimeters above mean sea level in Tuktoyaktuk at the Arctic Ocean. The older CGDV28 did not have any survey benchmarks in the far north of Canada and, with the advent of more reliable satellite-based measurements, was modernized in 2015 to CGVD2013. The United States currently uses the North American Vertical Datum of 1988 (NAVD88), which was never adopted by Canada, but the United States will be modernizing their vertical datum by adopting a gravimetric model with the same gravity potential value as Canada as early as 2025.
 
 ``` {r echo=FALSE, warning=FALSE, message=FALSE}
-countries <- rgdal::readOGR("Data/02/canada.geojson", verbose=F)
+countries <- st_as_sfc("Data/02/canada.geojson", crs = st_crs("Data/02/canada.geojson"), GeoJSON = TRUE)
 r <- raster("Data/02/CGG2013_minus_HT21997_meters.tif")
 p <- brewer.pal(11,"RdYlBu")
 pal <- colorNumeric(p, values(r), na.color = "transparent")
@@ -175,13 +175,15 @@ m <- leaflet(countries) %>%
   addLegend(pal = pal, values = values(r), group = "Difference", opacity = 1, title = "CGVD2013 minus CGVD28 (meters)")
 ```
 
+(ref:2-CGVD-leaflet-caption) The difference (in meters) between the Canadian Geodetic Vertical Datum of 2013 (CGVD2013) and the Canadian Geodetic Vertical Datum of 1928 (CGVD28). Pickell, CC-BY-SA-4.0. Data from Natural Resources Canada and licensed under the Open Government Licence - Canada: https://open.canada.ca/en/open-government-licence-canada. Interactive web map can be viewed in the web browser version of the textbook: https://www.opengeomatics.ca/mapping-data.html#fig:2-CGVD-leaflet.
+
 ``` {r 2-CGVD-leaflet, echo=FALSE, out.width="100%", fig.cap=fig_cap}
-  fig_cap <- paste0("The difference (in meters) between the Canadian Geodetic Vertical Datum of 2013 (CGVD2013) and the Canadian Geodetic Vertical Datum of 1928 (CGVD28). <a
-  href='",baseurl,"#fig:2-CGVD-leaflet'>Animated figure can be viewed in the web browser version of the textbook</a>. Data from Natural Resources Canada and licensed under the <a href='",nrcanlicense,"'>Open Government Licence - Canada</a>. Pickell, CC-BY-SA-4.0.")
 if (knitr:::is_latex_output()) {
-knitr::include_graphics(here::here("images", "02-CGVD-leaflet.PNG"))
+  fig_cap = "(ref:2-CGVD-leaflet-caption)"  
+  knitr::include_graphics(here::here("images", "02-CGVD-leaflet.PNG"))
 } else {
-m
+  fig_cap <- paste0("The difference (in meters) between the Canadian Geodetic Vertical Datum of 2013 (CGVD2013) and the Canadian Geodetic Vertical Datum of 1928 (CGVD28). Data from Natural Resources Canada and licensed under the <a href='",nrcanlicense,"'>Open Government Licence - Canada</a>. Pickell, CC-BY-SA-4.0.")
+  m
 }
 ```
 
@@ -219,9 +221,15 @@ If you mapped the Earth as an ellipsoid in a three dimensional Cartesian coordin
 
 Use our geodesy tool to visualize the differences between the sphere, ellipsoid, and geoid. You can modify the transparency of the sphere and ellipsoid to see how these geometries vary. Change the flattening of the ellipsoid to achieve different models of Earth. Search for locations with latitude and longitude values and calculate the geoid height. Compare geocentric and geodetic latitudes. The sphere and the ellipsoid models in the visualization represent Earth's equatorial diameter (semi-major axis) as 6,356,752.3 m (i.e., equivalent to WGS 1984) and the geoid elevations are exaggerated by a factor of 0.549 to enhance their appearance.
 
+(ref:2-geodesy-visualization-static-caption) Online geodesy tool for visualizing the differences between the sphere, ellipsoid, and geoid.  Floria Gu, CC-BY-SA-4.0. Click here to access the interactive tool: https://ubcemergingmedialab.github.io/geomatics-textbook/viz/geodesy-viz/
+
 ```{r 2-geodesy-visualization-static, fig.cap = fig_cap, out.width= "75%", echo = FALSE}
-    fig_cap <- paste0("Online geodesy tool for visualizing the differences between the sphere, ellipsoid, and geoid. <a href='https://ubcemergingmedialab.github.io/geomatics-textbook/viz/geodesy-viz/'>Click here to access the interactive tool.</a> Floria Gu, CC-BY-SA-4.0.")
-    knitr::include_graphics(here::here("images", "02-geodesy-visualization-static.png"))
+if (knitr:::is_latex_output()) { 
+  fig_cap = "(ref:2-geodesy-visualization-static-caption)"
+} else { 
+  fig_cap <- paste0("Online geodesy tool for visualizing the differences between the sphere, ellipsoid, and geoid. <a href='https://ubcemergingmedialab.github.io/geomatics-textbook/viz/geodesy-viz/'>Click here to access the interactive tool.</a> Floria Gu, CC-BY-SA-4.0.")
+}
+knitr::include_graphics("images/02-geodesy-visualization-static.png")
 ```
 <br/>
 

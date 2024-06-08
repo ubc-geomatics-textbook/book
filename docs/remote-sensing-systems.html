@@ -5,20 +5,20 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 10 Remote Sensing Systems | Geomatics for Environmental Management: An Open Textbook for Students and Practitioners</title>
-  <meta name="description" content="Advancing teaching and learning in geomatics" />
-  <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
+  <meta name="description" content="The purpose of this textbook is to give students and practitioners a solid survey (pun intended) of what modern geomatics is capable of when confronting environmental management problems. We take a Canadian perspective to this approach, by telling the historical contributions of Canadians to the field and sharing real-world case studies of environmental management problems in Canada." />
+  <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 10 Remote Sensing Systems | Geomatics for Environmental Management: An Open Textbook for Students and Practitioners" />
   <meta property="og:type" content="book" />
-  
-  <meta property="og:description" content="Advancing teaching and learning in geomatics" />
+  <meta property="og:image" content="https://github.com/ubc-geomatics-textbook/images/15-las-treetops.png" />
+  <meta property="og:description" content="The purpose of this textbook is to give students and practitioners a solid survey (pun intended) of what modern geomatics is capable of when confronting environmental management problems. We take a Canadian perspective to this approach, by telling the historical contributions of Canadians to the field and sharing real-world case studies of environmental management problems in Canada." />
   <meta name="github-repo" content="ubc-geomatics-textbook" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Chapter 10 Remote Sensing Systems | Geomatics for Environmental Management: An Open Textbook for Students and Practitioners" />
   
-  <meta name="twitter:description" content="Advancing teaching and learning in geomatics" />
-  
+  <meta name="twitter:description" content="The purpose of this textbook is to give students and practitioners a solid survey (pun intended) of what modern geomatics is capable of when confronting environmental management problems. We take a Canadian perspective to this approach, by telling the historical contributions of Canadians to the field and sharing real-world case studies of environmental management problems in Canada." />
+  <meta name="twitter:image" content="https://github.com/ubc-geomatics-textbook/images/15-las-treetops.png" />
 
 
 
@@ -51,42 +51,43 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
-<script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
+<link href="libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet" />
+<script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
 <link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
 <script src="libs/leaflet-1.3.1/leaflet.js"></script>
 <link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
 <script src="libs/proj4-2.6.2/proj4.min.js"></script>
 <script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
 <link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
-<script src="libs/leaflet-binding-2.1.2/leaflet.js"></script>
-<script src="libs/leaflet-providers-1.9.0/leaflet-providers_1.9.0.js"></script>
-<script src="libs/leaflet-providers-plugin-2.1.2/leaflet-providers-plugin.js"></script>
-<script src="libs/rglWebGL-binding-1.2.1/rglWebGL.js"></script>
-<link href="libs/rglwidgetClass-1.2.1/rgl.css" rel="stylesheet" />
-<script src="libs/rglwidgetClass-1.2.1/rglClass.src.js"></script>
-<script src="libs/rglwidgetClass-1.2.1/utils.src.js"></script>
-<script src="libs/rglwidgetClass-1.2.1/buffer.src.js"></script>
-<script src="libs/rglwidgetClass-1.2.1/subscenes.src.js"></script>
-<script src="libs/rglwidgetClass-1.2.1/shaders.src.js"></script>
-<script src="libs/rglwidgetClass-1.2.1/shadersrc.src.js"></script>
-<script src="libs/rglwidgetClass-1.2.1/textures.src.js"></script>
-<script src="libs/rglwidgetClass-1.2.1/projection.src.js"></script>
-<script src="libs/rglwidgetClass-1.2.1/mouse.src.js"></script>
-<script src="libs/rglwidgetClass-1.2.1/init.src.js"></script>
-<script src="libs/rglwidgetClass-1.2.1/pieces.src.js"></script>
-<script src="libs/rglwidgetClass-1.2.1/draw.src.js"></script>
-<script src="libs/rglwidgetClass-1.2.1/controls.src.js"></script>
-<script src="libs/rglwidgetClass-1.2.1/selection.src.js"></script>
-<script src="libs/rglwidgetClass-1.2.1/rglTimer.src.js"></script>
-<script src="libs/rglwidgetClass-1.2.1/pretty.src.js"></script>
-<script src="libs/rglwidgetClass-1.2.1/axes.src.js"></script>
-<script src="libs/rglwidgetClass-1.2.1/animation.src.js"></script>
-<script src="libs/CanvasMatrix4-1.2.1/CanvasMatrix.src.js"></script>
+<script src="libs/leaflet-binding-2.2.2/leaflet.js"></script>
+<script src="libs/leaflet-providers-2.0.0/leaflet-providers_2.0.0.js"></script>
+<script src="libs/leaflet-providers-plugin-2.2.2/leaflet-providers-plugin.js"></script>
+<script src="libs/rglWebGL-binding-1.3.1/rglWebGL.js"></script>
+<link href="libs/rglwidgetClass-1.3.1/rgl.css" rel="stylesheet" />
+<script src="libs/rglwidgetClass-1.3.1/rglClass.src.js"></script>
+<script src="libs/rglwidgetClass-1.3.1/utils.src.js"></script>
+<script src="libs/rglwidgetClass-1.3.1/buffer.src.js"></script>
+<script src="libs/rglwidgetClass-1.3.1/subscenes.src.js"></script>
+<script src="libs/rglwidgetClass-1.3.1/shaders.src.js"></script>
+<script src="libs/rglwidgetClass-1.3.1/shadersrc.src.js"></script>
+<script src="libs/rglwidgetClass-1.3.1/textures.src.js"></script>
+<script src="libs/rglwidgetClass-1.3.1/projection.src.js"></script>
+<script src="libs/rglwidgetClass-1.3.1/mouse.src.js"></script>
+<script src="libs/rglwidgetClass-1.3.1/init.src.js"></script>
+<script src="libs/rglwidgetClass-1.3.1/pieces.src.js"></script>
+<script src="libs/rglwidgetClass-1.3.1/draw.src.js"></script>
+<script src="libs/rglwidgetClass-1.3.1/controls.src.js"></script>
+<script src="libs/rglwidgetClass-1.3.1/selection.src.js"></script>
+<script src="libs/rglwidgetClass-1.3.1/rglTimer.src.js"></script>
+<script src="libs/rglwidgetClass-1.3.1/pretty.src.js"></script>
+<script src="libs/rglwidgetClass-1.3.1/axes.src.js"></script>
+<script src="libs/rglwidgetClass-1.3.1/animation.src.js"></script>
+<script src="libs/CanvasMatrix4-1.3.1/CanvasMatrix.src.js"></script>
 <script src="libs/d3-4.5.0/d3.min.js"></script>
 <script src="libs/forceNetwork-binding-0.4/forceNetwork.js"></script>
 <script src="libs/viz-1.8.2/viz.js"></script>
 <link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
-<script src="libs/grViz-binding-1.0.10/grViz.js"></script>
+<script src="libs/grViz-binding-1.0.11/grViz.js"></script>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z33Q45W2P3"></script>
   <script>
@@ -100,7 +101,7 @@
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -172,6 +173,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
 .hanging div.csl-entry {
   margin-left:2em;
@@ -360,35 +362,35 @@ div.csl-indent {
 <li class="chapter" data-level="5.25" data-path="relational-databases.html"><a href="relational-databases.html#calculation"><i class="fa fa-check"></i><b>5.25</b> Calculation</a></li>
 <li class="chapter" data-level="5.26" data-path="relational-databases.html"><a href="relational-databases.html#query"><i class="fa fa-check"></i><b>5.26</b> Query</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="topology.html"><a href="topology.html"><i class="fa fa-check"></i><b>6</b> Topology and Geocoding</a>
+<li class="chapter" data-level="6" data-path="topology-and-geocoding.html"><a href="topology-and-geocoding.html"><i class="fa fa-check"></i><b>6</b> Topology and Geocoding</a>
 <ul>
-<li class="chapter" data-level="" data-path="topology.html"><a href="topology.html#key-terms-5"><i class="fa fa-check"></i>Key Terms</a></li>
-<li class="chapter" data-level="6.1" data-path="topology.html"><a href="topology.html#topology-1"><i class="fa fa-check"></i><b>6.1</b> Topology</a></li>
-<li class="chapter" data-level="6.2" data-path="topology.html"><a href="topology.html#planar-vs.-non-planar-topology"><i class="fa fa-check"></i><b>6.2</b> Planar vs. Non-Planar Topology</a></li>
-<li class="chapter" data-level="6.3" data-path="topology.html"><a href="topology.html#implementing-planar-topology"><i class="fa fa-check"></i><b>6.3</b> Implementing Planar Topology</a></li>
-<li class="chapter" data-level="6.4" data-path="topology.html"><a href="topology.html#adjacency-and-overlap"><i class="fa fa-check"></i><b>6.4</b> Adjacency and Overlap</a></li>
-<li class="chapter" data-level="6.5" data-path="topology.html"><a href="topology.html#intersect-and-connect"><i class="fa fa-check"></i><b>6.5</b> Intersect and Connect</a></li>
-<li class="chapter" data-level="6.6" data-path="topology.html"><a href="topology.html#coincident-and-disjoint"><i class="fa fa-check"></i><b>6.6</b> Coincident and Disjoint</a></li>
-<li class="chapter" data-level="6.7" data-path="topology.html"><a href="topology.html#cover"><i class="fa fa-check"></i><b>6.7</b> Cover</a>
+<li class="chapter" data-level="" data-path="topology-and-geocoding.html"><a href="topology-and-geocoding.html#key-terms-5"><i class="fa fa-check"></i>Key Terms</a></li>
+<li class="chapter" data-level="6.1" data-path="topology-and-geocoding.html"><a href="topology-and-geocoding.html#topology"><i class="fa fa-check"></i><b>6.1</b> Topology</a></li>
+<li class="chapter" data-level="6.2" data-path="topology-and-geocoding.html"><a href="topology-and-geocoding.html#planar-vs.-non-planar-topology"><i class="fa fa-check"></i><b>6.2</b> Planar vs. Non-Planar Topology</a></li>
+<li class="chapter" data-level="6.3" data-path="topology-and-geocoding.html"><a href="topology-and-geocoding.html#implementing-planar-topology"><i class="fa fa-check"></i><b>6.3</b> Implementing Planar Topology</a></li>
+<li class="chapter" data-level="6.4" data-path="topology-and-geocoding.html"><a href="topology-and-geocoding.html#adjacency-and-overlap"><i class="fa fa-check"></i><b>6.4</b> Adjacency and Overlap</a></li>
+<li class="chapter" data-level="6.5" data-path="topology-and-geocoding.html"><a href="topology-and-geocoding.html#intersect-and-connect"><i class="fa fa-check"></i><b>6.5</b> Intersect and Connect</a></li>
+<li class="chapter" data-level="6.6" data-path="topology-and-geocoding.html"><a href="topology-and-geocoding.html#coincident-and-disjoint"><i class="fa fa-check"></i><b>6.6</b> Coincident and Disjoint</a></li>
+<li class="chapter" data-level="6.7" data-path="topology-and-geocoding.html"><a href="topology-and-geocoding.html#cover"><i class="fa fa-check"></i><b>6.7</b> Cover</a>
 <ul>
-<li class="chapter" data-level="6.7.1" data-path="topology.html"><a href="topology.html#multipart-geometry"><i class="fa fa-check"></i><b>6.7.1</b> Multipart geometry</a></li>
-<li class="chapter" data-level="6.7.2" data-path="topology.html"><a href="topology.html#holes"><i class="fa fa-check"></i><b>6.7.2</b> Holes</a></li>
-<li class="chapter" data-level="6.7.3" data-path="topology.html"><a href="topology.html#delaunay-triangulation"><i class="fa fa-check"></i><b>6.7.3</b> Delaunay triangulation</a></li>
-<li class="chapter" data-level="6.7.4" data-path="topology.html"><a href="topology.html#thiessen-polygons"><i class="fa fa-check"></i><b>6.7.4</b> Thiessen polygons</a></li>
-<li class="chapter" data-level="6.7.5" data-path="topology.html"><a href="topology.html#centroids"><i class="fa fa-check"></i><b>6.7.5</b> Centroids</a></li>
-<li class="chapter" data-level="6.7.6" data-path="topology.html"><a href="topology.html#convex-hull"><i class="fa fa-check"></i><b>6.7.6</b> Convex hull</a></li>
-<li class="chapter" data-level="6.7.7" data-path="topology.html"><a href="topology.html#convex-alpha-hulls-and-alpha-shapes"><i class="fa fa-check"></i><b>6.7.7</b> Convex alpha hulls and alpha shapes</a></li>
+<li class="chapter" data-level="6.7.1" data-path="topology-and-geocoding.html"><a href="topology-and-geocoding.html#multipart-geometry"><i class="fa fa-check"></i><b>6.7.1</b> Multipart geometry</a></li>
+<li class="chapter" data-level="6.7.2" data-path="topology-and-geocoding.html"><a href="topology-and-geocoding.html#holes"><i class="fa fa-check"></i><b>6.7.2</b> Holes</a></li>
+<li class="chapter" data-level="6.7.3" data-path="topology-and-geocoding.html"><a href="topology-and-geocoding.html#delaunay-triangulation"><i class="fa fa-check"></i><b>6.7.3</b> Delaunay triangulation</a></li>
+<li class="chapter" data-level="6.7.4" data-path="topology-and-geocoding.html"><a href="topology-and-geocoding.html#thiessen-polygons"><i class="fa fa-check"></i><b>6.7.4</b> Thiessen polygons</a></li>
+<li class="chapter" data-level="6.7.5" data-path="topology-and-geocoding.html"><a href="topology-and-geocoding.html#centroids"><i class="fa fa-check"></i><b>6.7.5</b> Centroids</a></li>
+<li class="chapter" data-level="6.7.6" data-path="topology-and-geocoding.html"><a href="topology-and-geocoding.html#convex-hull"><i class="fa fa-check"></i><b>6.7.6</b> Convex hull</a></li>
+<li class="chapter" data-level="6.7.7" data-path="topology-and-geocoding.html"><a href="topology-and-geocoding.html#convex-alpha-hulls-and-alpha-shapes"><i class="fa fa-check"></i><b>6.7.7</b> Convex alpha hulls and alpha shapes</a></li>
 </ul></li>
-<li class="chapter" data-level="6.8" data-path="topology.html"><a href="topology.html#d-topologies"><i class="fa fa-check"></i><b>6.8</b> 3D topologies</a>
+<li class="chapter" data-level="6.8" data-path="topology-and-geocoding.html"><a href="topology-and-geocoding.html#d-topologies"><i class="fa fa-check"></i><b>6.8</b> 3D topologies</a>
 <ul>
-<li class="chapter" data-level="6.8.1" data-path="topology.html"><a href="topology.html#multipatch-geometries"><i class="fa fa-check"></i><b>6.8.1</b> Multipatch geometries</a></li>
-<li class="chapter" data-level="6.8.2" data-path="topology.html"><a href="topology.html#d-convex-hull"><i class="fa fa-check"></i><b>6.8.2</b> 3D Convex hull</a></li>
-<li class="chapter" data-level="6.8.3" data-path="topology.html"><a href="topology.html#d-convex-alpha-hull"><i class="fa fa-check"></i><b>6.8.3</b> 3D Convex alpha hull</a></li>
-<li class="chapter" data-level="6.8.4" data-path="topology.html"><a href="topology.html#d-voronoi-tessellation"><i class="fa fa-check"></i><b>6.8.4</b> 3D Voronoi tessellation</a></li>
+<li class="chapter" data-level="6.8.1" data-path="topology-and-geocoding.html"><a href="topology-and-geocoding.html#multipatch-geometries"><i class="fa fa-check"></i><b>6.8.1</b> Multipatch geometries</a></li>
+<li class="chapter" data-level="6.8.2" data-path="topology-and-geocoding.html"><a href="topology-and-geocoding.html#d-convex-hull"><i class="fa fa-check"></i><b>6.8.2</b> 3D Convex hull</a></li>
+<li class="chapter" data-level="6.8.3" data-path="topology-and-geocoding.html"><a href="topology-and-geocoding.html#d-convex-alpha-hull"><i class="fa fa-check"></i><b>6.8.3</b> 3D Convex alpha hull</a></li>
+<li class="chapter" data-level="6.8.4" data-path="topology-and-geocoding.html"><a href="topology-and-geocoding.html#d-voronoi-tessellation"><i class="fa fa-check"></i><b>6.8.4</b> 3D Voronoi tessellation</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="topology.html"><a href="topology.html#reflection-questions-4"><i class="fa fa-check"></i>Reflection Questions</a></li>
-<li class="chapter" data-level="" data-path="topology.html"><a href="topology.html#practice-questions-2"><i class="fa fa-check"></i>Practice Questions</a></li>
-<li class="chapter" data-level="" data-path="topology.html"><a href="topology.html#recommended-readings"><i class="fa fa-check"></i>Recommended Readings</a></li>
+<li class="chapter" data-level="" data-path="topology-and-geocoding.html"><a href="topology-and-geocoding.html#reflection-questions-4"><i class="fa fa-check"></i>Reflection Questions</a></li>
+<li class="chapter" data-level="" data-path="topology-and-geocoding.html"><a href="topology-and-geocoding.html#practice-questions-2"><i class="fa fa-check"></i>Practice Questions</a></li>
+<li class="chapter" data-level="" data-path="topology-and-geocoding.html"><a href="topology-and-geocoding.html#recommended-readings"><i class="fa fa-check"></i>Recommended Readings</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="network-analysis.html"><a href="network-analysis.html"><i class="fa fa-check"></i><b>7</b> Network Analysis</a>
 <ul>
@@ -652,8 +654,9 @@ div.csl-indent {
 <p>Written by
 Claire Armour and Paul Pickell</p>
 <p>You probably know that you are using your very own organic remote sensing system to read this sentence. Our eyes take in information from the world around us by detecting changes in light and relaying that information through the optic nerve into our brains, where we make sense of what we are seeing. As you learned in <a href="https://ubc-geomatics-textbook.github.io/geomatics-textbook/fundamentals-of-remote-sensing.html">Chapter 11</a>, this is what constitutes remote sensing - gathering information (“sensing”) without directly measuring or interacting with that information (“remote”). Whereas our eyes are limited to the visible light portion of the electromagnetic spectrum and by the location of our bodies, remote sensing systems use powerful sensors and flight-equipped platforms to paint a broader and deeper picture of the world around us. The picture in figure <a href="remote-sensing-systems.html#fig:12-GOES-1-earth">10.1</a> is an example of the beautiful imagery we can capture from space, taken from the GOES-1 satellite.</p>
+
 <div class="figure"><span style="display:block;" id="fig:12-GOES-1-earth"></span>
-<img src="images/12-GOES_1_earth.png" alt="North and South America as seen from the NASA GOES-1 satellite [@nasa_goes-1_nodate]. Captured from KeepTrack.space. [Copyright (C) 2007 Free Software Foundation, Inc.](https://fsf.org/)" width="90%" />
+<img src="images/12-GOES_1_earth.png" alt="North and South America as seen from the NASA GOES-1 satellite [@nasa_goes-1_nodate]. Captured from KeepTrack.space. [Copyright (C) 2007 Free Software Foundation, Inc.](https://fsf.org/)" width="75%" />
 <p class="caption">
 Figure 10.1: North and South America as seen from the NASA GOES-1 satellite <span class="citation">(<a href="#ref-nasa_goes-1_nodate">NASA, n.d.b</a>)</span>. Captured from KeepTrack.space. <a href="https://fsf.org/">Copyright (C) 2007 Free Software Foundation, Inc.</a>
 </p>
@@ -683,10 +686,11 @@ Figure 10.1: North and South America as seen from the NASA GOES-1 satellite <spa
 <p>Picture the view from a window onto a busy street on a rainy day: you have cars driving by with headlights, traffic lights reflecting off a wet road, raindrops pouring down the windowpane and distorting the view, and hundreds of people and objects on the street scattering light beams in every possible direction from a huge range of distances. In order for us to take in any of this, these light beams need to reach the retina, the photosensitive surface at the very back of the eye.How do our relatively tiny eyeballs take in all that disparate light and produce crystal clear images for our brains? By using one of the most basic components of any optical system: a lens. A lens is a specially shaped piece of transparent material that, when light passes through it, changes the shape and direction of light waves in a desired way.</p>
 <p>The property of transparent mediums to change the direction of light beams is called <strong>refraction</strong>, or transmittance. This is why objects in moving water look misshapen. The arrangement of molecules within a medium disrupts both the direction and speed of the photons – the measurement of this disruption is called the refractive index.</p>
 <p>The lens at the front of your eyeball changes refracts light beams from varying distances precisely onto your retina. The optical systems on remote sensing platforms are the same: they use a specially designed lens to focus light beams at the desired distance to onto their own recording medium. Below in figure <a href="remote-sensing-systems.html#fig:12-focus-example-humaneye">10.2</a> is a simple visualization of how optical systems focus light onto a desired point to produce an in-focus image.</p>
+
 <div class="figure"><span style="display:block;" id="fig:12-focus-example-humaneye"></span>
-<img src="images/12-focus_example_humaneye.gif" alt="Focusing lens [@vorenkamp_how_2015]. &lt;a href='https://ubc-geomatics-textbook.github.io/geomatics-textbook/#fig:12-focus-example-humaneye'&gt;Animated figure can be viewed in the web browser version of the textbook&lt;/a&gt;. Copyright Todd Vorenkamp. Used with permission." width="90%" />
+<img src="images/12-focus_example_humaneye.gif" alt="Focusing lens [@vorenkamp_how_2015]. Copyright Todd Vorenkamp. Used with permission." width="75%" />
 <p class="caption">
-Figure 10.2: Focusing lens <span class="citation">(<a href="#ref-vorenkamp_how_2015">Vorenkamp 2015</a>)</span>. <a href='https://ubc-geomatics-textbook.github.io/geomatics-textbook/#fig:12-focus-example-humaneye'>Animated figure can be viewed in the web browser version of the textbook</a>. Copyright Todd Vorenkamp. Used with permission.
+Figure 10.2: Focusing lens <span class="citation">(<a href="#ref-vorenkamp_how_2015">Vorenkamp 2015</a>)</span>. Copyright Todd Vorenkamp. Used with permission.
 </p>
 </div>
 <p><br/></p>
@@ -714,15 +718,17 @@ Figure 10.4: Measuring the radius of curvature for a concave optical surface. Ar
 <p><strong>Convex optical surfaces cause light beams to <em>converge</em>, or focus, to a point behind the lens.</strong></p>
 <p><strong>Concave lenses cause light beams to <em>diverge</em>, or spread out, resulting in the light appearing to converge (focus) to a point in front of the lens.</strong></p>
 <p>The point where the light converges or appears to converge is called the <em>focal point</em>, and the distance between the focal point and the centre of the lens is called the <em>focal length</em>. For a converging lens, the focal length is positive; for a diverging lens, it is negative. Figures <a href="remote-sensing-systems.html#fig:12-convex-focal-diagram">10.5</a> and <a href="remote-sensing-systems.html#fig:12-concave-focal-diagram">10.6</a> illustrate the behaviour of light when travelling through a biconvex and biconcave lens. See the paragraph below the diagrams for variable labels.</p>
+
 <div class="figure"><span style="display:block;" id="fig:12-convex-focal-diagram"></span>
-<img src="images/12-convex_focal_diagram.png" alt="Measurements in a biconvex lens. [@drbob_positive_2006], CC-BY-3.0 Unported." width="90%" />
+<img src="images/12-convex_focal_diagram.png" alt="Measurements in a biconvex lens. [@drbob_positive_2006], CC-BY-3.0 Unported." width="75%" />
 <p class="caption">
 Figure 10.5: Measurements in a biconvex lens. <span class="citation">(<a href="#ref-drbob_positive_2006">DrBob 2006b</a>)</span>, CC-BY-3.0 Unported.
 </p>
 </div>
 <p><br/></p>
+
 <div class="figure"><span style="display:block;" id="fig:12-concave-focal-diagram"></span>
-<img src="images/12-concave_focal_diagram.png" alt="Measurements in a biconcave lens. [@drbob_negative_2006], CC-BY-3.0 Unported." width="90%" />
+<img src="images/12-concave_focal_diagram.png" alt="Measurements in a biconcave lens. [@drbob_negative_2006], CC-BY-3.0 Unported." width="75%" />
 <p class="caption">
 Figure 10.6: Measurements in a biconcave lens. <span class="citation">(<a href="#ref-drbob_negative_2006">DrBob 2006a</a>)</span>, CC-BY-3.0 Unported.
 </p>
@@ -734,17 +740,19 @@ Figure 10.6: Measurements in a biconcave lens. <span class="citation">(<a href="
 <br/></p>
 <p>When you return from your trip, your friend decides to test you on your new skills and shows you these additional photos they took of Mt Assiniboine in nearly identical spots on the same day. They ask you which photo was taken with a longer camera lens. How can you know?</p>
 <p><em>Try this</em>: from the peak of Mt Assiniboine (the very big one), draw a line straight downwards or cover half of the photo with a piece of paper, and then do the same for the other photo. Does the line or paper edge intersect at the same points of the foreground in each photo? Can you see the same parts of the mountains in the foreground? Use the rock and snow patterns for reference. If the cameras were the same focal length, even with different cropping and lighting as seen here, the answers should both be yes. Can you tell which photo was taken with a 67mm lens and which was taken with a 105mm lens? See the answers at the end of the chapter.</p>
+
 <div class="figure"><span style="display:block;" id="fig:12-assiniboine-day"></span>
-<img src="images/12-assiniboine_day.png" alt="Mt Assiniboine, image one [@maguire_mt_nodate]. [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)" width="90%" />
+<img src="images/12-assiniboine_day.png" alt="Mount Assiniboine during day time [@maguire_mt_nodate], CC-BY-4.0" width="75%" />
 <p class="caption">
-Figure 10.7: Mt Assiniboine, image one <span class="citation">(<a href="#ref-maguire_mt_nodate">Maguire, n.d.a</a>)</span>. <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>
+Figure 10.7: Mount Assiniboine during day time <span class="citation">(<a href="#ref-maguire_mt_nodate">Maguire, n.d.a</a>)</span>, CC-BY-4.0
 </p>
 </div>
 <p><br/></p>
+
 <div class="figure"><span style="display:block;" id="fig:12-assiniboine-sunset"></span>
-<img src="images/12-assiniboine_sunset.png" alt="Mt Assiniboine, image two [@maguire_mt_nodate-1]. [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)" width="90%" />
+<img src="images/12-assiniboine_sunset.png" alt="Mount Assiniboine at sunset [@maguire_mt_nodate-1], CC-BY-4.0" width="75%" />
 <p class="caption">
-Figure 10.8: Mt Assiniboine, image two <span class="citation">(<a href="#ref-maguire_mt_nodate-1">Maguire, n.d.b</a>)</span>. <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>
+Figure 10.8: Mount Assiniboine at sunset <span class="citation">(<a href="#ref-maguire_mt_nodate-1">Maguire, n.d.b</a>)</span>, CC-BY-4.0
 </p>
 </div>
 <p><br/></p>
@@ -765,18 +773,20 @@ Figure 10.9: Electromagnetic radiation enters the lens, where it is refracted an
 <p>When you look at something, there are likely other objects you can see above, below, and beside it through your peripheral vision. Remote sensing systems have an analogous <strong>field of view (FOV)</strong> that describes the angular range of observation. By contrast, the <strong>instantaneous field of view (IFOV)</strong> describes the angular range of what an individual detector can observe. In other words, the FOV tells us what the remote sensing system is capable of seeing through its entire range of motion and the IFOV tells us what the a single detector can see in a given moment. Both of these measures are important for describing the quality of the imagery that is collected, both in terms of how large of an area can be imaged as well as the spatial resolution of the imagery.</p>
 <p>Building remote sensing systems can be costly, so it is in our best interest to have them see as much as possible with the least expenditure of effort. We can maximize the FOV of a remote sensing system by giving it the freedom to “look around”. Humans have three degrees of motion that allow us to change our FOV: scanning with our eyes, swiveling our heads, and shifting the position of our bodies. Remote sensing systems can have three analogous degrees of motion: the motion of the lens elements (eyes - analogous to focus or zoom), the motion of the camera (head - analogous to scanning), and the motion of the platform (body - analogous to direction of travel).</p>
 <p>Remote sensing systems typically have zero, one, or two degrees of motion. Rarely do remote sensing systems have all three. It is usually not necessary to have so much range of motion and more moving parts means a higher possibility of malfunction, which can be a real headache when the defunct system is orbiting 700 km above the Earth’s surface. These combinations of degrees of motion give rise to the three primary types of scanners. <strong>Push broom</strong> scanners are a type of scanner that have detectors arranged in a single-file line and take advantage of the forward movement of the remote sensing platform, known as <strong>along-track</strong> scanning, to build images line-by-line (Figure <a href="remote-sensing-systems.html#fig:12-push-broom">10.10</a>). In other words, push broom scanners have two degrees of motion: the platform and the lenses.</p>
+
 <div class="figure"><span style="display:block;" id="fig:12-push-broom"></span>
-<img src="images/12-push-broom.gif" alt="Visualization of how a push broom scanner captures imagery. The dark purple squares represent the subset of the area seen by the scanner at any given time and the lighter purple squares show previously scanned areas. &lt;a href='https://ubc-geomatics-textbook.github.io/geomatics-textbook/#fig:12-push-broom'&gt;Animated figure can be viewed in the web browser version of the textbook&lt;/a&gt;. Armour, CC-BY-SA-4.0." width="90%" />
+<img src="images/12-push-broom.gif" alt="Visualization of how a push broom scanner captures imagery. The dark purple squares represent the subset of the area seen by the scanner at any given time and the lighter purple squares show previously scanned areas. &lt;a href='https://ubc-geomatics-textbook.github.io/geomatics-textbook/#fig:12-push-broom'&gt;Animated figure can be viewed in the web browser version of the textbook&lt;/a&gt;. Armour, CC-BY-SA-4.0." width="75%" />
 <p class="caption">
 Figure 10.10: Visualization of how a push broom scanner captures imagery. The dark purple squares represent the subset of the area seen by the scanner at any given time and the lighter purple squares show previously scanned areas. <a href='https://ubc-geomatics-textbook.github.io/geomatics-textbook/#fig:12-push-broom'>Animated figure can be viewed in the web browser version of the textbook</a>. Armour, CC-BY-SA-4.0.
 </p>
 </div>
 <p></br></p>
-<p>By contrast, <strong>whisk broom</strong> scanners have an array of detectors that are mechanically moved from side-to-side, known as <strong>cross-track</strong> scanning because the image is produced by scanning across the track of the remote sensing platform direction of motion ((Figure <a href="remote-sensing-systems.html#fig:12-whisk-broom">10.11</a>). Thus, whisk broom scanners have three degrees of motion: the platform, the lenses, and the camera. The last type of scanner is known as a <strong>staring array</strong>, so-called because the sensors are arranged in a rectangular array that are pointed at the surface or object to be imaged. In this way, the image is built all at once as the light is focused onto the focal plane. Most consumer cameras use staring arrays, which usually have two or fewer degrees of motion, depending on the application.</p>
+<p>By contrast, <strong>whisk broom</strong> scanners have an array of detectors that are mechanically moved from side-to-side, known as <strong>cross-track</strong> scanning because the image is produced by scanning across the track of the remote sensing platform direction of motion (Figure <a href="remote-sensing-systems.html#fig:12-whisk-broom">10.11</a>). Thus, whisk broom scanners have three degrees of motion: the platform, the lenses, and the camera. The last type of scanner is known as a <strong>staring array</strong>, so-called because the sensors are arranged in a rectangular array that are pointed at the surface or object to be imaged. In this way, the image is built all at once as the light is focused onto the focal plane. Most consumer cameras use staring arrays, which usually have two or fewer degrees of motion, depending on the application.</p>
+
 <div class="figure"><span style="display:block;" id="fig:12-whisk-broom"></span>
-<img src="images/12-whisk-broom.gif" alt="Visualization of how a whisk broom scanner captures imagery. The dark blue squares represent the subset of the area seen by the scanner at any given time and the lighter blue squares show previously scanned areas. The size of the subset may change between a single pixel (one square) or a spotlight (multiple squares) but the motion remains the same. &lt;a href='https://ubc-geomatics-textbook.github.io/geomatics-textbook/#fig:12-whisk-broom'&gt;Animated figure can be viewed in the web browser version of the textbook&lt;/a&gt;. Armour, CC-BY-SA-4.0." width="90%" />
+<img src="images/12-whisk-broom.gif" alt="Visualization of how a whisk broom scanner captures imagery. The dark blue squares represent the subset of the area seen by the scanner at any given time and the lighter blue squares show previously scanned areas. The size of the subset may change between a single pixel (one square) or a spotlight (multiple squares) but the motion remains the same. Armour, CC-BY-SA-4.0." width="75%" />
 <p class="caption">
-Figure 10.11: Visualization of how a whisk broom scanner captures imagery. The dark blue squares represent the subset of the area seen by the scanner at any given time and the lighter blue squares show previously scanned areas. The size of the subset may change between a single pixel (one square) or a spotlight (multiple squares) but the motion remains the same. <a href='https://ubc-geomatics-textbook.github.io/geomatics-textbook/#fig:12-whisk-broom'>Animated figure can be viewed in the web browser version of the textbook</a>. Armour, CC-BY-SA-4.0.
+Figure 10.11: Visualization of how a whisk broom scanner captures imagery. The dark blue squares represent the subset of the area seen by the scanner at any given time and the lighter blue squares show previously scanned areas. The size of the subset may change between a single pixel (one square) or a spotlight (multiple squares) but the motion remains the same. Armour, CC-BY-SA-4.0.
 </p>
 </div>
 <p></br></p>
@@ -838,24 +848,29 @@ The cross-track ground distance of a pixel at the edge of a VIIRS image may be m
 <div id="aerial-perspective" class="section level2 hasAnchor" number="10.3">
 <h2><span class="header-section-number">10.3</span> Aerial Perspective<a href="remote-sensing-systems.html#aerial-perspective" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The plane of the lens is perpendicular to the ground plane and the lens vector is pointed straight downwards at the ground. Figure <a href="remote-sensing-systems.html#fig:12-aerial-plane">10.15</a> is an example.</p>
+
 <div class="figure"><span style="display:block;" id="fig:12-aerial-plane"></span>
-<img src="images/12-aerial-plane.png" alt="Aerial photo of forest, road, and river near Kitimat, BC [@den_engelsen_photo_2020]. [Unsplash License.](https://unsplash.com/license)" width="90%" />
+<img src="images/12-aerial-plane.png" alt="Aerial photo of forest, road, and river near Kitimat, BC [@den_engelsen_photo_2020]. [Unsplash License.](https://unsplash.com/license)" width="75%" />
 <p class="caption">
 Figure 10.15: Aerial photo of forest, road, and river near Kitimat, BC <span class="citation">(<a href="#ref-den_engelsen_photo_2020">Engelsen 2020</a>)</span>. <a href="https://unsplash.com/license">Unsplash License.</a>
 </p>
 </div>
+<p><br/></p>
 <p>Aerial imagery can be taken from remotely piloted aircraft systems (RPAs), airplanes, or satellites and thus has a huge range of resolutions and area coverage. It is highly sensitive to adverse weather, cloud cover or poor air quality, and variable lighting, so it needs to be carefully timed or collected at frequent intervals to account for unusable data.</p>
-<p><em>It is important to note that the “ground plane” refers to a plane tangent to the geoid and not the physical ground surface. In variable terrain such as mountains, much of the ground will be seen “at an angle”, but the overall camera perspective is unchanged. See figures <a href="remote-sensing-systems.html#fig:12-aerial-good">10.16</a> and <a href="remote-sensing-systems.html#fig:12-aerial-bad">10.17</a> for a visualization of what this looks like with regards to aerial imagery.</em></p>
+<p>It is important to note that the “ground plane” refers to a plane tangent to the geoid and not the physical ground surface. In variable terrain such as mountains, much of the ground will be seen “at an angle”, but the overall camera perspective is unchanged. See figures <a href="remote-sensing-systems.html#fig:12-aerial-good">10.16</a> and <a href="remote-sensing-systems.html#fig:12-aerial-bad">10.17</a> for a visualization of what this looks like with regards to aerial imagery.</p>
+
 <div class="figure"><span style="display:block;" id="fig:12-aerial-good"></span>
-<img src="images/12-aerial-good.gif" alt="How aerial imagery should be taken. &lt;a href='https://ubc-geomatics-textbook.github.io/geomatics-textbook/#fig:12-aerial-good'&gt; Animated figure can be viewed in the web browser version of the textbook.&lt;/a&gt; Armour, CC-BY-SA-4.0." width="90%" />
+<img src="images/12-aerial-good.gif" alt="How aerial imagery should be taken. Armour, CC-BY-SA-4.0." width="75%" />
 <p class="caption">
-Figure 10.16: How aerial imagery should be taken. <a href='https://ubc-geomatics-textbook.github.io/geomatics-textbook/#fig:12-aerial-good'> Animated figure can be viewed in the web browser version of the textbook.</a> Armour, CC-BY-SA-4.0.
+Figure 10.16: How aerial imagery should be taken. Armour, CC-BY-SA-4.0.
 </p>
 </div>
+<p><br/></p>
+
 <div class="figure"><span style="display:block;" id="fig:12-aerial-bad"></span>
-<img src="images/12-aerial-bad.gif" alt="How aerial imagery should NOT be taken.&lt;a href='https://ubc-geomatics-textbook.github.io/geomatics-textbook/#fig:12-aerial-bad'&gt;Animated figure can be viewed in the web browser version of the textbook.&lt;/a&gt; Armour, CC-BY-SA-4.0." width="90%" />
+<img src="images/12-aerial-bad.gif" alt="How aerial imagery should not be taken. Armour, CC-BY-SA-4.0." width="75%" />
 <p class="caption">
-Figure 10.17: How aerial imagery should NOT be taken.<a href='https://ubc-geomatics-textbook.github.io/geomatics-textbook/#fig:12-aerial-bad'>Animated figure can be viewed in the web browser version of the textbook.</a> Armour, CC-BY-SA-4.0.
+Figure 10.17: How aerial imagery should not be taken. Armour, CC-BY-SA-4.0.
 </p>
 </div>
 <p><br/></p>
@@ -899,15 +914,17 @@ Figure 10.20: Visualization of a hemispherical perspective. Armour, CC-BY-SA-4.0
 </div>
 <p><br/></p>
 <p>Due to the unusual shape of the lens, it captures a much larger proportion of a scene than we could normally take in without swiveling our heads or stitching photos into a mosaic, such as a panorama. A hemispherical lens will produce a circular rather than rectilinear output. The lens curvature will cause objects in the image to be highly distorted and, unlike rectilinear photos, cannot be easily divided into pixels for analysis. However, hemispherical perspectives are uniquely suited to viewing large expanses of a scene all at once. For this reason, it is highly favourable for sports cameras, security cameras, and natural monitoring. Figures <a href="remote-sensing-systems.html#fig:12-hemispherical-lens">10.21</a> and <a href="remote-sensing-systems.html#fig:12-newfoundland-from-space">10.22</a> shows hemispherical perspectives from two very different angles.</p>
+
 <div class="figure"><span style="display:block;" id="fig:12-hemispherical-lens"></span>
-<img src="images/12-hemispherical-lens.png" alt="Hemispherical photo taken in the Bavarian forest. [@wegmann_hemispherical_2011], CC-BY-3.0." width="90%" />
+<img src="images/12-hemispherical-lens.png" alt="Hemispherical photo taken in the Bavarian forest. [@wegmann_hemispherical_2011], CC-BY-3.0." width="75%" />
 <p class="caption">
 Figure 10.21: Hemispherical photo taken in the Bavarian forest. <span class="citation">(<a href="#ref-wegmann_hemispherical_2011">Wegmann 2011</a>)</span>, CC-BY-3.0.
 </p>
 </div>
 <p><br/></p>
+
 <div class="figure"><span style="display:block;" id="fig:12-newfoundland-from-space"></span>
-<img src="images/12-newfoundland_from_space.png" alt="Picture of Newfoundland, Canada, taken by David Saint-Jacques during his space mission. [@canadian_space_agency_newfoundland_2019], CC-BY-3.0." width="90%" />
+<img src="images/12-newfoundland_from_space.png" alt="Picture of Newfoundland, Canada, taken by David Saint-Jacques during his space mission. [@canadian_space_agency_newfoundland_2019], CC-BY-3.0." width="75%" />
 <p class="caption">
 Figure 10.22: Picture of Newfoundland, Canada, taken by David Saint-Jacques during his space mission. <span class="citation">(<a href="#ref-canadian_space_agency_newfoundland_2019">Canadian Space Agency and NASA 2019</a>)</span>, CC-BY-3.0.
 </p>
@@ -931,33 +948,32 @@ Figure 10.23: Different types of platforms for remote sensing systems. Image sca
 <div id="terrestrial-systems" class="section level3 hasAnchor" number="10.7.1">
 <h3><span class="header-section-number">10.7.1</span> Terrestrial Systems<a href="remote-sensing-systems.html#terrestrial-systems" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Terrestrial platforms describe any platform that is near the ground surface. Usually terrestrial remote sensing systems are fixed and immobile where the sensors or camera systems are attached to a tower or a tree, but they may also be attached to vehicles such as the Google™ Street View vehicles that collect imagery from a 360 degree camera (Figure <a href="remote-sensing-systems.html#fig:12-google-street-view-car">10.24</a>). One of the obvious limitations for mounting sensors to vehicles is that they are limited to traveling on roads, which limits what can be seen from the camera. But the clear advantage is that this is a cheap platform that only requires a driving licence to operate.</p>
+
 <div class="figure"><span style="display:block;" id="fig:12-google-street-view-car"></span>
-<img src="images/12-google-street-view-car.png" alt="A 360 degree camera mounted on a vehicle is used for collecting street view imagery for Google™ Maps [@leggett_google_2014]. CC-BY-SA-4.0." width="90%" />
+<img src="images/12-google-street-view-car.png" alt="A 360 degree camera mounted on a vehicle is used for collecting street view imagery for Google™ Maps [@leggett_google_2014]. CC-BY-SA-4.0." width="75%" />
 <p class="caption">
 Figure 10.24: A 360 degree camera mounted on a vehicle is used for collecting street view imagery for Google™ Maps <span class="citation">(<a href="#ref-leggett_google_2014">Leggett 2014</a>)</span>. CC-BY-SA-4.0.
 </p>
 </div>
 <p><br/></p>
-<p>Many other terrestrial platforms are fixed or stationary, which means that they are either always observing the same feature or they might have a limited motorized range to pan from a fixed point. Phenological studies that aim to monitor the timing of different plant growth stages throughout the growing season such as budding, leaf-out and flowering will often use a stationary camera pointed towards the plant of interest. Figure <a href="remote-sensing-systems.html#fig:12-phenological-camera-sequence">10.25</a> shows a time-lapse of images taken once per day at noon during the spring time near Grand Cache, Alberta. The changing leaf colour is clearly visible in the time lapse, which can be important for monitoring springtime wildfire risk <span class="citation">(<a href="#ref-pickell_early_2017">Pickell et al. 2017</a>)</span> or forage quality for wildlife such as grizzly bear <span class="citation">(<a href="#ref-bater_using_2010">Bater et al. 2010</a>)</span>.</p>
-<div class="figure"><span style="display:block;" id="fig:12-phenological-camera-sequence"></span>
-<img src="images/12-phenological-camera-sequence.gif" alt="Time lapse from a camera mounted on a tree. Each image is taken on a different day at noon [@bater_timelapse_nodate]. &lt;a href='https://ubc-geomatics-textbook.github.io/geomatics-textbook/#12-phenological-camera-sequence'&gt;Animated figure can be viewed in the web browser version of the textbook.&lt;/a&gt; CC-BY-SA-4.0." width="90%" />
-<p class="caption">
-Figure 10.25: Time lapse from a camera mounted on a tree. Each image is taken on a different day at noon <span class="citation">(<a href="#ref-bater_timelapse_nodate">Bater, n.d.</a>)</span>. <a href='https://ubc-geomatics-textbook.github.io/geomatics-textbook/#12-phenological-camera-sequence'>Animated figure can be viewed in the web browser version of the textbook.</a> CC-BY-SA-4.0.
-</p>
-</div>
-<p>Spectral responses from forest canopies can be monitored by radiometers such as the Automated Multiangular SPectro-radiometer for Estimation of Canopy reflectance (AMSPEC) instrument that can be mounted to a tower and sits high above the forest canopy (Figure <a href="remote-sensing-systems.html#fig:12-flux-tower-radiometer">10.26</a>). These “eyes above the forests” can provide important information about forest health and physiology. Since forest canopies are usually imaged from airborne and spaceborne platforms, these terrestrial observations provide a critical link for calibration with other imagery.</p>
+<p>Many other terrestrial platforms are fixed or stationary, which means that they are either always observing the same feature or they might have a limited motorized range to pan from a fixed point. Phenological studies that aim to monitor the timing of different plant growth stages throughout the growing season such as budding, leaf-out and flowering will often use a stationary camera pointed towards the plant of interest. Figure <a href="#fig:12-phenological-camera-sequence"><strong>??</strong></a> shows a time-lapse of images taken once per day at noon during the spring time near Grand Cache, Alberta. The changing leaf colour is clearly visible in the time lapse, which can be important for monitoring springtime wildfire risk <span class="citation">(<a href="#ref-pickell_early_2017">Pickell et al. 2017</a>)</span> or forage quality for wildlife such as grizzly bear <span class="citation">(<a href="#ref-bater_using_2010">Bater et al. 2010</a>)</span>.</p>
+
+<p><br/></p>
+<p>Spectral responses from forest canopies can be monitored by radiometers such as the Automated Multiangular SPectro-radiometer for Estimation of Canopy reflectance (AMSPEC) instrument that can be mounted to a tower and sits high above the forest canopy (Figure <a href="remote-sensing-systems.html#fig:12-flux-tower-radiometer">10.25</a>). These “eyes above the forests” can provide important information about forest health and physiology. Since forest canopies are usually imaged from airborne and spaceborne platforms, these terrestrial observations provide a critical link for calibration with other imagery.</p>
+
 <div class="figure"><span style="display:block;" id="fig:12-flux-tower-radiometer"></span>
-<img src="images/12-flux-tower-radiometer.png" alt="AMSPEC radiometer affixed to a carbon flux tower located in Buckley Bay, Vancouver Island, Canada [@coops_amspec_nodate]. Used with permission." width="90%" />
+<img src="images/12-flux-tower-radiometer.png" alt="AMSPEC radiometer affixed to a carbon flux tower located in Buckley Bay, Vancouver Island, Canada [@coops_amspec_nodate]. Used with permission." width="75%" />
 <p class="caption">
-Figure 10.26: AMSPEC radiometer affixed to a carbon flux tower located in Buckley Bay, Vancouver Island, Canada <span class="citation">(<a href="#ref-coops_amspec_nodate">Coops, n.d.</a>)</span>. Used with permission.
+Figure 10.25: AMSPEC radiometer affixed to a carbon flux tower located in Buckley Bay, Vancouver Island, Canada <span class="citation">(<a href="#ref-coops_amspec_nodate">Coops, n.d.</a>)</span>. Used with permission.
 </p>
 </div>
 <p><br/></p>
-<p>In Canada, there are significant stores of historical terrestrial imagery that were collected by the government for surveying the west. From the 1880’s to as late as the 1950’s, various government agencies of Canada collected over 5,000 terrestrial images of Canada’s western territories and provinces primarily within the Rocky Mountains. Some of these locations have been re-imaged at the same terrestrial perspective during the modern era and show dramatic changes to the landscape such as glacial retreat and afforestation. Figure <a href="remote-sensing-systems.html#fig:12-mountain-legacy-project">10.27</a> shows the retreat of the Athabasca Glacier over nearly 100 years near the Wilcox Pass in Jasper National Park.</p>
+<p>In Canada, there are significant stores of historical terrestrial imagery that were collected by the government for surveying the west. From the 1880’s to as late as the 1950’s, various government agencies of Canada collected over 5,000 terrestrial images of Canada’s western territories and provinces primarily within the Rocky Mountains. Some of these locations have been re-imaged at the same terrestrial perspective during the modern era and show dramatic changes to the landscape such as glacial retreat and afforestation. Figure <a href="remote-sensing-systems.html#fig:12-mountain-legacy-project">10.26</a> shows the retreat of the Athabasca Glacier over nearly 100 years near the Wilcox Pass in Jasper National Park.</p>
+
 <div class="figure"><span style="display:block;" id="fig:12-mountain-legacy-project"></span>
-<img src="images/12-mountain-legacy-project.gif" alt="Image pair of Athabasca Glacier from Wilcox Pass in Jasper National Park, Alberta, Canada. The historical image was taken in 1917 by A.O. Wheeler [@library_and_archives_canada_athabasca_1917], and the modern image was taken nearly a hundred years later in 2011 by the Mountain Legacy Project [@mountain_legacy_project_modern_2011]. &lt;a href='https://ubc-geomatics-textbook.github.io/geomatics-textbook/#12-mountain-legacy-project'&gt;Animated figure can be viewed in the web browser version of the textbook.&lt;/a&gt; CC-BY-SA-4.0." width="90%" />
+<img src="images/12-mountain-legacy-project.gif" alt="Image pair of Athabasca Glacier from Wilcox Pass in Jasper National Park, Alberta, Canada. The historical image was taken in 1917 by A.O. Wheeler [@library_and_archives_canada_athabasca_1917], and the modern image was taken nearly a hundred years later in 2011 by the Mountain Legacy Project [@mountain_legacy_project_modern_2011]. Pickell, CC-BY-SA-4.0." width="90%" />
 <p class="caption">
-Figure 10.27: Image pair of Athabasca Glacier from Wilcox Pass in Jasper National Park, Alberta, Canada. The historical image was taken in 1917 by A.O. Wheeler <span class="citation">(<a href="#ref-library_and_archives_canada_athabasca_1917">Library and Archives Canada 1917</a>)</span>, and the modern image was taken nearly a hundred years later in 2011 by the Mountain Legacy Project <span class="citation">(<a href="#ref-mountain_legacy_project_modern_2011">Mountain Legacy Project 2011</a>)</span>. <a href='https://ubc-geomatics-textbook.github.io/geomatics-textbook/#12-mountain-legacy-project'>Animated figure can be viewed in the web browser version of the textbook.</a> CC-BY-SA-4.0.
+Figure 10.26: Image pair of Athabasca Glacier from Wilcox Pass in Jasper National Park, Alberta, Canada. The historical image was taken in 1917 by A.O. Wheeler <span class="citation">(<a href="#ref-library_and_archives_canada_athabasca_1917">Library and Archives Canada 1917</a>)</span>, and the modern image was taken nearly a hundred years later in 2011 by the Mountain Legacy Project <span class="citation">(<a href="#ref-mountain_legacy_project_modern_2011">Mountain Legacy Project 2011</a>)</span>. Pickell, CC-BY-SA-4.0.
 </p>
 </div>
 <p><br/></p>
@@ -967,11 +983,12 @@ Figure 10.27: Image pair of Athabasca Glacier from Wilcox Pass in Jasper Nationa
 <p>Historically, aerial platforms have played a major role in capturing remotely sensed imagery across Canada. Aerial systems were the first to achieve the bird’s eye view and allow for large areas of sparsely populated Canada to be imaged in a standard way. The National Air Photo Library in Canada contains more than 6 million air photos across the country, some dating back to the 1920’s. This historical archive consists of monochromatic, colour, and infrared imagery collected from fixed wing aircraft. Imagery can also be acquired from other types of aircraft including high altitude helium balloons, helicopters and even unmanned aerial vehicles (UAV).</p>
 <p>One of the main reasons to acquire imagery from aircraft is the benefit of being able to image large areas at a relatively high spatial resolution. Most aerial photography can resolve objects between 1-10 cm on the ground. For forests, this means the ability to see branches and texture of the canopy, which can aid in idetentification of forest types and tree species. This resolution also allows for rare and relatively small ecosystems to be identified that would otherwise be obscured in satellite imagery. However, aerial systems are limited by the fact that they must be piloted under optimal weather conditions. Cost can also be prohibitive due to the need to pay for the aircraft and labour of a pilot. As a result, aerial images are usually not acquired very frequently or with any regularity.</p>
 <p>Significant advancements have been made in recent years to reduce costs of aerial imagery through the use of UAVs. The benefits of a UAV system is that they are relatively cheap to operate, can be deployed rapidly in remote areas, and may be operated by a pilot with relaxed licensing and certification standards. However, UAVs are limited in the extent of the area that they may image due to battery life and the need for the aircraft to maintain a visible sight-line with the pilot on the ground. In Canada, UAVs are not permitted to operate within 5.6 km of airports and 1.9 km of heliports, which also limits their use in most urban areas. Some of the most advanced UAV systems can operate semi-autonomously and fly pre-planned routes and land before the battery drains down or if weather conditions are unsuitable.</p>
-<p>Aircraft are subject to rotation along three axes (Figure <a href="remote-sensing-systems.html#fig:12-pitch-roll-yaw">10.28</a>). <strong>Pitch</strong> refers to rotation around the wings and controls whether the aircraft is ascending or descending. <strong>Roll</strong> refers to rotation around the fuselage (body) of the aircraft and controls which wing of the aircraft is higher than the opposite wing. <strong>Yaw</strong> refers to rotation around the vertical axis that is perpendicular to the fuselage and controls whether the aircraft is moving left or right. Each of these axes are important for understanding the conditions under which aerial photographs are acquired. The pitch and roll of the aircraft have perhaps the most pronounced effect on aerial imagery because any non-zero angle of pitch or roll (positive or negative) will produce an oblique image and cause scale to be inconsistent across the image. Because yaw is an axis that is perpendicular to the aircraft and also to Earth’s surface, there is no impact from positive or negative yaw on image scale. However, large angles of yaw or roll can impact the ability to produce overlapping and adjacent stereo image pairs. Aerial photography is covered in more detail in <a href="https://ubc-geomatics-textbook.github.io/geomatics-textbook/image-analysis.html">Chapter 14</a>.</p>
+<p>Aircraft are subject to rotation along three axes (Figure <a href="remote-sensing-systems.html#fig:12-pitch-roll-yaw">10.27</a>). <strong>Pitch</strong> refers to rotation around the wings and controls whether the aircraft is ascending or descending. <strong>Roll</strong> refers to rotation around the fuselage (body) of the aircraft and controls which wing of the aircraft is higher than the opposite wing. <strong>Yaw</strong> refers to rotation around the vertical axis that is perpendicular to the fuselage and controls whether the aircraft is moving left or right. Each of these axes are important for understanding the conditions under which aerial photographs are acquired. The pitch and roll of the aircraft have perhaps the most pronounced effect on aerial imagery because any non-zero angle of pitch or roll (positive or negative) will produce an oblique image and cause scale to be inconsistent across the image. Because yaw is an axis that is perpendicular to the aircraft and also to Earth’s surface, there is no impact from positive or negative yaw on image scale. However, large angles of yaw or roll can impact the ability to produce overlapping and adjacent stereo image pairs. Aerial photography is covered in more detail in <a href="https://ubc-geomatics-textbook.github.io/geomatics-textbook/image-analysis.html">Chapter 14</a>.</p>
+
 <div class="figure"><span style="display:block;" id="fig:12-pitch-roll-yaw"></span>
-<img src="images/12-pitch-roll-yaw.png" alt="Pitch is the rotation of the aircraft over the axis of the wings, roll is the rotation of the aircraft over the axis of the fuselage, and yaw is the rotation of the aircraft over the axis of vertical axis that is perpendicular to the fuselage [@jrvz_image_2010]. CC-BY-SA 3.0." width="90%" />
+<img src="images/12-pitch-roll-yaw.png" alt="Pitch is the rotation of the aircraft over the axis of the wings, roll is the rotation of the aircraft over the axis of the fuselage, and yaw is the rotation of the aircraft over the axis of vertical axis that is perpendicular to the fuselage [@jrvz_image_2010]. CC-BY-SA 3.0." width="75%" />
 <p class="caption">
-Figure 10.28: Pitch is the rotation of the aircraft over the axis of the wings, roll is the rotation of the aircraft over the axis of the fuselage, and yaw is the rotation of the aircraft over the axis of vertical axis that is perpendicular to the fuselage <span class="citation">(<a href="#ref-jrvz_image_2010">Jrvz 2010</a>)</span>. CC-BY-SA 3.0.
+Figure 10.27: Pitch is the rotation of the aircraft over the axis of the wings, roll is the rotation of the aircraft over the axis of the fuselage, and yaw is the rotation of the aircraft over the axis of vertical axis that is perpendicular to the fuselage <span class="citation">(<a href="#ref-jrvz_image_2010">Jrvz 2010</a>)</span>. CC-BY-SA 3.0.
 </p>
 </div>
 <p><br/></p>
@@ -991,13 +1008,15 @@ Figure 10.28: Pitch is the rotation of the aircraft over the axis of the wings, 
 - The Third Law of Action and Reaction: every force acting on an object has an equal force that reacts in the opposite direction</p>
 <p>The First Law says that anything moving through space will continue to move through space at a constant speed forever (even if that speed is 0) unless another object exerts some force on it. The Second Law says that objects can accelerate with force, but more massive objects require more force. Finally, the Third Law constrains the other two with the fact that every interaction between two objects causes two forces to occur in opposite directions.</p>
 <p>In the simplest terms, orbits form when two objects are in motion near each other in the vacuum of space. For satellites to reach orbit around Earth, they must accelerate at very high speeds to escape Earth’s gravity and maintain their inertial motion (Second Law). At specific speeds, satellites can maintain their motion and continue to interact with Earth, exerting a small force on Earth that is reciprocated (Third Law). The exact path of an orbit is a function of the mass and gravitational acceleration between the two objects. In other words, objects orbit each other and are in constant free fall towards the other due to the Third Law. For example, the Earth is falling towards the Moon and the Moon is falling towards the Earth. Both objects are orbiting around the same imaginary point representing the center of mass of both objects. The same physics apply to the orbits of satellites around Earth. Since Earth has much more mass than any artificial satellite, the center of mass between Earth and any satellite is generally near the center of Earth itself, thus we see the illusion that the satellite “orbits” Earth.</p>
-<p>Consider Newton’s cannonball thought experiment: you fire a cannonball perpendicular to Earth’s surface at the top of a tall mountain. If the cannonball is traveling at 0 <span class="math inline">\(km·s^{-2}\)</span>, then the cannonball falls to the ground due to the force of gravity. If the cannonball is traveling at 1 <span class="math inline">\(km·s^{-2}\)</span>, then the cannonball travels some distance over an arc before it eventually falls back to Earth due to gravity (Figure <a href="remote-sensing-systems.html#fig:12-newtons-cannonball">10.29</a> A). If you fire the cannonball at a slightly faster speed of 3 <span class="math inline">\(km·s^{-2}\)</span>, then the cannonball travels a distance farther than before but still eventually falls back to Earth due to gravity (Figure <a href="remote-sensing-systems.html#fig:12-newtons-cannonball">10.29</a> B). If the cannonball is traveling at least 7.8 <span class="math inline">\(km·s^{-2}\)</span>, then the speed of the cannonball is roughly equivalent to the force of gravity that is trying to pull the cannonball back to Earth and therefore the cannonball maintains an approximately circular orbit around Earth (Figure <a href="remote-sensing-systems.html#fig:12-newtons-cannonball">10.29</a> C). In other words, the velocity of the cannonball is faster over Earth than it is falling towards Earth, which results in a curved path or orbit. Fire the cannonball at any faster speed and you can achieve elliptical orbits (Figure <a href="remote-sensing-systems.html#fig:12-newtons-cannonball">10.29</a> D) or even orbits that escape Earth’s gravity altogether (Figure <a href="remote-sensing-systems.html#fig:12-newtons-cannonball">10.29</a> E).</p>
+<p>Consider Newton’s cannonball thought experiment: you fire a cannonball perpendicular to Earth’s surface at the top of a tall mountain. If the cannonball is traveling at 0 <span class="math inline">\(km·s^{-2}\)</span>, then the cannonball falls to the ground due to the force of gravity. If the cannonball is traveling at 1 <span class="math inline">\(km·s^{-2}\)</span>, then the cannonball travels some distance over an arc before it eventually falls back to Earth due to gravity (Figure <a href="remote-sensing-systems.html#fig:12-newtons-cannonball">10.28</a> A). If you fire the cannonball at a slightly faster speed of 3 <span class="math inline">\(km·s^{-2}\)</span>, then the cannonball travels a distance farther than before but still eventually falls back to Earth due to gravity (Figure <a href="remote-sensing-systems.html#fig:12-newtons-cannonball">10.28</a> B). If the cannonball is traveling at least 7.8 <span class="math inline">\(km·s^{-2}\)</span>, then the speed of the cannonball is roughly equivalent to the force of gravity that is trying to pull the cannonball back to Earth and therefore the cannonball maintains an approximately circular orbit around Earth (Figure <a href="remote-sensing-systems.html#fig:12-newtons-cannonball">10.28</a> C). In other words, the velocity of the cannonball is faster over Earth than it is falling towards Earth, which results in a curved path or orbit. Fire the cannonball at any faster speed and you can achieve elliptical orbits (Figure <a href="remote-sensing-systems.html#fig:12-newtons-cannonball">10.28</a> D) or even orbits that escape Earth’s gravity altogether (Figure <a href="remote-sensing-systems.html#fig:12-newtons-cannonball">10.28</a> E).</p>
+
 <div class="figure"><span style="display:block;" id="fig:12-newtons-cannonball"></span>
 <img src="images/12-newtons-cannonball.png" alt="Netwon's Cannonball thought experiment. [Brian Brondel](https://upload.wikimedia.org/wikipedia/commons/archive/7/73/20070210061321%21Newton_Cannon.svg), CC-BY-SA-3.0." width="75%" />
 <p class="caption">
-Figure 10.29: Netwon’s Cannonball thought experiment. <a href="https://upload.wikimedia.org/wikipedia/commons/archive/7/73/20070210061321%21Newton_Cannon.svg">Brian Brondel</a>, CC-BY-SA-3.0.
+Figure 10.28: Netwon’s Cannonball thought experiment. <a href="https://upload.wikimedia.org/wikipedia/commons/archive/7/73/20070210061321%21Newton_Cannon.svg">Brian Brondel</a>, CC-BY-SA-3.0.
 </p>
 </div>
+<p><br/></p>
 <p>Another important force is drag, which is the equal force applied in the opposite direction to acceleration (Third Law). Drag is important for satellites to reach orbit and stay there. Earth’s atmosphere exerts an equal and opposite force to the direction the space vehicle is leaving the launchpad and also creates friction that can slow down satellites that are near the transition between the atmosphere and space. Thus, in order for satellites to maintain orbit, they must travel at high speeds and also high altitudes above the ground to avoid the force of drag. Generally, the speed of a satellite is inversely related to the altitude. So satellites that are closer to Earth must travel at much faster speeds than satellites that are farther from Earth. In the following sections, we will look at some examples of different types of orbits and their role in specific remote sensing systems.</p>
 <div id="low-earth-orbit-leo" class="section level3 hasAnchor" number="10.8.1">
 <h3><span class="header-section-number">10.8.1</span> Low Earth Orbit (LEO)<a href="remote-sensing-systems.html#low-earth-orbit-leo" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -1015,12 +1034,14 @@ Figure 10.29: Netwon’s Cannonball thought experiment. <a href="https://upload.
 <div id="geosynchronous-equitorial-orbit-geo" class="section level3 hasAnchor" number="10.8.4">
 <h3><span class="header-section-number">10.8.4</span> Geosynchronous Equitorial Orbit (GEO)<a href="remote-sensing-systems.html#geosynchronous-equitorial-orbit-geo" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Were you wondering why MEO extends to such an exact number at the extreme altitude of 35,786 km? That is because 35,786 km is the distance from Earth at which the orbital period of a satellite at the Equator is equivalent to Earth’s rotational period of 24 hours. This is known as <strong>Geosynchronous Equatorial Orbit (GEO)</strong> because this orbit only occurs directly above the Earth’s Equator. Satellites in GEO are <strong>geosynchronous</strong>, meaning they are always visible in the same location of the sky no matter the time of day or the season. For this reason, these orbits are sometimes referred to as <strong>geostationary</strong>. The advantage of geostationary orbit is that the satellite can continuously image the same visible portion of Earth 24 hours a day. Thus, nearly all weather and communication satellites are in geostationary orbit, allowing transmissions to be relayed across a network of geostationary satellites and ground antenna like a ping-pong ball.</p>
+
 <div class="figure"><span style="display:block;" id="fig:12-sunsynchronous-geosynchronous-orbits"></span>
-<img src="images/12-sunsynchronous-geosynchronous-orbits.gif" alt="Comparing Sun-synchronous and geosynchronous orbits. The yellow area shows the portion of Earth's surface that is visible during a single orbit. Notice that Sun-synchronous orbit observes at a consistent local time while the geosynchronous orbit observes a constant location. href='https://ubc-geomatics-textbook.github.io/geomatics-textbook/#12-sunsynchronous-geosynchronous-orbits'&gt;Animated figure can be viewed in the web browser version of the textbook.&lt;/a&gt; Credit: [NOAA/JPL-Caltech](https://scijinks.gov/about/)." width="75%" />
+<img src="images/12-sunsynchronous-geosynchronous-orbits.gif" alt="Comparing Sun-synchronous and geosynchronous orbits. The yellow area shows the portion of Earth's surface that is visible during a single orbit. Notice that Sun-synchronous orbit observes at a consistent local time while the geosynchronous orbit observes a constant location. Credit: [NOAA/JPL-Caltech](https://scijinks.gov/about/" width="75%" />
 <p class="caption">
-Figure 10.30: Comparing Sun-synchronous and geosynchronous orbits. The yellow area shows the portion of Earth’s surface that is visible during a single orbit. Notice that Sun-synchronous orbit observes at a consistent local time while the geosynchronous orbit observes a constant location. href=‘<a href="https://ubc-geomatics-textbook.github.io/geomatics-textbook/#12-sunsynchronous-geosynchronous-orbits" class="uri">https://ubc-geomatics-textbook.github.io/geomatics-textbook/#12-sunsynchronous-geosynchronous-orbits</a>’&gt;Animated figure can be viewed in the web browser version of the textbook.</a> Credit: <a href="https://scijinks.gov/about/">NOAA/JPL-Caltech</a>.
+Figure 10.29: Comparing Sun-synchronous and geosynchronous orbits. The yellow area shows the portion of Earth’s surface that is visible during a single orbit. Notice that Sun-synchronous orbit observes at a consistent local time while the geosynchronous orbit observes a constant location. Credit: [NOAA/JPL-Caltech](<a href="https://scijinks.gov/about/" class="uri">https://scijinks.gov/about/</a>
 </p>
 </div>
+<p><br/></p>
 </div>
 </div>
 <div id="reflection-questions-7" class="section level2 unnumbered hasAnchor">
@@ -1047,10 +1068,7 @@ Figure 10.30: Comparing Sun-synchronous and geosynchronous orbits. The yellow ar
 </div>
 </div>
 <h3>References</h3>
-<div id="refs" class="references csl-bib-body hanging-indent">
-<div id="ref-bater_timelapse_nodate" class="csl-entry">
-Bater, Christopher W. n.d. <span>“Timelapse.”</span>
-</div>
+<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
 <div id="ref-bater_using_2010" class="csl-entry">
 Bater, Christopher W., Nicholas C. Coops, Michael A. Wulder, Thomas Hilker, Scott E. Nielsen, Greg Mcdermid, and Gordon B. Stenhouse. 2010. <span>“Using Digital Time-Lapse Cameras to Monitor Species-Specific Understorey and Overstorey Phenology in Support of Wildlife Habitat Assessment.”</span> <em>Environmental Monitoring and Assessment</em> 180 (1-4): 1–13. https://doi.org/<a href="http://dx.doi.org/10.1007/s10661-010-1768-x">http://dx.doi.org/10.1007/s10661-010-1768-x</a>.
 </div>
@@ -1152,7 +1170,7 @@ gitbook.start({
 "link": "https://github.com/ubc-geomatics-textbook/geomatics-textbook/blob/develop/12-remote-sensing-systems.Rmd",
 "text": null
 },
-"download": [["https://osf.io/whqe2", "PDF"]],
+"download": ["geomatics-for-environmental-management-an-open-textbook-for-students-and-practitioners.pdf", "geomatics-for-environmental-management-an-open-textbook-for-students-and-practitioners.epub"],
 "search": {
 "engine": "lunr",
 "options": null

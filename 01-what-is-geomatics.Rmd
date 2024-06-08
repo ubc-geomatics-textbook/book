@@ -234,17 +234,17 @@ m <- leaflet() %>%
   )
 ```
 
-```{r 1-cli-agriculture-capability-toronto, fig.cap = fig_cap, out.width= "100%", echo = FALSE, fig.align="center"}
-if (knitr::is_latex_output()) {
-  fig_cap <- paste0("Soil capability for agriculture from the Canada Land Inventory for the area surrounding Toronto, Canada. The majority of the best soils for farming in Canada (Class 1 - No significant limitations in use for crops) are found in southeastern Ontario. <a
-  \\href='",baseurl,"\\#fig:1-cli-agriculture-capability-toronto'>Interactive web map can be viewed in the web browser version of the textbook</a>. Queen's Printer, Public Domain.")
+(ref:1-cli-agriculture-capability-toronto-caption) Soil capability for agriculture from the Canada Land Inventory for the area surrounding Toronto, Canada. The majority of the best soils for farming in Canada (Class 1 - No significant limitations in use for crops) are found in southeastern Ontario. Queen's Printer, Public Domain. Interactive web map can be viewed in the web browser version of the textbook: https://www.opengeomatics.ca/what-is-geomatics.html#fig:1-cli-agriculture-capability-toronto.
+
+``` {r 1-cli-agriculture-capability-toronto, echo=FALSE, out.width="100%", fig.cap=fig_cap}
+if (knitr:::is_latex_output()) {
+  fig_cap = "(ref:1-cli-agriculture-capability-toronto-caption)"  
   knitr::include_graphics(here::here("images", "01-cli-agriculture-capability-toronto.PNG"))
 } else {
   fig_cap <- paste0("Soil capability for agriculture from the Canada Land Inventory for the area surrounding Toronto, Canada. The majority of the best soils for farming in Canada (Class 1 - No significant limitations in use for crops) are found in southeastern Ontario. Queen's Printer, Public Domain.")
   m
 }
 ```
-</br>
 
 ## Environmental Management Imperatives
 

@@ -1,15 +1,9 @@
----
-output:
-  pdf_document: default
-  html_document: default
----
 ```{r echo=FALSE, warning=FALSE}
 yml_content <- yaml::read_yaml("chapterauthors.yml")
-author <- yml_content[["topology"]][["author"]]
-coauthor <- yml_content[["topology"]][["coauthor"]]
+author <- yml_content[["topologyGeocoding"]][["author"]]
 ```
 
-# Topology and Geocoding {#topology}
+# Topology and Geocoding {#topology-and-geocoding}
 
 Written by
 ```{r results='asis', echo=FALSE}
@@ -22,7 +16,6 @@ canadalicense <- "https://open.canada.ca/en/open-government-licence-canada/"
 covlicense <- "https://opendata.vancouver.ca/pages/licence/"
 library(leaflet)
 library(dplyr)
-library(rgdal)
 library(deldir)
 library(tripack)
 library(animation)
@@ -32,7 +25,6 @@ library(lidR)
 options(rgl.useNULL=TRUE)
 library(rgl)
 library(mgcv)
-library(rLiDAR)
 library(sf)
 knitr::knit_hooks$set(webgl = hook_webgl)
 ```
@@ -75,8 +67,8 @@ In the context of topology, **planar** refers to the concept that all vertices o
 On the other hand, **non-planar** topology is the concept that vertices of feature vector geometry can be mapped to different planes. It is important to emphasize here that when we are talking about planes that we are not referring to projected coordinate systems. It is generally assumed that any two spatial data layers containing feature geometries are interacting within the same projected coordinate system. Non-planar topology allows for other knowledge systems to be represented in spatial data. The case where a pipeline runs underneath a river or a territory that was traditionally used by several Indigenous peoples (Figure \@ref(fig:7-native-land-leaflet)) are examples of valid non-planar topology.
 
 ``` {r, 7-native-land-data-load, echo=F, message=F, warning=F, cache=T}
-native_land <- rgdal::readOGR("Data/07/07-native_land_vancouver_island.geojson", verbose=F)
-labels <- native_land@data$Name
+native_land <- st_as_sfc("Data/07/07-native_land_vancouver_island.geojson", crs = st_crs("Data/07/07-native_land_vancouver_island.geojson"), GeoJSON = TRUE)
+labels <- native_land$Name
 ```
 
 ``` {r 7-native-land-leaflet-setup, cached=T, echo = FALSE, include = FALSE}
@@ -86,7 +78,7 @@ m <- leaflet(native_land) %>%
   addScaleBar(position = c("topleft")) %>%
   setView(lat = 49.25, lng = -125, zoom = 7) %>%
   addPolygons(data=native_land,
-              fillColor = native_land@data$color,
+              fillColor = native_land$color,
               weight = 0.6,
               opacity = 0.5,
               color = "#ffffff",
@@ -104,9 +96,9 @@ m <- leaflet(native_land) %>%
                 textsize = "12px", direction = "auto"))
 ```
 
-(ref:7-native-land-leaflet-caption1) Non-planar topology of 36 indigenous territories overlapping Vancouver Island, British Columbia. Data from @native_land_native_nodate, CC0. Animated figure can be viewed in the web browser version of the textbook: https://www.opengeomatics.ca/topology-and-geocoding.html.
+(ref:7-native-land-leaflet-caption1) Non-planar topology of 36 indigenous territories overlapping Vancouver Island, British Columbia. Data from [@native_land_native_nodate], CC0. Animated figure can be viewed in the web browser version of the textbook: https://www.opengeomatics.ca/topology-and-geocoding.html.
 
-(ref:7-native-land-leaflet-caption2) Non-planar topology of 36 indigenous territories overlapping Vancouver Island, British Columbia. Data from @native_land_native_nodate, CC0.
+(ref:7-native-land-leaflet-caption2) Non-planar topology of 36 indigenous territories overlapping Vancouver Island, British Columbia. Data from [@native_land_native_nodate], CC0.
 
 ```{r 7-native-land-leaflet, fig.cap = fig_cap, out.width= "100%", echo = FALSE}
 if (knitr:::is_latex_output()) { fig_cap ="(ref:7-native-land-leaflet-caption1)"
@@ -127,8 +119,7 @@ So far, we have seen that there are six ways to combine feature geometries (poin
 There are times when we need to ensure that two polygons are **adjacent** to one another by sharing a common edge. If two polygons are not adjacent to one another, then a gap, known as a **sliver**, exists between them or they must **overlap**. Consider the case where we are mapping land covers. If we have a formal scheme that describes all possible land covers, then we expect that a map of land covers will have perfect adjacency between all polygons so that there are no areas that are not mapped (i.e., slivers) and that no area has multiple, overlapping land covers. Since lines are also 2-dimensional, lines can overlap other lines. Depending on the context, a topological rule may be needed to promote or prevent this relationship. For example, if you are modeling bus routes, then one road might support several different routes.
 
 ``` {r echo=FALSE, warning=FALSE, message=FALSE}
-#countries <- st_read("Data/02/world-countries.geojson")
-countries <- rgdal::readOGR("Data/02/world-countries.geojson", verbose = F)
+countries <- st_read("data/02/world-countries.shp", quiet=T)
 uscanada <- countries[countries$CNTRY_NAME == "Canada" | countries$CNTRY_NAME == "United States",]
 uscanada_sf <- st_as_sf(uscanada)
 uscanada_simp <- st_simplify(uscanada_sf, preserveTopology = FALSE, dTolerance = 1000)
@@ -317,8 +308,8 @@ Some examples of cover topological rules:
 Sometimes we need to represent several points, lines or polygons as a collection, which is known as **multipart geometry**. Multipart geometry allow us to represent several disjoint and non-adjacent geometries as a single feature. In this way, we can assign attribute values to the collection of features rather than each geometry individually. The territorial boundary of Canada is a good example of an instance where a multipart geometry can be useful because all of the contiguous land and non-contiguous land (i.e., islands) can be represented and associated with a single feature in the attribute table. However, if the distinction of features is important, such as identifying the names of islands in the Haida Gwaii archipelago, then a singlepart geometry should be used (Figure \@ref(fig:7-haida-gwaii-leaflet)).
 
 ``` {r 7-haida-leaflet-setup, echo=FALSE, warning=FALSE, message=FALSE}
-haida <- rgdal::readOGR("Data/07/07-haida-gwaii-islands-names.geojson", verbose=F)
-labels2 <- haida@data$Island_Name
+haida <- st_as_sfc("Data/07/07-haida-gwaii-islands-names.geojson", crs = st_crs("Data/07/07-haida-gwaii-islands-names.geojson"), GeoJSON = TRUE)
+labels2 <- haida$Island_Name
 ```
 
 ``` {r 7-haida-leaflet-setup2, echo=FALSE, warning=FALSE, message=FALSE, cached=T, echo = FALSE}
@@ -346,10 +337,18 @@ m2 = leaflet(haida) %>%
                 textsize = "12px", direction = "auto"))
 ```
 
+(ref:7-haida-gwaii-leaflet-caption) Singlepart geometry of the Haida Gwaii archipelago off the west coast of British Columbia, Canada. Hover over the islands to see the names. Polygon data from [@statistics_canada_statistics_nodate] and island placenames from [@natural_resources_canada_natural_nodate]. Open Government License - Canada: https://open.canada.ca/en/open-government-licence-canada/. Interactive web map can be viewed in the web browser version of the textbook: https://www.opengeomatics.ca/topology.html#fig:7-haida-gwaii-leaflet.
+
 ```{r 7-haida-gwaii-leaflet, fig.cap = fig_cap, out.width= "50%", echo = FALSE}
-  fig_cap <- paste0("Singlepart geometry of the Haida Gwaii archipelago off the west coast of British Columbia, Canada. Hover over the islands to see the names. <a href='",baseurl,"#7-haida-gwaii-leaflet'>Animated figure can be viewed in the web browser version of the textbook.</a> Polygon data from @statistics_canada_statistics_nodate and island placenames from @natural_resources_canada_natural_nodate. <a href='",canadalicense,"'>Open Government License - Canada</a>.")
+if (knitr:::is_latex_output()) { 
+  fig_cap <- "(ref:7-haida-gwaii-leaflet-caption)"
+  knitr::include_graphics("images/07-Singlepart-geometry-of-the-Haida-Gwaii-archipelago-off-the-west-coast-of-British-Columbia-Canada-static.png")
+} else { 
+  fig_cap <- paste0("Singlepart geometry of the Haida Gwaii archipelago off the west coast of British Columbia, Canada. Hover over the islands to see the names. Polygon data from [@statistics_canada_statistics_nodate] and island placenames from [@natural_resources_canada_natural_nodate]. <a href='",canadalicense,"'>Open Government License - Canada</a>.")
 m2
+}
 ```
+<br/>
 
 Although it is possible to convert from a multipart geometry into singlepart geometry, you need to carefully consider how your features should be represented in the attribute table. For example, if you will be undertaking calculations using area or perimeter of the constituent polygons that comprise a multipart geometry of Canada, then you will return a single value for all of Canada while singlepart geometry would return values for each individual polygon. As well, area calculations can vary between multipart and singlepart geometry. For example, approximately 27% of Canada's land area (including freshwater), is comprised of more than 52,000 islands, which is a statistic you could only calculate with singlepart geometry. Thus, the choice of representing a feature using singlepart or multipart geometry should be based on how the features will be used in your analysis (i.e., aggregated versus disaggregated).
 
@@ -513,7 +512,11 @@ Convex hulls can be generalized to the concave case, called **convex alpha hulls
 
 ``` {r 7-2d-alpha-hull, echo=FALSE, out.width = '75%', fig.cap=fig_cap}
 fig_cap <- paste0("Concave alpha hull generates an alpha shape around a set of points. Online version of the figure is animated by alpha values from 0 to 1 by increments of 0.05. <a href='",baseurl,"#7-2d-alpha-hull'>Animated figure can be viewed in the web browser version of the textbook.</a> Pickell, CC-BY-SA-4.0.")
-knitr::include_graphics("images/07-2d-alpha-hull.gif")
+if (knitr:::is_latex_output()) { 
+  knitr::include_graphics("images/07-2d-alpha-hull-static.png")
+} else { 
+  knitr::include_graphics("images/07-2d-alpha-hull.gif")
+}
 ```
 
 ## 3D topologies
@@ -524,10 +527,18 @@ In this next section, a number of topologies are described that are important fo
 
 Similar to multipart geometries, **multipatch geometries** associate several *faces* or *facets* to a single 3D feature such as a building or tree. In order for multipatch geometries to be topologically valid, they must form a closed set of faces, known as a **polyhedron**. Polyhedrons are comprised of *flat* faces that connect 3 or more vertices. Figure \@ref(fig:7-platonic-polyhedrons) illustrates the 5 Platonic polyhedrons, so-named after Plaot who initially wrote about them. The Platonic polyhedrons are a special type of *regular* polyhedron because they are the only polyhedrons that are highly symmetrical and have special transitive properties on the edges, faces, and vertices. As well, the Platonic polyhedrons are all examples of the 3-dimensional case of a convex hull (more on that in the next section). Most polyhedrons that we come across in environmental management like trees, lakes, glaciers, and buildings are very irregular and not Platonic.
 
-``` {r 7-platonic-polyhedrons, echo=FALSE, out.width = '75%', fig.cap=fig_cap}
-fig_cap <- paste0("The five Platonic solids are examples of regular, convex polyhedrons and multipatch geometries. From left to right: tetrahedron (4 faces); hexahedron (6 faces); octahedron (8 faces); dodecahedron (12 faces); and icosahedron (20 faces). <a href='",baseurl,"#7-platonic-polyhedrons'>Animated figure can be viewed in the web browser version of the textbook.</a> @cyp_polyhedra_2005, CC-BY-SA-3.0.")
-knitr::include_graphics("images/07-platonic-polyhedrons.gif")
+(ref:7-platonic-polyhedrons-caption) The five Platonic solids are examples of regular, convex polyhedrons and multipatch geometries. From left to right: tetrahedron (4 faces); hexahedron (6 faces); octahedron (8 faces); dodecahedron (12 faces); and icosahedron (20 faces). [@cyp_polyhedra_2005], CC-BY-SA-3.0. Animated figure can be viewed in the web browser version of the textbook: https://www.opengeomatics.ca/topology.html#7-platonic-polyhedrons.
+
+```{r 7-platonic-polyhedrons, fig.cap = fig_cap, out.width= "75%", echo = FALSE}
+if (knitr:::is_latex_output()) { 
+  fig_cap <- "(ref:7-platonic-polyhedrons-caption)"
+knitr::include_graphics("images/07-platonic-polyhedrons-static.png")
+} else { 
+  fig_cap <- paste0("The five Platonic solids are examples of regular, convex polyhedrons and multipatch geometries. From left to right: tetrahedron (4 faces); hexahedron (6 faces); octahedron (8 faces); dodecahedron (12 faces); and icosahedron (20 faces). [@cyp_polyhedra_2005], CC-BY-SA-3.0.")
+  knitr::include_graphics("images/07-platonic-polyhedrons.gif")
+}
 ```
+<br/>
 
 ### 3D Convex hull
 
@@ -538,10 +549,10 @@ The 3D convex hull is the smallest convex polyhedron that contains a set of 3D p
 The 3D convex alpha hull is Figure \@ref(fig:7-3d-alpha-hull-deciduous) below shows a 3D convex alpha hull for a deciduous tree near the Forest Sciences Centre at the University of British Columbia.
 
 ```{r 7-setup-3d-alpha-hull-deciduous, echo=FALSE, cached=T, warning=F, include=F}
-las <- readLAS("Data/07/07-deciduous-tree.las")
-z <- las[,3]
-x <- las[,1]
-y <- las[,2]
+las <- lidR::readLAS("Data/07/07-deciduous-tree.las")
+z <- las@data$Z
+x <- las@data$X
+y <- las@data$Y
 x <- (x-min(x))/(max(x)-min(x))
 y <- (y-min(y))/(max(y)-min(y))
 z <- (z-min(z))/(max(z)-min(z))
@@ -564,9 +575,9 @@ rglwidget(width = 600, height = 600, reuse=FALSE, elementId="7-3d-alpha-hull-dec
 
 ``` {r 7-setup-3d-alpha-hull-conifer, echo=F, cached=T, warning=F, include=F}
 las <- readLAS("Data/07/07-conifer-tree.las")
-z <- las[,3]-1156
-x <- las[,1]-640600
-y <- las[,2]-5674900
+z <- las@data$Z-1156
+x <- las@data$X-640600
+y <- las@data$Y-5674900
 xyz <- cbind(x,y,z)
 ahull.c <- ashape3d(xyz,alpha=0.1)
 ```
@@ -590,10 +601,17 @@ We can derive some useful information from these 3D convex alpha hulls. One obvi
 
 Similar to Thiessen polygons, Voronoi tessellations can be undertaken for 3D point clouds. 3D Voronoi tessellations produce nearest neighbour polyhedrons around the space of each 3D point. Just as in the 2D case, these 3D Voronoi tessellations can be used to partition the 3D space. Figure \@ref(fig:7-neper) shows the use of a 3D Voronoi tessellation for use in mapping and visualizing polycrystals.
 
-```{r 7-neper, echo=FALSE, out.width = '75%', fig.cap=fig_cap}
-fig_cap <- paste("3D Voronoi tesselation of simulated polycrystals. @quey_neper_nodate, GPL 3.0.")
+(ref:7-neper-caption) 3D Voronoi tesselation of simulated polycrystals. [@quey_neper_nodate], GPL 3.0.
+
+```{r 7-neper, fig.cap = fig_cap, out.width= "75%", echo = FALSE}
+if (knitr:::is_latex_output()) { 
+  fig_cap <- "(ref:7-neper-caption)"
+} else { 
+  fig_cap <- paste("3D Voronoi tesselation of simulated polycrystals. @quey_neper_nodate, GPL 3.0.")
+}
 knitr::include_graphics("images/07-neper.png")
 ```
+<br/>
 
 ## Reflection Questions {-}
 

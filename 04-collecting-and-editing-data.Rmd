@@ -56,7 +56,7 @@ Data librarians are particularly well-connected and trained to help you navigate
 
 Government data are also increasingly published in data repositories, specific to the level of government (Figure \@ref(fig:4-data-network-model)). There are multiple levels to government, including municipalities (the smallest), sometimes counties (precincts, townships, or parishes), provinces (or states), and nations (the largest), each of which often has its own data repository. Centralized repositories are becoming increasingly common and connect open data from all levels of Government. The [Federated Research data repository](https://www.frdr-dfdr.ca/repo/) is an aggregation of Canadian open data repositories, including municipal, provincial, and academic repositories. It includes a map-based search for datasets with location information tied to their metadata. In the US, geospatial data from federal, municipal, and state government repositories are being consolidated under [Data.gov](https://www.data.gov/).
 
-Because not all repositories are yet connected by a centralized repository, one must search in the correct repository. To do this, consider which government has jurisdiction over the specific subject area and geography of interest. For example, if you are interested in land use zoning and engineering features within a given city, this data are likely best provided by that individual city, either by finding it within a data repository or e-mailing the municipality with a data request. In Canada, the provinces have jurisdiction over most natural resources and thus provincial government data repositories tend to provide the best data coverage on natural resources such as, water, forests, wildlife, minerals, and topography. In British Columbia, for example, [DataBC](https://www.data.gov.bc.ca/) houses over a thousand datasets on natural resources, including forest inventory maps, natural disturbances, hunting statistics, administrative boundaries, and much more. [Canada's open data portal](https://open.canada.ca/en/open-data) provides data on fish as well as environmental conditions (e.g., water quality, air quality, historical weather, etc.), which is under federal jurisdiction. Hydrological flow and water quality monitoring are readily accessible across Canada through the Hydat database, which can be easily accessed through the R package called [TidyHydat](https://cran.r-project.org/web/packages/tidyhydat/vignettes/tidyhydat_an_introduction.html) (@albers_tidyhydat_2017).
+Because not all repositories are yet connected by a centralized repository, one must search in the correct repository. To do this, consider which government has jurisdiction over the specific subject area and geography of interest. For example, if you are interested in land use zoning and engineering features within a given city, this data are likely best provided by that individual city, either by finding it within a data repository or e-mailing the municipality with a data request. In Canada, the provinces have jurisdiction over most natural resources and thus provincial government data repositories tend to provide the best data coverage on natural resources such as, water, forests, wildlife, minerals, and topography. In British Columbia, for example, [DataBC](https://www.data.gov.bc.ca/) houses over a thousand datasets on natural resources, including forest inventory maps, natural disturbances, hunting statistics, administrative boundaries, and much more. [Canada's open data portal](https://open.canada.ca/en/open-data) provides data on fish as well as environmental conditions (e.g., water quality, air quality, historical weather, etc.), which is under federal jurisdiction. Hydrological flow and water quality monitoring are readily accessible across Canada through the Hydat database, which can be easily accessed through the R package called [TidyHydat](https://cran.r-project.org/web/packages/tidyhydat/vignettes/tidyhydat_an_introduction.html) [@albers_tidyhydat_2017].
 
 :::: {.box-content .your-turn-content}
 
@@ -96,10 +96,17 @@ In addition to these general geographies, which apply throughout Canada, special
 
 Using census data for geographic analysis typically involves first identifying the smallest spatial unit at which the data are available. Recall that to protect the privacy of respondents, some data are only available at higher geographic levels. Another consideration is that if you plan to compile multiple census years, the geographic boundaries have typically changed over time in response to how the landscapes and information needs have changed. This creates substantial (though, not insurmountable) additional work that limits how the data can be used, especially for finer spatial scale analysis. An example of changes in the geography of census divisions is seen for British Columbia in Figure \@ref(fig:4-shifting-census-boundaries).
 
+(ref:4-shifting-census-boundaries-caption) An example of how census boundaries have changed, showing changes in Census divisions for British Columbia from 1911 to 1986. Data from [@clark_historical_2016]. Sutherland, CC-BY-SA-4.0.
+
 ```{r 4-shifting-census-boundaries, fig.cap = fig_cap, out.width= "75%", echo = FALSE}
-fig_cap <- paste0("An example of how census boundaries have changed, showing changes in Census divisions for British Columbia from 1911 to 1986. Data from @clark_historical_2016. Sutherland, CC-BY-SA-4.0.")
-knitr::include_graphics(here::here("images", "04-shifting-census-boundaries.png"))
+if (knitr:::is_latex_output()) { 
+  fig_cap <- "(ref:4-shifting-census-boundaries-caption)"
+} else { 
+  fig_cap <- paste0("An example of how census boundaries have changed, showing changes in Census divisions for British Columbia from 1911 to 1986. Data from @clark_historical_2016. Sutherland, CC-BY-SA-4.0.")
+}
+knitr::include_graphics("images/04-shifting-census-boundaries.png")
 ```
+<br/>
 
 ## Accessing Census Data
 
@@ -201,12 +208,17 @@ Using **aerial photographs** to track landscape change often requires first 'tyi
 
 Compare the map and photograph below. Both show the same gas pipeline, which passes through hilly terrain. Note the deformation of the pipeline route in the photo relative to the shape of the route on the topographic map. Only the topographic map is accurate here. The deformation in the photo is caused by relief displacement. The photo would not serve well on its own as a source for topographic mapping.
 
-(ref:4-crooked-aerialphoto-caption) Example of how a linear feature can appear crooked in an aerial photograph that has not yet been orthorectified due to relief displacement. @dibiase_census_2014, CC-BY-4.0.
+(ref:4-crooked-aerialphoto) Example of how a linear feature can appear crooked in an aerial photograph that has not yet been orthorectified due to relief displacement. [@dibiase_census_2014], CC-BY-4.0.
 
 ```{r 4-crooked-aerialphoto, fig.cap = fig_cap, out.width= "75%", echo = FALSE}
-fig_cap <- paste0("Example of how a linear feature can appear crooked in an aerial photograph that has not yet been orthorectified due to relief displacement. @dibiase_census_2014, CC-BY-4.0.")
-knitr::include_graphics(here::here("images", "04-crooked-aerialphoto.png"))
+if (knitr:::is_latex_output()) { 
+  fig_cap <- "(ref:4-crooked-aerialphoto-caption)"
+} else { 
+  fig_cap <- paste0("Example of how a linear feature can appear crooked in an aerial photograph that has not yet been orthorectified due to relief displacement. @dibiase_census_2014, CC-BY-4.0.")
+}
+knitr::include_graphics("images/04-crooked-aerialphoto.png")
 ```
+<br/>
 
 Even in their un-orthorectified state, historical aerial photos can offer a powerful communication tool. They offer a window into historical landscapes that can be easily discerned and appreciated by viewers. Thus, even without orthorectification and performing spatial analysis, historical aerial photos can enrich a research report and other communications. 
 
@@ -218,13 +230,17 @@ Even in their un-orthorectified state, historical aerial photos can offer a powe
 2. Decide on the time-frame of interest. 
 3. Search via a GIS web map or paper flight line maps and examine which flight rolls cross over your time frame and area of interest.
 
-```{r 4-accessing-aerial-photos, fig.cap = fig_cap, out.width= "75%", echo = FALSE}
-fig_cap <- paste0("Example showing the availabiltiy of historical aerial photos in eastern Newfoundland at three time steps. Data from @natural_resources_canada_earth_nodate, <a href='https://open.canada.ca/en/open-government-licence-canada/'>Open Government License - Canada</a>.")
-knitr::include_graphics(here::here("images", "04-accessing-aerial-photos.png"))
-```
-</br>
+(ref:4-accessing-aerial-photos-caption) Example showing the availability of historical aerial photos in eastern Newfoundland at three time steps. Data from @natural_resources_canada_earth_nodate. Open Government License - Canada: https://open.canada.ca/en/open-government-licence-canada/.
 
-(ref:4-accessing-aerial-photos-caption) Example showing the availabiltiy of historical aerial photos in eastern Newfoundland at three time steps. Data from @natural_resources_canada_earth_nodate, Open Government License - Canada.
+```{r 4-accessing-aerial-photos, fig.cap = fig_cap, out.width= "75%", echo = FALSE}
+if (knitr:::is_latex_output()) { 
+  fig_cap <- "(ref:4-accessing-aerial-photos-caption)"
+} else { 
+  fig_cap <- paste0("Example showing the availabiltiy of historical aerial photos in eastern Newfoundland at three time steps. Data from @natural_resources_canada_earth_nodate, <a href='https://open.canada.ca/en/open-government-licence-canada/'>Open Government License - Canada</a>.")
+}
+knitr::include_graphics("images/04-accessing-aerial-photos.png")
+```
+<br/>
 
 Figure \@ref(fig:4-accessing-aerial-photos) shows the results from an example search. In this example, the area of interest (large pink rectangle, figure \@ref(fig:4-accessing-aerial-photos) was set by navigating to the study site within the web map then setting the current extent as the area of interest. Here the extent is centered on the coastline between St. John's, Newfoundland and Cape Spear, the most easterly point in North America. We then searched for **aerial photographs at three different time frames: 1940-1945 (Figure \@ref(fig:4-accessing-aerial-photos) A, 1950-1955 Figure \@ref(fig:4-accessing-aerial-photos) B, and 1960-1965 Figure \@ref(fig:4-accessing-aerial-photos) C). Indeed, aerial photos were found to be available at each period. The photos with smaller boxes (or foot prints) tend to have higher spatial resolution but cover less area. Assuming that fine spatial resolution is desired, the smallest photos have been selected in this example and could then be requested from the library. Previews are often not available so we will not fully know the quality of the photos until we inspect them.
 
@@ -268,10 +284,14 @@ Although many types of data seem to be georeferenced, other information must be 
 
 A common use case for georeferencing in landscape studies is when an historical map must be brought into GIS and overlaid with other data. Imagine you have a paper map and you use a desktop scanning device to scan it and save it as a digital image. This map depicts a particular area on Earth but there is no way for your computer to know where and how on Earth to place this map (figure \@ref(fig:4-georeferencing-concept)). In order to solve this problem, it is necessary to assign it geographic coordinate information so that GIS software can correctly align it with other georeferenced data.
 
-(ref:4-georeferencing-concept-caption) The need for georeferencing illustrated conceptually. Adapted from @university_of_texas_libraries_intro_2021. CC-BY-NC-2.0.
+(ref:4-georeferencing-concept-caption) The need for georeferencing illustrated conceptually. Adapted from [@university_of_texas_libraries_intro_2021]. CC-BY-NC-2.0.
 
 ```{r 4-georeferencing-concept, fig.cap = fig_cap, out.width= "75%", echo = FALSE}
-fig_cap <- paste0("The need for georeferencing illustrated conceptually. Adapted from @university_of_texas_libraries_intro_2021. CC-BY-NC-2.0.")
+if (knitr:::is_latex_output()) { 
+  fig_cap <- "(ref:4-georeferencing-concept-caption)"
+} else { 
+  fig_cap <- paste0("The need for georeferencing illustrated conceptually. Adapted from [@university_of_texas_libraries_intro_2021]. CC-BY-NC-2.0.")
+}
 knitr::include_graphics(here::here("images", "04-georeferencing-concept.png"))
 ```
 </br>

@@ -19,10 +19,13 @@ bibliography:
 - bibliographies/ch15.bib
 ##- bibliographies/ch16.bib
 - packages.bib
+biblio-style: apalike
+biblio-title: "Bibliography"
 link-citations: true
 github-repo: ubc-geomatics-textbook
 url: https\://github.com/ubc-geomatics-textbook
-description: Advancing teaching and learning in geomatics
+description: The purpose of this textbook is to give students and practitioners a solid survey (pun intended) of what modern geomatics is capable of when confronting environmental management problems. We take a Canadian perspective to this approach, by telling the historical contributions of Canadians to the field and sharing real-world case studies of environmental management problems in Canada.
+cover-image: "images/15-las-treetops.png"
 always_allow_html: true
 site: bookdown::bookdown_site
 ---

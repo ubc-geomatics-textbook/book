@@ -1,11 +1,11 @@
 ```{r, include=FALSE, warning=FALSE}
 baseurl <- "https://ubc-geomatics-textbook.github.io/geomatics-textbook/"
 covlicence <- "https://opendata.vancouver.ca/pages/licence/"
-library("dplyr")
-library("rgdal")
-library("leaflet")
-library("xtable")
-library("plyr")
+library(dplyr)
+library(leaflet)
+library(xtable)
+library(plyr)
+library(sf)
 ```
 
 ```{r echo=FALSE}
@@ -47,10 +47,18 @@ Suppose you have collected some data about some trees. You might have organized 
 ## Relational Databases
 
 Within a RDBMS, we find **relational databases**, which are highly structured tables comprised of rows and columns. In fact, a table in a relational database is called a **relation**, a row is a **tuple**, and a column is an **attribute**. Relational databases are a great way to store simple data structures that can be organized into a relation with tuples and attributes. When we say that a table or relation is "structured", we are referring to the fact that the data are organized according to a database **schema**, which is a set of constraints that ensure data integrity and consistency. For example, our set of trees likely all contain the same types of information and this can be easily organized into a relation. Suppose we measured the height, diameter at breast height (DBH), and species of each tree, then our relation would look like Figure \@ref(fig:5-tabular-data-spatial-data).
+
+(ref:5-tabular-data-spatial-data-caption) Tabular and spatial data are related by a Relational Database Management System (RDBMS) in a Geographic Information System (GIS). Images of Douglas-Fir and Western Hemlock trees by [@canadian_forest_service_douglas-fir_2013], Canadian Forest Service, modified with permission.
+
 ```{r 5-tabular-data-spatial-data, fig.cap = fig_cap, out.width= "75%", echo = FALSE}
-    fig_cap <- paste0("Tabular and spatial data are related by a Relational Database Management System (RDBMS) in a Geographic Information System (GIS). Images of Douglas-Fir and Western Hemlock trees by @canadian_forest_service_douglas-fir_2013, Canadian Forest Service, modified with permission.")
-    knitr::include_graphics("images/05-tabular-data-spatial-data.png")
+if (knitr:::is_latex_output()) { 
+  fig_cap <- "(ref:5-tabular-data-spatial-data-caption)"
+} else { 
+  fig_cap <- paste0("Tabular and spatial data are related by a Relational Database Management System (RDBMS) in a Geographic Information System (GIS). Images of Douglas-Fir and Western Hemlock trees by [@canadian_forest_service_douglas-fir_2013], Canadian Forest Service, modified with permission.")
+}
+knitr::include_graphics("images/05-tabular-data-spatial-data.png")
 ```
+<br/>
 
 As you can see from the example above, there are two components to geospatial data: the tabular data containing tuples and attributes and the spatial data that contain the coordinate pairs for a projected or geographic coordinate system. This structure is known generically as the **georelational data model**. Many formats of geospatial data conform to the georelational data model, which stores a relation of tuples and attributes separately from another relation containing the geometry and coordinates. These two tables are then dynamically related to one another in a RDBMS using GIS software. You will almost never interact or see the relation that stores the geometry and coordinates of features contained in a relational database. Instead, the GIS software manages those files in the background for the purpose of displaying a set of features on a map, and you primarily interact with the tabular data stored in the relation of tuples and attributes.
 
@@ -58,9 +66,15 @@ The schema for the very simple example above would include the constraint and ex
 
 More formally, a relation $R$ is a _subset_ of two sets, $A$ (tuples) and $B$ (attributes). The product of these sets $A×B$ is called the **Cartesian product**. In the same way that Cartesian coordinates are ordered pairs of values from two axes, the Cartesian product of two sets gives us an ordered pair of elements $(a,b)$ from sets $A$ and $B$, where $a$ is an element in the set $A$, written as $a∈A$, and $b$ is an element of set $B$, written as $b∈B$. Therefore, $R$ is both the Cartesian product as well as any subset of $A×B$.
 
+(ref:5-cartesian-product-caption) Cartesian product A×B of A (tuples) and B (attributes). Image by [@quartl_english_2012], CC BY-SA 3.0.
+
 ```{r 5-cartesian-product, fig.cap = fig_cap, out.width= "75%", echo = FALSE}
-    fig_cap <- paste0("Cartesian product A×B of A (tuples) and B (attributes). Image by @quartl_english_2012, CC BY-SA 3.0.")
-    knitr::include_graphics("images/05-cartesian-product.png")
+if (knitr:::is_latex_output()) { 
+  fig_cap <- "(ref:5-cartesian-product-caption)"
+} else { 
+  fig_cap <- paste0("Cartesian product A×B of A (tuples) and B (attributes). Image by [@quartl_english_2012], CC BY-SA 3.0.")
+}
+knitr::include_graphics("images/05-cartesian-product.png")
 ```
 <br/>
 
@@ -655,38 +669,36 @@ knitr::kable(
 )
 ```
 
-```{r 5-case-study-2, include=FALSE}
-VancouverDA <- readOGR(dsn = "data/05", layer = "VancouverDA")
-```
-
-```{r 5-case-study-3, echo=FALSE}
+```{r 5-case-study-2, echo=FALSE}
+VancouverDA <- st_read("data/05/VancouverDA.shp", quiet=T)
+VancouverDA <- data.frame(DAUID = VancouverDA$DAUID)
 knitr::kable(
-  head(VancouverDA@data), booktabs = TRUE,
-  caption = 'An excerpt of the Vancouver DA polygon shapefile attributes.'
+  head(VancouverDA), booktabs = TRUE,
+  caption = 'An excerpt of the Vancouver DA polygon attributes.'
 )
 ```
 
 The tabular data of the CIMD scores are related to the DAs polygon by the DA code. The cardinality of the relationship between these two tables is one-to-one as each DA is described by one set of the CIMD scores. To join the CIMD scores to the Vancouver DA polygons, we would use the `PRCDDA` attribute in the CIMD table as the foreign key to perform a join on the `DAUID` attribute in the Vancouver DA polygon relation. Now that the CIMD scores are joined to the Vancouver DA polygon attribute table, we can create choropleth maps to display the vulnerability scores of the DAs (Figure \@ref(fig:5-situational-vulnerability-leaflet)).
 
 ```{r 5-case-study-4, include=FALSE}
-DA_CIMD <- readOGR(dsn = "data/05", layer = "VancouverDA_CIMD")
+DA_CIMD <- st_read("data/05/VancouverDA_CIMD.shp", quiet=T)
 
-DA_CIMD@data <- DA_CIMD@data %>%
+DA_CIMD <- DA_CIMD %>%
   mutate_if(is.numeric,round, digits = 3)
 
-DA_CIMD_proj <- spTransform(DA_CIMD, "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs")
+DA_CIMD_proj <- st_transform(DA_CIMD, "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs")
 
-pal <- colorNumeric(palette = "YlOrRd", domain = range(DA_CIMD@data$Situatio_1))
+pal <- colorNumeric(palette = "YlOrRd", domain = range(DA_CIMD$Situatio_1))
 
 labels <- sprintf(
   "<strong>DAUID </strong> %s<br/><strong>Situational Vulnerabiltiy Score </strong> %g",
-  DA_CIMD@data$DAUID, DA_CIMD@data$Situatio_1
+  DA_CIMD$DAUID, DA_CIMD$Situatio_1
 ) %>% lapply(htmltools::HTML)
 
 m <- leaflet(DA_CIMD_proj) %>%
   addProviderTiles("CartoDB.Positron")%>%
   setView(lat = 49.255, lng = -123.153, zoom = 12) %>%
-  addPolygons(fillColor = pal(DA_CIMD@data$Situatio_1), 
+  addPolygons(fillColor = pal(DA_CIMD$Situatio_1), 
               weight = 0.6, 
               opacity = 1,
               color = "#c2c2c2",
@@ -702,17 +714,20 @@ m <- leaflet(DA_CIMD_proj) %>%
               labelOptions = labelOptions(
                 style = list("font-weight" = "normal", padding = "3px 8px"), textsize = "12px", direction = "auto"
               )) %>%
-  addLegend(pal = pal, values = ~DA_CIMD@data$Situatio_1, opacity = 0.7, 
+  addLegend(pal = pal, values = ~DA_CIMD$Situatio_1, opacity = 0.7, 
             title = "Situational Vulnerabiltiy Score",
             position = "bottomleft")
 ```
 
+(ref:5-situational-vulnerability-leaflet-caption) An example of a choropleth map displaying the situational vulnerability scores in the City of Vancouver at DA level. Higher score represents the DA has higher situational vulnerable population e.g., population lacking a high school diploma, low-income population. Lam, CC-BY-SA-4.0. Interactive web map can be viewed in the web browser version of the textbook: https://www.opengeomatics.ca/relational-databases.html#fig:5-situational-vulnerability-leaflet.
+
 ```{r 5-situational-vulnerability-leaflet, fig.cap = fig_cap, out.width= "100%", echo = FALSE}
-fig_cap <- paste0("An example of a choropleth map displaying the situational vulnerability scores in the City of Vancouver at DA level.<a href='",baseurl,"#fig:5-situational-vulnerability-leaflet'>Animated figure can be viewed in the web browser version of the textbook</a>.Higher score represents the DA has higher situational vulnerable population e.g., population lacking a high school diploma, low-income population.")
 if (knitr:::is_latex_output()) {
-knitr::include_graphics(here::here("images", "05-situational-vulnerability-leaflet.PNG"))
+  fig_cap <- "(ref:5-situational-vulnerability-leaflet-caption)"
+  knitr::include_graphics(here::here("images", "05-situational-vulnerability-leaflet.PNG"))
 } else {
-m
+  fig_cap <- paste0("An example of a choropleth map displaying the situational vulnerability scores in the City of Vancouver at DA level. Higher score represents the DA has higher situational vulnerable population e.g., population lacking a high school diploma, low-income population. Lam, CC-BY-SA-4.0.")
+  m
 }
 ```
 <br/>
@@ -724,26 +739,27 @@ Suppose we would like to calculate the overall vulnerability score for each DA. 
 Using what you have learned, join the street tree data and the vegetation type cover richness data to the Vancouver DA attribute table and to compute a vegetation diversity score. The street trees data shows the number of unique street tree species at a DA. Make sure you apply a min-max normalization to obtain the street tree diversity score. The vegetation diversity score can be computed by averaging the normalized scores of the two vegetation data.
 
 ```{r 5-case-study-5, include=FALSE}
-calculated <- readOGR(dsn = "data/05", layer = "Results")
-calculated.full <- head(calculated@data[,c(1, 14, 15, 17, 16, 18, 21)])
-colnames(calculated.full) <- c("DAUID","Aggregated scores", "Normalized aggregated scores", "Species count", "Street tree diversity", "Vegetation richness", "Vegetation diversity scores")
+calculated <- st_read("data/05/Results.shp", quiet=T)
+calculated.full <- head(calculated[c(1, 14, 15, 17, 16, 18, 21)])
+colnames(calculated.full) <- c("DAUID","Aggregated scores", "Normalized aggregated scores", "Species count", "Street tree diversity", "Vegetation richness", "Vegetation diversity scores","geometry")
 calculated.full <- calculated.full %>%
   mutate_if(is.numeric,round, digits = 3)
 ```
 
 ```{r 5-case-study-6, echo=FALSE}
+calculated.full <- as.data.frame(calculated.full)
 knitr::kable(
-  calculated.full, booktabs = TRUE,
+  calculated.full[,-8], booktabs = TRUE,
   caption = 'An excerpt of the attribute table after the joins and calculations.'
 )
 ```
 
 ```{r 5-case-study-7, include=FALSE}
-full.results <- readOGR(dsn = "data/05", layer = "Results")
-full.results_proj <- spTransform(full.results, "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs")
+full.results <- st_read("data/05/Results.shp", quiet=T)
+full.results_proj <- st_transform(full.results, "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs")
 full.results_proj$norm_aggre <- round(full.results_proj$norm_aggre, 2)
 full.results_proj$veg_div_sc <- round(full.results_proj$veg_div_sc, 2)
-pal1 <- colorNumeric(palette = "Greens", domain = range(full.results_proj@data$veg_div_sc))
+pal1 <- colorNumeric(palette = "Greens", domain = range(full.results_proj$veg_div_sc))
 
 labels <- sprintf(
   "<strong>DAUID </strong>%s<br/> <strong>Vegetation Diversity Score </strong>%g<br/><strong>Normalized Aggregated Vulnerabiltiy Score </strong>%g",
@@ -774,14 +790,17 @@ m1 <- leaflet(full.results_proj) %>%
             position = "bottomleft")
 ```
 
-Figure \@ref(fig:5-vegetation-diversity-leaflet) shows a map of the vegetation diversity score at the DA level in Vancouver. The vegetation diversity score and the normalized aggregated vulnerability score are linked to each DA and can be viewed as you hover o-ver the DA.
+Figure \@ref(fig:5-vegetation-diversity-leaflet) shows a map of the vegetation diversity score at the DA level in Vancouver. The vegetation diversity score and the normalized aggregated vulnerability score are linked to each DA and can be viewed as you hover over the DA.
+
+(ref:5-vegetation-diversity-leaflet-caption) An example of a choropleth map displaying vegetation diversity for each dissemination area in Vancouver. Lam, CC-BY-SA-4.0. Data from City of Vancouver and licensed under the Open Government License - Vancouver: https://opendata.vancouver.ca/pages/licence/. Interactive web map can be viewed in the web browser version of the textbook: https://www.opengeomatics.ca/relational-databases.html#fig:5-vegetation-diversity-leaflet.
 
 ```{r 5-vegetation-diversity-leaflet, fig.cap = fig_cap, out.width= "100%", echo = FALSE}
-fig_cap <- paste0("An example of a choropleth map displaying vegetation diversity for each dissemination area in Vancouver. <a href='",baseurl,"#fig:5-vegetation-diversity-leaflet'>Animated figure can be viewed in the web browser version of the textbook</a>. Data from City of Vancouver and licensed under the <a href='",covlicence,"'>Open Government License - Vancouver</a>. Lam, CC-BY-SA-4.0.")
 if (knitr:::is_latex_output()) {
-knitr::include_graphics(here::here("images", "05-vegetation-diversity-leaflet.PNG"))
+  fig_cap <- "(ref:5-vegetation-diversity-leaflet-caption)"
+  knitr::include_graphics(here::here("images", "05-vegetation-diversity-leaflet.PNG"))
 } else {
-m1
+  fig_cap <- paste0("An example of a choropleth map displaying vegetation diversity for each dissemination area in Vancouver. Data from City of Vancouver and licensed under the <a href='",covlicence,"'>Open Government License - Vancouver</a>. Lam, CC-BY-SA-4.0.")
+  m1
 }
 ```
 <br/>
@@ -791,16 +810,17 @@ m1
 Areas with a higher proportion of vulnerable populations and less variety of vegetation to support resident’s mental wellbeing are more in need for intervention. Supposed we define the priority area as DAs with a normalized aggregated vulnerability score greater than or equal to 0.5 and a vegetation diversity score less than 0.5. We could use the `Select By Attributes` tool to identify these priority areas by entering the appropriate query expression.
 
 ```{r 5-case-study-8, include=FALSE}
-query.results <- calculated@data[calculated@data$norm_aggre >= 0.5 & calculated@data$veg_div_sc < 0.5,]
+query.results <- calculated[calculated$norm_aggre >= 0.5 & calculated$veg_div_sc < 0.5,]
 query.results <- query.results[,c(1,15,16,18,21)]
-colnames(query.results) <- c("DAUID", "Normalized aggregated scores", "Street tree diversity", "Vegetation richness", "Vegetation diversity scores")
+colnames(query.results) <- c("DAUID", "Normalized aggregated scores", "Street tree diversity", "Vegetation richness", "Vegetation diversity scores","geometry")
 query.results <- query.results %>%
   mutate_if(is.numeric,round, digits = 3)
 ```
 
 ```{r 5-case-study-9, echo=FALSE}
+query.results <- as.data.frame(query.results)
 knitr::kable(
-  query.results, booktabs = TRUE,
+  query.results[,-6], booktabs = TRUE,
   caption = 'Query result shows five records matched the priority area requirements.'
 )
 ```

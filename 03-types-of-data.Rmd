@@ -1,9 +1,3 @@
----
-output:
-  pdf_document: default
-  html_document: default
-  word_document: default
----
 ```{r echo=FALSE, warning=FALSE}
 yml_content <- yaml::read_yaml("chapterauthors.yml")
 author <- yml_content[["typesOfData"]][["author"]]
@@ -59,10 +53,17 @@ knitr::include_graphics("images/03-vector.png")
 
 Continuous fields are infinite and lack defined boundaries.  Fields can be measured at an infinite number of locations.  However, similar values tend to cluster in space so we can often make assumptions based on finite observations of continuous fields.  One of the most common examples of a continuous field is elevation.  This is a physical property associated with every location on earth.  We can't count the "number of elevations" because space is infinitely divisible and everywhere in space can have an elevation.
 
-```{r 3-elevation, echo=FALSE, out.width = '75%', fig.cap=fig_cap}
-fig_cap <- paste0("Elevation of the Sunshine Coast in BC, from the NRCAN DEM (google earth engine) [@nrcan_canadian_2021]")
+(ref:3-elevation-caption) Elevation of the Sunshine Coast in British Columbia, from the Natural Resources Canada Digital Elevation Model [@nrcan_canadian_2021].
+
+```{r 3-elevation, fig.cap = fig_cap, out.width= "75%", echo = FALSE}
+if (knitr:::is_latex_output()) { 
+  fig_cap <- "(ref:3-elevation-caption)"
+} else { 
+  fig_cap <- paste0("Elevation of the Sunshine Coast in British Columbia, from the Natural Resources Canada Digital Elevation Model [@nrcan_canadian_2021].")
+}
 knitr::include_graphics("images/03-elevation.png")
 ```
+<br/>
 
 ### Imperfect Distinctions
 
@@ -73,11 +74,15 @@ fig_cap <- paste0("The west coast of Vancouver Island. Skeeter, CC-BY-SA-4.0.")
 knitr::include_graphics("images/03-beach-small-scale.png")
 ```
 
-A lightning strike is an electric discharge between the atmosphere and the ground.  A lightning strike is a discrete object.  The precise location of the strike can be pin pointed, the number of strikes during a storm can be counted.  But what about the actual lighting bolt?  That's more a continuous field, its not really possible to measure the exact boundaries of the path the electric discharge takes.  Then we can look at other things, like the probability of lighting strikes. Figure \@ref(fig:3-lightning-density) is a continuous field, calculated from counting discrete objects.
+A lightning strike is an electric discharge between the atmosphere and the ground.  A lightning strike is a discrete object.  The precise location of the strike can be pin pointed, the number of strikes during a storm can be counted.  But what about the actual lightning bolt?  That is more of a continuous field, it is not really possible to measure the exact boundaries of the path the electric discharge takes. Then we can look at other things, like the probability of lightning strikes. Figure \@ref(fig:3-lightning-density) is a continuous field, calculated from counting discrete objects.
 
 ```{r 3-lightning-density, echo=FALSE, out.width = '75%', fig.cap=fig_cap}
-fig_cap <- paste0("Global lighting strike density per month. Skeeter, CC-BY-SA-4.0.")
-knitr::include_graphics("images/03-lightning-density.gif")
+fig_cap <- paste0("Global lightning strike density per month. Skeeter, CC-BY-SA-4.0.")
+if (knitr:::is_latex_output()) { 
+  knitr::include_graphics("images/03-lightning-density-static.png")
+} else { 
+  knitr::include_graphics("images/03-lightning-density.gif")
+}
 ```
 
 ## Types of Data
@@ -123,7 +128,7 @@ knitr::include_graphics("images/03-ordinal-operations.png")
 
 The only arithmetic operations we can do with nominal data are checking for equality (True/False), counting occurrences (frequencies), and calculating the mode (most frequent occurrence). With ordinal data, we can do these operations as well, plus a few more. We can check the order/rank (greater than, less than) and in some circumstances we can calculate the median (see Figure \@ref(fig:3-ordinal-operations)).
 
-(Graded Membership) When trying to group real world phenomena into categories, there are often "exceptions" that blur the lines a bit.  Take this example: you are trying to develop a land cover classification scheme for Garibaldi Provincial park in British Columbia.  Some of the land surface is unquestionably alpine tundra and some is certainly forest area.  However, the transition between forest and alpine meadow is not an abrupt line.  How/where do you draw the line?  Examples like this are known as fuzzy variables, and we often use a *Graded Membership* scale to assign them to categories.  With the landscape classification, a simple approach would be a "winner take all" approach.  If a plot is 5% bare rock, 40% forest, and 45% alpine meadow, the area will be classified as alpine meadow.  From that point forward, in the GIS, that area will be treated as alpine meadow, any information about the variability within the area will be lost.  In practice, many of the qualitative data we work with in GIS, especially those describing natural phenomena, are actually graded membership variables. 
+(Graded Membership) When trying to group real world phenomena into categories, there are often "exceptions" that blur the lines a bit. Take this example: you are trying to develop a land cover classification scheme for Garibaldi Provincial park in British Columbia. Some of the land surface is unquestionably alpine tundra and some is certainly forest area.  However, the transition between forest and alpine meadow is not an abrupt line. How/where do you draw the line? Examples like this are known as fuzzy variables, and we often use a *Graded Membership* scale to assign them to categories.  With the landscape classification, a simple approach would be a "winner take all" approach. If a plot is 5% bare rock, 40% forest, and 45% alpine meadow, the area will be classified as alpine meadow. From that point forward, in the GIS, that area will be treated as alpine meadow, any information about the variability within the area will be lost. In practice, many of the qualitative data we work with in GIS, especially those describing natural phenomena, are actually graded membership variables. 
 
 ```{r 3-fuzzy, echo=FALSE, out.width = '75%', fig.cap=fig_cap}
 fig_cap <- paste0("In this example, we see an alpine landscape in Garibalid Provinical Park, BC.  We can see patches of forest and patches of meadow.  But where, exactly, would we draw the boundary between these two landscape classes. Skeeter, CC-BY-SA-4.0.")
@@ -132,38 +137,37 @@ knitr::include_graphics("images/03-fuzzy.jpg")
 
 ### Quantitative Data
 
-Quantitative data are numeric; they describe the quantities associated with an phenomena.  The numerical values that are separated by a unit that has some inherent meaning (as opposed to the arbitrary numeric codes like in the ordinal data example).  This allows us to conduct a wider range of arithmetic operations on quantitative data.  In addition to the operations we perform on Qualitative data; with numeric data we can always calculate measures of central tendency (mean/median) and we can add/subtract values to calculate differences.
+Quantitative data are numeric; they describe the quantities associated with an phenomena. The numerical values that are separated by a unit that has some inherent meaning (as opposed to the arbitrary numeric codes like in the ordinal data example). This allows us to conduct a wider range of arithmetic operations on quantitative data. In addition to the operations we perform on Qualitative data; with numeric data we can always calculate measures of central tendency (mean/median) and we can add/subtract values to calculate differences.
 
-Numeric data can be either **discrete** or **continuous**.  Discrete variables (e.g. population) are obtained by counting and values within a range cannot be infinitely subdivided.  You can have a population of 1, 37, or 179 but you cannot have a population of 2.3.  Continuous variables (e.g. temperature) can take an infinite number of values a given range, but they cannot be counted.  You can have temperatures of 10, 10.5, or 10.1167 &deg;C, but a temperature of 10&deg;C does not mean you have 10 individual degrees of temperature.  Quantitative data (both discrete and continuous) can be measured on either an **Interval** or **Ratio** scale.  These types of quantitative data are closely related, but have one important distinction.
-
+Numeric data can be either **discrete** or **continuous**.  Discrete variables (e.g. population) are obtained by counting and values within a range cannot be infinitely subdivided. You can have a population of 1, 37, or 179 but you cannot have a population of 2.3.  Continuous variables (e.g. temperature) can take an infinite number of values a given range, but they cannot be counted.  You can have temperatures of 10, 10.5, or 10.1167 &deg;C, but a temperature of 10&deg;C does not mean you have 10 individual degrees of temperature. Quantitative data (both discrete and continuous) can be measured on either an **Interval** or **Ratio** scale.  These types of quantitative data are closely related, but have one important distinction.
 
 #### Ratio Data
 
-Ratio data have fixed, meaningful, absolute zero points.  The absolute zero point means ratio data cannot take negative values.  It also means that we can multiply/divide two values to calculate a meaningful ratio between them (hence the name).  A good example of ratio data are population total (see figure).  Population counts start at zero and go up from there.  A population of zero means there are no residents, and its impossible to have a negative population.  Other examples of ratio data include: temperature (*in degrees Kelvin*), precipitation, tree height, income, rental cost, and units of time (years, seconds, etc.)  
+Ratio data have fixed, meaningful, absolute zero points. The absolute zero point means ratio data cannot take negative values. It also means that we can multiply/divide two values to calculate a meaningful ratio between them (hence the name). A good example of ratio data are population total (see figure).  Population counts start at zero and go up from there. A population of zero means there are no residents, and its impossible to have a negative population. Other examples of ratio data include: temperature (*in degrees Kelvin*), precipitation, tree height, income, rental cost, and units of time (years, seconds, etc.)  
 
 ```{r 3-ratio-population, echo=FALSE, out.width = '75%', fig.cap=fig_cap}
 fig_cap <- paste0("Because of the fixed, meaningful zero point, we can calculate ratios between populations: e.g. Manitoba's population is 1/10th that of Ontario, British Columbia has 129 times as many people as Nunavut. Skeeter, CC-BY-SA-4.0.")
 knitr::include_graphics("images/03-ratio-population.png")
 ```
 
-Interval data on the other hand, have an arbitrarily set zero point.  This means they can can take negative values.  Because the zero point is arbitrary, we cannot multiply/divide two values or calculate meaningful ratios between two values.  A good example of interval data is temperature measured in Celsius, and comparing it to Kelvin highlights the difference between the two data types (see Figure \@ref(fig:3-interval-ratio-temperature)).  The conversion between Kelvin (ratio) and Celsius (interval) is very simple: &deg;C = &deg;K-273.15.  Zero Kelvin is "Absolute Zero" - ie. the lack of temperature, while zero Celsius is the freezing point of water (273.15 degrees above absolute zero).  Other examples of interval data include: the pH scale, IQ test scores, elevation (relative to a datum) dates (April 12th, 2011), and times (11:00 A.M.).
+Interval data on the other hand, have an arbitrarily set zero point.  This means they can can take negative values. Because the zero point is arbitrary, we cannot multiply/divide two values or calculate meaningful ratios between two values. A good example of interval data is temperature measured in Celsius, and comparing it to Kelvin highlights the difference between the two data types (see Figure \@ref(fig:3-interval-ratio-temperature)). The conversion between Kelvin (K, ratio) and Celsius (C, interval) is very simple: $^\circ$C = K-273.15. Zero Kelvin is "Absolute Zero" or the lack of temperature, while 0$^\circ$C is the freezing point of water (273.15 K above absolute zero). Other examples of interval data include: the pH scale, IQ test scores, elevation (relative to a datum) dates (April 12th, 2011), and times (11:00 A.M.).
 
 ```{r 3-interval-ratio-temperature, echo=FALSE, out.width = '75%', fig.cap=fig_cap}
-fig_cap <- paste0("The ratio between two temperatures in Celsius is not meaningful, 20&deg;C is not 'twice' as warm as 10&deg;C. Kelvin's zero point is fixed to absolute zero, the 'absence' of temperature.  So we can calculate the ratio, 293.15&deg;K is 1.035 times warmer than 283.15&deg;K. Skeeter, CC-BY-SA-4.0.")
+fig_cap <- paste0("The ratio between two temperatures in Celsius is not meaningful, 20 C is not 'twice' as warm as 10 C. Kelvin's zero point is fixed to absolute zero, the 'absence' of temperature.  So we can calculate the ratio, 293.15 K is 1.035 times warmer than 283.15 K. Skeeter, CC-BY-SA-4.0.")
 knitr::include_graphics("images/03-interval-ratio-temperature.png")
 ```
 
 ### Derived Ratio: Normalizing Data
 
-Sometimes we want to account for the influence of one variable when analyzing another.  To do this, we can divide one value by by another to get the ratio of the two, also known as a **derived ratio**.  This process is sometimes referred to as **Normalizing** or **Standardizing** our data.  The basic formula is: $C=\frac{A}{B}$, where A is our variable of interest, B is our confounding variable, and C is our new derived ratio.  There are many circumstances where we might need to do this.  One common example is population density: Canada and Poland both have populations of ~ 38 million people but Canada had 32x the land area of Poland.  Any comparison of the these two nations that fails to account for the size disparity would be seriously flawed.  Another key example are affordability indexes.  The example below shows how normalization can be applied to a households expenditures on food.  Income and household expenditures on food are strongly related (wealthy regions tend to purchase more expensive food).  An analysis of the cost of food that doesn't account for this relationship would not adequately account for the *affordability* of food in a given region.  Dividing household food expenditures by household income, we get the proportion of income spent on food.  This is a much more accurate representation of the affordability of food and highlights that the poorest communities are most severely impacted by increasing food costs.
+Sometimes we want to account for the influence of one variable when analyzing another. To do this, we can divide one value by by another to get the ratio of the two, also known as a **derived ratio**. This process is sometimes referred to as **Normalizing** or **Standardizing** our data.  The basic formula is: $C=\frac{A}{B}$, where A is our variable of interest, B is our confounding variable, and C is our new derived ratio. There are many circumstances where we might need to do this. One common example is population density: Canada and Poland both have populations of ~ 38 million people but Canada had 32x the land area of Poland. Any comparison of the these two nations that fails to account for the size disparity would be seriously flawed. Another key example are affordability indexes. The example below shows how normalization can be applied to a households expenditures on food. Income and household expenditures on food are strongly related (wealthy regions tend to purchase more expensive food).  An analysis of the cost of food that does not account for this relationship would not adequately account for the *affordability* of food in a given region. Dividing household food expenditures by household income, we get the proportion of income spent on food. This is a much more accurate representation of the affordability of food and highlights that the poorest communities are most severely impacted by increasing food costs.
 
 ```{r 3-income-v-food, echo=FALSE, out.width = '75%', fig.cap=fig_cap}
-fig_cap <- paste0("Income vs. household expenditures on Food by Census Subdivisions in BC. Skeeter, CC-BY-SA-4.0.")
+fig_cap <- paste0("Income versus household expenditures on Food by Census Subdivisions in British Columbia. Skeeter, CC-BY-SA-4.0.")
 knitr::include_graphics("images/03-income-v-food.png")
 ```
 
 ```{r 3-income-v-income-on-food, echo=FALSE, out.width = '75%', fig.cap=fig_cap}
-fig_cap <- paste0("Income vs. Fraction of Income Spent on Food by Census Subdivisions in BC. Skeeter, CC-BY-SA-4.0.")
+fig_cap <- paste0("Income versus Fraction of Income Spent on Food by Census Subdivisions in British Columbia. Skeeter, CC-BY-SA-4.0.")
 knitr::include_graphics("images/03-income-v-income-on-food.png")
 ```
 
@@ -262,17 +266,17 @@ Other file types you will likely encounter when working with raster data include
 
 ### Vector Data
 
-The vector data model is much more well suited to represent discrete phenomena than the raster data model.  A vector feature is a representation of a discrete object as a set of x,y coordinate pairs (points) linked to set of descriptive attribute about that object. A vector feature's coordinates can consist of just one (x,y) pair to form a single point feature, or multiple points which can be connected to form lines or polygons (see Figure \@ref(fig:3-vector-types)).  The non-spatial attribute data is typically stored in a **Tabular** format separate from the spatial data, and it is linked using an index.  One of the key advantages of the vector model is the ability to store and retrieve many attributes them quickly.  In GIS, vector data are commonly encountered as: political boundaries, cenus data, pathways (road, trails, etc.), point location (stop sign, fire hydrant), etc.
+The vector data model is much more well suited to represent discrete phenomena than the raster data model.  A vector feature is a representation of a discrete object as a set of x,y coordinate pairs (points) linked to set of descriptive attribute about that object. A vector feature's coordinates can consist of just one (x,y) pair to form a single point feature, or multiple points which can be connected to form lines or polygons (see Figure \@ref(fig:3-vector-types)). The non-spatial attribute data is typically stored in a **Tabular** format separate from the spatial data, and it is linked using an index. One of the key advantages of the vector model is the ability to store and retrieve many attributes them quickly. In GIS, vector data are commonly encountered as: political boundaries, cenus data, pathways (road, trails, etc.), point location (stop sign, fire hydrant), etc.
 
 ```{r 3-vector-types, echo=FALSE, out.width = '75%', fig.cap=fig_cap}
 fig_cap <- paste0("Vector objects (points, lines, or polygons) are stored along with any number of attribute. Point, line, and polygon data are typically stored in separate files. Skeeter, CC-BY-SA-4.0.")
 knitr::include_graphics("images/03-vector-types.png")
 ```
 
-**Points** are “zero-dimensional”, they have no length or width or area.  A point feature is just an individual (x,y) coordinate pair representing a precise location, that has some linked attribute information.  Points are great for representing a variety of objects, depending on the scale.  Fire hydrants, light poles, and trees are suitable to be represented as points in almost any application.  If you are making a map of mines in British Columbia, or cities across Canada, it is probably acceptable to just display them as points.
+**Points** are “zero-dimensional”, they have no length or width or area. A point feature is just an individual (x,y) coordinate pair representing a precise location, that has some linked attribute information.  Points are great for representing a variety of objects, depending on the scale. Fire hydrants, light poles, and trees are suitable to be represented as points in almost any application. If you are making a map of mines in British Columbia, or cities across Canada, it is probably acceptable to just display them as points.
 
 ```{r 3-vector-points, echo=FALSE, out.width = '75%', fig.cap=fig_cap}
-fig_cap <- paste0("An example of point data showing locations of trees.  The points are labeled with their index (unique ID number) which correspoonds to the attribute table below which stores more information about eacht tree. Skeeter, CC-BY-SA-4.0")
+fig_cap <- paste0("An example of point data showing locations of trees. The points are labeled with their index (unique ID number) which correspoonds to the attribute table below which stores more information about eacht tree. Skeeter, CC-BY-SA-4.0")
 knitr::include_graphics("images/03-vector-points.png")
 ```
 
