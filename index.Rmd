@@ -28,7 +28,6 @@ description: The purpose of this textbook is to give students and practitioners 
 cover-image: "images/15-las-treetops.png"
 always_allow_html: true
 site: bookdown::bookdown_site
-toc: true
 ---
 
 # About this textbook {.unnumbered}
