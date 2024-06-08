@@ -277,37 +277,38 @@ The dNBR values were then scaled for each image to a range of 0-255 by using the
 
 Each of the scaled dNBR images were then classified into four burn severity classes (Table \@ref(tab:13-murray-case-study-table-1)). The classified dNBR image for right after the wildfire was polygonised and the burn severity polygons were then used to extract the NDVI and each of the TCT values for each year of the study.
 
-```{r 13-murray-case-study-table-1, echo = FALSE, results='asis'}
+```{r 13-murray-case-study-table-1, out.width="75%", echo = FALSE, results='asis'}
 dnbr_table <- data.frame(dNBR = c("< 75", "75-118", "118-187", "> 187"),
                         Classified = c("0", "1", "2", "3"), 
                         Description = c("Unburned", 
                                         "Low Severity", 
                                         "Moderate Severity",
                                         "High Severity"))
-knitr::kable(dnbr_table, caption = "Classified Burn Severity Values based on the scaled dNBR values.")
+knitr::kable(dnbr_table, caption = "Classified Burn Severity Values based on the scaled dNBR values. Murray, CC-BY-SA-4.0")
 ```
 
 The change in value of the NDVI and the TCT Greenness and Wetness based on burn severity can be seen in the box plots below (Figure 1). This shows the changes in the vegetation index values from before the wildfire and every year after. The burn severity had an impact on these values as there was a greater decrease in value immediately after the wildfire with the higher burn severity as well as a slower return to the pre-fire state. Additionally, based on the vegetation index used, it can be seen that there different rates of return to a pre-fire state. These differences are important to understand when choosing a vegetation index for a study.
 
-```{r, echo=FALSE, results='asis', fig.cap = "Changes in the values of NDVI (a), TCT Greenness (b), and TCT Wetness(c) based on the burn severity of the Little Bobtail Lake wildfire from 2014 (before the wildfire) to 2020 (five years after the wildfire)."}
+```{r, echo=FALSE, results='asis', out.width="75%", fig.cap = fig_cap}
+fig_cap <- paste0("Changes in the values of NDVI (a), TCT Greenness (b), and TCT Wetness(c) based on the burn severity of the Little Bobtail Lake wildfire from 2014 (before the wildfire) to 2020 (five years after the wildfire). Murray, CC-BY-SA-4.0")
 knitr::include_graphics("images/13-VIPlots.png")
 ```
 
 Wildfires create spatial patterns on the landscape which is a key factor in forest regrowth. Pattern metrics can be calculated and used to understand the changes in the spatial patterns overtime. Using the `calculate_lsm()` function found in the Landscape Metrics (v1.5.0) R package [@hesselbarth_landscapemetrics_2019], the Core Area (`lsm_p_core()`) patch metric was calculated for each of the classified dNBR images. Additionally, the NDVI images were classified into four classes (Table \@ref(tab:13-murray-case-study-table-2)) and then the Core Area Metric was calculated.
 
-```{r 13-murray-case-study-table-2, echo = FALSE, results='asis'}
+```{r 13-murray-case-study-table-2, out.width="75%", echo = FALSE, results='asis'}
 ndvi_table <- data.frame(NDVI = c("< 0.1", "0.1-0.14", "0.14-0.5", "> 0.5"),
                         Classified = c("0", "1", "2", "3"), 
                         Description = c("No Vegetation", 
                                         "Sparse Vegetation", 
                                         "Moderately Healthy Vegetation",
                                         "Healthy Vegetation"))
-knitr::kable(ndvi_table, caption = "Classified Vegetation Health Values based on the NDVI values.")
+knitr::kable(ndvi_table, caption = "Classified Vegetation Health Values based on the NDVI values. Murray, CC-BY-SA-4.0")
 ```
 
 The changes in the Core Area of the burn severity classes showed that the High Severity class had a decrease of 2.6 hectares every year. The Low Severity class had a increase of 1.5 hectares every year and the Moderate and Unburned classes showed little change in Core Area. This was to be expected because as the vegetation regrows in the High Severity areas it changes to a lesser severity (Figure \@ref(fig:13-dnbr-leaflet)). For the vegetation health classes, the Sparse Vegetation class showed a 3.7 hectare increase in Core Area every year, while the other vegetation classes showed little change. These is due to the initial increase in the new vegetation in the first years after the wildfire.
 
-```{r, echo = FALSE, results='asis', message=FALSE, warning=FALSE}
+```{r, echo = FALSE, results='asis', out.width="75%", message=FALSE, warning=FALSE}
 r1 <- as.factor(raster("data/13/dNBR_Class_2015.tif"))
 r2 <- as.factor(raster("data/13/dNBR_Class_2016.tif"))
 r3 <- as.factor(raster("data/13/dNBR_Class_2017.tif"))

@@ -302,7 +302,7 @@ knitr::include_graphics("images/11-landsat-bands.png")
 
 The collection of spectral data across more than one band allows the creation of a spectral curve, or spectral signature. Spectral signature are the cornerstone of many remote sensing applications and highlight many properties of the surface from which they were collected. The creation of a spectral signature is quite simple and can be depicted in two dimensions (Figure \@ref(fig:11-specsig)). Essentially, the observed value of each band is connected to the observed value of each adjacent band in 2D space. When all bands are connected, a spectral signature is born. As we will see in a later case study, spectral signatures can provide a plethora of relevant information relating to the composition of an object.
 
-```{r 11-specsig, fig.cap = fig_cap, out.width = "200%", echo = FALSE}
+```{r 11-specsig, fig.cap = fig_cap, out.width = "75%", echo = FALSE}
     fig_cap <- paste0("Five spectral signatures of various living and non-living samples collected using an ASD FieldSpec3 Imaging Spectroradiometer. Live = live broadleaf, Dead = dead broadleaf, Fir = Douglas-fir needles on branch, Rock = rock, soil = dry humus soil. Hacker, CC-BY-SA-4.0.")
     knitr::include_graphics("images/11-spectralsig.png")
 ```
@@ -322,7 +322,7 @@ The radiometric resolution of a detector, then, is the number of discernible val
 \end{equation}
 ```
 
-```{r 11-radiometric, fig.cap = fig_cap, echo = FALSE}
+```{r 11-radiometric, fig.cap = fig_cap, out.width = "75%", echo = FALSE}
     fig_cap <- paste0("Discernable values of sensors with 1, 2 and 4 bot radiometric resolutions. Hacker, CC-BY-SA-4.0.")
     knitr::include_graphics("images/11-radiometric-res.png")
 ```

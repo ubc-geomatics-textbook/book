@@ -145,7 +145,7 @@ When you return from your trip, your friend decides to test you on your new skil
 if (knitr:::is_latex_output()) { 
   fig_cap <- "(ref:12-assiniboine-day-caption)"
 } else { 
-  fig_cap <- paste0("Mount Assiniboine, image one [@maguire_mt_nodate], CC-BY-4.0")
+  fig_cap <- paste0("Mount Assiniboine during day time [@maguire_mt_nodate], CC-BY-4.0")
 }
 knitr::include_graphics("images/12-assiniboine_day.png")
 ```
@@ -157,7 +157,7 @@ knitr::include_graphics("images/12-assiniboine_day.png")
 if (knitr:::is_latex_output()) { 
   fig_cap <- "(ref:12-assiniboine-sunset-caption)"
 } else { 
-  fig_cap <- paste0("Mount Assiniboine, image two [@maguire_mt_nodate-1], CC-BY-4.0")
+  fig_cap <- paste0("Mount Assiniboine at sunset [@maguire_mt_nodate-1], CC-BY-4.0")
 }
 knitr::include_graphics("images/12-assiniboine_sunset.png")
 ```
@@ -498,10 +498,17 @@ In the simplest terms, orbits form when two objects are in motion near each othe
 
 Consider Newton's cannonball thought experiment: you fire a cannonball perpendicular to Earth's surface at the top of a tall mountain. If the cannonball is traveling at 0 $km·s^{-2}$, then the cannonball falls to the ground due to the force of gravity. If the cannonball is traveling at 1 $km·s^{-2}$, then the cannonball travels some distance over an arc before it eventually falls back to Earth due to gravity (Figure \@ref(fig:12-newtons-cannonball) A). If you fire the cannonball at a slightly faster speed of 3 $km·s^{-2}$, then the cannonball travels a distance farther than before but still eventually falls back to Earth due to gravity (Figure \@ref(fig:12-newtons-cannonball) B). If the cannonball is traveling at least 7.8 $km·s^{-2}$, then the speed of the cannonball is roughly equivalent to the force of gravity that is trying to pull the cannonball back to Earth and therefore the cannonball maintains an approximately circular orbit around Earth (Figure \@ref(fig:12-newtons-cannonball) C). In other words, the velocity of the  cannonball is faster over Earth than it is falling towards Earth, which results in a curved path or orbit. Fire the cannonball at any faster speed and you can achieve elliptical orbits (Figure \@ref(fig:12-newtons-cannonball) D) or even orbits that escape Earth's gravity altogether (Figure \@ref(fig:12-newtons-cannonball) E).
 
-```{r 12-newtons-cannonball, fig.cap = fig_cap, out.width="75%", echo = FALSE}
-fig_cap <- paste0("Netwon's Cannonball thought experiment. [Brian Brondel](https://upload.wikimedia.org/wikipedia/commons/archive/7/73/20070210061321%21Newton_Cannon.svg), CC-BY-SA-3.0.")
+(ref:12-newtons-cannonball-caption) Netwon's Cannonball thought experiment. [Brian Brondel](https://upload.wikimedia.org/wikipedia/commons/archive/7/73/20070210061321%21Newton_Cannon.svg), CC-BY-SA-3.0.
+
+```{r 12-newtons-cannonball, fig.cap = fig_cap, out.width= "75%", echo = FALSE}
+if (knitr:::is_latex_output()) { 
+  fig_cap <- "(ref:12-newtons-cannonball-caption)"
+} else { 
+  fig_cap <- paste0("Netwon's Cannonball thought experiment. [Brian Brondel](https://upload.wikimedia.org/wikipedia/commons/archive/7/73/20070210061321%21Newton_Cannon.svg), CC-BY-SA-3.0.")  
+}
 knitr::include_graphics("images/12-newtons-cannonball.png")
 ```
+<br/>
 
 Another important force is drag, which is the equal force applied in the opposite direction to acceleration (Third Law). Drag is important for satellites to reach orbit and stay there. Earth's atmosphere exerts an equal and opposite force to the direction the space vehicle is leaving the launchpad and also creates friction that can slow down satellites that are near the transition between the atmosphere and space. Thus, in order for satellites to maintain orbit, they must travel at high speeds and also high altitudes above the ground to avoid the force of drag. Generally, the speed of a satellite is inversely related to the altitude. So satellites that are closer to Earth must travel at much faster speeds than satellites that are farther from Earth. In the following sections, we will look at some examples of different types of orbits and their role in specific remote sensing systems.
 

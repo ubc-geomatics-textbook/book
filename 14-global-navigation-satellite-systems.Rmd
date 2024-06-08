@@ -135,12 +135,20 @@ An important feature that exists between the GNSS user and space segments is Ear
 
 ### Ionospheric Delays $I_f$
 
-The ionosphere is the last layer of the upper atmosphere where the last oxygen, hydrogen, and helium atoms meet the vacuum of space and become ionized (gain electrons) from X-rays and ultraviolet radiation emitted by the Sun. The density of electrons in the ionosphere is usually expressed as the **Total Electron Count (TEC)**, which varies diurnally as the Sun rises and sets as well as sporadically due to solar activity and space weather. Figure \@ref(fig:14-total-electron-count-canada) shows the TEC for Canada over the last 7 days for the current hour. These electrons cause **ionospheric delay** in the GNSS signal $I_f$ and this delay is also frequency-dependent $f$ (i.e., the radio wavelength).
+The ionosphere is the last layer of the upper atmosphere where the last oxygen, hydrogen, and helium atoms meet the vacuum of space and become ionized (gain electrons) from X-rays and ultraviolet radiation emitted by the Sun. The density of electrons in the ionosphere is usually expressed as the **Total Electron Count (TEC)**, which varies diurnally as the Sun rises and sets as well as sporadically due to solar activity and space weather. Figure \@ref(fig:14-total-electron-count-canada-html) shows the TEC for Canada over the last 7 days for the current hour. These electrons cause **ionospheric delay** in the GNSS signal $I_f$ and this delay is also frequency-dependent $f$ (i.e., the radio wavelength).
 
-```{r 14-total-electron-count-canada, out.extra='id="tec"', fig.cap = fig_cap, out.width= "75%", echo = FALSE}
-    fig_cap <- paste0("Total Electron Count (TEC) over Canada from the last 7 days. <a href='",baseurl,"#14-total-electron-count-canada'>Animated figure can be viewed in the web browser version of the textbook.</a> Data from Natural Resources Canada, Environment Canada, and the Canadian Space Agency. <a href='",canadalicense,"'>Open Government License - Canada</a>.")
-    knitr::include_graphics("https://www.spaceweather.gc.ca/auto_generated_products/tec/latest/tec-en.png")
+(ref:14-total-electron-count-canada-caption) Total Electron Count (TEC) over Canada. Data from Natural Resources Canada, Environment Canada, and the Canadian Space Agency. Open Government License - Canada: https://open.canada.ca/en/open-government-licence-canada. Animated figure showing the last 7 days can be viewed in the web browser version of the textbook: https://www.opengeomatics.ca/global-navigation-satellite-systems.html#14-total-electron-count-canada-html.
+
+```{r 14-total-electron-count-canada-html, eval=knitr::is_html_output(), out.extra='id="tec"', fig.cap = fig_cap, out.width= "75%", echo = FALSE}
+fig_cap <- paste0("Total Electron Count (TEC) over Canada from the last 7 days. Data from Natural Resources Canada, Environment Canada, and the Canadian Space Agency. <a href='",canadalicense,"'>Open Government License - Canada</a>.")
 ```
+<br/>
+
+```{r 14-total-electron-count-canada-pdf, eval=knitr::is_html_output(), fig.cap = fig_cap, out.width= "75%", echo = FALSE}
+fig_cap <- "(ref:14-total-electron-count-canada-caption)"
+knitr::include_graphics("https://www.spaceweather.gc.ca/auto_generated_products/tec/latest/tec-en.png")
+```
+<br/>
 
 ```{js, echo=FALSE}
 images = [
