@@ -537,7 +537,7 @@ if (knitr:::is_latex_output()) {
   fig_cap <- "(ref:12-sunsynchronous-geosynchronous-orbits-caption)"
   knitr::include_graphics("images/12-sunsynchronous-geosynchronous-orbits-static.png")
 } else { 
-  fig_cap <- paste0("Comparing Sun-synchronous and geosynchronous orbits. The yellow area shows the portion of Earth's surface that is visible during a single orbit. Notice that Sun-synchronous orbit observes at a consistent local time while the geosynchronous orbit observes a constant location. Credit: [NOAA/JPL-Caltech](https://scijinks.gov/about/")
+  fig_cap <- paste0("Comparing Sun-synchronous and geosynchronous orbits. The yellow area shows the portion of Earth's surface that is visible during a single orbit. Notice that Sun-synchronous orbit observes at a consistent local time while the geosynchronous orbit observes a constant location. Credit: [NOAA/JPL-Caltech](https://scijinks.gov/about/)")
   knitr::include_graphics("images/12-sunsynchronous-geosynchronous-orbits.gif")
 }
 ```
